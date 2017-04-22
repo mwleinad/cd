@@ -48,6 +48,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/services/Xml.php" />
+        <option value="$PROJECT_DIR$/libraries.php" />
       </list>
     </option>
   </component>
