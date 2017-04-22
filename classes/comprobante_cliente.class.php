@@ -1,0 +1,512 @@
+<?php
+
+class ComprobanteCliente extends Comprobante
+{
+	
+	function Generar($data, $notaCredito = false, $usId)
+	{
+		$myData = urlencode(serialize($data));
+		$empresa = $this->Info($usId);
+		
+		$values = explode("&", $data["datosFacturacion"]);
+		unset($data["datosFacturacion"]);
+		foreach($values as $key => $val)
+		{
+			$array = explode("=", $values[$key]);
+			$data[$array[0]] = $array[1];
+		}
+		
+		$tipoSerie = explode("-", $data["tiposComprobanteId"]);
+		$data["tiposComprobanteId"] = $tipoSerie[0];
+		$data["tiposSerieId"] = $tipoSerie[1];
+		
+		$vs = new User;
+		
+		$vs->setRFC($data["rfc"]);
+		$vs->setCalle($data["calle"]);
+		$vs->setPais($data["pais"]);
+
+		if(strlen($data["formaDePago"]) <= 0)
+		{
+			$vs->Util()->setError(10041, "error", "");
+		}
+
+		if(count($_SESSION["conceptos"]) < 1)
+		{
+			$vs->Util()->setError(10040, "error", "");
+		}
+		
+		if($data["fechaSobre"] != "")
+		{
+			$vs->Util()->ValidateString($data["fechaSobre"], 10, 10, "Fecha Factura");
+		}
+
+		if($data["folioSobre"] != "")
+		{
+			$vs->Util()->ValidateInteger($data["folioSobre"], 1000000000, 1);
+		}
+		
+		$sobreescribirFecha = false;
+		$data["sobreescribirFecha"] = false;
+		if($data["fechaSobre"] != "" && $data["folioSobre"] > 0)
+		{
+			$sobreescribirFecha = true;
+			$data["sobreescribirFecha"] = true;
+		}
+		
+		if($vs->Util()->PrintErrors()){ return false; }
+		
+		$myConceptos = urlencode(serialize($_SESSION["conceptos"]));
+		$myImpuestos = urlencode(serialize($_SESSION["impuestos"]));
+		
+		$userId = $data["userId"];
+		
+		$totales = $this->GetTotalDesglosado($data);
+		if($vs->Util()->PrintErrors()){ return false; }
+		
+		if(!$data["tipoDeCambio"])
+		{
+			$data["tipoDeCambio"] = "1.00";
+		}
+
+		if(!$data["porcentajeDescuento"])
+		{
+			$data["porcentajeDescuento"] = "0";
+		}
+
+		if(!$data["porcentajeIEPS"])
+		{
+			$data["porcentajeIEPS"] = "0";
+		}
+		
+		//get active rfc
+		$activeRfc =  $vs->getRfcActive();
+		
+		//get datos serie de acuerdo al tipo de comprobabte expedido.
+		
+		if(!$data["metodoDePago"])
+		{
+			$vs->Util()->setError(10047, "error", "El metodo de pago no puede ser vacio");
+		}
+
+		if($data["NumCtaPago"])
+		{
+			if(strlen($data["NumCtaPago"]) < 4)
+			{
+				$vs->Util()->setError(10047, "error", "El numero de cuenta debe de tener 4 digitos");
+			}
+		}
+		
+		if(!$data["tiposComprobanteId"])
+		{
+			$vs->Util()->setError(10047, "error");
+		}
+
+		if($vs->Util()->PrintErrors()){ return false; }
+		
+		if($notaCredito)
+		{
+			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT * FROM serie WHERE tiposComprobanteId = '2' AND empresaId = ".$_SESSION["empresaId"]." AND rfcId = '".$activeRfc."' AND consecutivo <= folioFinal AND serieId = ".$data["tiposSerieId"]." ORDER BY serieId DESC LIMIT 1");
+		}
+		else
+		{
+			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT * FROM serie WHERE tiposComprobanteId = ".$data["tiposComprobanteId"]." AND empresaId = ".$_SESSION["empresaId"]." AND rfcId = '".$activeRfc."' AND consecutivo <= folioFinal AND serieId = ".$data["tiposSerieId"]." ORDER BY serieId DESC LIMIT 1");
+		}
+
+		$serie = $this->Util()->DBSelect($_SESSION["empresaId"])->GetRow();
+		if(!$serie)
+		{
+			$vs->Util()->setError(10047, "error");
+		}
+
+		if($vs->Util()->PrintErrors()){ return false; }
+
+		if($sobreescribirFecha === true)
+		{
+			$folio = $data["folioSobre"];
+		}
+		else
+		{
+			$folio = $serie["consecutivo"];
+		}
+		$fecha = $this->Util()->FormatDateAndTime(time() - 600);
+		//$fecha = "2012-12-31 22:55:52";
+		
+		//el tipo de comprobante lo determina tiposComprobanteId
+		$tipoDeComprobante = $this->GetTipoComprobante($data["tiposComprobanteId"]);
+		$data["comprobante"] = $this->InfoComprobante($data["tiposComprobanteId"]);
+
+		$data["serie"] = $serie;
+		$data["folio"] = $folio;
+		$data["fecha"] = $fecha;
+//		return;
+		$data["tipoDeComprobante"] = $tipoDeComprobante;
+		$data["certificado"] = $serie["noCertificado"];
+
+		//build informacion nodo emisor
+		$myEmpresa = new Empresa;
+		$myEmpresa->setEmpresaId($_SESSION["empresaId"], 1);
+		$myEmpresa->setSucursalId($data["sucursalId"]);
+		$nodoEmisor = $myEmpresa->GetSucursalInfo();
+
+		$this->setRfcId($activeRfc);
+		$nodoEmisorRfc = $this->InfoRfc();
+		$data["nodoEmisor"]["sucursal"] = $nodoEmisor;
+		$data["nodoEmisor"]["rfc"] = $nodoEmisorRfc;
+
+		if(!$data["nodoEmisor"]["rfc"]["regimenFiscal"])
+		{
+			$vs->Util()->setError(10047, "error", "Necesitas el Regimen Fiscal, esto se actualiza en Datos Generales, en la opcion de edicion.");
+			if($vs->Util()->PrintErrors()){ return false; }
+		}
+
+		if($_SESSION["version"] == "auto")
+		{
+			$rootQr = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/qrs/";
+			$qrRfc = strtoupper($nodoEmisorRfc["rfc"]);
+			$nufa = $serie["serieId"]."_".$serie["noAprobacion"]."_".$qrRfc.".png";
+			if(!file_exists($rootQr.$nufa))
+			{
+				$nufa = $serie["serieId"]."_".$serie["noAprobacion"]."_".$qrRfc."_.png";
+				if(!file_exists($rootQr.$nufa))
+				{
+					$nufa = $serie["serieId"].".png";
+					if(!file_exists($rootQr.$nufa))
+					{
+						$vs->Util()->setError(10048, "error");
+					}
+				}
+			}
+	
+			if($vs->Util()->PrintErrors()){ return false; }
+			
+		}
+		$userId = $data["userId"];
+		//build informacion nodo receptor
+		$vs->setUserId2($userId, 1, $usId);
+		$nodoReceptor = $vs->GetUserInfo($userId);
+		$data["nodoReceptor"] = $nodoReceptor;
+		
+		//checar si nos falta unidad en alguno
+		foreach($_SESSION["conceptos"] as $concepto)
+		{
+			if($concepto["unidad"] == "")
+			{
+				$vs->Util()->setError(10048, "error", "El campo de Unidad no puede ser vacio");
+			}
+		}
+
+		if($vs->Util()->PrintErrors()){ return false; }
+		
+		switch($_SESSION["version"])
+		{
+			case "auto":
+			case "v3":
+			case "construc":
+				include_once(DOC_ROOT.'/classes/cadena_original_v3.class.php');break;
+			case "2": 	
+				include_once(DOC_ROOT.'/classes/cadena_original_v2.class.php');break;
+		}
+		$cadena = new Cadena;
+		$cadenaOriginal = $cadena->BuildCadenaOriginal($data, $serie, $totales, $nodoEmisor, $nodoReceptor, $_SESSION["conceptos"]);
+		$data["cadenaOriginal"] = utf8_encode($cadenaOriginal);
+		$data["cadenaOriginal"] = $cadenaOriginal;
+		$md5Cadena = utf8_decode($cadenaOriginal);
+
+		$md5 = sha1($md5Cadena);
+
+		$sello = $this->GenerarSello($cadenaOriginal, $md5);
+		$data["sello"] = $sello["sello"];
+		$data["certificado"] = $sello["certificado"];
+
+		switch($_SESSION["version"])
+		{
+			case "auto":
+			case "v3":
+			case "construc":
+				include_once(DOC_ROOT.'/classes/generate_xml_default.class.php');break;
+			case "2":	
+				include_once(DOC_ROOT.'/classes/generate_xml_v2.class.php');break;
+		}
+		
+		$xmlGen = new XmlGen;
+		$xml = $xmlGen->GenerateXML($data, $serie, $totales, $nodoEmisor, $nodoReceptor, $_SESSION["conceptos"],$empresa);
+
+		//despues de la generacion del xml, viene el timbrado.
+		if($_SESSION["version"] == "v3" || $_SESSION["version"] == "construc")
+		{
+			$nufa = $empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
+			$rfcActivo = $this->getRfcActive();
+			$root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/facturas/xml/";
+			$root_dos = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/facturas/xml/timbres/";
+			$nufa_dos = "SIGN_".$empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
+			$xmlFile = $root.$nufa.".xml";
+			$zipFile = $root.$nufa.".zip";
+			$signedFile = $root.$nufa."_signed.zip";
+			$timbreFile = $root.$nufa."_timbre.zip";
+//			$timbradoFile = $root."timbreCFDi.xml";
+//			$timbradoFile = $root."/timbres/".$nufa.".xml";
+			$timbradoFile = $root.$nufa_dos.".xml";
+			
+			$this->Util()->Zip($root, $nufa);
+		
+			$user = USER_PAC;
+			$pw = PW_PAC;
+			$pac = new Pac;
+			$response = $pac->GetCfdi($user, $pw, $zipFile, $root, $signedFile, $empresa["empresaId"]);
+			if($response == "fault")
+			{
+				echo "<b><br><br>Has encontrado un error al Sellar tu Comprobante. Favor de reportarnos este error con todos los detalles posibles. Gracias!!</b>";
+				return false;
+			}
+	
+			//$fileTimbreXml = $pac->GetTimbreCfdi($user, $pw, $zipFile, $root, $timbreFile, $empresa["empresaId"]);
+			$timbreXml = $pac->ParseTimbre($timbradoFile);
+			
+			$cadenaOriginalTimbre = $pac->GenerateCadenaOriginalTimbre($timbreXml);
+			$cadenaOriginalTimbreSerialized = serialize($cadenaOriginalTimbre);
+
+			//add addenda
+			if($_SESSION["impuestos"])
+			{
+				$nufa = "SIGN_".$empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
+				$realSignedXml = $root.$nufa.".xml";
+				$strAddenda = "<cfdi:Addenda>";
+				foreach($_SESSION["impuestos"] as $impuesto)
+				{
+					$strAddenda .= "  <cfdi:impuesto tipo=\"".$impuesto["tipo"]."\" nombre=\"".$impuesto["impuesto"]."\" importe=\"".$impuesto["importe"]."\" tasa=\"".$impuesto["tasaIva"]."\" />";
+				}
+				$strAddenda .= "</cfdi:Addenda>";
+				
+				$fh = fopen($realSignedXml, 'r');
+				$theData = fread($fh, filesize($realSignedXml));
+				fclose($fh);
+				$theData = str_replace("</cfdi:Complemento>", "</cfdi:Complemento>".$strAddenda, $theData);
+				
+		
+				$fh = fopen($realSignedXml, 'w') or die("can't open file");
+				fwrite($fh, $theData);
+				fclose($fh);
+			}
+
+//		print_r($cadenaOriginalTimbre);
+			$data["timbreFiscal"] = $cadenaOriginalTimbre;
+		}
+		//generatePDF
+		//cambios 29 junio 2011
+
+
+		if(!$data["fromNomina"])
+		{
+			switch(SITENAME)
+			{
+				case "FACTURASE": include_once(DOC_ROOT."/classes/disenios_facturase.php"); break;
+				default: include_once(DOC_ROOT."/classes/disenios_confactura.php"); break;
+			}
+		}
+		else
+		{
+				include_once(DOC_ROOT."/classes/override_generate_pdf_nomina.php");
+				$override = new Override;
+				$pdf = $override->GeneratePDF($data, $serie, $totales, $nodoEmisor, $nodoReceptor, $_SESSION["conceptos"],$empresa);
+		}
+		
+	//	return false;
+		//cambios 29 junio 2011
+		//insert new comprobante
+		switch($data["tiposDeMoneda"])
+		{
+			case "MXN": $data["tiposDeMoneda"] = "peso"; break;
+			case "USD": $data["tiposDeMoneda"] = "dolar"; break;
+			case "EUR": $data["tiposDeMoneda"] = "euro"; break;
+		}
+		
+		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("
+			INSERT INTO `comprobante` (
+				`comprobanteId`, 
+				`userId`, 
+				`formaDePago`, 
+				`condicionesDePago`, 
+				`metodoDePago`, 
+				`tasaIva`, 
+				`tipoDeMoneda`, 
+				`tipoDeCambio`, 
+				`porcentajeRetIva`, 
+				`porcentajeRetIsr`, 
+				`tiposComprobanteId`, 
+				`porcentajeIEPS`, 
+				`porcentajeDescuento`, 
+				`empresaId`, 
+				`sucursalId`, 
+				`observaciones`,
+				`serie`,
+				`folio`,
+				`fecha`,
+				`sello`,
+				`noAprobacion`,
+				`anoAprobacion`,
+				`noCertificado`,
+				`certificado`,
+				`subtotal`,
+				`descuento`,
+				`motivoDescuento`,
+				`total`,
+				`tipoDeComprobante`,
+				`xml`,
+				`rfcId`,
+				`ivaTotal`,
+				`data`,
+				`conceptos`,
+				`impuestos`,
+				`cadenaOriginal`,
+				`timbreFiscal`
+			) VALUES 
+			(
+			 	NULL, 
+				'".$userId."', 
+				'".$data["formaDePago"]."', 
+				'".$data["condicionesDePago"]."', 
+				'".$data["metodoDePago"]."', 
+				'".$data["tasaIva"]."', 
+				'".$data["tiposDeMoneda"]."', 
+				'".$data["tipoDeCambio"]."', 
+				'".$data["porcentajeRetIva"]."', 
+				'".$data["porcentajeRetIsr"]."', 
+				'".$data["tiposComprobanteId"]."', 
+				'".$data["porcentajeIEPS"]."', 
+				'".$data["porcentajeDescuento"]."', 
+				'".$empresa["empresaId"]."', 
+				'".$data["sucursalId"]."', 
+				'".$data["observaciones"]."',
+				'".$serie["serie"]."',
+				'".$folio."',
+				'".$fecha."',
+				'".$data["sello"]."',
+				'".$serie["noAprobacion"]."',
+				'".$serie["anoAprobacion"]."',
+				'".$serie["noCertificado"]."',
+				'".$data["certificado"]."',
+				'".$totales["subtotal"]."',
+				'".$totales["descuento"]."',
+				'".$data["motivoDescuento"]."',
+				'".$totales["total"]."',
+				'".$tipoDeComprobante."',
+				'".$xml."',
+				'".$data["nodoEmisor"]["rfc"]["rfcId"]."',
+				'".$totales["iva"]."',
+				'".$myData."',
+				'".$myConceptos."',
+				'".$myImpuestos."',
+				'".$data["cadenaOriginal"]."',
+				'".$cadenaOriginalTimbreSerialized."'
+			)");
+			$this->Util()->DBSelect($_SESSION["empresaId"])->InsertData();
+			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT comprobanteId FROM comprobante ORDER BY comprobanteId DESC LIMIT 1");
+			$comprobanteId = $this->Util()->DBSelect($_SESSION["empresaId"])->GetSingle();
+		
+		//notaVenta
+		
+		if(!isset($data['notaVentaId']) && !isset($_SESSION['ticketsId']))
+		{
+			$sql = "
+			INSERT INTO `notaVenta` (
+				`usuarioId`, 
+				`formaDePago`,  
+				`sucursalId`,
+				`fecha`,
+				`subtotal`,
+				`iva`,
+				`total`
+			) VALUES 
+			(
+				'".$_SESSION["usuarioId"]."', 
+				'".$data["formaDePago"]."', 
+				'".$data["sucursalId"]."', 
+				'".$fecha."',
+				'".$totales["subtotal"]."',
+				'".$totales["iva"]."',
+				'".$totales["total"]."'
+			)";
+			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery($sql);
+			$this->Util()->DBSelect($_SESSION["empresaId"])->InsertData();
+			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT notaVentaId FROM notaVenta ORDER BY notaVentaId DESC LIMIT 1");
+			$notaVentaId = $this->Util()->DBSelect($_SESSION["empresaId"])->GetSingle();
+			
+			//insert conceptos
+			foreach($_SESSION["conceptos"] as $concepto)
+			{
+				$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("
+					INSERT INTO `concepto` (
+						`comprobanteId`, 
+						`cantidad`, 
+						`unidad`, 
+						`noIdentificacion`, 
+						`descripcion`, 
+						`valorUnitario`, 
+						`excentoIva`, 
+						`importe`, 
+						`userId`, 
+						`empresaId`
+					) VALUES (
+						".$notaVentaId.", 
+						".$concepto["cantidad"].", 
+						'".$concepto["unidad"]."', 
+						'".$concepto["noIdentificacion"]."', 
+						'".$concepto["descripcion"]."', 
+						".$concepto["valorUnitario"].", 
+						'".$concepto["excentoIva"]."', 
+						".$concepto["importe"].", 
+						".$userId.", 
+						".$empresa["empresaId"]."
+						)");
+				$this->Util()->DBSelect($_SESSION["empresaId"])->InsertData();
+			}
+			if($data['cuentaPorPagar'] != "yes")
+			{
+				$sql = "INSERT INTO payment(`notaVentaId`,`amount`,`paymentDate`) VALUES(".$notaVentaId.",".$totales["total"].",'".date("Y-m-d")."')";
+				$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery($sql);
+				$this->Util()->DBSelect($_SESSION["empresaId"])->InsertData();
+			}
+			
+			$sql = "UPDATE notaVenta SET facturado = '1', comprobanteId = '".$comprobanteId."' WHERE notaVentaId = ".$notaVentaId;
+			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery($sql);
+			$this->Util()->DBSelect($_SESSION["empresaId"])->UpdateData();
+		}
+		//End notaVenta
+		if($sobreescribirFecha === true)
+		{
+			//finally we update the 'consecutivo
+			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("UPDATE serie SET consecutivo = ".$data["folioSobre"]."+1 WHERE serieId = ".$serie["serieId"]);
+			$this->Util()->DBSelect($_SESSION["empresaId"])->UpdateData();
+		}
+		else
+		{
+			//finally we update the 'consecutivo
+			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("UPDATE serie SET consecutivo = consecutivo + 1 WHERE serieId = ".$serie["serieId"]);
+			$this->Util()->DBSelect($_SESSION["empresaId"])->UpdateData();
+		}
+		
+		if(isset($data['notaVentaId']))
+		{
+			$sql = "UPDATE notaVenta SET facturado = '1', comprobanteId = '".$comprobanteId."' WHERE notaVentaId = ".$data['notaVentaId'];
+			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery($sql);
+			$this->Util()->DBSelect($_SESSION["empresaId"])->UpdateData();
+		}
+		
+		if(isset($_SESSION['ticketsId']))
+		{
+			foreach($_SESSION['ticketsId'] as $key => $resId)
+			{
+				$sql = "UPDATE notaVenta SET facturado = '1', comprobanteId = '".$comprobanteId."' WHERE notaVentaId = ".$resId;
+				$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery($sql);
+				$this->Util()->DBSelect($_SESSION["empresaId"])->UpdateData();
+			}
+		}
+		unset($_SESSION['ticketsId']);
+		
+		return true;
+	}//Generar
+}
+
+
+?>

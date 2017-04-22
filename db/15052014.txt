@@ -1,0 +1,1 @@
+ALTER TABLE  `departamentos` ADD  `decorado` ENUM(  'Si',  'No' ) NOT NULL DEFAULT  'No'
