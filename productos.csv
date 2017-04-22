@@ -1,0 +1,1300 @@
+,Unidad,noIdentificacion,Descripción,Valor Unitario
+,pz,ALC01           ,TUBO ALCANTARILLADO METRICO S-25 160MM  ,0
+,pz,ALC02           ,TUBO ALCANTARILLADO METRICO S-25 200MM  ,0
+,pz,ALC03           ,TUBO ALCANTARILLADO METRICO S-25 250MM  ,0
+,pz,ALC04           ,TUBO ALCANTARILLADO METRICO S-25 315MM  ,0
+,pz,ALC05           ,TUBO ALCANTARILLADO METRICO S-25 355MM  ,0
+,pz,ALC06           ,TUBO ALCANTARILLADO METRICO S-25 400MM  ,0
+,pz,ALC07           ,TUBO ALCANTARILLADO METRICO S-25 450MM  ,0
+,pz,ALC08           ,TUBO ALCANTARILLADO METRICO S-25 500MM  ,0
+,pz,ALC09           ,TUBO ALCANTARILLADO METRICO S-25 630MM  ,0
+,pz,ALC10           ,CODO 45 ALCANT. METRICO 160 MM          ,0
+,pz,ALC11           ,CODO 45 ALCANT. METRICO 200 MM          ,0
+,pz,ALC12           ,CODO 45 ALCANT. METRICO 250 MM          ,0
+,pz,ALC13           ,CODO 45 ALCANT. METRICO 315 MM          ,0
+,pz,ALC14           ,CODO 45 ALCANT. METRICO 355 MM          ,0
+,pz,ALC15           ,CODO 45 ALCANT. METRICO 400 MM          ,0
+,pz,ALC16           ,CODO 45 ALCANT. METRICO 450 MM          ,0
+,pz,ALC17           ,CODO 90 ALCANT. METRICO 160 MM          ,0
+,pz,ALC18           ,CODO 90 ALCANT. METRICO 200 MM          ,0
+,pz,ALC19           ,CODO 90 ALCANT. METRICO 250 MM          ,0
+,pz,ALC20           ,CODO 90 ALCANT. METRICO 315 MM          ,0
+,pz,ALC21           ,CODO 90 ALCANT. METRICO 355 MM          ,0
+,pz,ALC22           ,"SILLETA PVC ALCANT.METRICO.160X110""     ",0
+,pz,ALC23           ,"SILLETA PVC ALCANT.METRICO.200 X 110""   ",0
+,pz,ALC24           ,"SILLETA PVC ALCANT.METRICO.200 X 160""   ",0
+,pz,ALC25           ,"SILLETA PVC ALCANT.METRICO.250 X 110""   ",0
+,pz,ALC26           ,"SILLETA PVC ALCANT.METRICO.250 X 160""   ",0
+,pz,ALC27           ,"SILLETA PVC ALCANT.METRICO.315 X 110""   ",0
+,pz,ALC28           ,"SILLETA PVC ALCANT.METRICO.315 X 160""   ",0
+,pz,ALC29           ,"SILLETA PVC ALCANT.METRICO.315 X 200""   ",0
+,pz,ALC30           ,"SILLETA PVC ALCANT.METRICO.315 X 250""   ",0
+,pz,ALC31           ,"SILLETA PVC ALCANT.METRICO.355 X 110""   ",0
+,pz,ALC32           ,"SILLETA PVC ALCANT.METRICO.355 X 160""   ",0
+,pz,ALC33           ,"SILLETA PVC ALCANT.METRICO.400 X 110""   ",0
+,pz,ALC34           ,"SILLETA PVC ALCANT.METRICO.400 X 160""   ",0
+,pz,ALC35           ,"SILLETA PVC ALCANT.METRICO.450 X 160""   ",0
+,pz,CG01            ,COPLE GALVANIZADO 1/2                   ,0
+,pz,CG02            ,COPLE GALVANIZADO 3/4                   ,0
+,pz,CG03            ,"COPLE GALVANIZADO 1""                    ",0
+,pz,CG04            ,COPLE GALVANIZADO 11/4                  ,0
+,pz,CG05            ,COPLE GALVANIZADO 11/2                  ,0
+,pz,CG06            ,COPLE GALVANIZADO 2                     ,0
+,pz,CG07            ,COPLE GALVANIZADO 21/2                  ,0
+,pz,CG08            ,COPLE GALVANIZADO 3                     ,0
+,pz,CG09            ,COPLE GALVANIZADO 4                     ,0
+,pz,CG10            ,COPLE GALVANIZADO 6                     ,0
+,pz,CG100           ,REDUCCION BUSHING 2 X 1 1/4             ,0
+,pz,CG101           ,REDUCCION BUSHING 2 X 1 1/2             ,0
+,pz,CG102           ,REDUCCION BUSHING 2 1/2 X 1/2           ,0
+,pz,CG103           ,REDUCCION BUSHING 2 1/2 X 3/4           ,0
+,pz,CG104           ,REDUCCION BUSHING 2 1/2 X 1             ,0
+,pz,CG105           ,REDUCCION BUSHING 2 1/2 X 1 1/4         ,0
+,pz,CG106           ,REDUCCION BUSHING 2 1/2 X 1 1/2         ,0
+,pz,CG107           ,REDUCCION BUSHING 2 1/2 X 2             ,0
+,pz,CG108           ,REDUCCION BUSHING 3 X 1/2               ,0
+,pz,CG109           ,REDUCCION BUSHING 3 X 3/4               ,0
+,pz,CG11            ,CODO GALVANIZADO 1/2X45                 ,0
+,pz,CG110           ,REDUCCION BUSHING 3 X 1                 ,0
+,pz,CG111           ,REDUCCION BUSHING 3 X 1 1/4             ,0
+,pz,CG112           ,REDUCCION BUSHING 3 X 1 1/2             ,0
+,pz,CG113           ,REDUCCION BUSHING 3 X 2                 ,0
+,pz,CG114           ,REDUCCION BUSHING 3 X 2 1/2             ,0
+,pz,CG115           ,REDUCCION BUSHING 4 X 1/2               ,0
+,pz,CG116           ,REDUCCION BUSHING 4 X 3/4               ,0
+,pz,CG117           ,REDUCCION BUSHING 4 X 1                 ,0
+,pz,CG118           ,REDUCCION BUSHING 4 X 1 1/4             ,0
+,pz,CG119           ,REDUCCION BUSHING 4 X 1 1/2             ,0
+,pz,CG12            ,CODO GALVANIZADO 3/4X45                 ,0
+,pz,CG120           ,REDUCCION BUSHING 4 X 2                 ,0
+,pz,CG121           ,REDUCCION BUSHING 4 X 2 1/2             ,0
+,pz,CG122           ,REDUCCION BUSHING 4 X 3                 ,0
+,pz,CG123           ,REDUCCION BUSHING 6 X 2                 ,0
+,pz,CG124           ,REDUCCION BUSHING 6 X 3                 ,0
+,pz,CG125           ,REDUCCION BUSHING 6 X 4                 ,0
+,pz,CG126           ,REDUCCION CAMPANA 3/8 X 1/4             ,0
+,pz,CG127           ,REDUCCION CAMPANA 1/2 X 1/4             ,0
+,pz,CG128           ,REDUCCION CAMPANA 1/2 X 3/8             ,0
+,pz,CG129           ,REDUCCION CAMPANA 3/4 X 1/4             ,0
+,pz,CG13            ,CODO GALVANIZADO 1X45                   ,0
+,pz,CG130           ,REDUCCION CAMPANA 3/4 X 3/8             ,0
+,pz,CG131           ,REDUCCION CAMPANA 3/4 X 1/2             ,0
+,pz,CG132           ,REDUCCION CAMPANA 1 X 1/4               ,0
+,pz,CG133           ,REDUCCION CAMPANA 1 X 3/8               ,0
+,pz,CG134           ,REDUCCION CAMPANA 1 X 1/2               ,0
+,pz,CG135           ,REDUCCION CAMPANA 1 X 1/2               ,0
+,pz,CG136           ,REDUCCION CAMPANA 1 1/4 X 1/2           ,0
+,pz,CG137           ,REDUCCION CAMPANA 1 1/4 X 3/4           ,0
+,pz,CG138           ,REDUCCION CAMPANA 1 1/4 X 1             ,0
+,pz,CG139           ,REDUCCION CAMPANA 1 1/2 X 1/2           ,0
+,pz,CG14            ,CODO GALVANIZADO 11/4X45                ,0
+,pz,CG140           ,REDUCCION CAMPANA 1 1/2 X 3/4           ,0
+,pz,CG141           ,REDUCCION CAMPANA 1 1/2 X 1             ,0
+,pz,CG142           ,REDUCCION CAMPANA 1 1/2 X 1 1/4         ,0
+,pz,CG143           ,REDUCCION CAMPANA 2 X 1/2               ,0
+,pz,CG144           ,REDUCCION CAMPANA 2 X 3/4               ,0
+,pz,CG145           ,REDUCCION CAMPANA 2 X 1                 ,0
+,pz,CG146           ,REDUCCION CAMPANA 2 X 1 1/4             ,0
+,pz,CG147           ,REDUCCION CAMPANA 2 X 1 1/2             ,0
+,pz,CG148           ,REDUCCION CAMPANA 2 1/2 X 1/2           ,0
+,pz,CG149           ,REDUCCION CAMPANA 2 1/2 X 3/4           ,0
+,pz,CG15            ,CODO GALVANIZADO 11/2X45                ,0
+,pz,CG150           ,REDUCCION CAMPANA 2 1/2 X 1             ,0
+,pz,CG151           ,REDUCCION CAMPANA 2 1/2 X 1 1/4         ,0
+,pz,CG152           ,REDUCCION CAMPANA 2 1/2 X 1 1/2         ,0
+,pz,CG153           ,REDUCCION CAMPANA 2 1/2 X 2             ,0
+,pz,CG154           ,REDUCCION CAMPANA 3 X 1/2               ,0
+,pz,CG155           ,REDUCCION CAMPANA 3 X 3/4               ,0
+,pz,CG156           ,REDUCCION CAMPANA 3 X 1                 ,0
+,pz,CG157           ,REDUCCION CAMPANA 3 X 1 1/4             ,0
+,pz,CG158           ,REDUCCION CAMPANA 3 X 1 1/2             ,0
+,pz,CG159           ,REDUCCION CAMPANA 3 X 2                 ,0
+,pz,CG16            ,CODO GALVANIZADO 2X45                   ,0
+,pz,CG160           ,REDUCCION CAMPANA 3 X 2 1/2             ,0
+,pz,CG161           ,REDUCCION CAMPANA 4 X 3/4               ,0
+,pz,CG162           ,REDUCCION CAMPANA 4 X 1                 ,0
+,pz,CG163           ,REDUCCION CAMPANA 4 X 1 1/2             ,0
+,pz,CG164           ,REDUCCION CAMPANA 4 X 2                 ,0
+,pz,CG165           ,REDUCCION CAMPANA 4 X 2 1/2             ,0
+,pz,CG17            ,CODO GALVANIZADO 21/2X45                ,0
+,pz,CG18            ,CODO GALVANIZADO 3X45                   ,0
+,pz,CG19            ,CODO GALVANIZADO 4X45                   ,0
+,pz,CG20            ,CODO GALVANIZADO 6X45                   ,0
+,pz,CG21            ,CODO GALVANIZADO 1/2X90                 ,0
+,pz,CG22            ,CODO GALVANIZADO 3/4X90                 ,0
+,pz,CG23            ,CODO GALVANIZADO 1X90                   ,0
+,pz,CG24            ,CODO GALVANIZADO 11/4X90                ,0
+,pz,CG25            ,CODO GALVANIZADO 11/2X90                ,0
+,pz,CG26            ,CODO GALVANIZADO 2X90                   ,0
+,pz,CG27            ,CODO GALVANIZADO 21/2X90                ,0
+,pz,CG28            ,CODO GALVANIZADO 3X90                   ,0
+,pz,CG29            ,CODO GALVANIZADO 4X90                   ,0
+,pz,CG30            ,CODO GALVANIZADO 6X90                   ,0
+,pz,CG31            ,TEE GALVANIZADA 1/2                     ,0
+,pz,CG32            ,TEE GALVANIZADA 3/4                     ,0
+,pz,CG33            ,TEE GALVANIZADA 1                       ,0
+,pz,CG34            ,TEE GALVANIZADA 11/4                    ,0
+,pz,CG35            ,TEE GALVANIZADA 11/2                    ,0
+,pz,CG36            ,TEE GALVANIZADA 2                       ,0
+,pz,CG37            ,TEE GALVANIZADA 21/2                    ,0
+,pz,CG38            ,TEE GALVANIZADA 3                       ,0
+,pz,CG39            ,TEE GALVANIZADA 4                       ,0
+,pz,CG40            ,TEE GALVANIZADA 6                       ,0
+,pz,CG41            ,TAPON HEMBRA GALVANIZADO 3/8            ,0
+,pz,CG42            ,TAPON HEMBRA GALVANIZADO 1/2            ,0
+,pz,CG43            ,TAPON HEMBRA GALVANIZADO 3/4            ,0
+,pz,CG44            ,TAPON HEMBRA GALVANIZADO 1              ,0
+,pz,CG45            ,TAPON HEMBRA GALVANIZADO 1 1/4          ,0
+,pz,CG46            ,TAPON HEMBRA GALVANIZADO 1 1/2          ,0
+,pz,CG47            ,TAPON HEMBRA GALVANIZADO 2              ,0
+,pz,CG48            ,TAPON HEMBRA GALVANIZADO 2 1/2          ,0
+,pz,CG49            ,TAPON HEMBRA GALVANIZADO 3              ,0
+,pz,CG50            ,TAPON HEMBRA GALVANIZADO 4              ,0
+,pz,CG51            ,TAPON HEMBRA GALVANIZADO 6              ,0
+,pz,CG52            ,TAPON MACHO GALVANIZADO 1/4             ,0
+,pz,CG53            ,TAPON MACHO GALVANIZADO 3/8             ,0
+,pz,CG54            ,TAPON MACHO GALVANIZADO 1/2             ,0
+,pz,CG55            ,TAPON MACHO GALVANIZADO 1               ,0
+,pz,CG56            ,TAPON MACHO GALVANIZADO 1 1/4           ,0
+,pz,CG57            ,TAPON MACHO GALVANIZADO 1 1/2           ,0
+,pz,CG58            ,TAPON MACHO GALVANIZADO 2               ,0
+,pz,CG59            ,TAPON MACHO GALVANIZADO 2 1/2           ,0
+,pz,CG60            ,TAPON MACHO GALVANIZADO 3               ,0
+,pz,CG61            ,TAPON MACHO GALVANIZADO 4               ,0
+,pz,CG62            ,TAPON MACHO GALVANIZADO 6               ,0
+,pz,CG63            ,CRUZ GALVANIZADA 3/8                    ,0
+,pz,CG64            ,CRUZ GALVANIZADA 1/2                    ,0
+,pz,CG65            ,CRUZ GALVANIZADA 3/4                    ,0
+,pz,CG66            ,CRUZ GALVANIZADA 1                      ,0
+,pz,CG67            ,CRUZ GALVANIZADA 1 1/4                  ,0
+,pz,CG68            ,CRUZ GALVANIZADA 1 1/2                  ,0
+,pz,CG69            ,CRUZ GALVANIZADA 2                      ,0
+,pz,CG70            ,CRUZ GALVANIZADA 2 1/2                  ,0
+,pz,CG71            ,CRUZ GALVANIZADA 3                      ,0
+,pz,CG72            ,CRUZ GALVANIZADA 4                      ,0
+,pz,CG73            ,TUERCA UNION 3/8                        ,0
+,pz,CG74            ,TUERCA UNION 1/2                        ,0
+,pz,CG75            ,TUERCA UNION 3/4                        ,0
+,pz,CG76            ,TUERCA UNION 1                          ,0
+,pz,CG77            ,TUERCA UNION 1 1/4                      ,0
+,pz,CG78            ,TUERCA UNION 1 1/2                      ,0
+,pz,CG79            ,TUERCA UNION 2                          ,0
+,pz,CG80            ,TUERCA UNION 2 1/2                      ,0
+,pz,CG81            ,TUERCA UNION 4                          ,0
+,pz,CG82            ,REDUCCION BUSHING 3/8 X 1/4             ,0
+,pz,CG83            ,REDUCCION BUSHING 1/2 X 1/4             ,0
+,pz,CG84            ,REDUCCION BUSHING 1/2 X 3/8             ,0
+,pz,CG85            ,REDUCCION BUSHING 3/4 X 1/2             ,0
+,pz,CG86            ,REDUCCION BUSHING 1 X 1/4               ,0
+,pz,CG87            ,REDUCCION BUSHING 1 X 1/2               ,0
+,pz,CG88            ,REDUCCION BUSHING 1 X 1/2               ,0
+,pz,CG89            ,REDUCCION BUSHING 1 X 3/4               ,0
+,pz,CG90            ,REDUCCION BUSHING 1 1/4 X 1/2           ,0
+,pz,CG91            ,REDUCCION BUSHING 1 1/4 X 3/4           ,0
+,pz,CG92            ,REDUCCION BUSHING 1 1/4 X 1             ,0
+,pz,CG93            ,REDUCCION BUSHING1 1/2 X 1/2            ,0
+,pz,CG94            ,REDUCCION BUSHING 1 1/2 X 3/4           ,0
+,pz,CG95            ,REDUCCION BUSHING 1 1/2 X 1             ,0
+,pz,CG96            ,REDUCCION BUSHING 1 1/2 X 1 1/4         ,0
+,pz,CG97            ,REDUCCION BUSHING 2 X 1/2               ,0
+,pz,CG98            ,REDUCCION BUSHING 2 X 3/4               ,0
+,pz,CG99            ,REDUCCION BUSHING 2 X 1                 ,0
+,pz,COB01           ,TUBO DE COBRE DE 1/4 TIPO M TRAMO 6.10  ,0
+,pz,COB02           ,"TUBO DE COBRE DE 3/8"" TIPO M TRAMO 6.10 ",0
+,pz,COB03           ,"TUBO DE COBRE DE 1/2"" TIPO M TRAMO 6.10 ",0
+,pz,COB04           ,"TUBO DE COBRE DE 3/4"" TIPO M TRAMO 6.10 ",0
+,pz,COB05           ,"TUBO DE COBRE DE 1"" TIPO M TRAMO 6.10   ",0
+,pz,COB06           ,"TUBO DE COBRE DE 11/4"" TIPO M TRAMO 6.10",0
+,pz,COB07           ,"TUBO DE COBRE DE 11/2"" TIPO M TRAMO 6.10",0
+,pz,COB08           ,"TUBO DE COBRE DE 2"" TIPO M TRAMO 6.10   ",0
+,pz,COB09           ,"TUBO DE COBRE DE 21/2"" TIPO M TRAMO 6.10",0
+,pz,COB10           ,"TUBO DE COBRE DE 3"" TIPO M TRAMO 6.10   ",0
+,pz,COB100          ,"REDUCCION CAMP. DE COBRE 2 A 1""         ",0
+,pz,COB101          ,"REDUCCION CAMP.DE COBRE 2 A 11/4""       ",0
+,pz,COB102          ,"REDUCCION CAMP.DE COBRE 2 A 11/2""       ",0
+,pz,COB103          ,"REDUCCION CAMP.DE COBRE 21/2 A 1""       ",0
+,pz,COB104          ,"REDUCCION CAMP.DE COBRE 21/2 A 11/4""    ",0
+,pz,COB105          ,"REDUCCION CAMP.DE COBRE 21/2 A 11/2""    ",0
+,pz,COB106          ,"REDUCCION CAMP.DE COBRE 21/2 A 2""       ",0
+,pz,COB107          ,"REDUCCION CAMP.DE COBRE 3 A 11/4""       ",0
+,pz,COB108          ,"REDUCCION CAMP.DE COBRE 3 A 11/2""       ",0
+,pz,COB109          ,"REDUCCION CAMP.DE COBRE 3 A 2""          ",0
+,pz,COB11           ,"TUBO DE COBRE DE 4"" TIPO M TRAMO 6.10   ",0
+,pz,COB110          ,"REDUCCION CAMP.DE COBRE 3 A 21/2""       ",0
+,pz,COB111          ,"REDUCCION CAMP. DE COBRE 4 A 11/4""      ",0
+,pz,COB112          ,"REDUCCION CAMP.DE COBRE 4 A 11/2""       ",0
+,pz,COB113          ,"REDUCCION CAMP. DE COBRE 4 A 2""         ",0
+,pz,COB114          ,"REDUCCION CAMP. DE COBRE 4 A 2 1/2""     ",0
+,pz,COB115          ,"REDUCCION CAMP. DE COBRE 4 A 3""         ",0
+,pz,COB116          ,"REDUCCION BUSH. DE COBRE 1/2 A 3/8""     ",0
+,pz,COB117          ,"REDUCCION BUSH. DE COBRE 3/4 A 1/2""     ",0
+,pz,COB118          ,"REDUCCION BUSH. DE COBRE 1"" A 1/2""      ",0
+,pz,COB119          ,"REDUCCION BUSH. DE COBRE 1"" A 3/4""      ",0
+,pz,COB12           ,"TUBO DE COBRE DE 1/4"" TIPO M X MT       ",0
+,pz,COB120          ,"REDUCCION BUSH. DE COBRE 11/4"" A 1/2""   ",0
+,pz,COB121          ,"REDUCCION BUSH.DE COBRE 11/4"" A 3/4""    ",0
+,pz,COB122          ,"REDUCCION BUSH. DE COBRE 11/4"" A 1""     ",0
+,pz,COB123          ,"REDUCCION BUSH. DE COBRE 11/2"" A 1/2""   ",0
+,pz,COB124          ,"REDUCCION BUSH. DE COBRE 11/2"" A 3/4""   ",0
+,pz,COB125          ,"REDUCCION BUSH. DE COBRE 11/2"" A 1""     ",0
+,pz,COB126          ,"REDUCCION BUSH. DE COBRE 11/2"" A 11/4""  ",0
+,pz,COB127          ,"REDUCCION BUSH. DE COBRE 2"" A 1/2""      ",0
+,pz,COB128          ,"REDUCCION BUSH. DE COBRE 2"" A 3/4""      ",0
+,pz,COB129          ,"REDUCCION BUSH. DE COBRE 2"" A 1""        ",0
+,pz,COB13           ,"TUBO DE COBRE DE 3/8"" TIPO M X MT       ",0
+,pz,COB130          ,"REDUCCION BUSH. DE COBRE 2"" A 11/4""     ",0
+,pz,COB131          ,"REDUCCION BUSH. DE COBRE 2"" A 11/2""     ",0
+,pz,COB132          ,"REDUCCION BUSH.DE COBRE 21/2"" A 1""      ",0
+,pz,COB133          ,"REDUCCION BUSH. DE COBRE 21/2"" A 11/4""  ",0
+,pz,COB134          ,"REDUCCION BUSH. DE COBRE 21/2"" A 11/2""  ",0
+,pz,COB135          ,"REDUCCION BUSH. DE COBRE 21/2"" A 2""     ",0
+,pz,COB136          ,"REDUCCION BUSH. DE COBRE 3"" A 11/4""     ",0
+,pz,COB137          ,"REDUCCION BUSH. DE COBRE 3"" A 11/2""     ",0
+,pz,COB138          ,"REDUCCION BUSH..DE COBRE 3"" A 2""        ",0
+,pz,COB139          ,"REDUCCION BUSH. DE COBRE 3"" A 21/2""     ",0
+,pz,COB14           ,"TUBO DE COBRE DE 1/2"" TIPO M X MT       ",0
+,pz,COB140          ,"REDUCCION BUSH. DE COBRE 4"" A 11/4""     ",0
+,pz,COB141          ,"REDUCCION BUSH. DE COBRE 4"" A 11/2""     ",0
+,pz,COB142          ,"REDUCCION BUSH.DE COBRE 4"" A 2""         ",0
+,pz,COB143          ,"REDUCCION BUSH. DE COBRE 4"" A 21/2""     ",0
+,pz,COB144          ,"REDUCCION BUSH. DE COBRE 4"" A 3""        ",0
+,pz,COB145          ,"CODO DE COBRE DE 3/8"" X 45              ",0
+,pz,COB146          ,"CODO DE COBRE DE 1/2"" X 45              ",0
+,pz,COB147          ,"CODO DE COBRE DE 3/4"" X 45              ",0
+,pz,COB148          ,"CODO DE COBRE DE    1"" X 45             ",0
+,pz,COB149          ,"CODO DE COBRE DE 11/4"" X 45             ",0
+,pz,COB15           ,"TUBO DE COBRE DE 3/4"" TIPO M X MT       ",0
+,pz,COB150          ,"CODO DE COBRE DE 11/2"" X 45             ",0
+,pz,COB151          ,"CODO DE COBRE DE 2"" X 45                ",0
+,pz,COB152          ,"CODO DE COBRE DE 21/2"" X 45             ",0
+,pz,COB153          ,"CODO DE COBRE DE 3"" X 45                ",0
+,pz,COB154          ,"CODO DE COBRE DE 4"" X 45                ",0
+,pz,COB155          ,"CODO DE COBRE DE 3/8"" X 90              ",0
+,pz,COB156          ,"CODO DE COBRE DE 1/2"" X 90              ",0
+,pz,COB157          ,"CODO DE COBRE DE 3/4"" X 90              ",0
+,pz,COB158          ,"CODO DE COBRE DE 1"" X 90                ",0
+,pz,COB159          ,"CODO DE COBRE DE 11/4"" X 90             ",0
+,pz,COB16           ,"TUBO DE COBRE DE 1"" TIPO M X MT         ",0
+,pz,COB160          ,"CODO DE COBRE DE 11/2"" X 90             ",0
+,pz,COB161          ,"CODO DE COBRE DE 2"" X 90                ",0
+,pz,COB162          ,"CODO DE COBRE DE 21/2"" X 90             ",0
+,pz,COB163          ,"CODO DE COBRE DE 3"" X 90                ",0
+,pz,COB164          ,"CODO DE COBRE DE 4"" X 90""               ",0
+,pz,COB165          ,"CODO DE COBRE RED. DE 1/2 A 3/8""        ",0
+,pz,COB166          ,"CODO DE COBRE RED. DE 3/4 A 1/2""        ",0
+,pz,COB167          ,"CODO DE COBRE RED. DE 1"" A 3/4""         ",0
+,pz,COB168          ,"CODO DE COBRE R/EXTERIOR 3/8""           ",0
+,pz,COB169          ,"CODO DE COBRE R/EXTERIOR 1/2""           ",0
+,pz,COB17           ,"TUBO DE COBRE DE 1 1/4"" TIPO M X MT     ",0
+,pz,COB170          ,"CODO DE COBRE R/ EXTERIOR 3/4""          ",0
+,pz,COB171          ,"CODO DE COBRE R/EXTERIOR 1""             ",0
+,pz,COB172          ,"CODO DE COBRE R/ EXTERIOR 11/4""         ",0
+,pz,COB173          ,"CODO DE COBRE R/ EXTERIOR 11/2""         ",0
+,pz,COB174          ,"CODO DE COBRE R/ EXTERIOR 2""            ",0
+,pz,COB175          ,"CODO PIPA DE COBRE 3/8""                 ",0
+,pz,COB176          ,"CODO PIPA DE COBRE 1/2""                 ",0
+,pz,COB177          ,"CODO PIPA DE COBRE 3/4""                 ",0
+,pz,COB178          ,"CODO PIPA DE COBRE 1""                   ",0
+,pz,COB179          ,"CODO PIPA DE COBRE 11/4""                ",0
+,pz,COB18           ,"TUBO DE COBRE DE 11/2"" TIPO M X MT      ",0
+,pz,COB180          ,"CODO PIPA DE COBRE 11/2""                ",0
+,pz,COB181          ,"CODO PIPA DE COBRE 2""                   ",0
+,pz,COB182          ,CODO COBRE RED. INT.1/2 A3/8            ,0
+,pz,COB183          ,CODO COBRE RED. INT.1/2 A 3/4           ,0
+,pz,COB184          ,"TEE DE COBRE DE 3/8""                    ",0
+,pz,COB185          ,"TEE DE COBRE DE 1/2""                    ",0
+,pz,COB186          ,"TEE DE COBRE DE  3/4""                   ",0
+,pz,COB187          ,"TEE DE COBRE DE  1""                     ",0
+,pz,COB188          ,"TEE DE COBRE DE  11/4""                  ",0
+,pz,COB189          ,"TEE DE COBRE DE  11/2""                  ",0
+,pz,COB19           ,"TUBO DE COBRE DE 2"" TIPO M X MT         ",0
+,pz,COB190          ,"TEE DE COBRE DE  2""                     ",0
+,pz,COB191          ,"TEE DE COBRE DE  21/2""                  ",0
+,pz,COB192          ,"TEE DE COBRE DE  3""                     ",0
+,pz,COB193          ,"TEE DE COBRE DE  4""                     ",0
+,pz,COB194          ,TEE DE COBRE DE RED. 1/2-1/2-3/8        ,0
+,pz,COB195          ,TEE DE COBRE DE RED. 1/2-1/2-3/4        ,0
+,pz,COB196          ,"TEE DE COBRE DE RED. 3/4-1/2-1/2""       ",0
+,pz,COB197          ,"TEE DE COBRE DE RED. 3/4-3/4-1/2""       ",0
+,pz,COB198          ,"TEE DE COBRE DE RED. 3/4-3/4-1""         ",0
+,pz,COB199          ,"TEE DE COBRE DE RED. 1""-1/2""-1/2""       ",0
+,pz,COB20           ,"TUBO DE COBRE DE 2 1/2"" TIPO M X MT     ",0
+,pz,COB200          ,"TEE DE COBRE DE RED. 1""-1/2""-3/4""       ",0
+,pz,COB201          ,"TEE DE COBRE DE RED. 1""-3/4-1/2""        ",0
+,pz,COB202          ,"TEE DE COBRE DE RED. 1""-3/4-3/4         ",0
+,pz,COB203          ,"TEE DE COBRE DE RED. 1""-3/4""-1""         ",0
+,pz,COB204          ,"TEE DE COBRE DE RED. 1""-1""-3/4""         ",0
+,pz,COB205          ,"TEE DE COBRE DE RED. 1""-1""-1/2""         ",0
+,pz,COB206          ,"TEE DE COBRE DE RED. 11/4-11/4-1""       ",0
+,pz,COB207          ,"TEE DE COBRE R/CENTRO 3/8""              ",0
+,pz,COB208          ,"TEE DE COBRE R/ CENTRO 1/2""             ",0
+,pz,COB209          ,"TEE DE COBRE R/ CENTRO 3/4""             ",0
+,pz,COB21           ,"TUBO DE COBRE DE 3"" TIPO M X MT         ",0
+,pz,COB210          ,"TEE DE COBRE R/CENTRO 1""                ",0
+,pz,COB211          ,"TEE DE COBRE R/CENTRO 11/4""             ",0
+,pz,COB212          ,"TEE DE COBRE R/CENTRO 11/2""             ",0
+,pz,COB213          ,"TEE DE COBRE R/CENTRO 2""                ",0
+,pz,COB214          ,"TEE DE COBRE R/LATERAL 3/8""             ",0
+,pz,COB215          ,"TEE DE COBRE R/LATERAL 1/2""             ",0
+,pz,COB216          ,"TEE DE COBRE R/ LATERAL 3/4""            ",0
+,pz,COB217          ,"TEE DE COBRE R/LATERAL 1""               ",0
+,pz,COB218          ,"TEE DE COBRE R/LATERAL 11/4""            ",0
+,pz,COB219          ,"TEE DE COBRE R/ LATERAL 11/2""           ",0
+,pz,COB22           ,"TUBO DE COBRE DE 4"" TIPO M X MT         ",0
+,pz,COB220          ,"TEE DE COBRE R/LATERAL 2""               ",0
+,pz,COB221          ,TUERCA UNION DE COBRE R/ INT. 1/2       ,0
+,pz,COB222          ,TUERCA UNION DE COBRE R/ INT. 3/4       ,0
+,pz,COB223          ,"TUERCA UNION DE COBRE R/ INT. 1""        ",0
+,pz,COB224          ,"TUERCA UNION DE COBRE R/INT. 11/4""      ",0
+,pz,COB225          ,"TUERCA UNION DE COBRE R/ INT. 11/2""     ",0
+,pz,COB226          ,"TUERCA UNION DE COBRE R/ INT. 2""        ",0
+,pz,COB227          ,"TUERCA UNION DE COBRE 1/2""              ",0
+,pz,COB228          ,"TUERCA UNION DE COBRE 3/4""              ",0
+,pz,COB229          ,"TUERCA UNION DE COBRE 1""                ",0
+,pz,COB23           ,"TUBO DE COBRE DE 1/4"" TIPO L TRAMO 6.10 ",0
+,pz,COB230          ,"TUERCA UNION DE COBRE DE 1 1/4""         ",0
+,pz,COB231          ,"TUERCA UNION DE COBRE DE 1 1/2""         ",0
+,pz,COB232          ,"TUERCA UNION  DE COBRE DE 2""            ",0
+,pz,COB233          ,"TAPON MACHO DE COBRE 3/8""  CAT.116      ",0
+,pz,COB234          ,"TAPON MACHO DE COBRE 1/2"" CAT.116       ",0
+,pz,COB235          ,"TAPON MACHO DE COBRE 3/4"" CAT.116       ",0
+,pz,COB236          ,"TAPON MACHO DE COBRE 1"" CAT.116         ",0
+,pz,COB237          ,"TAPON HEMBRA DE COBRE 3/8""              ",0
+,pz,COB238          ,TAPON HEMBRA DE COBRE 1/2               ,0
+,pz,COB239          ,TAPON HEMBRA DE COBRE 3/4               ,0
+,pz,COB24           ,"TUBO DE COBRE DE 3/8"" TIPO L TRAMO 6.10 ",0
+,pz,COB240          ,"TAPON HEMBRA DE COBRE 1""                ",0
+,pz,COB241          ,"TAPON HEMBRA DE COBRE 11/4""             ",0
+,pz,COB242          ,"TAPON HEMBRA DE COBRE 11/2""             ",0
+,pz,COB243          ,"TAPON HEMBRA DE COBRE 2""                ",0
+,pz,COB244          ,"CRUZ DE COBRE 1/2""                      ",0
+,pz,COB245          ,"CRUZ DE COBRE 3/4""                      ",0
+,pz,COB246          ,"CRUZ DE COBRE 1""                        ",0
+,pz,COB247          ,"CRUZ DE COBRE 1 1/4""                    ",0
+,pz,COB248          ,"CRUZ DE COBRE 1 1/2""                    ",0
+,pz,COB249          ,"CRUZ DE COBRE 2""                        ",0
+,pz,COB25           ,"TUBO DE COBRE DE 1/2"" TIPO L TRAMO 6.10 ",0
+,pz,COB250          ,"YEE DE COBRE 1/2"" CAT.115               ",0
+,pz,COB251          ,"YEE  DE COBRE 3/4""  CAT. 115            ",0
+,pz,COB252          ,"YEE  DE COBRE 1"" CAT.115                ",0
+,pz,COB253          ,"YEE DE COBRE 11/4""   CAT. 115           ",0
+,pz,COB254          ,"YEE DE COBRE 11/2"" CAT. 115             ",0
+,pz,COB255          ,"YEE DE COBRE 2"" CAT. 115                ",0
+,pz,COB256          ,"CONECTOR DE COBRE R/ INTERIOR 3/8""      ",0
+,pz,COB257          ,"CONECTOR DE COBRE R/ INTERIOR 1/2""      ",0
+,pz,COB258          ,"CONECTOR DE COBRE R/ INTERIOR 3/4""      ",0
+,pz,COB259          ,"CONECTOR DE COBRE R/ INTERIOR 1""        ",0
+,pz,COB26           ,"TUBO DE COBRE DE 3/4"" TIPO L TRAMO 6.10 ",0
+,pz,COB260          ,"CONECTOR DE COBRE R/INTERIOR 11/4""      ",0
+,pz,COB261          ,CONECTOR DE COBRE R/ INTERIOR 11/2      ,0
+,pz,COB262          ,"CONECTOR DE COBRE R/INTERIOR 2""         ",0
+,pz,COB263          ,"CONECTOR DE COBRE R/ INTERIOR 21/2""     ",0
+,pz,COB264          ,"CONECTOR DE COBRE R/INTERIOR 3""         ",0
+,pz,COB265          ,"CONECTOR DE COBRE R/ INTERIOR 4""        ",0
+,pz,COB266          ,"CONECTOR DE COBRE  INT. RED. 1/2""       ",0
+,pz,COB267          ,"CONECTOR DE COBRE INT.  RED. 3/4""       ",0
+,pz,COB268          ,"CONECTOR DE COBRE INT.  RED.    1""      ",0
+,pz,COB269          ,"CONECTOR DE COBRE R/ EXTERIOR 3/8""      ",0
+,pz,COB27           ,"TUBO DE COBRE DE 1"" TIPO L TRAMO 6.10   ",0
+,pz,COB270          ,"CONECTOR DE COBRE R/ EXTERIOR 1/2""      ",0
+,pz,COB271          ,"CONECTOR DE COBRE R/EXTERIOR 3/4""       ",0
+,pz,COB272          ,"CONECTOR DE COBRE R/ EXTERIOR 1""        ",0
+,pz,COB273          ,"CONECTOR DE COBRE R/ EXTERIOR 1 1/4""    ",0
+,pz,COB274          ,"CONECTOR DE COBRE R/EXTERIOR 11/2""      ",0
+,pz,COB275          ,"CONECTOR DE COBRE R/ EXTERIOR 2""        ",0
+,pz,COB276          ,"CONECTOR DE COBRE R/ EXTERIOR 21/2""     ",0
+,pz,COB277          ,"CONECTOR DE COBRE R/ EXTERIOR 3""        ",0
+,pz,COB278          ,"CONECTOR DE COBRE R/ EXTERIOR 4""        ",0
+,pz,COB279          ,"CONECTOR DE COBRE EXT. RED. 1/2""        ",0
+,pz,COB28           ,"TUBO DE COBRE DE 11/4"" TIPO L TRAMO 6.10",0
+,pz,COB280          ,"CONECTOR DE COBRE EXT. RED. 3/4""        ",0
+,pz,COB281          ,"CONECTOR DE COBRE EXT. RED. 1""          ",0
+,pz,COB282          ,VALVULA GLOBO SOLDABLE 1/2 NACOBRE      ,0
+,pz,COB283          ,"TEE DE COBRE DE RED.11/2-11/2-1""        ",0
+,pz,COB284          ,TEE DE COBRE DE RED. 11/2-11/2-11/4     ,0
+,pz,COB285          ,"TEE DE COBRE DE RED. 2""-2""-11/2""        ",0
+,pz,COB286          ,"TEE DE COBRE DE RED. 2""-2""-1""           ",0
+,pz,COB287          ,"TEE RED. DE COBRE 11/2"" X11/2""X1""       ",0
+,pz,COB288          ,TEE DE COBRE RED. 1/2-1/2-1             ,0
+,pz,COB289          ,TEE DE COBRE RED. 3/4-1/2-3/4           ,0
+,pz,COB29           ,"TUBO DE COBRE DE 11/2"" TIPO L TRAMO 6.10",0
+,pz,COB290          ,TEE DE COBRE RED. 1-1/2-1               ,0
+,pz,COB30           ,"TUBO DE COBRE DE 2"" TIPO L TRAMO 6.1    ",0
+,pz,COB31           ,"TUBO DE COBRE DE 2 1/2"" TIPO L TRAMO 6.1",0
+,pz,COB32           ,"TUBO DE COBRE DE 3"" TIPO L TRAMO 6.1    ",0
+,pz,COB33           ,"TUBO DE COBRE DE 4"" TIPO L TRAMO 6.1    ",0
+,pz,COB34           ,"TUBO DE COBRE DE 1/4"" TIPO L  X MT      ",0
+,pz,COB35           ,"TUBO DE COBRE DE 3/8"" TIPO L X MT       ",0
+,pz,COB36           ,"TUBO DE COBRE DE 1/2"" TIPO L  X MT      ",0
+,pz,COB37           ,"TUBO DE COBRE DE 3/4"" TIPO L  X MT      ",0
+,pz,COB38           ,"TUBO DE COBRE DE 1"" TIPO L  X MT        ",0
+,pz,COB39           ,"TUBO DE COBRE DE 11/4"" TIPO L  X MT     ",0
+,pz,COB40           ,"TUBO DE COBRE DE 11/2"" TIPO L  X MT     ",0
+,pz,COB41           ,"TUBO DE COBRE DE 2"" TIPO L  X MT        ",0
+,pz,COB42           ,"TUBO DE COBRE DE 21/2"" TIPO L  X MT     ",0
+,pz,COB43           ,"TUBO DE COBRE DE 3"" TIPO L  X MT        ",0
+,pz,COB44           ,"TUBO DE COBRE DE 4"" TIPO L  X MT        ",0
+,pz,COB45           ,TUBO DE COBRE FLEX. 1/8 EXT.U.G.RL.15.24,0
+,pz,COB46           ,TUBO DE COBRE FLEX 3/16 EXT.U.G.RL.15.24,0
+,pz,COB47           ,TUBO DE COBRE FLEX. 1/4 EXT.U.G.RL.15.24,0
+,pz,COB48           ,TUBO DE COBRE FLEXIBLE 5/16 EXT.  U.G   ,0
+,pz,COB49           ,TUBO DE COBRE FLEXIBLE 3/8 EXT.  U.G    ,0
+,pz,COB50           ,TUBO DE COBRE FLEXIBLE 1/2 EXT.  U.G    ,0
+,pz,COB51           ,TUBO DE COBRE FLEXIBLE 5/8 EXT.  U.G    ,0
+,pz,COB52           ,TUBO DE COBRE FLEXIBLE 3/4 EXT.  U.G    ,0
+,pz,COB53           ,TUBO DE COBRE FLEX. 1/8 EXT.  X MT U.G  ,0
+,pz,COB54           ,TUBO DE COBRE FLEX. 3/16  EXT.  X MT U.G,0
+,pz,COB55           ,TUBO DE COBRE FLEX. 1/4 EXT.  X MT U.G  ,0
+,pz,COB56           ,TUBO DE COBRE FLEX. 5/16 EXT.  X MT U.G ,0
+,pz,COB57           ,TUBO DE COBRE FLEX. 3/8 EXT.  X MT U.G  ,0
+,pz,COB58           ,TUBO DE COBRE FLEX. 1/2 EXT.  X MT U.G  ,0
+,pz,COB59           ,TUBO DE COBRE FLEX. 5/8 EXT.  X MT U.G  ,0
+,pz,COB60           ,TUBO DE COBRE FLEX. 3/4 EXT.  X MT U.G  ,0
+,pz,COB61           ,TUBO DE COBRE FLEX. L 3/8 EXT.1/4 INT.  ,0
+,pz,COB62           ,TUBO DE COBRE FLEX. L  1/2 EXT. 3/8 INT ,0
+,pz,COB63           ,TUBO DE COBRE FLEX. L 5/8 EXT. 1/2 INT. ,0
+,pz,COB64           ,TUBO DE COBRE FLEX. L 7/8 EXT. 3/4 INT. ,0
+,pz,COB65           ,TUBO DE COBRE FLEX. L  11/8 EXT. 1 INT. ,0
+,pz,COB66           ,TUBO DE COBRE FLEX. L 3/8 EXT. 1/4 INT. ,0
+,pz,COB67           ,TUBO DE COBRE FLEX. L 1/2 EXT. 3/8 INT  ,0
+,pz,COB68           ,TUBO DE COBRE FLEX. L 5/8 EXT. 1/2 INT  ,0
+,pz,COB69           ,TUBO DE COBRE FLEX. L 7/8 EXT. 3/4 INT  ,0
+,pz,COB70           ,TUBO DE COBRE FLEX. L 11/8 EXT. 1 INT   ,0
+,pz,COB71           ,"TUBO DE COBRE DE 1/2"" COBRECEL TRAMO    ",0
+,pz,COB72           ,"TUBO DE COBRE DE 3/4"" COBRECEL TRAMO    ",0
+,pz,COB73           ,"TUBO DE COBRE DE 1/2"" COBRECEL MT.      ",0
+,pz,COB74           ,"TUBO DE COBRE DE 3/4"" COBRECEL MT.      ",0
+,pz,COB75           ,"TUBO DE COBRE DE 1"" COBRECEL TRAMO      ",0
+,pz,COB76           ,"TUBO DE COBRE DE 1"" COBRECEL MT         ",0
+,pz,COB77           ,"COPLE DE COBRE 3/8""  NACOBRE            ",0
+,pz,COB78           ,"COPLE DE COBRE 1/2""  NACOBRE            ",0
+,pz,COB79           ,"COPLE DE COBRE 3/4""  NACOBRE            ",0
+,pz,COB80           ,"COPLE DE COBRE 1""  NACOBRE              ",0
+,pz,COB81           ,"COPLE DE COBRE 11/4""  NACOBRE           ",0
+,pz,COB82           ,"COPLE DE COBRE 11/2""  NACOBRE           ",0
+,pz,COB83           ,"COPLE DE COBRE 2""  NACOBRE              ",0
+,pz,COB84           ,"COPLE DE COBRE 2 1/2""  NACOBRE          ",0
+,pz,COB85           ,"COPLE DE COBRE 3""  NACOBRE              ",0
+,pz,COB86           ,"COPLE DE COBRE 4""  NACOBRE              ",0
+,pz,COB87           ,REDUCCION CAMP. DE COBRE 1/2 A 3/8      ,0
+,pz,COB88           ,REDUCCION CAMP.DE COBRE 3/4 A 1/2       ,0
+,pz,COB89           ,REDUCCION CAMP.DE COBRE 1 A 1/2         ,0
+,pz,COB90           ,REDUCCION CAMP.DE COBRE 1 A 3/4         ,0
+,pz,COB91           ,REDUCCION CAMP.DE COBRE 11/4 A 1/2      ,0
+,pz,COB92           ,REDUCCION CAMP.DE COBRE 11/4 A 3/4      ,0
+,pz,COB93           ,"REDUCCION CAMP.DE COBRE 11/4  A 1""      ",0
+,pz,COB94           ,REDUCCION CAMP.DE COBRE 11/2 A 1/2      ,0
+,pz,COB95           ,"REDUCCION CAMP. DE COBRE 11/2 A 3/4""    ",0
+,pz,COB96           ,"REDUCCION CAMP.DE COBRE 11/2 A 1""       ",0
+,pz,COB97           ,"REDUCCION CAMP.DE COBRE 11/2 A 11/4""    ",0
+,pz,COB98           ,"REDUCCION CAMP.DE COBRE 2 A 1/2""        ",0
+,pz,COB99           ,"REDUCCION CAMP.DE COBRE 2 A 3/4""        ",0
+,pz,CSC01           ,"CODO SANITARIO CEMENTAR DE 11/2"" X 45   ",0
+,pz,CSC02           ,"CODO SANITARIO CEMENTAR DE 2"" X 45      ",0
+,pz,CSC03           ,"CODO SANITARIO CEMENTAR DE 3"" X 45      ",0
+,pz,CSC04           ,"CODO SANITARIO CEMENTAR DE 4"" X 45      ",0
+,pz,CSC05           ,"CODO SANITARIO CEMENTAR DE 6"" X 45      ",0
+,pz,CSC06           ,"CODO SANITARIO CEMENTAR DE 8"" X 45      ",0
+,pz,CSC07           ,"CODO SANITARIO CEMENTAR DE 11/2"" X 90   ",0
+,pz,CSC08           ,"CODO SANITARIO CEMENTAR DE 2"" X 90      ",0
+,pz,CSC09           ,"CODO SANITARIO CEMENTAR DE 3"" X 90      ",0
+,pz,CSC10           ,"CODO SANITARIO CEMENTAR DE 4"" X 90      ",0
+,pz,CSC11           ,"CODO SANITARIO CEMENTAR DE 6"" X 90      ",0
+,pz,CSC12           ,"CODO SANITARIO CEMENTAR DE 8"" X 90      ",0
+,pz,CSC13           ,"CODO PVC SANIT.CEMENT. 4"" SAL. LAT.11/2""",0
+,pz,CSC14           ,"CODO PVC SANIT.CEMENT. 4"" SAL. TRAS.11/2",0
+,pz,CSC15           ,"CODO PVC SANIT.CEMT.4"" SAL.TRAS-LAT.11/2",0
+,pz,CSC16           ,"CODO PVC SANIT.CEMT.4"" SAL. LAT. 2""     ",0
+,pz,CSC17           ,"CODO PVC SANIT.CEMT.4"" SAL.TRAS  2""     ",0
+,pz,CSC18           ,"CODO PVC SANIT.CEMT.4""SAL.TRAS-LAT. 2""  ",0
+,pz,CSC19           ,"COPLE PVC SANITARIO CEMENT.DE 1 1/2""    ",0
+,pz,CSC20           ,"COPLE PVC SANITARIO CEMENT. DE 2""       ",0
+,pz,CSC21           ,"COPLE PVC SANITARIO CEMENT. DE 3""       ",0
+,pz,CSC22           ,"COPLE PVC SANITARIO CEMENT. DE 4""       ",0
+,pz,CSC23           ,"COPLE PVC SANITARIO CEMENT. DE 6""       ",0
+,pz,CSC24           ,"COPLE PVC SANITARIO CEMENT. DE 8""       ",0
+,pz,CSC25           ,"TAPA DE INSERCION SANIT. CEMENT.1 1/2""  ",0
+,pz,CSC26           ,"TAPA DE INSERCION SANIT. CEMENT. 2""     ",0
+,pz,CSC27           ,"TAPA DE INSERCION SANIT. CEMENT. 3""     ",0
+,pz,CSC28           ,"TAPA DE INSERCION SANIT. CEMENT. 4""     ",0
+,pz,CSC29           ,"TAPA DE INSERCION SANIT. CEMENT. 6""     ",0
+,pz,CSC30           ,"TAPA DE INSERCION SANIT. CEMENT. 8""     ",0
+,pz,CSC31           ,"TEE PVC SANITARIO CEMENTAR DE 1 1/2""    ",0
+,pz,CSC32           ,"TEE PVC SANITARIO CEMENTAR DE 2""        ",0
+,pz,CSC33           ,"TEE PVC SANITARIO CEMENTAR DE 3""        ",0
+,pz,CSC34           ,"TEE PVC SANITARIO CEMENTAR DE 4""        ",0
+,pz,CSC35           ,"TEE PVC SANITARIO CEMENTAR DE 6""        ",0
+,pz,CSC36           ,"TEE PVC SANITARIO CEMENTAR DE 8""        ",0
+,pz,CSC37           ,"TEE PVC SANITARIO ECON. 4 X 1 1/2""      ",0
+,pz,CSC38           ,TEE PVC SANITARIO ECON. 4 X 2           ,0
+,pz,CSC39           ,"TEE PVC SANITARIO CEMENTAR 4 A 2"".      ",0
+,pz,CSC40           ,"YEE PVC SANITARIO CEMENTAR DE 1 1/2""    ",0
+,pz,CSC41           ,"YEE PVC SANITARIO CEMENTAR DE 2""        ",0
+,pz,CSC42           ,"YEE PVC SANITARIO CEMENTAR DE 3""        ",0
+,pz,CSC43           ,"YEE PVC SANITARIO CEMENTAR DE 4""        ",0
+,pz,CSC44           ,"YEE PVC SANITARIO CEMENTAR DE 6""        ",0
+,pz,CSC45           ,"YEE PVC SANITARIO CEMENTAR DE 8""        ",0
+,pz,CSC46           ,"YEE PVC SANIT.CEMENT. DE 2"" X 1 1/2""    ",0
+,pz,CSC47           ,"YEE PVC SANIT.CEMENT. DE 3"" X 2""        ",0
+,pz,CSC48           ,"YEE PVC SANIT.CEMENT. DE 4"" X 1 1/2""    ",0
+,pz,CSC49           ,"YEE PVC SANIT.CEMENT. DE  4"" X 2""       ",0
+,pz,CSC50           ,"YEE PVC SANIT.CEMENT. DE 6"" X 4""        ",0
+,pz,CSC51           ,"YEE PVC SANIT.CEMENT. DE 8"" X 4""        ",0
+,pz,CSC52           ,"YEE PVC SANIT.CEMENT. DE 8"" X 6""        ",0
+,pz,CSC53           ,"TEE  DOBLE PVC SANIT.CEMENT. DE 2"" X 2"" ",0
+,pz,CSC54           ,"TEE DOBLE PVC SANIT.CEMENT. DE 3"" X 3""  ",0
+,pz,CSC55           ,"TEE DOBLE  PVC SANIT.CEMENT. DE 4"" X 2"" ",0
+,pz,CSC56           ,"TEE DOBLE PVC SANIT. CEMENT. 4"" X 4""    ",0
+,pz,CSC57           ,"TEE DOBLE PVC SANIT. CEMENT. 6"" X 6""    ",0
+,pz,CSC58           ,"YEE  DOBLE PVC SANIT.CEMENT. DE 2"" X 2"" ",0
+,pz,CSC59           ,"YEE  DOBLE PVC SANIT.CEMENT. DE 3"" X 3"" ",0
+,pz,CSC60           ,"YEE  DOBLE PVC SANIT.CEMENT. DE 4"" X 2"" ",0
+,pz,CSC61           ,"YEE  DOBLE PVC SANIT.CEMENT. DE 4"" X 4"" ",0
+,pz,CSC62           ,"YEE  DOBLE PVC SANIT.CEMENT. DE 6"" X 4"" ",0
+,pz,CSC63           ,"YEE  DOBLE PVC SANIT.CEMENT. DE 6"" X 6"" ",0
+,pz,CSC64           ,"YEE  DOBLE PVC SANIT.CEMENT. DE 8"" X 8"" ",0
+,pz,CSC65           ,"REDUC. BUSH. SANIT. CEMENT. 2"" X11/2""   ",0
+,pz,CSC66           ,"REDUC. BUSH. SANIT. CEMENT. 3"" X11/2    ",0
+,pz,CSC67           ,"REDUC. BUSH. SANIT. CEMENT. 3"" X 2""     ",0
+,pz,CSC68           ,"REDUC. BUSH. SANIT. CEMENT. 4 X 11/2""   ",0
+,pz,CSC69           ,"REDUC. BUSH. SANIT. CEMENT. 4"" X 2""     ",0
+,pz,CSC70           ,"REDUC. BUSH. SANIT. CEMENT. 4"" X 3""     ",0
+,pz,CSC71           ,"REDUC. BUSH. SANIT. CEMENT. 6"" X 4""     ",0
+,pz,CSC72           ,"REDUC. BUSH. SANIT. CEMENT. 8"" X 4""     ",0
+,pz,CSC73           ,"REDUC. BUSH. SANIT. CEMENT. 8"" X 6""     ",0
+,pz,CSC74           ,"CESPOL DE BOTE ECON. SAL. 1 1/2""        ",0
+,pz,CSC75           ,"CESPOL DE BOTE ECON. SAL 2""             ",0
+,pz,CSC76           ,"CESPOL DE BOTE ECON.  DOS SAL 1 1/ 2""   ",0
+,pz,CSC77           ,"CESPOL DE BOTE ECON. DOS SAL. 2""        ",0
+,pz,CSC78           ,"CESPOL DE BOTE ECON.  DOS SAL.11/2"" X 2""",0
+,pz,CSC79           ,CESPOL DE BOTE ECON. CON 3 SAL.         ,0
+,pz,CSC80           ,COLADERA COPSA (UNIVERSAL )             ,0
+,pz,CSC81           ,"ADAPTADOR GAL BOCINA PVC SANIT.CEM.11/2""",0
+,pz,CSC82           ,"ADAPTADOR GAL ESPIGA PVC SANIT.CEM.11/2""",0
+,pz,CSC83           ,"ADAPTADOR GAL ESPIGA PVC SANIT.CEM.2""   ",0
+,pz,CSC84           ,"ADAPTADOR GAL ESPIGA PVC SANIT.CEM. 4""  ",0
+,pz,CSC85           ,CEMENTO PVC TRASP. ALTA VISC.50 GR DURMA,0
+,pz,CSC86           ,CEMENTO PVC TRASP.ALTA VISC.150 ML DURMA,0
+,pz,CSC87           ,CEMENTO PVC TRASP.ALTA VISC.250 ML DURMA,0
+,pz,CSC88           ,CEMENTO PVC TRASP.ALTA VISC.500 ML DURMA,0
+,pz,CSC89           ,CEMENTO PVC TRASP.ALTA VISC.1 LT DURMAN ,0
+,pz,CSC90           ,CEMENTO PVC TRASP.ALTA VISC.4 LT.  DURMA,0
+,pz,CSC91           ,LUBRICANTE PARA PVC 500 ML. DURMAN      ,0
+,pz,CSC92           ,LIMPIADOR PARA PVC DURMAN 250 ML        ,0
+,pz,FF01            ,"REDUCCION DE FIERRO FUNDIDO 10 ""X 6""    ",0
+,pz,FF02            ,"REDUCCION DE FIERRO FUNDIDO 10 ""X 8""    ",0
+,pz,FF03            ,"REDUCCION DE FIERRO FUNDIDO 12 ""X 3""    ",0
+,pz,FF04            ,"REDUCCION DE FIERRO FUNDIDO 12 ""X 4""    ",0
+,pz,FF05            ,"REDUCCION DE FIERRO FUNDIDO 12 ""X 6""    ",0
+,pz,FF06            ,"REDUCCION DE FIERRO FUNDIDO 12 "" X 8 ""  ",0
+,pz,FF07            ,"REDUCCION DE FIERRO FUNDIDO 12 "" X 8 ""  ",0
+,pz,FF08            ,"REDUCCION DE FIERRO FUNDIDO 12 ""X 10""   ",0
+,pz,FF09            ,"REDUCCION DE FIERRO FUNDIDO 12 ""X 12""   ",0
+,pz,FF10            ,"REDUCCION DE FIERRO FUNDIDO 14 ""X 3""    ",0
+,pz,FF100           ,"CRUZ DE FIERRO FUNDIDO 14"" X 3""         ",0
+,pz,FF101           ,"CRUZ DE FIERRO FUNDIDO 14"" X 4""         ",0
+,pz,FF102           ,"CRUZ DE FIERRO FUNDIDO 14"" X 6""         ",0
+,pz,FF103           ,"CRUZ DE FIERRO FUNDIDO 14"" X 8""         ",0
+,pz,FF104           ,"CRUZ DE FIERRO FUNDIDO 14"" X 10""        ",0
+,pz,FF105           ,"CRUZ DE FIERRO FUNDIDO 14"" X 12""        ",0
+,pz,FF106           ,"CRUZ DE FIERRO FUNDIDO 14"" X 14""        ",0
+,pz,FF107           ,"CRUZ DE FIERRO FUNDIDO 16"" X 4""         ",0
+,pz,FF108           ,"CRUZ DE FIERRO FUNDIDO 16"" X 6""         ",0
+,pz,FF109           ,"CRUZ DE FIERRO FUNDIDO 16"" X 8""         ",0
+,pz,FF11            ,"REDUCCION DE FIERRO FUNDIDO 14 ""X 4""    ",0
+,pz,FF110           ,"CRUZ DE FIERRO FUNDIDO 16"" X 10""        ",0
+,pz,FF111           ,"CRUZ DE FIERRO FUNDIDO 16"" X 12""        ",0
+,pz,FF112           ,"CRUZ DE FIERRO FUNDIDO 16"" X 14""        ",0
+,pz,FF113           ,"CRUZ DE FIERRO FUNDIDO 16"" X 16""        ",0
+,pz,FF114           ,"CRUZ DE FIERRO FUNDIDO 18"" X 4""         ",0
+,pz,FF115           ,"CRUZ DE FIERRO FUNDIDO 18"" X 6""         ",0
+,pz,FF116           ,"CRUZ DE FIERRO FUNDIDO 18"" X 8""         ",0
+,pz,FF117           ,"CRUZ DE FIERRO FUNDIDO 18"" X 10""        ",0
+,pz,FF118           ,"CRUZ DE FIERRO FUNDIDO 18"" X 12""        ",0
+,pz,FF119           ,"CRUZ DE FIERRO FUNDIDO 18"" X 14""        ",0
+,pz,FF12            ,"REDUCCION DE FIERRO FUNDIDO 14 ""X 6""    ",0
+,pz,FF120           ,"CRUZ DE FIERRO FUNDIDO 18"" X 16""        ",0
+,pz,FF121           ,"CRUZ DE FIERRO FUNDIDO 18"" X 18""        ",0
+,pz,FF122           ,"CRUZ DE FIERRO FUNDIDO 20"" X 4""         ",0
+,pz,FF123           ,"CRUZ DE FIERRO FUNDIDO 20"" X 6""         ",0
+,pz,FF124           ,"CRUZ DE FIERRO FUNDIDO 20"" X 8""         ",0
+,pz,FF125           ,"CRUZ DE FIERRO FUNDIDO 20"" X 10""        ",0
+,pz,FF126           ,"CRUZ DE FIERRO FUNDIDO 20"" X 12""        ",0
+,pz,FF127           ,"CRUZ DE FIERRO FUNDIDO 20"" X 14""        ",0
+,pz,FF128           ,"CRUZ DE FIERRO FUNDIDO 20"" X 16""        ",0
+,pz,FF129           ,"CRUZ DE FIERRO FUNDIDO 20"" X 18""        ",0
+,pz,FF13            ,"REDUCCION DE FIERRO FUNDIDO 14 ""X 8""    ",0
+,pz,FF130           ,"CRUZ DE FIERRO FUNDIDO 20"" X 20""        ",0
+,pz,FF131           ,"CRUZ DE FIERRO FUNDIDO 24"" X 4""         ",0
+,pz,FF132           ,"CRUZ DE FIERRO FUNDIDO 24"" X 6""         ",0
+,pz,FF133           ,"CRUZ DE FIERRO FUNDIDO 24"" X 8""         ",0
+,pz,FF134           ,"CRUZ DE FIERRO FUNDIDO 24"" X 10""        ",0
+,pz,FF135           ,"CRUZ DE FIERRO FUNDIDO 24"" X 12""        ",0
+,pz,FF136           ,"CRUZ DE FIERRO FUNDIDO 24"" X 14""        ",0
+,pz,FF137           ,"CRUZ DE FIERRO FUNDIDO 24"" X 16""        ",0
+,pz,FF138           ,"CRUZ DE FIERRO FUNDIDO 24"" X 18""        ",0
+,pz,FF139           ,"CRUZ DE FIERRO FUNDIDO 24"" X 20""        ",0
+,pz,FF14            ,"REDUCCION DE FIERRO FUNDIDO 14 ""X 10""   ",0
+,pz,FF140           ,"CRUZ DE FIERRO FUNDIDO 24"" X 24""        ",0
+,pz,FF141           ,"CRUZ DE FIERRO FUNDIDO 30"" X 4""         ",0
+,pz,FF142           ,"CRUZ DE FIERRO FUNDIDO 30"" X 6""         ",0
+,pz,FF143           ,"CRUZ DE FIERRO FUNDIDO 30"" X 8""         ",0
+,pz,FF144           ,"CRUZ DE FIERRO FUNDIDO 30"" X 10""        ",0
+,pz,FF145           ,"CRUZ DE FIERRO FUNDIDO 30"" X 12""        ",0
+,pz,FF146           ,"CRUZ DE FIERRO FUNDIDO 30"" X 14""        ",0
+,pz,FF147           ,"CRUZ DE FIERRO FUNDIDO 30"" X 16""        ",0
+,pz,FF148           ,"CRUZ DE FIERRO FUNDIDO 30"" X 18""        ",0
+,pz,FF149           ,"CRUZ DE FIERRO FUNDIDO 30"" X 20""        ",0
+,pz,FF15            ,"REDUCCION DE FIERRO FUNDIDO 14 ""X 12""   ",0
+,pz,FF150           ,"CRUZ DE FIERRO FUNDIDO 30"" X 24""        ",0
+,pz,FF151           ,"CRUZ DE FIERRO FUNDIDO 30"" X 30""        ",0
+,pz,FF152           ,"CRUZ DE FIERRO FUNDIDO 36"" X 6""         ",0
+,pz,FF153           ,"CRUZ DE FIERRO FUNDIDO 36"" X 8""         ",0
+,pz,FF154           ,"CRUZ DE FIERRO FUNDIDO 36"" X 10""        ",0
+,pz,FF155           ,"CRUZ DE FIERRO FUNDIDO 36"" X 12""        ",0
+,pz,FF156           ,"CRUZ DE FIERRO FUNDIDO 36"" X 14""        ",0
+,pz,FF157           ,"CRUZ DE FIERRO FUNDIDO 36"" X 16""        ",0
+,pz,FF158           ,"CRUZ DE FIERRO FUNDIDO 36"" X 18""        ",0
+,pz,FF159           ,"CRUZ DE FIERRO FUNDIDO 36"" X 20""        ",0
+,pz,FF16            ,"REDUCCION DE FIERRO FUNDIDO 16 ""X 4""    ",0
+,pz,FF160           ,"CRUZ DE FIERRO FUNDIDO 36"" X 24""        ",0
+,pz,FF161           ,"CRUZ DE FIERRO FUNDIDO 36"" X 30""        ",0
+,pz,FF162           ,"CRUZ DE FIERRO FUNDIDO 36"" X 36""        ",0
+,pz,FF163           ,"CODO DE FIERRO FUNDIDO 2"" X 22í         ",0
+,pz,FF164           ,"CODO DE FIERRO FUNDIDO 21/2"" X 22í      ",0
+,pz,FF165           ,"CODO DE FIERRO FUNDIDO 3"" X 22í         ",0
+,pz,FF166           ,"CODO DE FIERRO FUNDIDO 4"" X 22í         ",0
+,pz,FF167           ,"CODO DE FIERRO FUNDIDO 6"" X 22í         ",0
+,pz,FF168           ,"CODO DE FIERRO FUNDIDO 8"" X 22í         ",0
+,pz,FF169           ,"CODO DE FIERRO FUNDIDO 10"" X 22í        ",0
+,pz,FF17            ,"REDUCCION DE FIERRO FUNDIDO 16 ""X 6""    ",0
+,pz,FF170           ,"CODO DE FIERRO FUNDIDO 12"" X 22í        ",0
+,pz,FF171           ,"CODO DE FIERRO FUNDIDO 14"" X 22í        ",0
+,pz,FF172           ,"CODO DE FIERRO FUNDIDO 16"" X 22í        ",0
+,pz,FF173           ,"CODO DE FIERRO FUNDIDO 18"" X 22í        ",0
+,pz,FF174           ,"CODO DE FIERRO FUNDIDO 20"" X 22í        ",0
+,pz,FF175           ,"CODO DE FIERRO FUNDIDO 24"" X 22í        ",0
+,pz,FF176           ,"CODO DE FIERRO FUNDIDO 30"" X 22í        ",0
+,pz,FF177           ,"CODO DE FIERRO FUNDIDO 36"" X 22í        ",0
+,pz,FF178           ,"CODO DE FIERRO FUNDIDO 2"" X 45í         ",0
+,pz,FF179           ,"CODO DE FIERRO FUNDIDO 21/2"" X 45í      ",0
+,pz,FF18            ,"REDUCCION DE FIERRO FUNDIDO 16 ""X 8""    ",0
+,pz,FF180           ,"CODO DE FIERRO FUNDIDO 3"" X 45í         ",0
+,pz,FF181           ,CODO DE FIERRO FUNDIDO 4 X 45í          ,0
+,pz,FF182           ,"CODO DE FIERRO FUNDIDO 6"" X 45í         ",0
+,pz,FF183           ,"CODO DE FIERRO FUNDIDO 8"" X 45í         ",0
+,pz,FF184           ,"CODO DE FIERRO FUNDIDO 10"" X 45í        ",0
+,pz,FF185           ,"CODO DE FIERRO FUNDIDO 12"" X 45í        ",0
+,pz,FF186           ,"CODO DE FIERRO FUNDIDO 14"" X 45í        ",0
+,pz,FF187           ,"CODO DE FIERRO FUNDIDO 16"" X 45í        ",0
+,pz,FF188           ,"CODO DE FIERRO FUNDIDO 18"" X 45í        ",0
+,pz,FF189           ,"CODO DE FIERRO FUNDIDO 20"" X 45í        ",0
+,pz,FF19            ,"REDUCCION DE FIERRO FUNDIDO 16 ""X 10""   ",0
+,pz,FF190           ,"CODO DE FIERRO FUNDIDO 24"" X 45í        ",0
+,pz,FF191           ,"CODO DE FIERRO FUNDIDO 30"" X 45í        ",0
+,pz,FF192           ,"CODO DE FIERRO FUNDIDO 36"" X 45í        ",0
+,pz,FF193           ,"CODO DE FIERRO FUNDIDO 2"" X 90í         ",0
+,pz,FF194           ,"CODO DE FIERRO FUNDIDO 21/2"" X 90í      ",0
+,pz,FF195           ,"CODO DE FIERRO FUNDIDO 3"" X 90í         ",0
+,pz,FF196           ,"CODO DE FIERRO FUNDIDO 4"" X 90í         ",0
+,pz,FF197           ,"CODO DE FIERRO FUNDIDO 6"" X 90í         ",0
+,pz,FF198           ,"CODO DE FIERRO FUNDIDO 8"" X 90í         ",0
+,pz,FF199           ,"CODO DE FIERRO FUNDIDO 10"" X 90í        ",0
+,pz,FF20            ,"REDUCCION DE FIERRO FUNDIDO 16 ""X 12""   ",0
+,pz,FF200           ,CODO DE FIERRO FUNDIDO 12 X 90í         ,0
+,pz,FF201           ,"CODO DE FIERRO FUNDIDO 14"" X 90í        ",0
+,pz,FF202           ,"CODO DE FIERRO FUNDIDO 16"" X 90í        ",0
+,pz,FF203           ,"CODO DE FIERRO FUNDIDO 18"" X 90í        ",0
+,pz,FF204           ,"CODO DE FIERRO FUNDIDO 20"" X 90í        ",0
+,pz,FF205           ,"CODO DE FIERRO FUNDIDO 24"" X 90í        ",0
+,pz,FF206           ,"CODO DE FIERRO FUNDIDO 30"" X 90í        ",0
+,pz,FF207           ,"CODO DE FIERRO FUNDIDO 36"" X 90í        ",0
+,pz,FF208           ,"VALVULA EXPULSORA DE  AIRE 1/2"" 125 LBS ",0
+,pz,FF209           ,"VALVULA EXPULSORA DE AIRE 3/4"" 125 LBS  ",0
+,pz,FF21            ,"REDUCCION DE FIERRO FUNDIDO 16 ""X 14""   ",0
+,pz,FF210           ,"VALVULA  EXPULSORA DE AIRE 1"" 125 LBS   ",0
+,pz,FF211           ,"VALVULA EXPULSORA. DE AIRE 2"" 125 LBS   ",0
+,pz,FF212           ,"VALVULA ADM. Y EXP. DE AIRE 1/2"" 125 LBS",0
+,pz,FF213           ,"VALVULA ADM. Y EXP. DE AIRE 3/4"" 125 LBS",0
+,pz,FF214           ,"VALVULA ADM. Y EXP. DE AIRE 1"" 125 LBS  ",0
+,pz,FF215           ,"VALVULA ADM. Y EXP. DE AIRE 2"" 125 LBS  ",0
+,pz,FF216           ,"VALVULA ADM. Y EXP. DE AIRE 3"" 125 LBS  ",0
+,pz,FF217           ,"VALVULA ADM. Y EXP. DE AIRE 4"" 125 LBS  ",0
+,pz,FF218           ,"VALVULA ADM. Y EXP. DE AIRE 6"" 125 LBS  ",0
+,pz,FF219           ,"VALVULA ADM. Y EXP. DE AIRE 8"" 125 LBS  ",0
+,pz,FF22            ,"REDUCCION DE FIERRO FUNDIDO 18 ""X 4""    ",0
+,pz,FF220           ,"VALVULA DE ADM. Y EXP.COMBIN DE 1"" 250  ",0
+,pz,FF221           ,"VALVULA COMBINADA 1/2""  125 LBS.        ",0
+,pz,FF222           ,"VALVULA COMBINADA 3/4""  125 LBS.        ",0
+,pz,FF223           ,"VALVULA COMBINADA 1""  125 LBS.          ",0
+,pz,FF224           ,"VALVULA COMBINADA 2""  125 LBS.          ",0
+,pz,FF225           ,"VALVULA COMBINADA 2""  125 LBS.          ",0
+,pz,FF226           ,"VALVULA COMBINADA 3""  125 LBS.          ",0
+,pz,FF227           ,"VALVULA COMBINADA 4""  125 LBS.          ",0
+,pz,FF228           ,"VALVULA COMBINADA 6""  125 LBS.          ",0
+,pz,FF229           ,"VALVULA COMBINADA 8""  125 LBS.          ",0
+,pz,FF23            ,"REDUCCION DE FIERRO FUNDIDO 18 ""X 6""    ",0
+,pz,FF230           ,"VALVULA C/GOLPE DE ARIETE 2"" 125 LBS    ",0
+,pz,FF231           ,"VALVULA C/GOLPE DE ARIETE 21/2"" 125 LBS ",0
+,pz,FF232           ,"VALVULA C/GOLPE DE ARIETE 3"" 125 LBS    ",0
+,pz,FF233           ,"VALVULA C/GOLPE DE ARIETE 4"" 125 LBS    ",0
+,pz,FF234           ,"VALVULA C/GOLPE DE ARIETE 6"" 125 LBS    ",0
+,pz,FF235           ,"TEE DE FIERRO FUNDIDO DE 2"" X 2""        ",0
+,pz,FF236           ,"TEE DE FIERRO FUNDIDO DE 21/2"" X 2""     ",0
+,pz,FF237           ,"TEE DE FIERRO FUNDIDO DE 21/2"" X 21/2""  ",0
+,pz,FF238           ,"TEE DE FIERRO FUNDIDO DE 3"" X 2""        ",0
+,pz,FF239           ,"TEE DE FIERRO FUNDIDO DE 3"" X 21/2""     ",0
+,pz,FF24            ,"REDUCCION DE FIERRO FUNDIDO 18 ""X 8""    ",0
+,pz,FF240           ,"TEE DE FIERRO FUNDIDO DE 3"" X 3""        ",0
+,pz,FF241           ,"TEE DE FIERRO FUNDIDO DE 4"" X 2""        ",0
+,pz,FF242           ,"TEE DE FIERRO FUNDIDO DE 4"" X 21/2""     ",0
+,pz,FF243           ,"TEE DE FIERRO FUNDIDO DE 4"" X 3""        ",0
+,pz,FF244           ,"TEE DE FIERRO FUNDIDO DE 4"" X 4""        ",0
+,pz,FF245           ,"TEE DE FIERRO FUNDIDO DE 6"" X 2""        ",0
+,pz,FF246           ,"TEE DE FIERRO FUNDIDO DE 6"" X 21/2""     ",0
+,pz,FF247           ,"TEE DE FIERRO FUNDIDO DE 6"" X 3""        ",0
+,pz,FF248           ,"TEE DE FIERRO FUNDIDO DE 6"" X 4""        ",0
+,pz,FF249           ,"TEE DE FIERRO FUNDIDO DE 6"" X 6""        ",0
+,pz,FF25            ,"REDUCCION DE FIERRO FUNDIDO 18 ""X 10""   ",0
+,pz,FF250           ,"TEE DE FIERRO FUNDIDO DE 8"" X 2""        ",0
+,pz,FF251           ,"TEE DE FIERRO FUNDIDO DE 8"" X 21/2""     ",0
+,pz,FF252           ,"TEE DE FIERRO FUNDIDO DE 8"" X 3""        ",0
+,pz,FF253           ,"TEE DE FIERRO FUNDIDO DE 8"" X 4""        ",0
+,pz,FF254           ,"TEE DE FIERRO FUNDIDO DE 8"" X 6""        ",0
+,pz,FF255           ,"TEE DE FIERRO FUNDIDO DE 8"" X 8""        ",0
+,pz,FF256           ,"TEE DE FIERRO FUNDIDO DE 10"" X 2""       ",0
+,pz,FF257           ,"TEE DE FIERRO FUNDIDO DE 10"" X 21/2""    ",0
+,pz,FF258           ,"TEE DE FIERRO FUNDIDO DE 10"" X 3""       ",0
+,pz,FF259           ,"TEE DE FIERRO FUNDIDO DE 10"" X 4""       ",0
+,pz,FF26            ,"REDUCCION DE FIERRO FUNDIDO 18 ""X 12""   ",0
+,pz,FF260           ,"TEE DE FIERRO FUNDIDO DE 10"" X 6""       ",0
+,pz,FF261           ,"TEE DE FIERRO FUNDIDO DE 10"" X 8""       ",0
+,pz,FF262           ,"TEE DE FIERRO FUNDIDO DE 10"" X 10""      ",0
+,pz,FF263           ,"TEE DE FIERRO FUNDIDO DE 12"" X 3""       ",0
+,pz,FF264           ,"TEE DE FIERRO FUNDIDO DE 12"" X 4""       ",0
+,pz,FF265           ,"TEE DE FIERRO FUNDIDO DE 12"" X 6""       ",0
+,pz,FF266           ,"TEE DE FIERRO FUNDIDO DE 12"" X 8""       ",0
+,pz,FF267           ,"TEE DE FIERRO FUNDIDO DE 12"" X 10""      ",0
+,pz,FF268           ,"TEE DE FIERRO FUNDIDO DE 12"" X 12""      ",0
+,pz,FF269           ,"TEE DE FIERRO FUNDIDO DE 14"" X 3""       ",0
+,pz,FF27            ,"REDUCCION DE FIERRO FUNDIDO 18 ""X 14""   ",0
+,pz,FF270           ,"TEE DE FIERRO FUNDIDO DE 14"" X 4""       ",0
+,pz,FF271           ,"TEE DE FIERRO FUNDIDO DE 14"" X 6""       ",0
+,pz,FF272           ,"TEE DE FIERRO FUNDIDO DE 14"" X 8""       ",0
+,pz,FF273           ,"TEE DE FIERRO FUNDIDO DE 14"" X 10""      ",0
+,pz,FF274           ,"TEE DE FIERRO FUNDIDO DE 14"" X 12""      ",0
+,pz,FF275           ,"TEE DE FIERRO FUNDIDO DE 14"" X 14""      ",0
+,pz,FF276           ,"TEE DE FIERRO FUNDIDO DE 16"" X 4""       ",0
+,pz,FF277           ,"TEE DE FIERRO FUNDIDO DE 16"" X 6""       ",0
+,pz,FF278           ,"TEE DE FIERRO FUNDIDO DE 16"" X 8""       ",0
+,pz,FF279           ,"TEE DE FIERRO FUNDIDO DE 16"" X 10""      ",0
+,pz,FF28            ,"REDUCCION DE FIERRO FUNDIDO 18 ""X 16""   ",0
+,pz,FF280           ,"TEE DE FIERRO FUNDIDO DE 16"" X 12""      ",0
+,pz,FF281           ,"TEE DE FIERRO FUNDIDO DE 16"" X 14""      ",0
+,pz,FF282           ,"TEE DE FIERRO FUNDIDO DE 16"" X 16""      ",0
+,pz,FF283           ,"TEE DE FIERRO FUNDIDO DE 18"" X 4""       ",0
+,pz,FF284           ,"TEE DE FIERRO FUNDIDO DE 18"" X 6""       ",0
+,pz,FF285           ,"TEE DE FIERRO FUNDIDO DE 18"" X 8""       ",0
+,pz,FF286           ,"TEE DE FIERRO FUNDIDO DE 18"" X 10""      ",0
+,pz,FF287           ,"TEE DE FIERRO FUNDIDO DE 18"" X 12""      ",0
+,pz,FF288           ,"TEE DE FIERRO FUNDIDO DE 18"" X 14""      ",0
+,pz,FF289           ,"TEE DE FIERRO FUNDIDO DE 18"" X 16""      ",0
+,pz,FF29            ,"REDUCCION DE FIERRO FUNDIDO 20"" X 4""    ",0
+,pz,FF290           ,"TEE DE FIERRO FUNDIDO DE 18"" X 18""      ",0
+,pz,FF291           ,"TEE DE FIERRO FUNDIDO DE 20"" X 4""       ",0
+,pz,FF292           ,"TEE DE FIERRO FUNDIDO DE 20"" X 6""       ",0
+,pz,FF293           ,"TEE DE FIERRO FUNDIDO DE 20"" X 8""       ",0
+,pz,FF294           ,"TEE DE FIERRO FUNDIDO DE 20"" X 10""      ",0
+,pz,FF295           ,"TEE DE FIERRO FUNDIDO DE 20"" X 12""      ",0
+,pz,FF296           ,"TEE DE FIERRO FUNDIDO DE 20"" X 14""      ",0
+,pz,FF297           ,"TEE DE FIERRO FUNDIDO DE 20"" X 16""      ",0
+,pz,FF298           ,"TEE DE FIERRO FUNDIDO DE 20"" X 18""      ",0
+,pz,FF299           ,"TEE DE FIERRO FUNDIDO DE 20"" X 20""      ",0
+,pz,FF30            ,"REDUCCION DE FIERRO FUNDIDO 20 ""X 6""    ",0
+,pz,FF300           ,"TEE DE FIERRO FUNDIDO DE 24"" X 4""       ",0
+,pz,FF301           ,"TEE DE FIERRO FUNDIDO DE 24"" X 6""       ",0
+,pz,FF302           ,"TEE DE FIERRO FUNDIDO DE 24"" X 8""       ",0
+,pz,FF303           ,"TEE DE FIERRO FUNDIDO DE 24"" X 10""      ",0
+,pz,FF304           ,"TEE DE FIERRO FUNDIDO DE 24"" X 12""      ",0
+,pz,FF305           ,"TEE DE FIERRO FUNDIDO DE 24"" X 14""      ",0
+,pz,FF306           ,"TEE DE FIERRO FUNDIDO DE 24"" X 16""      ",0
+,pz,FF307           ,"TEE DE FIERRO FUNDIDO DE 24"" X 18""      ",0
+,pz,FF308           ,"TEE DE FIERRO FUNDIDO DE 24"" X 20""      ",0
+,pz,FF309           ,"TEE DE FIERRO FUNDIDO DE 24"" X 24""      ",0
+,pz,FF31            ,"REDUCCION DE FIERRO FUNDIDO 20 ""X 8""    ",0
+,pz,FF310           ,"TEE DE FIERRO FUNDIDO DE 30"" X 4""       ",0
+,pz,FF311           ,"TEE DE FIERRO FUNDIDO DE 30"" X 6""       ",0
+,pz,FF312           ,"TEE DE FIERRO FUNDIDO DE 30"" X 8""       ",0
+,pz,FF313           ,"TEE DE FIERRO FUNDIDO DE 30"" X 10""      ",0
+,pz,FF314           ,"TEE DE FIERRO FUNDIDO DE 30"" X 12""      ",0
+,pz,FF315           ,"TEE DE FIERRO FUNDIDO DE 30"" X 14""      ",0
+,pz,FF316           ,"TEE DE FIERRO FUNDIDO DE 30"" X 16""      ",0
+,pz,FF317           ,"TEE DE FIERRO FUNDIDO DE 30"" X 18""      ",0
+,pz,FF318           ,"TEE DE FIERRO FUNDIDO DE 30"" X 20""      ",0
+,pz,FF319           ,"TEE DE FIERRO FUNDIDO DE 30"" X 24""      ",0
+,pz,FF32            ,"REDUCCION DE FIERRO FUNDIDO 20 ""X 10""   ",0
+,pz,FF320           ,"TEE DE FIERRO FUNDIDO DE 30"" X 30""      ",0
+,pz,FF321           ,"TEE DE FIERRO FUNDIDO DE 36"" X 6""       ",0
+,pz,FF322           ,"TEE DE FIERRO FUNDIDO DE 36"" X 8""       ",0
+,pz,FF323           ,"TEE DE FIERRO FUNDIDO DE 36"" X 10""      ",0
+,pz,FF324           ,"TEE DE FIERRO FUNDIDO DE 36"" X 12""      ",0
+,pz,FF325           ,"TEE DE FIERRO FUNDIDO DE 36"" X 18""      ",0
+,pz,FF326           ,"TEE DE FIERRO FUNDIDO DE 36"" X 20""      ",0
+,pz,FF327           ,"TEE DE FIERRO FUNDIDO DE 36"" X 24""      ",0
+,pz,FF328           ,"TEE DE FIERRO FUNDIDO DE 36"" X 30""      ",0
+,pz,FF329           ,"TEE DE FIERRO FUNDIDO DE 36"" X 36""      ",0
+,pz,FF33            ,"REDUCCION DE FIERRO FUNDIDO 20 ""X 12""   ",0
+,pz,FF330           ,"REDUCCION DE FIERRO FUNDIDO 21/2 ""X 2""  ",0
+,pz,FF331           ,"REDUCCION DE FIERRO FUNDIDO 3 ""X 2""     ",0
+,pz,FF332           ,"REDUCCION DE FIERRO FUNDIDO 3 ""X 21/2""  ",0
+,pz,FF333           ,"REDUCCION DE FIERRO FUNDIDO 4 ""X 2""     ",0
+,pz,FF334           ,"REDUCCION DE FIERRO FUNDIDO 4 ""X 21/2""  ",0
+,pz,FF335           ,"REDUCCION DE FIERRO FUNDIDO 4 ""X 3""     ",0
+,pz,FF336           ,"REDUCCION DE FIERRO FUNDIDO 6 ""X 2""     ",0
+,pz,FF337           ,"REDUCCION DE FIERRO FUNDIDO 6 ""X 21/2""  ",0
+,pz,FF338           ,"REDUCCION DE FIERRO FUNDIDO 6 ""X 3""     ",0
+,pz,FF339           ,"REDUCCION DE FIERRO FUNDIDO 6 ""X 4""     ",0
+,pz,FF34            ,"REDUCCION DE FIERRO FUNDIDO 20 ""X 14""   ",0
+,pz,FF340           ,"REDUCCION DE FIERRO FUNDIDO 8 ""X 2""     ",0
+,pz,FF341           ,"REDUCCION DE FIERRO FUNDIDO 8 ""X 21/2""  ",0
+,pz,FF342           ,"REDUCCION DE FIERRO FUNDIDO 8 ""X 3""     ",0
+,pz,FF343           ,"REDUCCION DE FIERRO FUNDIDO 8 ""X 4""     ",0
+,pz,FF344           ,"REDUCCION DE FIERRO FUNDIDO 8 ""X 6""     ",0
+,pz,FF345           ,"REDUCCION DE FIERRO FUNDIDO 10 ""X 2""    ",0
+,pz,FF346           ,"REDUCCION DE FIERRO FUNDIDO 10 ""X 21/2"" ",0
+,pz,FF347           ,"REDUCCION DE FIERRO FUNDIDO 10 ""X 3""    ",0
+,pz,FF348           ,"REDUCCION DE FIERRO FUNDIDO 10 ""X 4""    ",0
+,pz,FF35            ,"REDUCCION DE FIERRO FUNDIDO 20 ""X 16""   ",0
+,pz,FF36            ,"REDUCCION DE FIERRO FUNDIDO 20 ""X 18""   ",0
+,pz,FF37            ,"REDUCCION DE FIERRO FUNDIDO 24 ""X 4""    ",0
+,pz,FF38            ,"REDUCCION DE FIERRO FUNDIDO 24 ""X 6""    ",0
+,pz,FF39            ,"REDUCCION DE FIERRO FUNDIDO 24 ""X 8""    ",0
+,pz,FF40            ,"REDUCCION DE FIERRO FUNDIDO 24 ""X 10""   ",0
+,pz,FF41            ,"REDUCCION DE FIERRO FUNDIDO 24 ""X 12""   ",0
+,pz,FF42            ,"REDUCCION DE FIERRO FUNDIDO 24 ""X 14""   ",0
+,pz,FF43            ,"REDUCCION DE FIERRO FUNDIDO 24 ""X 16""   ",0
+,pz,FF44            ,"REDUCCION DE FIERRO FUNDIDO 24 ""X 18""   ",0
+,pz,FF45            ,"REDUCCION DE FIERRO FUNDIDO 24 ""X 20""   ",0
+,pz,FF46            ,"REDUCCION DE FIERRO FUNDIDO 30 ""X 4""    ",0
+,pz,FF47            ,"REDUCCION DE FIERRO FUNDIDO 30 ""X 6""    ",0
+,pz,FF48            ,"REDUCCION DE FIERRO FUNDIDO 30 ""X 8""    ",0
+,pz,FF49            ,"REDUCCION DE FIERRO FUNDIDO 30 ""X 10""   ",0
+,pz,FF50            ,"REDUCCION DE FIERRO FUNDIDO 30 ""X 12""   ",0
+,pz,FF51            ,"REDUCCION DE FIERRO FUNDIDO 30 ""X 14""   ",0
+,pz,FF52            ,"REDUCCION DE FIERRO FUNDIDO 30 ""X 16""   ",0
+,pz,FF53            ,"REDUCCION DE FIERRO FUNDIDO 30 ""X 18""   ",0
+,pz,FF54            ,"REDUCCION DE FIERRO FUNDIDO 30 ""X 20""   ",0
+,pz,FF55            ,"REDUCCION DE FIERRO FUNDIDO 30 ""X 24""   ",0
+,pz,FF56            ,"REDUCCION DE FIERRO FUNDIDO 36 ""X 6""    ",0
+,pz,FF57            ,"REDUCCION DE FIERRO FUNDIDO 36 ""X 8""    ",0
+,pz,FF58            ,"REDUCCION DE FIERRO FUNDIDO 36 ""X 10""   ",0
+,pz,FF59            ,"REDUCCION DE FIERRO FUNDIDO 36 ""X 12""   ",0
+,pz,FF60            ,"REDUCCION DE FIERRO FUNDIDO 36 ""X 14""   ",0
+,pz,FF61            ,"REDUCCION DE FIERRO FUNDIDO 36 ""X 16""   ",0
+,pz,FF62            ,"REDUCCION DE FIERRO FUNDIDO 36 ""X 18""   ",0
+,pz,FF63            ,"REDUCCION DE FIERRO FUNDIDO 36 ""X 20""   ",0
+,pz,FF64            ,"REDUCCION DE FIERRO FUNDIDO 36 ""X 24""   ",0
+,pz,FF65            ,"REDUCCION DE FIERRO FUNDIDO 36 ""X 30""   ",0
+,pz,FF66            ,"CRUZ DE FIERRO FUNDIDO 2"" X 2""          ",0
+,pz,FF67            ,"CRUZ DE FIERRO FUNDIDO 21/2"" X 2""       ",0
+,pz,FF68            ,"CRUZ DE FIERRO FUNDIDO 21/2"" X 21/2""    ",0
+,pz,FF69            ,"CRUZ DE FIERRO FUNDIDO 3"" X 2""          ",0
+,pz,FF70            ,"CRUZ DE FIERRO FUNDIDO 3"" X 21/2""       ",0
+,pz,FF71            ,"CRUZ DE FIERRO FUNDIDO 3"" X 3""          ",0
+,pz,FF72            ,"CRUZ DE FIERRO FUNDIDO 4"" X 2""          ",0
+,pz,FF73            ,"CRUZ DE FIERRO FUNDIDO 4"" X 21/2""       ",0
+,pz,FF74            ,"CRUZ DE FIERRO FUNDIDO 4"" X 3""          ",0
+,pz,FF75            ,"CRUZ DE FIERRO FUNDIDO 4"" X 4""          ",0
+,pz,FF76            ,"CRUZ DE FIERRO FUNDIDO 6"" X 2""          ",0
+,pz,FF77            ,"CRUZ DE FIERRO FUNDIDO 6"" X 21/2""       ",0
+,pz,FF78            ,"CRUZ DE FIERRO FUNDIDO 6"" X 3""          ",0
+,pz,FF79            ,"CRUZ DE FIERRO FUNDIDO 6"" X 4""          ",0
+,pz,FF80            ,"CRUZ DE FIERRO FUNDIDO 6"" X 6""          ",0
+,pz,FF81            ,"CRUZ DE FIERRO FUNDIDO 8"" X 2""          ",0
+,pz,FF82            ,"CRUZ DE FIERRO FUNDIDO 8"" X 21/2""       ",0
+,pz,FF83            ,"CRUZ DE FIERRO FUNDIDO 8"" X 3""          ",0
+,pz,FF84            ,"CRUZ DE FIERRO FUNDIDO 8"" X 4""          ",0
+,pz,FF85            ,"CRUZ DE FIERRO FUNDIDO 8"" X 6""          ",0
+,pz,FF86            ,"CRUZ DE FIERRO FUNDIDO 8"" X 8""          ",0
+,pz,FF87            ,"CRUZ DE FIERRO FUNDIDO 10"" X 2""         ",0
+,pz,FF88            ,"CRUZ DE FIERRO FUNDIDO 10"" X 21/2""      ",0
+,pz,FF89            ,"CRUZ DE FIERRO FUNDIDO 10"" X 3""         ",0
+,pz,FF90            ,"CRUZ DE FIERRO FUNDIDO 10"" X 4""         ",0
+,pz,FF91            ,"CRUZ DE FIERRO FUNDIDO 10"" X 6""         ",0
+,pz,FF92            ,"CRUZ DE FIERRO FUNDIDO 10"" X 8""         ",0
+,pz,FF93            ,"CRUZ DE FIERRO FUNDIDO 10"" X 10""        ",0
+,pz,FF94            ,"CRUZ DE FIERRO FUNDIDO 12"" X 3""         ",0
+,pz,FF95            ,"CRUZ DE FIERRO FUNDIDO 12"" X 4""         ",0
+,pz,FF96            ,"CRUZ DE FIERRO FUNDIDO 12"" X 6""         ",0
+,pz,FF97            ,"CRUZ DE FIERRO FUNDIDO 12"" X 8""         ",0
+,pz,FF98            ,"CRUZ DE FIERRO FUNDIDO 12"" X 10""        ",0
+,pz,FF99            ,"CRUZ DE FIERRO FUNDIDO 12"" X 12""        ",0
+,pz,MTE01           ,CABLE THW CAL.2 KOBREX MT               ,0
+,pz,MTE02           ,CABLE THW CAL.4 KOBREX MT               ,0
+,pz,MTE03           ,CABLE THW CAL.6 KOBREX  MT.             ,0
+,pz,MTE04           ,CABLE THW CAL.8 KOBREX MT.              ,0
+,pz,MTE05           ,CABLE THW CAL.10 KOBREX MT.             ,0
+,pz,MTE06           ,CABLE THW CAL.12 KOBREX MT.             ,0
+,pz,MTE07           ,CABLE THW CAL.14 KOBREX MT              ,0
+,pz,MTE08           ,CABLE THW CAL.16 KOBREX MT.             ,0
+,pz,MTE09           ,CORDON POT 12 KOBREX MT                 ,0
+,pz,MTE10           ,CORDON POT 14 KOBREX MT                 ,0
+,pz,MTE11           ,CORDON POT 16 KOBREX MT.                ,0
+,pz,MTE12           ,CORDON POT 18 KOBREX MT                 ,0
+,pz,MTE13           ,SOQUET DE PORCELANA DE 8 X 8            ,0
+,pz,MTE14           ,SOQUET DE PORCELANA DE 10 X 10          ,0
+,pz,MTE15           ,"TUBO CONDUIT GALV. P/DELGADA 1/2"" S/COPL",0
+,pz,MTE16           ,"TUBO CONDUIT GALV. P/DELGADA 3/4"" S/COPL",0
+,pz,MTE17           ,"TUBO CONDUIT GALV. P/DELGADA 1"" S/COPLE ",0
+,pz,MTE18           ,"TUBO CONDUIT GALV. P/DELGADA 11/4""S/COP ",0
+,pz,MTE19           ,"TUBO CONDUIT GALV. P/DELGADA 11/2"" S/COP",0
+,pz,MTE20           ,"TUBO CONDUIT GALV. P/DELGADA 2"" S/COPLE ",0
+,pz,MTE21           ,"COPLE CONDUIT GALV. P/DELGADA 1/2""      ",0
+,pz,MTE22           ,"COPLE CONDUIT GALV. P/DELGADA 3/4""      ",0
+,pz,PCV11           ,"COPLE DE CPVC DE 11/2""                  ",0
+,pz,PSI01           ,"TUBO PVC HCO. S.I. DE 1 1/2"" RD-26      ",0
+,pz,PSI02           ,"TUBO PVC HCO. S.I. DE 2"" RD-26          ",0
+,pz,PSI03           ,"TUBO PVC HCO. S.I. DE 2 1/2"" RD-26      ",0
+,pz,PSI04           ,"TUBO PVC HCO. S.I. DE 3"" RD-26          ",0
+,pz,PSI05           ,"TUBO PVC HCO. S.I. DE 4"" RD-26          ",0
+,pz,PSI06           ,"TUBO PVC HCO. S.I. DE 6"" RD-26          ",0
+,pz,PSI07           ,"TUBO PVC HCO. S.I. DE 1 1/2"" RD-32.5    ",0
+,pz,PSI08           ,"TUBO PVC HCO. S.I. DE 2"" RD-32.5        ",0
+,pz,PSI09           ,"TUBO PVC HCO. S.I. DE 2 1/2"" RD-32.5    ",0
+,pz,PSI10           ,"TUBO PVC HCO. S.I. DE 3"" RD-32.5        ",0
+,pz,PSI100          ,"REDUC. CAMP.PVC HCO. S.I. DE 8""X2""      ",0
+,pz,PSI101          ,"REDUC. CAMP.PVC HCO. S.I. DE 8""X2 1/2   ",0
+,pz,PSI102          ,"REDUC. CAMP.PVC HCO. S.I. DE 8""X3""      ",0
+,pz,PSI103          ,"REDUC. CAMP.PVC HCO. S.I. DE 8""X4""      ",0
+,pz,PSI104          ,"REDUC. CAMP.PVC HCO. S.I. DE 8""X6""      ",0
+,pz,PSI105          ,"REDUC. ESP.PVC HCO. S.I. DE 2""X1 1/2""   ",0
+,pz,PSI106          ,"REDUC. ESP.PVC HCO. S.I. DE 2 1/2""X2""   ",0
+,pz,PSI107          ,"REDUC. ESP.PVC HCO. S.I. DE 3""X 2""      ",0
+,pz,PSI108          ,"REDUC. ESP.PVC HCO. S.I. DE 3""X2 1/2""   ",0
+,pz,PSI109          ,"REDUC. ESP.PVC HCO. S.I. DE 4""X 2""      ",0
+,pz,PSI11           ,"TUBO PVC HCO. S.I. DE 4"" RD-32.5        ",0
+,pz,PSI110          ,"REDUC. ESP.PVC HCO. S.I. DE 4""X2 1/2""   ",0
+,pz,PSI111          ,"REDUC. ESP.PVC HCO. S.I. DE 4""X 3""      ",0
+,pz,PSI112          ,"REDUC. ESP.PVC HCO. S.I. DE 6""X 2""      ",0
+,pz,PSI113          ,"REDUC. ESP.PVC HCO. S.I. DE 6""X 2 1/2   ",0
+,pz,PSI114          ,"REDUC. ESP.PVC HCO. S.I. DE 6""X 3""      ",0
+,pz,PSI115          ,"REDUC. ESP.PVC HCO. S.I. DE 6""X 4""      ",0
+,pz,PSI116          ,"REDUC. ESP.PVC HCO. S.I. DE 8""X 2""      ",0
+,pz,PSI117          ,"REDUC. ESP.PVC HCO. S.I. DE 8""X 2 1/2   ",0
+,pz,PSI118          ,"REDUC. ESP.PVC HCO. S.I. DE 8""X 3""      ",0
+,pz,PSI119          ,"REDUC. ESP.PVC HCO. S.I. DE 8""X 4""      ",0
+,pz,PSI12           ,"TUBO PVC HCO. S.I. DE 6"" RD-32.5        ",0
+,pz,PSI120          ,"REDUC. ESP.PVC HCO. S.I. DE 8""X 6""      ",0
+,pz,PSI121          ,"CRUZ PVC HCO. S.I. DE 1 1/2""X 1 1/2""    ",0
+,pz,PSI122          ,"CRUZ PVC HCO. S.I. DE 2""X 1 1/2""        ",0
+,pz,PSI123          ,"CRUZ PVC HCO. S.I. DE 2""X 2""            ",0
+,pz,PSI124          ,"CRUZ PVC HCO. S.I. DE 2 1/2""X 2""        ",0
+,pz,PSI125          ,"CRUZ PVC HCO. S.I. DE 2 1/2""X 2 1/2""    ",0
+,pz,PSI126          ,"CRUZ PVC HCO. S.I. DE 3 ""X 2""           ",0
+,pz,PSI127          ,"CRUZ PVC HCO. S.I. DE 3""X 2 1/2""        ",0
+,pz,PSI128          ,"CRUZ PVC HCO. S.I. DE 3""X 3""            ",0
+,pz,PSI129          ,"CRUZ PVC HCO. S.I. DE 4""X 2""            ",0
+,pz,PSI13           ,"TUBO PVC HCO. S.I. DE 2"" RD-41          ",0
+,pz,PSI130          ,"CRUZ PVC HCO. S.I. DE 4""X 2 1/2""        ",0
+,pz,PSI131          ,"CRUZ PVC HCO. S.I. DE 4""X 3""            ",0
+,pz,PSI132          ,"CRUZ PVC HCO. S.I. DE 4""X 4""            ",0
+,pz,PSI133          ,"CRUZ PVC HCO. S.I. DE 6"" X 2""           ",0
+,pz,PSI134          ,"CRUZ PVC HCO. S.I. DE 6"" X 2 1/2""       ",0
+,pz,PSI135          ,"CRUZ PVC HCO. S.I. DE 6"" X 3""           ",0
+,pz,PSI136          ,"CRUZ PVC HCO. S.I. DE 6"" X 4""           ",0
+,pz,PSI137          ,"CRUZ PVC HCO. S.I. DE 6"" X 6""           ",0
+,pz,PSI138          ,"CRUZ PVC HCO. S.I. DE 8"" X 2""           ",0
+,pz,PSI139          ,"CRUZ PVC HCO. S.I. DE 8"" X 2 1/2""       ",0
+,pz,PSI14           ,"TUBO PVC HCO. S.I. DE 2 1/2"" RD-41      ",0
+,pz,PSI140          ,"CRUZ PVC HCO. S.I. DE 8"" X 3""           ",0
+,pz,PSI141          ,"CRUZ PVC HCO. S.I. DE 8"" X 4""           ",0
+,pz,PSI142          ,"CRUZ PVC HCO. S.I. DE 8"" X 6""           ",0
+,pz,PSI143          ,"CRUZ PVC HCO. S.I. DE 8"" X 8""           ",0
+,pz,PSI144          ,"TEE PVC HCO. S.I. DE 1 1/2"" X 1 1/2""    ",0
+,pz,PSI145          ,"TEE PVC HCO. S.I. DE 2"" X 1 1/2""        ",0
+,pz,PSI146          ,"TEE PVC HCO. S.I. DE 2"" X 2""            ",0
+,pz,PSI147          ,"TEE PVC HCO. S.I. DE 2 1/2"" X 2""        ",0
+,pz,PSI148          ,"TEE PVC HCO. S.I. DE 2 1/2"" X 2 1/2""    ",0
+,pz,PSI149          ,"TEE PVC HCO. S.I. DE 3"" X 2""            ",0
+,pz,PSI15           ,"TUBO PVC HCO. S.I. DE 3"" RD-41          ",0
+,pz,PSI150          ,"TEE PVC HCO. S.I. DE 3"" X 2 1/2""        ",0
+,pz,PSI151          ,"TEE PVC HCO. S.I. DE 3"" X 3""            ",0
+,pz,PSI152          ,"TEE PVC HCO. S.I. DE 4"" X 2""            ",0
+,pz,PSI153          ,"TEE PVC HCO. S.I. DE 4"" X 2 1/2""        ",0
+,pz,PSI154          ,"TEE PVC HCO. S.I. DE 4"" X 3""            ",0
+,pz,PSI155          ,"TEE PVC HCO. S.I. DE 4"" X 4""            ",0
+,pz,PSI156          ,"TEE PVC HCO. S.I. DE 6"" X 2""            ",0
+,pz,PSI157          ,"TEE PVC HCO. S.I. DE 6"" X 2 1/2""        ",0
+,pz,PSI158          ,"TEE PVC HCO. S.I. DE 6"" X 3""            ",0
+,pz,PSI159          ,"TEE PVC HCO. S.I. DE 6"" X 4""            ",0
+,pz,PSI16           ,"TUBO PVC HCO. S.I. DE 4"" RD-41          ",0
+,pz,PSI160          ,"TEE PVC HCO. S.I. DE 6"" X 6""            ",0
+,pz,PSI161          ,"TEE PVC HCO. S.I. DE 8"" X 1 1/2""        ",0
+,pz,PSI162          ,"TEE PVC HCO. S.I. DE 8"" X 2""            ",0
+,pz,PSI163          ,"TEE PVC HCO. S.I. DE 8"" X 2 1/2""        ",0
+,pz,PSI164          ,"TEE PVC HCO. S.I. DE 8"" X 3""            ",0
+,pz,PSI165          ,"TEE PVC HCO. S.I. DE 8"" X 4""            ",0
+,pz,PSI166          ,"TEE PVC HCO. S.I. DE 8"" X 6""            ",0
+,pz,PSI167          ,"TEE PVC HCO. S.I. DE 8"" X 8""            ",0
+,pz,PSI168          ,"ABRAZADERA HCA. DE 1 1/2"" X 1/2""        ",0
+,pz,PSI169          ,"ABRAZADERA HCA. DE 2"" X 1/2""            ",0
+,pz,PSI17           ,"TUBO PVC HCO. S.I. DE 6"" RD-41          ",0
+,pz,PSI170          ,"ABRAZADERA HCA. DE 2 1/2"" X 1/2""        ",0
+,pz,PSI171          ,"ABRAZADERA HCA. DE 3"" X 1/2""            ",0
+,pz,PSI172          ,"ABRAZADERA HCA. DE 4"" X 1/2""            ",0
+,pz,PSI173          ,"ABRAZADERA HCA. DE 6"" X 1/2""            ",0
+,pz,PSI174          ,"ABRAZADERA HCA. DE 1 1/2"" X 3/4""        ",0
+,pz,PSI175          ,"ABRAZADERA HCA. DE 2"" X 3/4""            ",0
+,pz,PSI176          ,"ABRAZADERA HCA. DE 2 1/2"" X 3/4""        ",0
+,pz,PSI177          ,"ABRAZADERA HCA. DE 3"" X 3/4""            ",0
+,pz,PSI178          ,"ABRAZADERA HCA. DE 4"" X 3/4""            ",0
+,pz,PSI179          ,"ABRAZADERA HCA. DE 6"" X 3/4""            ",0
+,pz,PSI18           ,"CODO PVC HCO. S.I. DE 1 1/2"" X 22       ",0
+,pz,PSI19           ,"CODO PVC HCO. S.I. DE 2"" X 22           ",0
+,pz,PSI20           ,"CODO PVC HCO. S.I. DE 2 1/2"" X 22       ",0
+,pz,PSI21           ,"CODO PVC HCO. S.I. DE 3"" X 22           ",0
+,pz,PSI22           ,"CODO PVC HCO. S.I. DE 4"" X 22           ",0
+,pz,PSI23           ,"CODO PVC HCO. S.I. DE 6"" X 22           ",0
+,pz,PSI24           ,"CODO PVC HCO. S.I. DE 8"" X 22           ",0
+,pz,PSI25           ,"CODO PVC HCO. S.I. DE 1 1/2"" X 45       ",0
+,pz,PSI26           ,"CODO PVC HCO. S.I. DE 2"" X 45           ",0
+,pz,PSI27           ,"CODO PVC HCO. S.I. DE 2 1/2"" X 45       ",0
+,pz,PSI28           ,"CODO PVC HCO. S.I. DE 3"" X 45           ",0
+,pz,PSI29           ,"CODO PVC HCO. S.I. DE 4"" X 45           ",0
+,pz,PSI30           ,"CODO PVC HCO. S.I. DE 6"" X 45           ",0
+,pz,PSI31           ,"CODO PVC HCO. S.I. DE 8"" X 45           ",0
+,pz,PSI32           ,"CODO PVC HCO. S.I. DE 1 1/2"" X 90       ",0
+,pz,PSI33           ,"CODO PVC HCO. S.I. DE 2"" X 90           ",0
+,pz,PSI34           ,"CODO PVC HCO. S.I. DE 2 1/2"" X 90       ",0
+,pz,PSI35           ,"CODO PVC HCO. S.I. DE 3"" X 90           ",0
+,pz,PSI36           ,"CODO PVC HCO. S.I. DE 4"" X 90           ",0
+,pz,PSI37           ,"CODO PVC HCO. S.I. DE 6"" X 90           ",0
+,pz,PSI38           ,"CODO PVC HCO. S.I. DE 8"" X 90           ",0
+,pz,PSI39           ,"ADAPTADOR CAMP. PVC HCO. S.I. DE 1 1/2"" ",0
+,pz,PSI40           ,"ADAPTADOR CAMP. PVC HCO. S.I. DE 2""     ",0
+,pz,PSI41           ,"ADAPTADOR CAMP. PVC HCO. S.I. DE 2 1/2"" ",0
+,pz,PSI42           ,"ADAPTADOR CAMP. PVC HCO. S.I. DE 3""     ",0
+,pz,PSI43           ,"ADAPTADOR CAMP. PVC HCO. S.I. DE 4""     ",0
+,pz,PSI44           ,"ADAPTADOR CAMP. PVC HCO. S.I. DE 6""     ",0
+,pz,PSI45           ,"ADAPTADOR CAMP. PVC HCO. S.I. DE 8""     ",0
+,pz,PSI46           ,"ADAPTADOR ESPIGA PVC HCO. S.I. DE 1 1/2""",0
+,pz,PSI47           ,"ADAPTADOR ESPIGA PVC HCO. S.I. DE 2""    ",0
+,pz,PSI48           ,"ADAPTADOR ESPIGA PVC HCO. S.I. DE 2 1/2""",0
+,pz,PSI49           ,"ADAPTADOR ESPIGA PVC HCO. S.I. DE 3""    ",0
+,pz,PSI50           ,"ADAPTADOR ESPIGA PVC HCO. S.I. DE 4""    ",0
+,pz,PSI51           ,"ADAPTADOR ESPIGA PVC HCO. S.I. DE 6""    ",0
+,pz,PSI52           ,"ADAPTADOR ESPIGA PVC HCO. S.I. DE 8""    ",0
+,pz,PSI53           ,"EXTREMIDAD CAMP. PVC HCO. S.I. DE 1 1/2""",0
+,pz,PSI54           ,"EXTREMIDAD CAMP. PVC HCO. S.I. DE 2""    ",0
+,pz,PSI55           ,"EXTREMIDAD CAMP. PVC HCO. S.I. DE 2 1/2""",0
+,pz,PSI56           ,"EXTREMIDAD CAMP. PVC HCO. S.I. DE 3""    ",0
+,pz,PSI57           ,"EXTREMIDAD CAMP. PVC HCO. S.I. DE 4""    ",0
+,pz,PSI58           ,"EXTREMIDAD CAMP. PVC HCO. S.I. DE 6""    ",0
+,pz,PSI59           ,"EXTREMIDAD CAMP. PVC HCO. S.I. DE 8""    ",0
+,pz,PSI60           ,"EXTREMIDAD CAMP PVC HCO. S.I. DE 10""    ",0
+,pz,PSI61           ,EXTREMIDAD ESPIGA PVC HCO. S.I. DE 1 1/2,0
+,pz,PSI62           ,"EXTREMIDAD ESPIGA PVC HCO. S.I. DE 2""   ",0
+,pz,PSI63           ,EXTREMIDAD ESPIGA PVC HCO. S.I. DE 2 1/2,0
+,pz,PSI64           ,"EXTREMIDAD ESPIGA PVC HCO. S.I. DE 3""   ",0
+,pz,PSI65           ,"EXTREMIDAD ESPIGA PVC HCO. S.I. DE 4""   ",0
+,pz,PSI66           ,"EXTREMIDAD ESPIGA PVC HCO. S.I. DE 6""   ",0
+,pz,PSI67           ,"EXTREMIDAD ESPIGA PVC HCO. S.I. DE 8""   ",0
+,pz,PSI68           ,"COPLE  REPARACION PVC HCO.S.I. DE 1 1/2""",0
+,pz,PSI69           ,"COPLE  REPARACION PVC HCO.S.I. DE 2""    ",0
+,pz,PSI70           ,"COPLE  REPARACION PVC HCO.S.I. DE 2 1/2""",0
+,pz,PSI71           ,"COPLE  REPARACION PVC HCO.S.I. DE 3""    ",0
+,pz,PSI72           ,"COPLE  REPARACION PVC HCO.S.I. DE 4""    ",0
+,pz,PSI73           ,"COPLE  REPARACION PVC HCO.S.I. DE 6""    ",0
+,pz,PSI74           ,"COPLE  REPARACION PVC HCO.S.I. DE 8""    ",0
+,pz,PSI75           ,"TAPON CAMPANA PVC HCO. S.I. DE 1 1/2""   ",0
+,pz,PSI76           ,"TAPON CAMPANA PVC HCO. S.I. DE 2""       ",0
+,pz,PSI77           ,"TAPON CAMPANA PVC HCO. S.I. DE 2 1/2""   ",0
+,pz,PSI78           ,"TAPON CAMPANA PVC HCO. S.I. DE 3""       ",0
+,pz,PSI79           ,"TAPON CAMPANA PVC HCO. S.I. DE 4""       ",0
+,pz,PSI80           ,"TAPON CAMPANA PVC HCO. S.I. DE 6""       ",0
+,pz,PSI81           ,"TAPON CAMPANA PVC HCO. S.I. DE 8""       ",0
+,pz,PSI82           ,"TAPON ESPIGA PVC HCO. S.I. DE 1 1/2""    ",0
+,pz,PSI83           ,"TAPON ESPIGA PVC HCO. S.I. DE 2""        ",0
+,pz,PSI84           ,"TAPON ESPIGA PVC HCO. S.I. DE 2 1/2""    ",0
+,pz,PSI85           ,"TAPON ESPIGA PVC HCO. S.I. DE 3""        ",0
+,pz,PSI86           ,"TAPON ESPIGA PVC HCO. S.I. DE 4""        ",0
+,pz,PSI87           ,"TAPON ESPIGA PVC HCO. S.I. DE 6""        ",0
+,pz,PSI88           ,"TAPON ESPIGA PVC HCO. S.I. DE 8""        ",0
+,pz,PSI89           ,"REDUC. CAMP.PVC HCO. S.I. DE 2""X1 1/2   ",0
+,pz,PSI90           ,"REDUC. CAMP.PVC HCO. S.I. DE 2 1/2""X2   ",0
+,pz,PSI91           ,"REDUC. CAMP.PVC HCO. S.I. DE 3""X2""      ",0
+,pz,PSI92           ,"REDUC. CAMP.PVC HCO. S.I. DE 3""X2 1/2   ",0
+,pz,PSI93           ,"REDUC. CAMP.PVC HCO. S.I. DE 4""X2""      ",0
+,pz,PSI94           ,"REDUC. CAMP.PVC HCO. S.I. DE 4""X2 1/2   ",0
+,pz,PSI95           ,"REDUC. CAMP.PVC HCO. S.I. DE 4""X3""      ",0
+,pz,PSI96           ,"REDUC. CAMP.PVC HCO. S.I. DE 6""X2""      ",0
+,pz,PSI97           ,"REDUC. CAMP.PVC HCO. S.I. DE 6""X2 1/2   ",0
+,pz,PSI98           ,"REDUC. CAMP.PVC HCO. S.I. DE 6""X3""      ",0
+,pz,PSI99           ,"REDUC. CAMP.PVC HCO. S.I. DE 6""X4""      ",0
+,pz,PVC01           ,"TUBO CPVC DE 1/2""  3.05 MT ECOTEC RD-13.",0
+,pz,PVC02           ,"TUBO CPVC DE 3/4"" 3.05 MTS. ECOTEC RD-13",0
+,pz,PVC03           ,"TUBO CPVC DE 1"" 3.05 MTS ECOTEC RD-13   ",0
+,pz,PVC04           ,"TUBO CPVC DE 11/4"" 3.05 MTS ECOTEC RD-13",0
+,pz,PVC05           ,"TUBO CPVC DE 11/2"" 3.05 MTS ECOTEC RD-13",0
+,pz,PVC06           ,"TUBO CPVC DE 2"" 3.05 MTS ECOTEC RD-13   ",0
+,pz,PVC07           ,"COPLE DE CPVC DE 1/2""                   ",0
+,pz,PVC08           ,"COPLE DE CPVC DE 3/4""                   ",0
+,pz,PVC09           ,"COPLE DE CPVC DE 1""                     ",0
+,pz,PVC10           ,"COPLE DE CPVC DE 11/4""                  ",0
+,pz,PVC12           ,"COPLE DE CPVC DE 2""                     ",0
+,pz,PVC13           ,"ADAPTADOR MACHO CPVC DE 1/2""            ",0
+,pz,PVC14           ,"ADAPTADOR MACHO CPVC DE 3/4""            ",0
+,pz,PVC15           ,"ADAPTADOR MACHO CPVC DE 1""              ",0
+,pz,PVC16           ,"ADAPTADOR MACHO CPVC DE 11/4""           ",0
+,pz,PVC17           ,"ADAPTADOR MACHO CPVC DE 11/2""           ",0
+,pz,PVC18           ,"ADAPTADOR MACHO CPVC DE 2""              ",0
+,pz,PVC19           ,"ADAPTADOR HEMBRA CPVC DE 1/2""           ",0
+,pz,PVC20           ,"ADAPTADOR HEMBRA CPVC DE 3/4""           ",0
+,pz,PVC21           ,"ADAPTADOR HEMBRA CPVC DE 1""             ",0
+,pz,PVC22           ,"CODO  CPVC DE 1/2""X 45                  ",0
+,pz,PVC23           ,"CODO CPVC DE 3/4"" X 45                  ",0
+,pz,PVC24           ,"CODO CPVC DE 1"" X 45                    ",0
+,pz,PVC25           ,"CODO CPVC DE 11/4"" X 45                 ",0
+,pz,PVC26           ,"CODO CPVC DE 11/2"" X 45                 ",0
+,pz,PVC27           ,"CODO CPVC DE 2"" X 45                    ",0
+,pz,PVC28           ,"CODO CPVC DE 1/2"" X 90                  ",0
+,pz,PVC29           ,"CODO CPVC DE 3/4"" X 90                  ",0
+,pz,PVC30           ,"CODO CPVC DE 1"" X 90                    ",0
+,pz,PVC31           ,"CODO CPVC DE 11/4"" X 90                 ",0
+,pz,PVC32           ,"CODO CPVC DE 11/2"" X 90                 ",0
+,pz,PVC33           ,"CODO CPVC DE 2"" X 90                    ",0
+,pz,PVC34           ,"TEE CPVC DE 1/2""                        ",0
+,pz,PVC35           ,"TEE CPVC DE 3/4""                        ",0
+,pz,PVC36           ,"TEE CPVC DE 1""                          ",0
+,pz,PVC37           ,"TEE CPVC DE 1 1/4""                      ",0
+,pz,PVC38           ,"TEE CPVC DE 11/2""                       ",0
+,pz,PVC39           ,"TEE CPVC DE 2""                          ",0
+,pz,PVC40           ,"TEE REDUCIDA CPVC DE 3/4""X1/2""X1/2""     ",0
+,pz,PVC41           ,"TEE REDUCIDA CPVC DE 3/4""X3/4""X1/2""     ",0
+,pz,PVC42           ,"TEE REDUCIDA CPVC DE 3/4""X1/2""X3/4""     ",0
+,pz,PVC43           ,"TEE REDUCIDA CPVC DE 1""X3/4""X1""         ",0
+,pz,PVC44           ,"CODO DE OREJA CPVC 1/2""                 ",0
+,pz,PVC45           ,"TUERCA UNION CPVC DE 1/2""               ",0
+,pz,PVC46           ,"TUERCA UNION CPVC DE 3/4""               ",0
+,pz,PVC47           ,"TUERCA UNION CPVC DE 1""                 ",0
+,pz,PVC48           ,"TAPA CEMENTAR CPVC DE 1/2""              ",0
+,pz,PVC49           ,"TAPA CEMENTAR CPVC DE 3/4""              ",0
+,pz,PVC50           ,"TAPA CEMENTAR CPVC DE 1""                ",0
+,pz,PVC51           ,"TAPA CEMENTAR CPVC DE 11/4""             ",0
+,pz,PVC52           ,"TAPA CEMENTAR CPVC DE 11/2""             ",0
+,pz,PVC53           ,"TAPA CEMENTAR CPVC DE 2""                ",0
+,pz,PVC54           ,"REDUCCION BUSHING CEMENT.CPVC 3/4""X1/2"" ",0
+,pz,PVC55           ,"REDUCCION BUSHING CEMENT.CPVC 1""X1/2""   ",0
+,pz,PVC56           ,"REDUCCION BUSHING CEMENT.CPVC 1"" X 3/4"" ",0
+,pz,PVC57           ,"REDUCCION BUSHING CEMENT.CPVC 11/4""X1/2""",0
+,pz,PVC58           ,"REDUCCION BUSHING CEMENT.CPVC 11/4""X 3/4",0
+,pz,PVC59           ,"REDUCCION BUSHING CEMENT.CPVC 11/4""X1""  ",0
+,pz,PVC60           ,"REDUCCION BUSHING CEMENT.CPVC 11/2""X1/2""",0
+,pz,PVC61           ,"REDUCCION BUSHING CEMENT.CPVC 11/2""X3/4""",0
+,pz,PVC62           ,"REDUCCION BUSHING CEMENT.CPVC 11/2""X1""  ",0
+,pz,PVC63           ,"REDUCCION BUSHING CEMENT.CPVC 11/2""X11/4",0
+,pz,PVC64           ,"REDUCCION BUSHING CEMENT.CPVC 2""X1/2""   ",0
+,pz,PVC65           ,"REDUCCION BUSHING CEMENT.CPVC 2""X3/4""   ",0
+,pz,PVC66           ,"REDUCCION BUSHING CEMENT.CPVC 2""X1""     ",0
+,pz,PVC67           ,"REDUCCION BUSHING CEMENT.CPVC 2""X11/4""  ",0
+,pz,PVC68           ,"REDUCCION BUSHING CEMENT.CPVC 2""X11/2""  ",0
+,pz,PVC69           ,"VALVULA BOLA  CPVC 1/2""                 ",0
+,pz,PVC70           ,"VALVULA BOLA  CPVC 3/4""                 ",0
+,pz,PVC71           ,"VALVULA BOLA CPVC 1""                    ",0
+,pz,PVC72           ,CEMENTO CPVC 118 ML                     ,0
+,pz,PVC73           ,CEMENTO CPVC 237 ML                     ,0
+,pz,PVC74           ,CEMENTO CPVC 473 ML                     ,0
+,pz,PVC75           ,CEMENTO CPVC DE TUBO 50 ML.             ,0
+,pz,PVC76           ,TUBO CPVC DE 1/2 3.05 MT HP RD-11       ,0
+,pz,PVC77           ,TUBO CPVC DE 3/4 3.05 MT HP RD-11       ,0
+,pz,PVC78           ,"TUBO CPVC DE 1"" 3.05 MT HP RD-11        ",0
+,pz,PVC79           ,"TUBO CPVC DE 11/4"" 3.05 MT HP RD-11     ",0
+,pz,PVC80           ,"TUBO CPVC DE 11/2"" 3.05 MT HP RD-11     ",0
+,pz,PVC81           ,"TUBO CPVC DE 2"" 3.05 MT HP RD-11        ",0
+,pz,TG01            ,"TUBO GALV. C-40 X INMERSION DE 1/2"" TMO.",0
+,pz,TG02            ,"TUBO GALV. C-40 X INMERSION DE 3/4"" TMO.",0
+,pz,TG03            ,"TUBO GALV. C-40 X INMERSION DE 1"" TMO.  ",0
+,pz,TG04            ,"TUBO GALV. C-40 X INMERSION DE 1 1/4"" TM",0
+,pz,TG05            ,"TUBO GALV. C-40 X INMERSION DE 1 1/2"" TM",0
+,pz,TG06            ,"TUBO GALV. C-40 X INMERSION DE 2"" TMO.  ",0
+,pz,TG07            ,"TUBO GALV. C-40 X INMERSION DE 2 1/2"" TM",0
+,pz,TG08            ,"TUBO GALV. C-40 X INMERSION DE 3"" TMO.  ",0
+,pz,TG09            ,"TUBO GALV. C-40 X INMERSION DE 4"" TMO.  ",0
+,pz,TG10            ,"TUBO GALV. C-40 X INMERSION DE 6"" TMO   ",0
+,pz,TG11            ,"TUBO GALV. C-40 X INMERSION DE 1/2"" MT  ",0
+,pz,TG12            ,"TUBO GALV. C-40 X INMERSION DE 3/4"" MT  ",0
+,pz,TG13            ,"TUBO GALV. C-40 X INMERSION DE 1"" MT    ",0
+,pz,TG14            ,"TUBO GALV. C-40 X INMERSION DE 1 1/4"" MT",0
+,pz,TG15            ,"TUBO GALV. C-40 X INMERSION DE 1 1/2"" MT",0
+,pz,TG16            ,"TUBO GALV. C-40 X INMERSION DE 2"" MT    ",0
+,pz,TG17            ,"TUBO GALV. C-40 X INMERSION DE 2 1/2"" MT",0
+,pz,TG18            ,"TUBO GALV. C-40 X INMERSION DE 3"" MT    ",0
+,pz,TG19            ,"TUBO GALV. C-40 X INMERSION DE 4"" MT    ",0
+,pz,TG20            ,"TUBO GALV. C-40 X INMERSION DE 6"" MT    ",0
+,pz,TG21            ,"TUBO GALV. C-40 X INMERSION DE 6"" MT    ",0
+,pz,TG22            ,"TUBO GALV. C-40 X INM. DE 1/2"" TM.PYTCO ",0
+,pz,TG23            ,"TUBO GALV. C-40 X INM. DE 3/4"" TM.PYTCO ",0
+,pz,TG24            ,"TUBO GALV. C-40 X INM. DE 1"" TM.PYTCO   ",0
+,pz,TG25            ,"TUBO GALV. C-40 X INM.DE 1 1/4"" TM.PYTCO",0
+,pz,TG26            ,"TUBO GALV. C-40 X INM.DE 1 1/2"" TM.PYTCO",0
+,pz,TG27            ,"TUBO GALV. C-40 X INM. DE 2"" TM.PYTCO   ",0
+,pz,TG28            ,"TUBO GALV. C-40 X INM.DE 2 1/2"" TM.PYTCO",0
+,pz,TG29            ,"TUBO GALV. C-40 X INM. DE 3"" TM.PYTCO   ",0
+,pz,TG30            ,"TUBO GALV. C-40 X INM. DE 4"" TM.PYTCO   ",0
+,pz,TSN01           ,"TUBO PVC SANITARIO DE NORMA 1 1/2"" TM   ",185
+,pz,TSN02           ,"TUBO PVC SANITARIO DE NORMA 2"" TM       ",0
+,pz,TSN03           ,"TUBO PVC SANITARIO DE NORMA 3"" TM       ",0
+,pz,TSN04           ,"TUBO PVC SANITARIO DE NORMA 4"" TM       ",0
+,pz,TSN05           ,"TUBO PVC SANITARIO DE NORMA 6"" TM       ",0
+,pz,TSN06           ,"TUBO PVC SANITARIO DE NORMA 8"" TM       ",0
+,pz,TSN07           ,"TUBO PVC SANITARIO DE NORMA 1 1/2"" MT   ",0
+,pz,TSN08           ,"TUBO PVC SANITARIO DE NORMA 2"" MT       ",0
+,pz,TSN09           ,"TUBO PVC SANITARIO DE NORMA 3"" MT       ",0
+,pz,TSN10           ,"TUBO PVC SANITARIO DE NORMA 4"" MT       ",0
+,pz,TSN11           ,"TUBO PVC SANITARIO DE NORMA 6"" MT       ",0
+,pz,TSN12           ,"TUBO PVC SANITARIO DE NORMA 8"" MT       ",0
+,pz,VAL01           ,MANIJA CROMADA ECON. V/ACERO TROP. 09200,0
+,pz,VAL02           ,"VALVULA ESFERA DE BRONCE ROSC. 1/2""     ",0
+,pz,VAL03           ,"VALVULA ESFERA  DE BRONCE ROSC.3/4""     ",0
+,pz,VAL04           ,"VALVULA ESFERA  DE BRONCE ROSC.1""       ",0
+,pz,VAL05           ,"VALVULA ESFERA  DE BRONCE ROSC.1 1/4""   ",0
+,pz,VAL06           ,"VALVULA ESFERA  DE BRONCE ROSC.11/2""    ",0
+,pz,VAL07           ,"VALVULA ESFERA  DE BRONCE ROSC. 2""      ",0
+,pz,VAL08           ,"VALVULA ESFERA  DE BRONCE SODABLE. 1/2"" ",0
+,pz,VAL09           ,"VALVULA ESFERA  DE BRONCE SOLDABLE 3/4"" ",0
+,pz,VAL10           ,"VALVULA ESFERA  DE BRONCE SOLDABLE 1""   ",0
+,pz,VAL11           ,"VALVULA ESFERA  DE BRONCE ROSC. 3""      ",0
+,pz,VAL12           ,"VALVULA ESFERA  DE BRONCE ROSC. 4""      ",0
+,pz,VAL13           ,"VALVULA COMPUERTA ROSCABLE 1/2"" 2500    ",0
+,pz,VAL14           ,"VALVULA COMPUERTA ROSCABLE 3/4"" 2501    ",0
+,pz,VAL15           ,"VALVULA COMPUERTA ROSCABLE 1"" 2502      ",0
+,pz,VAL16           ,"VALVULA COMPUERTA ROSCABLE 1 1/4"" 2503  ",0
+,pz,VAL17           ,"VALVULA COMPUERTA ROSCABLE 1 1/2"" 2504  ",0
+,pz,VAL18           ,"VALVULA COMPUERTA ROSCABLE 2"" 2505      ",0
+,pz,VAL19           ,"VALVULA COMPUERTA ROSCABLE 2 1/2"" 2506  ",0
+,pz,VAL20           ,"VALVULA COMPUERTA ROSCABLE 3"" 2507      ",0
+,pz,VAL21           ,"VALVULA COMPUERTA ROSCABLE 4"" 20508     ",0
+,pz,VAL22           ,"VALVULA COMPUERTA SOLDABLE 1/2"" 20510   ",0
+,pz,VAL23           ,"VALVULA COMPUERTA SOLDABLE 3/4"" 20511   ",0
+,pz,VAL24           ,"VALVULA COMPUERTA SOLDABLE 1"" 20512     ",0
+,pz,VAL25           ,"VALVULA COMPUERTA SOLDABLE 11/4"" 20513  ",0
+,pz,VAL26           ,"VALVULA COMPUERTA SOLDABLE 1 1/2"" 20514 ",0
+,pz,VAL27           ,"VALVULA COMPUERTA SOLDABLE 2"" 20515     ",0
+,pz,VAL28           ,"VALVULA GLOBO DE BRONCE 1/2"" ROSC.      ",0
+,pz,VAL29           ,"VALVULA GLOBO DE BRONCE 3/4""  ROSC.     ",0
+,pz,VAL30           ,"LLAVE DE NARIZ C/ROSCA 1/2"" YARDEN      ",0
+,pz,VAL31           ,"COMPUERTA DE FO.FO V.F. 2""              ",0
+,pz,VAL32           ,"COMPUERTA DE FO.FO V.F. 21/2""           ",0
+,pz,VAL33           ,"COMPUERTA DE FO.FO V.F. 3""              ",0
+,pz,VAL34           ,"COMPUERTA DE FO.FO V.F. 4""              ",0
+,pz,VAL35           ,"COMPUERTA DE FO.FO V.F. 6""              ",0
+,pz,VAL36           ,"COMPUERTA DE FO.FO V.F. 8""              ",0
+,pz,VAL37           ,"COMPUERTA DE FO.FO V.F. 10""             ",0
+,pz,VAL38           ,"COMPUERTA DE FO.FO V.F. 12""             ",0
+,pz,VAL39           ,"COMPUERTA DE FO.FO V.F. 14""             ",0
+,pz,VAL40           ,"COMPUERTA DE FO.FO V.F. 16""             ",0
+,pz,VAL41           ,"COMPUERTA DE FO.FO V.F. 18""             ",0
+,pz,VAL42           ,"COMPUERTA DE FO.FO V.F. 20""             ",0
+,pz,VAL43           ,"COMPUERTA DE FO.FO V.F. 24""             ",0
+,pz,VAL44           ,"COMPUERTA DE FO.FO V.F. 30""             ",0
+,pz,VAL45           ,"COMPUERTA DE FO.FO V.F. 36""             ",0
