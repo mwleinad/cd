@@ -103,6 +103,11 @@ $proveedor = new Proveedor;
 $paymentCompra = new PaymentCompra;
 $mail = new PHPMailer(true);
 
+//cfdi33
+include_once(DOC_ROOT."/services/Cfdi.php");
+
+$cfdi = new Cfdi;
+
 //$util->wwwRedirect();
 
 $smarty->assign('DOC_ROOT',DOC_ROOT);

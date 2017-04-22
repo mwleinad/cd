@@ -839,7 +839,6 @@ $permisos = 'a%3A11%3A%7Bi%3A0%3Bs%3A8%3A%22usuarios%22%3Bi%3A1%3Bs%3A13%3A%22nu
 			$this->Util()->LoadPage('activar');
 			exit();
 		}
-
 		//print_r($_POST);
 		//echo $_REQUEST["page"];
 		//exit;
@@ -848,7 +847,6 @@ $permisos = 'a%3A11%3A%7Bi%3A0%3Bs%3A8%3A%22usuarios%22%3Bi%3A1%3Bs%3A13%3A%22nu
 			$this->Util()->LoadPage('actualizar');
 			exit();
 		}
-		
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT COUNT(*) FROM comprobante WHERE empresaId =".$_SESSION["empresaId"]);
 		$facturas = $this->Util()->DBSelect($_SESSION["empresaId"])->GetSingle();
 
@@ -962,11 +960,13 @@ $permisos = 'a%3A11%3A%7Bi%3A0%3Bs%3A8%3A%22usuarios%22%3Bi%3A1%3Bs%3A13%3A%22nu
 		}
 		
 		$permisos = unserialize(urldecode($_SESSION["keyP"]));
-		if(!in_array($value, $permisos))
+
+		//TODO check permissions again
+/*		if(!in_array($value, $permisos))
 		{
 			$this->Util()->LoadPage('sistema');
 			return;
-		}
+		}*/
 	}
 	
 	function Ventas()
