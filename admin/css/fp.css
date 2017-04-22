@@ -1,0 +1,88 @@
+.dummy{}
+html{color:#000000;}
+table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var{font-weight:normal;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}
+q:before,q:after{content:'';}abbr,acronym {border:0;font-variant:normal;}sup {vertical-align:text-top;}sub {vertical-align:text-bottom;}
+input,textarea,select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+legend{color:#000;}strong{ font-weight:bold; }
+
+
+/* Normalizing Styles
+-----------------------------------------------------------------------------*/
+body{font-family: Verdana, Arial, Helvetica, sans-serif; color:#777676; margin:0; font-size:11px; text-align:justify; background:url(../images/bg.jpg) left top repeat-x;}
+.clear{clear:both;}
+p{margin:0 0 15px 0; line-height:16px;}
+h1{ clear:both; display:block; margin:0px; padding:0 0 15px 0;}
+h2{ clear:both; display:block; margin:0px; padding:0 0 15px 0; color:#fe5d00; font-size:18px;}
+h3{ clear:both; display:block; margin:0px; font-weight:normal; padding:0 0 10px 0; color:#fff; font-size:18px;}
+a{ outline:none;}
+/* container
+-----------------------------------------------------------------------------*/
+#container{width:915px; margin:0 auto;}
+
+/* Top Part
+-----------------------------------------------------------------------------*/
+#top{width:915px; float:left;}
+.logo-left{ width:60px; float:left;}
+.logo{ width:589px; float:left;}
+
+.top-menu{ width:238px; float:right; padding:55px 0 0 20px;}
+.top-menu ul{ margin:0px; padding:0px;}
+.top-menu li{ height:33px; line-height:33px; list-style:none; padding:0 1px 0 0; float:left;}
+.top-menu li a{ width:auto; background:#000; text-decoration:none; color:#fff; display:block; line-height:33px; height:33px;
+ font-size:12px; padding:0 12px;}
+.top-menu li a:hover,
+.top-menu li a.act-top{ background:#fc6101;}
+
+/* Header Part
+-----------------------------------------------------------------------------*/
+#header{ width:915px; float:left;}
+
+/*Main Nev Part
+-----------------------------------------------------------------------------*/
+.top-nev{width:855px; float:left; height:61px;  background:url(../images/nev-bg.jpg) left top repeat-x; padding:0 0 0 60px;}
+.top-nev ul{ margin:0px; padding:0px;}
+.top-nev li{ height:61px; line-height:61px; float:left; list-style:none; padding:0 45px 0 14px; background:url(../images/sep-img.jpg) right top no-repeat;}
+.top-nev li a{ width:auto; text-decoration:none; color:#000; display:block; font-size:14px; font-weight:bold; line-height:61px; height:61px;}
+.top-nev li a:hover,
+.top-nev li a.act-nev{color:#fff;}
+
+/*Content Part
+-----------------------------------------------------------------------------*/
+#content{ width:850px; float:left; padding:24px 38px 0 27px;}
+.content-blok{ width:850px; float:left; padding:0 0 20px 0;}
+.our-mission{ width:462px; float:left; background:url(../images/img-line.jpg) right top no-repeat;}
+.our-mission-img{ width:auto; float:left;}
+.our-mission-text{ width:298px; float:left;}
+#content .our-mission p{margin:0 0 10px 0; line-height:14px;}
+#content1{ width:850px; float:left; padding:24px 38px 0 27px; font-size:12px;}
+#content1 h1{clear:both; display:block; padding:0 0 5px 0; border-bottom:1px solid #964605; font-size:20px; color:#000; margin:0 0 5px 0;}
+
+
+.factory-employees {width:360px; float:left; padding:0 0 0 26px;}
+#content .factory-employees p{margin:0 0 10px 0; line-height:14px;}
+.factory-employees1{ color:#000;}
+
+.fast{width:225px; float:left;}
+.fast ul{ margin:0px; padding:0px;}
+.fast li{ height:24px; line-height:24px; list-style:none; padding:0 10px;  background:url(../images/dot-img.jpg) left center no-repeat; font-weight:bold; color:#333;}
+
+.factory-employees12 {width:346px; float:left; padding:10px 20px 0 20px; background:#5f5f5f; color:#fff;}
+#content .factory-employees12 p{margin:0 0 10px 0; line-height:14px;}
+.factory-employees12 a{ color:#fff; text-decoration: underline;}
+.factory-employees12 a:hover{text-decoration:none;}
+factory-employees12 span{ float:right;}
+.right-img{ width:auto; float: right; padding:0 0 0 10px;}
+
+/*footer Part
+-----------------------------------------------------------------------------*/
+#footer{ width:915px; float:left; background:#5d5e54; margin:20px 0 0 0; padding:0 0 20px 0;}
+
+.footer-menu{ width:915px; float:left; text-align: center; padding:20px 0 0 0; color:#fff;}
+.footer-menu ul{ margin:0px; padding:0px;}
+.footer-menu li{ height:14px; line-height:14px; list-style:none; padding:0 5px; display:inline;}
+.footer-menu li a{ width:auto; text-decoration:none; color:#fff; line-height:14px; height:14px; font-size:12px;}
+.footer-menu li a:hover,
+.footer-menu li a.act-bot{ color:#fc6101;}
+.copy-right{ width:885px; float:left; text-align:right; color:#1c1c1c; font-size:10px; padding:0 30px 0 0;}
+.left-img{ width:auto; float:left; padding:0 15px 0 0;}

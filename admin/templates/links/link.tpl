@@ -1,0 +1,1 @@
+<a href="{$link}"{if $target} target="{$target}"{/if}><span style="color:#000;">{$name}</span></a>
