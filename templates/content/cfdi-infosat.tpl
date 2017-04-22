@@ -1,0 +1,2 @@
+			                             
+          <p>El SAT te ofrece una herramienta en la cual puedes recibir orientación telefónica acerca de los Comprobantes Fiscales Digitales. Llama al 01 800 INFOSAT y recibirás asesoría personalizada, ayuda en línea mientras navegas por Internet.</p>

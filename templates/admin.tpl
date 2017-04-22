@@ -1,0 +1,1 @@
+{include file="menus/admin.tpl"}
