@@ -227,6 +227,7 @@ $newDb->setQuery("CREATE TABLE IF NOT EXISTS `rfc` (
   `municipio` varchar(255) NOT NULL,
   `referencia` varchar(255) NOT NULL,
   `estado` varchar(255) NOT NULL,
+  `curp` varchar(255) NOT NULL,
   `cp` int(5) NOT NULL,
   `activo` enum('si','no') NOT NULL default 'no',
   `main` enum('no','si') NOT NULL,
