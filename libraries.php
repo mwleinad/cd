@@ -105,8 +105,10 @@ $mail = new PHPMailer(true);
 
 //cfdi33
 include_once(DOC_ROOT."/services/Cfdi.php");
+include_once(DOC_ROOT."/services/Catalogo.php");
 
 $cfdi = new Cfdi;
+$catalogo = new Catalogo;
 
 //$util->wwwRedirect();
 

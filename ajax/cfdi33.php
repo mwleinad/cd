@@ -58,6 +58,9 @@ switch($_POST["type"])
         $producto->setPorcentajeIsh($_POST["ishConcepto"]);
         $producto->setCuentaPredial($_POST["cuentaPredial"]);
 
+        $producto->setClaveProdServ($_POST["c_ClaveProdServ"]);
+        $producto->setClaveUnidad($_POST["c_ClaveUnidad"]);
+
         switch($_POST["fromAddenda"])
         {
             case "Pepsico":

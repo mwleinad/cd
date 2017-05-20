@@ -177,6 +177,20 @@ class Producto extends Sucursal
 		$this->cuentaPredial = $value;
 	}
 
+	private $claveProdServ;
+	public function setClaveProdServ($value)
+	{
+		$this->Util()->ValidateString($value, $max_chars=200, $minChars = 0, "Clave Prod Serv");
+		$this->claveProdServ = $value;
+	}
+
+	private $claveUnidad;
+	public function setClaveUnidad($value)
+	{
+		$this->Util()->ValidateString($value, $max_chars=200, $minChars = 0, "Clave Unidad");
+		$this->claveUnidad = $value;
+	}
+
 	public function getItem()
 	{
 		return $this->item;
@@ -396,7 +410,9 @@ class Producto extends Sucursal
 		$_SESSION["conceptos"][$conceptos]["tipoGanado"] = $this->tipoGanado;
 		$_SESSION["conceptos"][$conceptos]["peso"] = $this->peso;
 		$_SESSION["conceptos"][$conceptos]["cuentaPredial"] = $this->cuentaPredial;
-		
+		$_SESSION["conceptos"][$conceptos]["claveProdServ"] = $this->claveProdServ;
+		$_SESSION["conceptos"][$conceptos]["claveUnidad"] = $this->claveUnidad;
+
 		return true;
 	}
 

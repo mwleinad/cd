@@ -161,6 +161,16 @@ $smarty->assign("comprobantes", $comprobantes);
 $sucursal->setRfcId($rfc->getRfcActive());
 $sucursal->setEmpresaId($_SESSION["empresaId"], 1);
 
+//nuevos catalogos
+$formasDePago = $catalogo->formasDePago();
+$smarty->assign("formasDePago", $formasDePago);
+
+$metodosDePago = $catalogo->metodosDePago();
+$smarty->assign("metodosDePago", $metodosDePago);
+
+$usoCfdi = $catalogo->usoCfdi();
+$smarty->assign("usoCfdi", $usoCfdi);
+
 $resSucursales = $sucursal->GetSucursalesByRfc();
 
 foreach($resSucursales as $key => $res)

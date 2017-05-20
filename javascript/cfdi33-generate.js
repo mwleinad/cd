@@ -260,7 +260,7 @@ function AgregarConcepto()
     descripcion = descripcion.replace("+","[%]MAS[%]");
     $("descripcion").value = descripcion;
     $('conceptos').innerHTML = '<div align="center"><img src="'+WEB_ROOT+'/images/load.gif" /></div>';
-    new Ajax.Request(WEB_ROOT+'/ajax/sistema.php',
+    new Ajax.Request(WEB_ROOT+'/ajax/cfdi33.php',
         {
             method:'post',
             parameters: $('conceptoForm').serialize(true),
@@ -417,6 +417,7 @@ function GenerarComprobante()
     $('sucursalId').enable();
     $('porcentajeIEPS').enable();
     $('nuevaFactura').enable();
+    $('usoCfdi').enable();
 
     if($('reviso')) var reviso = $('reviso').value;
     else var reviso = "";

@@ -11,6 +11,7 @@ class Xml extends Producto{
     private $totalOtrosPagos;
 
     private $miEmpresa;
+    private $nodosConceptos;
     //TODO move the xml to an object to make it global
     private $xml;
     private $root;
@@ -19,6 +20,24 @@ class Xml extends Producto{
 
     private $tipoComprobante;
 
+    public function CadenaOriginal($xmlFile) {
+        $xslFile = DOC_ROOT."/xslt/cadenaoriginal_3_3.xslt";
+        $xsl = new DOMDocument();
+        $xsl->load($xslFile);
+
+        $proc = new XSLTProcessor;
+        $proc->importStyleSheet($xsl);
+
+        $xml = new DOMDocument("1.0","UTF-8");
+        $xml->load($xmlFile);
+        $cadenaOriginal = $proc->transformToXML($xml);
+
+        $cadenaOriginal = trim($cadenaOriginal);
+        echo $cadenaOriginal = str_replace("\n        |", "|", $cadenaOriginal);
+
+        return $cadenaOriginal;
+    }
+
     function Generate($data, $totales, $nodosConceptos,$empresa)
     {
         $this->data = $data;
@@ -26,13 +45,14 @@ class Xml extends Producto{
 
         $this->miEmpresa = $this->Info();
 
+        $this->nodosConceptos = $nodosConceptos;
+
         $this->xml = new DOMdocument("1.0","UTF-8");
 
         $this->formatDate();
         $this->getTipoComprobante();
 
         $this->buildNodoRoot();
-        exit;
 
         $this->buildNodoCfdisRelacionados();
 
@@ -168,10 +188,10 @@ class Xml extends Producto{
 
         //TODO viene del catalogo de formas de pago
         if(!$this->isPago()) {
-            $rootData["FormaDePago"] = $this->Util()->CadenaOriginalVariableFormat($this->data["formaDePago"],false,false);
+            $rootData["FormaPago"] = $this->Util()->CadenaOriginalVariableFormat($this->data["formaDePago"],false,false);
         }
 
-        $rootData["NoCertificado"] = $this->Util()->CadenaOriginalVariableFormat($this->data["noCertificado"],false,false);
+        $rootData["NoCertificado"] = $this->Util()->CadenaOriginalVariableFormat($this->data["serie"]["noCertificado"],false,false);
 
         $rootData["Certificado"] = $this->data["certificado"];
 
@@ -210,7 +230,7 @@ class Xml extends Producto{
 
         //TODO viene de catalogo metodo de pago
         //Revisar tipo de pago PPD, es posible que no lo soportemos por ahora.
-        $rootData["MetodoDePago"] = $this->Util()->CadenaOriginalVariableFormat($this->data["metodoDePago"],false,false);
+        $rootData["MetodoPago"] = $this->Util()->CadenaOriginalVariableFormat($this->data["metodoDePago"],false,false);
 
         $rootData["LugarExpedicion"] = $this->Util()->CadenaOriginalVariableFormat($this->data["nodoEmisor"]["rfc"]["cp"],false,false);
 
@@ -219,7 +239,6 @@ class Xml extends Producto{
 
         //TODO No debe existir el nodo impuestos si el tipo es T, P o N
 
-        print_r($rootData);
         return $rootData;
     }
 
@@ -242,40 +261,40 @@ class Xml extends Producto{
         $this->receptor = $this->root->appendChild($this->receptor);
 
         $receptorData = array(
-            "Rfc"=>$this->Util()->CadenaOriginalVariableFormat($this->nodoReceptor["rfc"],false,false),
-            "Nombre"=>$this->Util()->CadenaOriginalVariableFormat($this->nodoReceptor["nombre"],false,false)
+            "Rfc"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["rfc"],false,false),
+            "Nombre"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["nombre"],false,false),
             //TODO Residencia fiscal, viene del catalogo c_Pais, obligatorio para rfcs extranjeros
-            //NumRegIdTrib, obligatorio con complemento de comercio exterior
+            //NumRegIdTrib, obligatorio con complemento de comercio exterior (no se agregara ya que no lo soportamos)
             //solo para extranjeros
-            //UsoCfdi para complemento de pagos se debe usar P01
+            "UsoCFDI"=>$this->Util()->CadenaOriginalVariableFormat($this->data["usoCfdi"],false,false)
         );
 
-        $this->CargaAtt($receptor, $receptorData);
+        $this->CargaAtt($this->receptor, $receptorData);
     }
 
     private function formatDate() {
-        //	$this->data["fecha"] = "2010-09-22T07:45:09";
-        $this->data["fecha"] = explode(" ", $this->data["fecha"]);
-        $this->data["fecha"] = $this->data["fecha"][0]."T".$this->data["fecha"][1];
+        $this->data["fecha"] = "2017-05-20T10:45:09";
+        //$this->data["fecha"] = explode(" ", $this->data["fecha"]);
+        //$this->data["fecha"] = $this->data["fecha"][0]."T".$this->data["fecha"][1];
     }
 
     private function buildNodoConceptos() {
-        $conceptos = $xml->createElement("cfdi:Conceptos");
-        $conceptos = $root->appendChild($conceptos);
+        $conceptos = $this->xml->createElement("cfdi:Conceptos");
+        $conceptos = $this->root->appendChild($conceptos);
         //TODO para complemento de pagos se debe capturar 84111506
         //para P no debe existir el NoIdentificacion, en unidad debe ser ACT, descripcion debe ser pago, unitario
         //importe deben de ser 0, descuento no debe existir
-        foreach($nodosConceptos as $concepto)
+        foreach($this->nodosConceptos as $concepto)
         {
-            $myConcepto = $xml->createElement("cfdi:Concepto");
+            $myConcepto = $this->xml->createElement("cfdi:Concepto");
 
-            if($data["fromNomina"])
+            if($this->data["fromNomina"])
             {
                 $cantidad = $this->Util()->CadenaOriginalVariableFormat($concepto["cantidad"],false,false,false,false,true);
                 $concepto["unidad"] = "ACT";
                 $concepto["descripcion"] = "Pago de nómina";
-                $concepto["valorUnitario"] = $totales["subtotal"];
-                $concepto["importe"] = $totales["subtotal"];
+                $concepto["valorUnitario"] = $this->totales["subtotal"];
+                $concepto["importe"] = $this->totales["subtotal"];
             }
             else
             {
@@ -284,10 +303,10 @@ class Xml extends Producto{
 
             $myConcepto = $conceptos->appendChild($myConcepto);
             $this->CargaAtt($myConcepto, array(
-                    //TODO ClaveProdServ el generico es 01010101
+                    "ClaveProdServ"=>$this->Util()->CadenaOriginalVariableFormat($concepto["claveProdServ"],false,false),
                     "NoIdentificacion"=>$this->Util()->CadenaOriginalVariableFormat($concepto["noIdentificacion"],false,false),
                     "Cantidad"=>$cantidad,
-                    //TODO ClaveUnidad hacer un catalogo mas simple de posibles claves
+                    "ClaveUnidad"=>$this->Util()->CadenaOriginalVariableFormat($concepto["claveUnidad"],false,false),
                     "Unidad"=>$this->Util()->CadenaOriginalVariableFormat($concepto["unidad"],false,false),
                     "Descripcion"=>$this->Util()->CadenaOriginalVariableFormat($concepto["descripcion"],false,false),
                     "ValorUnitario"=>$this->Util()->CadenaOriginalVariableFormat($concepto["valorUnitario"],true,false),
@@ -314,7 +333,7 @@ class Xml extends Producto{
             //TODO informacion aduanera
             if(strlen($concepto["cuentaPredial"]) > 0)
             {
-                $cuentaPredial = $xml->createElement("cfdi:CuentaPredial");
+                $cuentaPredial = $this->xml->createElement("cfdi:CuentaPredial");
                 $cuentaPredial = $myConcepto->appendChild($cuentaPredial);
                 $this->CargaAtt($cuentaPredial, array(
                         "Numero"=>$this->Util()->CadenaOriginalVariableFormat($concepto["cuentaPredial"],false,false),
@@ -328,92 +347,98 @@ class Xml extends Producto{
     }
 
     private function buildNodoImpuestos() {
-        $impuestos = $xml->createElement("cfdi:Impuestos");
-        $impuestos = $root->appendChild($impuestos);
+        $impuestos = $this->xml->createElement("cfdi:Impuestos");
+        $impuestos = $this->root->appendChild($impuestos);
 
-        if(!$data["fromNomina"])
+        if(!$this->data["fromNomina"])
         {
             $this->CargaAtt($impuestos, array(
-                    "TotalImpuestosRetenidos" => $this->Util()->CadenaOriginalVariableFormat($totales["retIsr"]+$totales["retIva"],true,false),
-                    "TotalImpuestosTrasladados" => $this->Util()->CadenaOriginalVariableFormat($totales["iva"]+$totales["ieps"],true,false))
+                "TotalImpuestosRetenidos" => $this->Util()->CadenaOriginalVariableFormat($this->totales["retIsr"]+$this->totales["retIva"],true,false),
+                "TotalImpuestosTrasladados" => $this->Util()->CadenaOriginalVariableFormat($this->totales["iva"]+$this->totales["ieps"],true,false))
             );
 
-            $retenciones = $xml->createElement("cfdi:Retenciones");
-            $retenciones = $impuestos->appendChild($retenciones);
+            if($this->totales["retIva"] + $this->totales["retIsr"] > 0) {
 
-            $retencion = $xml->createElement("cfdi:Retencion");
-            $retencion = $retenciones->appendChild($retencion);
+                $retenciones = $this->xml->createElement("cfdi:Retenciones");
+                $retenciones = $impuestos->appendChild($retenciones);
 
-            $this->CargaAtt($retencion, array(
-                    //TODO viene del catalogo impuesto
-                    "Impuesto" => $this->Util()->CadenaOriginalVariableFormat("IVA",false,false),
-                    //TODO TasaOCuota registrar
-                    "Importe" => $this->Util()->CadenaOriginalVariableFormat($totales["retIva"],true,false)
-                )
-            );
+                if($this->totales["retIva"] > 0) {
+                    $retencion = $this->xml->createElement("cfdi:Retencion");
+                    $retencion = $retenciones->appendChild($retencion);
 
-            //TODO checar esta otra retencion
-            /*			$retencion = $xml->createElement("cfdi:Retencion");
-                        $retencion = $retenciones->appendChild($retencion);
+                    $this->CargaAtt($retencion, array(
+                            "Impuesto" => $this->Util()->CadenaOriginalVariableFormat("001",false,false),
+                            "Importe" => $this->Util()->CadenaOriginalVariableFormat($this->totales["retIva"],true,false)
+                        )
+                    );
+                }
 
-                        $this->CargaAtt($retencion, array(
-                                        "impuesto" => $this->Util()->CadenaOriginalVariableFormat("ISR",false,false),
-                                        "importe" => $this->Util()->CadenaOriginalVariableFormat($totales["retIsr"],true,false))
-                        );*/
+                if($this->totales["retIsr"] > 0) {
+                    $retencion = $this->xml->createElement("cfdi:Retencion");
+                    $retencion = $retenciones->appendChild($retencion);
 
-            $traslados = $xml->createElement("cfdi:Traslados");
-            $traslados = $impuestos->appendChild($traslados);
+                    $this->CargaAtt($retencion, array(
+                        "Impuesto" => $this->Util()->CadenaOriginalVariableFormat("002",false,false),
+                        "Importe" => $this->Util()->CadenaOriginalVariableFormat($this->totales["retIsr"],true,false))
+                    );
+                }
+            }
 
-            $traslado = $xml->createElement("cfdi:Traslado");
-            $traslado = $traslados->appendChild($traslado);
+            if($this->totales["iva"] + $this->totales["ieps"] > 0) {
+                $traslados = $this->xml->createElement("cfdi:Traslados");
+                $traslados = $impuestos->appendChild($traslados);
 
-            $this->CargaAtt($traslado, array(
-                    //TODO Base, es el valor del calculo de impuesto que se traslada, Cuando TipoFactor sea Tasa
-                    //este campo puede tener solo los decimales que tenga la moneda y si es Cuota, hasta 6 decimales
-                    //TODO viene del catalogo impuesto
-                    "Impuesto" => $this->Util()->CadenaOriginalVariableFormat("IVA",false,false),
-                    //TODO TipoFactor viene del catalogo c_TipoFactor
-                    //TODO TasaOCuota registrar
-                    //"tasa" => $this->Util()->CadenaOriginalVariableFormat($totales["tasaIva"],true,false),
-                    //TODO importe solo va si el tipo de factor es tasa o cuota
-                    "Importe" => $this->Util()->CadenaOriginalVariableFormat($totales["iva"],true,false)
-                )
-            );
+                if($this->totales["iva"] > 0) {
+                    $traslado = $this->xml->createElement("cfdi:Traslado");
+                    $traslado = $traslados->appendChild($traslado);
 
-            //TODO checar traslado del IEPS
-            /*			$traslado = $xml->createElement("cfdi:Traslado");
-                        $traslado = $traslados->appendChild($traslado);
+                    $this->CargaAtt($traslado, array(
+                            "Impuesto" => $this->Util()->CadenaOriginalVariableFormat("001",false,false),
+                            "TipoFactor" => $this->Util()->CadenaOriginalVariableFormat("Tasa",false,false),
+                            "TasaOCuota" => $this->Util()->CadenaOriginalFormat($this->totales["tasaIva"] / 100,6,false),
+                            "Importe" => $this->Util()->CadenaOriginalVariableFormat($this->totales["iva"],true,false)
+                        )
+                    );
+                }
 
-                        $this->CargaAtt($traslado, array(
-                                "impuesto" => $this->Util()->CadenaOriginalVariableFormat("IEPS",false,false),
-                                "tasa" => $this->Util()->CadenaOriginalVariableFormat($totales["porcentajeIEPS"],true,false),
-                                "importe" => $this->Util()->CadenaOriginalVariableFormat($totales["ieps"],true,false))
-                                            );
-                        }*/
+                if($this->totales["ieps"] > 0) {
+                    $traslado = $this->xml->createElement("cfdi:Traslado");
+                    $traslado = $traslados->appendChild($traslado);
+
+                    $this->CargaAtt($traslado, array(
+                            "impuesto" => $this->Util()->CadenaOriginalVariableFormat("003",false,false),
+                            "TipoFactor" => $this->Util()->CadenaOriginalVariableFormat("Tasa",false,false),
+                            "TasaOCuota" => $this->Util()->CadenaOriginalFormat($this->totales["porcentajeIEPS"] / 100,6,false),
+                            "Importe" => $this->Util()->CadenaOriginalVariableFormat($this->totales["ieps"],true,false)
+                        )
+                    );
+                }
+
+
+            }
         }
     }
 
     private function buildNodoComplementos() {
         //TODO Para tipo N, P, o T no debe existir
-        $complementos = $xml->createElement("cfdi:Complemento");
-        $complementos = $root->appendChild($complementos);
+        $complementos = $this->xml->createElement("cfdi:Complemento");
+        $complementos = $this->root->appendChild($complementos);
 
-        if($data["fromNomina"])
+        if($this->data["fromNomina"])
         {
             include_once(DOC_ROOT."/classes/complemento_nomina_12_xml.php");
             $this->xsdNomina = "http://www.sat.gob.mx/nomina http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd";
         }
 
-        if($miEmpresa["donatarias"] == "Si")
+        if($this->miEmpresa["donatarias"] == "Si")
         {
             include_once(DOC_ROOT."/addComplementos/complemento_donataria_xml.php");
             $this->xsdDonataria = "http://www.sat.gob.mx/donat http://www.sat.gob.mx/sitio_internet/cfd/donat/donat11.xsd";
         }
 
-        if($totales['porcentajeISH'] > 0){
+        if($this->totales['porcentajeISH'] > 0){
             include_once(DOC_ROOT."/addImpuestos/complemento_ish_xml.php");
-            $this->$xsdImplocal = "http://www.sat.gob.mx/implocal http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xsd";
-
+            $this->xsdImplocal = "http://www.sat.gob.mx/implocal http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xsd";
         }
 
         //TODO complemento pagos
@@ -449,7 +474,7 @@ class Xml extends Producto{
     }
 
     private function save() {
-        $nufa = $empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
+        $nufa = $this->miEmpresa["empresaId"]."_".$this->data["serie"]["serie"]."_".$this->data["folio"];
 
         $rfcActivo = $this->getRfcActive();
         $root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/facturas/xml/";
@@ -465,7 +490,7 @@ class Xml extends Producto{
             mkdir($root, 0777);
         }
 
-        return $xml->save($root.$nufa.".xml");
+        return $this->xml->save($root.$nufa.".xml");
     }
 }
 ?>

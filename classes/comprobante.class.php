@@ -525,7 +525,7 @@ class Comprobante extends Producto
 
 
 		//sign the original md5 with private key
-		exec("openssl dgst -sha1 -sign ".$file." -out ".$root."/md5sha1.txt ".$root."/md5.txt");
+		exec("openssl dgst -sha256 -sign ".$file." -out ".$root."/md5sha1.txt ".$root."/md5.txt");
 
 		$myFile = $root."/md5sha1.txt";
 		$fh = fopen($myFile, 'r');
@@ -535,7 +535,7 @@ class Comprobante extends Producto
 		exec("openssl rsa -in ".$file." -pubout -out ".$root."/publickey.txt");		
 				
 		//verify
-		exec("openssl dgst -sha1 -verify ".$root."/publickey.txt -out ".$root."/verified.txt -signature ".$root."/md5sha1.txt ".$root."/md5.txt");		
+		exec("openssl dgst -sha256 -verify ".$root."/publickey.txt -out ".$root."/verified.txt -signature ".$root."/md5sha1.txt ".$root."/md5.txt");
 		
 		$cadenaOriginalDecoded = utf8_decode($cadenaOriginal);
 
@@ -556,7 +556,7 @@ class Comprobante extends Producto
 		$keyFile = $root.$key;
 		$pkeyid = openssl_get_privatekey(file_get_contents($root.$key));
 //		openssl_sign($cadenaOriginal, $crypttext, $pkeyid, OPENSSL_ALGO_SHA1);
-		openssl_sign($cadenaOriginalDecoded, $crypttext, $pkeyid, OPENSSL_ALGO_SHA1);
+		openssl_sign($cadenaOriginalDecoded, $crypttext, $pkeyid, OPENSSL_ALGO_SHA256);
 
 		$data["sello"] = base64_encode($crypttext);  
 		

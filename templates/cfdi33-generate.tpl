@@ -58,9 +58,10 @@
 {/if}
 
 {if $version == "auto" && ($info.empresaId == 39 || $info.empresaId == 180)}
+    {*TODO nueva factura hotel*}
     {include file="forms/nueva-factura-hotel.tpl"}
 {else}
-    {include file="forms/nueva-factura.tpl"}
+    {include file="forms/cfdi33.tpl"}
 {/if}
 
 {include file="boxes/footer_factura.tpl"}

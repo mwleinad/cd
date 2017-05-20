@@ -6,10 +6,10 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 //ruta al archivo XML del CFDI
 $root = $_SERVER['DOCUMENT_ROOT'];
-$xmlFile= $root."/sistema/empresas/15/certificados/1/facturas/xml/15_A_95.xml";
+$xmlFile= $root."/sistema/empresas/15/certificados/1/facturas/xml/15_A_96.xml";
 
 // Ruta al archivo XSLT
-$xslFile = $root."/sistema/xslt/cadenaoriginal_3_2.xslt";
+$xslFile = $root."/sistema/xslt/cadenaoriginal_3_3.xslt";
 
 // Crear un objeto DOMDocument para cargar el CFDI
 $xml = new DOMDocument("1.0","UTF-8");
@@ -27,5 +27,9 @@ $proc->importStyleSheet($xsl);
 // Generar la cadena original y asignarla a una variable
 $cadenaOriginal = $proc->transformToXML($xml);
 
-echo $cadenaOriginal;
+$cadenaOriginal = trim($cadenaOriginal);
+
+echo json_encode($cadenaOriginal);
+echo str_replace("\n        |", "|", $cadenaOriginal);
+
 ?>

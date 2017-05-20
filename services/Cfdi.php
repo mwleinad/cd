@@ -224,51 +224,48 @@ class Cfdi extends Comprobante
             }
         }
 
-        if($vs->Util()->PrintErrors()){ return false; }
-        switch($_SESSION["version"])
-        {
-            case "auto":
-            case "v3":
-            case "construc":
-                include_once(DOC_ROOT.'/classes/cadena_original_v3.class.php');break;
-            case "2":
-                include_once(DOC_ROOT.'/classes/cadena_original_v2.class.php');break;
-        }
+        include_once(DOC_ROOT.'/services/Xml.php');
 
-        $cadena = new Cadena;
-        $cadenaOriginal = $cadena->BuildCadenaOriginal($data, $serie, $totales, $nodoEmisor, $nodoReceptor, $_SESSION["conceptos"]);
+        $xml = new Xml;
+        $xml->Generate($data, $totales, $_SESSION["conceptos"],$empresa);
 
-        $data["cadenaOriginal"] = utf8_encode($cadenaOriginal);
+        //despues de la generacion del xml, viene el timbrado.
+        $nufa = $empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
+        $rfcActivo = $this->getRfcActive();
+
+        $root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/facturas/xml/";
+
+        $root_dos = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/facturas/xml/timbres/";
+        $nufa_dos = "SIGN_".$empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
+
+        $xmlFile = $root.$nufa.".xml";
+
+        $cadenaOriginal = $xml->cadenaOriginal($xmlFile);
+
+        //$data["cadenaOriginal"] = utf8_encode($cadenaOriginal);
         $data["cadenaOriginal"] = $cadenaOriginal;
         $md5Cadena = utf8_decode($cadenaOriginal);
 
-        $md5 = sha1($md5Cadena);
+        $md5 = hash( 'sha256', $md5Cadena );
 
         $sello = $this->GenerarSello($cadenaOriginal, $md5);
         $data["sello"] = $sello["sello"];
         $data["certificado"] = $sello["certificado"];
 
-        include_once(DOC_ROOT.'/services/Xml.php');
-
+        //$xml->updateSello($xmlFile);
         $xml = new Xml;
-        $xmlDb = $xml->Generate($data, $totales, $_SESSION["conceptos"],$empresa);
+        $xml->Generate($data, $totales, $_SESSION["conceptos"],$empresa);
 
-        //despues de la generacion del xml, viene el timbrado.
-        if($_SESSION["version"] == "v3" || $_SESSION["version"] == "construc")
-        {
-            $nufa = $empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
-            $rfcActivo = $this->getRfcActive();
-            $root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/facturas/xml/";
-            $root_dos = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/facturas/xml/timbres/";
-            $nufa_dos = "SIGN_".$empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
-            $xmlFile = $root.$nufa.".xml";
+        exit;
+
+
+        //Generacion de cadena original
+
             $zipFile = $root.$nufa.".zip";
+
             $signedFile = $root."SIGN_".$nufa.".xml";
             $timbreFile = $root.$nufa."_timbre.zip";
-//			$timbradoFile = $root."timbreCFDi.xml";
-//			$timbradoFile = $root."/timbres/".$nufa.".xml";
             $timbradoFile = $root.$nufa_dos.".xml";
-            //$this->Util()->Zip($root, $nufa);
 
             $user = USER_PAC;
             $pw = PW_PAC;
@@ -316,7 +313,6 @@ class Cfdi extends Comprobante
 
 
             $data["timbreFiscal"] = $cadenaOriginalTimbre;
-        }
         //generatePDF
         //cambios 29 junio 2011
 
