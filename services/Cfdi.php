@@ -248,16 +248,15 @@ class Cfdi extends Comprobante
 
         $md5 = hash( 'sha256', $md5Cadena );
 
-        $sello = $this->GenerarSello($cadenaOriginal, $md5);
+
+        $selloObject = new Sello;
+        $sello = $selloObject->generar($cadenaOriginal, $md5);
         $data["sello"] = $sello["sello"];
         $data["certificado"] = $sello["certificado"];
 
         //$xml->updateSello($xmlFile);
         $xml = new Xml;
         $xml->Generate($data, $totales, $_SESSION["conceptos"],$empresa);
-
-        exit;
-
 
         //Generacion de cadena original
 
