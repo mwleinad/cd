@@ -18,6 +18,9 @@ class Xml extends Producto{
     private $emisor;
     private $receptor;
 
+    private $trasladosGlobales;
+    //TODO debe de existir un campo en traslados por cada tipo de tasa, factor e impuesto :/
+
     private $tipoComprobante;
 
     public function CadenaOriginal($xmlFile) {
@@ -321,6 +324,9 @@ class Xml extends Producto{
                 )
             );
 
+            //print_r($this->totales);
+            //print_r($concepto);
+
             if(!$this->isPago()) {
 
                 //Si alguno de los impuestos o retenciones existe, este nodo debe existir sino no
@@ -330,15 +336,16 @@ class Xml extends Producto{
                 }
 
                 //Si alguno de los impuestos existe el siguiente nodo debe de existir
-                if($this->totales["iva"] + $this->totales["ieps"] > 0) {
+                if($concepto["tasaIva"] > 0 || $concepto["porcentajeIeps"] > 0) {
                     $trasladosConcepto = $this->xml->createElement("cfdi:Traslados");
                     $trasladosConcepto = $impuestosConcepto->appendChild($trasladosConcepto);
 
-                    if($this->totales["iva"] > 0) {
+                    //si esta exento de iva no debemos de agregar el nodo
+                    if($concepto["tasaIva"] > 0) {
                         $trasladoConcepto = $this->xml->createElement("cfdi:Traslado");
                         $trasladoConcepto = $trasladosConcepto->appendChild($trasladoConcepto);
 
-                        $tasa = $this->totales["tasaIva"] / 100;
+                        $tasa = $concepto["tasaIva"] / 100;
                         $importe = $concepto["importe"] * $tasa;
 
                         $this->CargaAtt($trasladoConcepto, array(
@@ -349,24 +356,32 @@ class Xml extends Producto{
                                 "Importe" => $this->Util()->CadenaOriginalVariableFormat($importe,true,false)
                             )
                         );
+
+                        //construye nodo impuestos globales
+                        $this->trasladosGlobales['002'][(string)$tasa] += $importe;
                     }
 
-                    if($this->totales["ieps"] > 0) {
+                    if($concepto["porcentajeIeps"] > 0) {
                         $trasladoConcepto = $this->xml->createElement("cfdi:Traslado");
                         $trasladoConcepto = $trasladosConcepto->appendChild($trasladoConcepto);
 
-                        $tasa = $this->totales["porcentajeIEPS"] / 100;
-                        $importe = $concepto["importe"] * $tasa;
+                        $tasaIeps = $concepto["porcentajeIeps"] / 100;
+                        $importeIeps = $concepto["importe"] * $tasaIeps;
 
                         $this->CargaAtt($trasladoConcepto, array(
                                 "Base" => $this->Util()->CadenaOriginalVariableFormat($concepto["importe"],true,false),
-                                "impuesto" => $this->Util()->CadenaOriginalVariableFormat("003",false,false),
+                                "Impuesto" => $this->Util()->CadenaOriginalVariableFormat("003",false,false),
                                 "TipoFactor" => $this->Util()->CadenaOriginalVariableFormat("Tasa",false,false),
-                                "TasaOCuota" => $this->Util()->CadenaOriginalFormat($tasa,6,false),
-                                "Importe" => $this->Util()->CadenaOriginalVariableFormat($importe,true,false)
+                                "TasaOCuota" => $this->Util()->CadenaOriginalFormat($tasaIeps,6,false),
+                                "Importe" => $this->Util()->CadenaOriginalVariableFormat($importeIeps,true,false)
                             )
                         );
+
+                        //construye nodo impuestos globales
+                        $this->trasladosGlobales['003'][(string)$tasaIeps] += $importeIeps;
                     }
+
+                    //TODO ish (aunque creo que ese es impuesto local y va en el complemento
                 }
 
                 if($this->totales["retIva"] + $this->totales["retIsr"] > 0) {
@@ -374,7 +389,7 @@ class Xml extends Producto{
                     $retencionesConcepto = $this->xml->createElement("cfdi:Retenciones");
                     $retencionesConcepto = $impuestosConcepto->appendChild($retencionesConcepto);
 
-                    if($this->totales["retIva"] > 0) {
+                    if($this->totales["retIva"] > 0 && $concepto["tasaIva"] > 0) {
                         $retencionConcepto = $this->xml->createElement("cfdi:Retencion");
                         $retencionConcepto = $retencionesConcepto->appendChild($retencionConcepto);
 
@@ -466,37 +481,24 @@ class Xml extends Producto{
                 }
             }
 
-            if($this->totales["iva"] + $this->totales["ieps"] > 0) {
+            if(count($this->trasladosGlobales) > 0) {
                 $traslados = $this->xml->createElement("cfdi:Traslados");
                 $traslados = $impuestos->appendChild($traslados);
+            }
 
-                if($this->totales["iva"] > 0) {
+            foreach($this->trasladosGlobales as $keyImpuesto => $impuesto ) {
+                foreach($impuesto as $keyTasa => $importe) {
                     $traslado = $this->xml->createElement("cfdi:Traslado");
                     $traslado = $traslados->appendChild($traslado);
 
                     $this->CargaAtt($traslado, array(
-                            "Impuesto" => $this->Util()->CadenaOriginalVariableFormat("002",false,false),
+                            "Impuesto" => $this->Util()->CadenaOriginalVariableFormat($keyImpuesto,false,false),
                             "TipoFactor" => $this->Util()->CadenaOriginalVariableFormat("Tasa",false,false),
-                            "TasaOCuota" => $this->Util()->CadenaOriginalFormat($this->totales["tasaIva"] / 100,6,false),
-                            "Importe" => $this->Util()->CadenaOriginalVariableFormat($this->totales["iva"],true,false)
+                            "TasaOCuota" => $this->Util()->CadenaOriginalFormat($keyTasa,6,false),
+                            "Importe" => $this->Util()->CadenaOriginalVariableFormat($importe,true,false)
                         )
                     );
                 }
-
-                if($this->totales["ieps"] > 0) {
-                    $traslado = $this->xml->createElement("cfdi:Traslado");
-                    $traslado = $traslados->appendChild($traslado);
-
-                    $this->CargaAtt($traslado, array(
-                            "impuesto" => $this->Util()->CadenaOriginalVariableFormat("003",false,false),
-                            "TipoFactor" => $this->Util()->CadenaOriginalVariableFormat("Tasa",false,false),
-                            "TasaOCuota" => $this->Util()->CadenaOriginalFormat($this->totales["porcentajeIEPS"] / 100,6,false),
-                            "Importe" => $this->Util()->CadenaOriginalVariableFormat($this->totales["ieps"],true,false)
-                        )
-                    );
-                }
-
-
             }
         }
     }
