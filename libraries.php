@@ -107,10 +107,12 @@ $mail = new PHPMailer(true);
 include_once(DOC_ROOT."/services/Cfdi.php");
 include_once(DOC_ROOT."/services/Catalogo.php");
 include_once(DOC_ROOT."/services/Sello.php");
+include_once(DOC_ROOT."/services/Totales.php");
 
 $cfdi = new Cfdi;
 $catalogo = new Catalogo;
 $sello = new Sello;
+$totales = new Totales;
 
 //$util->wwwRedirect();
 

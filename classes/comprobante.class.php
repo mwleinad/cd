@@ -321,7 +321,6 @@ class Comprobante extends Producto
 
 		foreach($_SESSION["conceptos"] as $key => $concepto)
 		{
-			$data["ieps"] += $concepto["totalIeps"];
 			$data["ish"] += $concepto["totalIsh"];
 		} 
 
@@ -421,6 +420,7 @@ class Comprobante extends Producto
 				$paraRetencionIva += $_SESSION["conceptos"][$key]["importe"] - $data["descuentoThis"];
 			}
 
+			$data["ieps"] += $this->Util()->RoundNumber($_SESSION["conceptos"][$key]["totalIeps"]);
 		}
 		//print_r($data);
 		$afterDescuento = $data["subtotal"] - $data["descuento"];
@@ -434,13 +434,11 @@ class Comprobante extends Producto
 		//si la factura tiene descuento, descontar al ieps
 		if($data["porcentajeDescuento"] > 0)
 		{
-			$data["ieps"] = $this->Util()->RoundNumber($data["ieps"] - ($data["ieps"] * ($data["porcentajeDescuento"] / 100)));
 			$data["ish"] = $this->Util()->RoundNumber($data["ish"] - ($data["ish"] * ($data["porcentajeDescuento"] / 100)));
 		}
 		else
 		{
 			$data["ieps"] = $this->Util()->RoundNumber($data["ieps"]);			
-			$data["ish"] = $this->Util()->RoundNumber($data["ish"]);			
 		}
 		
 		if($data["porcentajeIEPS"] == 0 && $data["ieps"] > 0)

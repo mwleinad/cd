@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="639956da-fb65-4151-8e07-f83d31de76de" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/services/Totales.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/sistema.php" afterPath="$PROJECT_DIR$/ajax/sistema.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/comprobante.class.php" afterPath="$PROJECT_DIR$/classes/comprobante.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/producto.class.php" afterPath="$PROJECT_DIR$/classes/producto.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/libraries.php" afterPath="$PROJECT_DIR$/libraries.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/Xml.php" afterPath="$PROJECT_DIR$/services/Xml.php" />
     </list>
     <ignored path="CFDI3.3.iws" />
@@ -24,117 +29,7 @@
     <favorites_list name="CFDI3.3" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Xml.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/services/Xml.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30533117">
-              <caret line="366" column="0" selection-start-line="366" selection-start-column="0" selection-end-line="366" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Cfdi.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/services/Cfdi.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.8461537">
-              <caret line="265" column="26" selection-start-line="265" selection-start-column="26" selection-end-line="265" selection-end-column="26" />
-              <folding>
-                <marker date="1495310285200" expanded="true" signature="3281:3503" placeholder="SELECT * FRO..serie..." />
-                <marker date="1495310285200" expanded="true" signature="3611:3861" placeholder="SELECT * FRO..serie..." />
-                <marker date="1495310285200" expanded="true" signature="12503:14401" placeholder="INSERT INTO `comprobante`..." />
-                <marker date="1495310285200" expanded="true" signature="14543:14616" placeholder="SELECT compr..comprobante..." />
-                <marker date="1495310285200" expanded="true" signature="14817:15172" placeholder="INSERT INTO `notaVenta`..." />
-                <marker date="1495310285200" expanded="true" signature="15398:15465" placeholder="SELECT notaV..notaVenta..." />
-                <marker date="1495310285200" expanded="true" signature="15742:16317" placeholder="INSERT INTO `concepto`..." />
-                <marker date="1495310285200" expanded="true" signature="16465:16599" placeholder="UPDATE produ..." />
-                <marker date="1495310285200" expanded="true" signature="16864:16988" placeholder="INSERT INTO payment..." />
-                <marker date="1495310285200" expanded="true" signature="17186:17281" placeholder="UPDATE notaV..." />
-                <marker date="1495310285200" expanded="true" signature="17655:17728" placeholder="UPDATE serie..." />
-                <marker date="1495310285200" expanded="true" signature="17978:18041" placeholder="UPDATE serie..." />
-                <marker date="1495310285200" expanded="true" signature="18219:18314" placeholder="UPDATE notaV..." />
-                <marker date="1495310285200" expanded="true" signature="18653:18748" placeholder="UPDATE notaV..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pac.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/pac.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614">
-              <caret line="122" column="54" selection-start-line="122" selection-start-column="20" selection-end-line="122" selection-end-column="54" />
-              <folding>
-                <marker date="1495309758412" expanded="true" signature="512:568" placeholder="SELECT * FRO..comprobante..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="libraries.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/libraries.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.576923">
-              <caret line="112" column="19" selection-start-line="112" selection-start-column="19" selection-end-line="112" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="comprobante.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classes/comprobante.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.576923">
-              <caret line="1289" column="16" selection-start-line="1289" selection-start-column="16" selection-end-line="1289" selection-end-column="16" />
-              <folding>
-                <marker date="1495310054496" expanded="true" signature="210:357" placeholder="SELECT noCer..comprobante..." />
-                <marker date="1495310054496" expanded="true" signature="1753:1811" placeholder="UPDATE compr..." />
-                <marker date="1495310054496" expanded="true" signature="2776:2909" placeholder="SELECT noCer..comprobante..." />
-                <marker date="1495310054496" expanded="true" signature="4749:4884" placeholder="UPDATE compr..." />
-                <marker date="1495310054496" expanded="true" signature="5110:5215" placeholder="UPDATE compr..." />
-                <marker date="1495310054496" expanded="true" signature="6374:6507" placeholder="SELECT noCer..comprobante..." />
-                <marker date="1495310054496" expanded="true" signature="7933:7991" placeholder="UPDATE compr..." />
-                <marker date="1495310054496" expanded="true" signature="14650:14742" placeholder="SELECT tipoD..tiposComprobante..." />
-                <marker date="1495310054496" expanded="true" signature="18819:18872" placeholder="SELECT * FRO..comprobante..." />
-                <marker date="1495310054496" expanded="true" signature="19150:19198" placeholder="SELECT * FRO..comprobante..." />
-                <marker date="1495310054496" expanded="true" signature="19510:19585" placeholder="SELECT SUM(a..payment..." />
-                <marker date="1495310054496" expanded="true" signature="20204:20295" placeholder="SELECT COUNT..comprobante..." />
-                <marker date="1495310054496" expanded="true" signature="20551:20636" placeholder="SELECT * FRO..comprobante..." />
-                <marker date="1495310054496" expanded="true" signature="22091:22172" placeholder="SELECT SUM(a..payment..." />
-                <marker date="1495310054496" expanded="true" signature="22786:22892" placeholder="SELECT COUNT..comprobante..." />
-                <marker date="1495310054496" expanded="true" signature="23158:23258" placeholder="SELECT * FRO..comprobante..." />
-                <marker date="1495310054496" expanded="true" signature="24915:24996" placeholder="SELECT SUM(a..payment..." />
-                <marker date="1495310054496" expanded="true" signature="28564:28645" placeholder="SELECT SUM(a..payment..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Sello.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/services/Sello.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sistema.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/sistema.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614">
-              <caret line="355" column="47" selection-start-line="355" selection-start-column="47" selection-end-line="355" selection-end-column="47" />
-              <folding>
-                <marker date="1492876726367" expanded="true" signature="127:148" placeholder="SELECT * FRO..usuario..." />
-                <marker date="1492876726367" expanded="true" signature="11891:11965" placeholder="SELECT * FRO..empresa..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -142,8 +37,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/xslt/divisas.xslt" />
-        <option value="$PROJECT_DIR$/xslt/donat11.xslt" />
         <option value="$PROJECT_DIR$/xslt/ecb.xslt" />
         <option value="$PROJECT_DIR$/xslt/ecc.xslt" />
         <option value="$PROJECT_DIR$/xslt/ecc11.xslt" />
@@ -181,18 +74,20 @@
         <option value="$PROJECT_DIR$/templates/forms/cfdi33.tpl" />
         <option value="$PROJECT_DIR$/javascript/cfdi33-generate.js" />
         <option value="$PROJECT_DIR$/ajax/cfdi33.php" />
-        <option value="$PROJECT_DIR$/classes/producto.class.php" />
         <option value="$PROJECT_DIR$/classes/util.class.php" />
         <option value="$PROJECT_DIR$/xslt/cadenaoriginal_3_3.xslt" />
         <option value="$PROJECT_DIR$/xslt/Pagos10.xslt" />
         <option value="$PROJECT_DIR$/test2.php" />
         <option value="$PROJECT_DIR$/classes/pac.class.php" />
-        <option value="$PROJECT_DIR$/classes/comprobante.class.php" />
-        <option value="$PROJECT_DIR$/libraries.php" />
         <option value="$PROJECT_DIR$/services/Sello.php" />
-        <option value="$PROJECT_DIR$/services/Cfdi.php" />
         <option value="$PROJECT_DIR$/classes/complemento_nomina_12_xml.php" />
+        <option value="$PROJECT_DIR$/libraries.php" />
+        <option value="$PROJECT_DIR$/services/Totales.php" />
+        <option value="$PROJECT_DIR$/ajax/sistema.php" />
+        <option value="$PROJECT_DIR$/classes/comprobante.class.php" />
+        <option value="$PROJECT_DIR$/services/Cfdi.php" />
         <option value="$PROJECT_DIR$/services/Xml.php" />
+        <option value="$PROJECT_DIR$/classes/producto.class.php" />
       </list>
     </option>
   </component>
@@ -206,10 +101,9 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
+    <option name="x" value="-7" />
     <option name="width" value="1604" />
-    <option name="height" value="876" />
+    <option name="height" value="867" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -236,7 +130,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -255,51 +149,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CFDI3.3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CFDI3.3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="services" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CFDI3.3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CFDI3.3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="clearbox" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CFDI3.3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CFDI3.3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="classes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -312,7 +164,8 @@
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="SearchEverywhereHistoryKey" value="libra&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/libraries.php&#10;comproban&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/comprobante.class.php&#10;pac.cla&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/pac.class.php&#10;cfd&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/services/Cfdi.php&#10;test2&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/test2.php&#10;comprobante.class&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/comprobante.class.php&#10;complemento_ish_xml&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/addImpuestos/complemento_ish_xml.php&#10;empresa&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="producto&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/producto.class.php&#10;libra&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/libraries.php&#10;comproban&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/comprobante.class.php&#10;pac.cla&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/pac.class.php&#10;cfd&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/services/Cfdi.php&#10;test2&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/test2.php&#10;comprobante.class&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/comprobante.class.php&#10;complemento_ish_xml&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/addImpuestos/complemento_ish_xml.php&#10;empresa&#9;null&#9;null" />
+    <property name="last_opened_file_path" value="C:/wamp/www/tareas" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -383,26 +236,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1604" height="876" extended-state="0" />
-    <editor active="true" />
+    <frame x="-7" y="0" width="1604" height="867" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24811083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24811083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.083550915" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16776751" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.190625" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -423,20 +276,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/xslt/psgecfd.xslt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xslt/renovacionysustitucionvehiculos.xslt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/xslt/servicioparcialconstruccion.xslt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.65384614">
@@ -612,13 +451,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/producto.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3327616">
-          <caret line="414" column="0" selection-start-line="414" selection-start-column="0" selection-end-line="414" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.02660407">
@@ -726,21 +558,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33235726">
           <caret line="23" column="48" selection-start-line="23" selection-start-column="39" selection-end-line="23" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/services/Sello.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/sistema.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
+        <state vertical-scroll-proportion="8.584638">
           <caret line="355" column="47" selection-start-line="355" selection-start-column="47" selection-end-line="355" selection-end-column="47" />
           <folding>
             <marker date="1492876726367" expanded="true" signature="127:148" placeholder="SELECT * FRO..usuario..." />
@@ -749,44 +572,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/comprobante.class.php">
+    <entry file="file://$PROJECT_DIR$/services/Sello.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.576923">
-          <caret line="1289" column="16" selection-start-line="1289" selection-start-column="16" selection-end-line="1289" selection-end-column="16" />
-          <folding>
-            <marker date="1495310054496" expanded="true" signature="210:357" placeholder="SELECT noCer..comprobante..." />
-            <marker date="1495310054496" expanded="true" signature="1753:1811" placeholder="UPDATE compr..." />
-            <marker date="1495310054496" expanded="true" signature="2776:2909" placeholder="SELECT noCer..comprobante..." />
-            <marker date="1495310054496" expanded="true" signature="4749:4884" placeholder="UPDATE compr..." />
-            <marker date="1495310054496" expanded="true" signature="5110:5215" placeholder="UPDATE compr..." />
-            <marker date="1495310054496" expanded="true" signature="6374:6507" placeholder="SELECT noCer..comprobante..." />
-            <marker date="1495310054496" expanded="true" signature="7933:7991" placeholder="UPDATE compr..." />
-            <marker date="1495310054496" expanded="true" signature="14650:14742" placeholder="SELECT tipoD..tiposComprobante..." />
-            <marker date="1495310054496" expanded="true" signature="18819:18872" placeholder="SELECT * FRO..comprobante..." />
-            <marker date="1495310054496" expanded="true" signature="19150:19198" placeholder="SELECT * FRO..comprobante..." />
-            <marker date="1495310054496" expanded="true" signature="19510:19585" placeholder="SELECT SUM(a..payment..." />
-            <marker date="1495310054496" expanded="true" signature="20204:20295" placeholder="SELECT COUNT..comprobante..." />
-            <marker date="1495310054496" expanded="true" signature="20551:20636" placeholder="SELECT * FRO..comprobante..." />
-            <marker date="1495310054496" expanded="true" signature="22091:22172" placeholder="SELECT SUM(a..payment..." />
-            <marker date="1495310054496" expanded="true" signature="22786:22892" placeholder="SELECT COUNT..comprobante..." />
-            <marker date="1495310054496" expanded="true" signature="23158:23258" placeholder="SELECT * FRO..comprobante..." />
-            <marker date="1495310054496" expanded="true" signature="24915:24996" placeholder="SELECT SUM(a..payment..." />
-            <marker date="1495310054496" expanded="true" signature="28564:28645" placeholder="SELECT SUM(a..payment..." />
-          </folding>
+        <state vertical-scroll-proportion="0.26600283">
+          <caret line="11" column="17" selection-start-line="0" selection-start-column="0" selection-end-line="91" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/libraries.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.576923">
-          <caret line="112" column="19" selection-start-line="112" selection-start-column="19" selection-end-line="112" selection-end-column="19" />
-          <folding />
+        <state vertical-scroll-proportion="0.5884194">
+          <caret line="109" column="33" selection-start-line="109" selection-start-column="33" selection-end-line="109" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/classes/pac.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
+        <state vertical-scroll-proportion="2.9502134">
           <caret line="122" column="54" selection-start-line="122" selection-start-column="20" selection-end-line="122" selection-end-column="54" />
           <folding>
             <marker date="1495309758412" expanded="true" signature="512:568" placeholder="SELECT * FRO..comprobante..." />
@@ -794,34 +597,92 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ajax/sistema.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5326923">
+          <caret line="116" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/Totales.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7673611">
+          <caret line="44" column="0" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/comprobante.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="10.229018">
+          <caret line="421" column="0" selection-start-line="421" selection-start-column="0" selection-end-line="421" selection-end-column="0" />
+          <folding>
+            <marker date="1498339549803" expanded="true" signature="210:357" placeholder="SELECT noCer..comprobante..." />
+            <marker date="1498339549803" expanded="true" signature="1753:1811" placeholder="UPDATE compr..." />
+            <marker date="1498339549803" expanded="true" signature="2776:2909" placeholder="SELECT noCer..comprobante..." />
+            <marker date="1498339549803" expanded="true" signature="4749:4884" placeholder="UPDATE compr..." />
+            <marker date="1498339549803" expanded="true" signature="5110:5215" placeholder="UPDATE compr..." />
+            <marker date="1498339549803" expanded="true" signature="6374:6507" placeholder="SELECT noCer..comprobante..." />
+            <marker date="1498339549803" expanded="true" signature="7933:7991" placeholder="UPDATE compr..." />
+            <marker date="1498339549803" expanded="true" signature="14515:14607" placeholder="SELECT tipoD..tiposComprobante..." />
+            <marker date="1498339549803" expanded="true" signature="18684:18737" placeholder="SELECT * FRO..comprobante..." />
+            <marker date="1498339549803" expanded="true" signature="19015:19063" placeholder="SELECT * FRO..comprobante..." />
+            <marker date="1498339549803" expanded="true" signature="19375:19450" placeholder="SELECT SUM(a..payment..." />
+            <marker date="1498339549803" expanded="true" signature="20069:20160" placeholder="SELECT COUNT..comprobante..." />
+            <marker date="1498339549803" expanded="true" signature="20416:20501" placeholder="SELECT * FRO..comprobante..." />
+            <marker date="1498339549803" expanded="true" signature="21956:22037" placeholder="SELECT SUM(a..payment..." />
+            <marker date="1498339549803" expanded="true" signature="22651:22757" placeholder="SELECT COUNT..comprobante..." />
+            <marker date="1498339549803" expanded="true" signature="23023:23123" placeholder="SELECT * FRO..comprobante..." />
+            <marker date="1498339549803" expanded="true" signature="24780:24861" placeholder="SELECT SUM(a..payment..." />
+            <marker date="1498339549803" expanded="true" signature="28429:28510" placeholder="SELECT SUM(a..payment..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/services/Cfdi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537">
-          <caret line="265" column="26" selection-start-line="265" selection-start-column="26" selection-end-line="265" selection-end-column="26" />
+        <state vertical-scroll-proportion="6.28734">
+          <caret line="257" column="23" selection-start-line="257" selection-start-column="23" selection-end-line="257" selection-end-column="23" />
           <folding>
-            <marker date="1495310285200" expanded="true" signature="3281:3503" placeholder="SELECT * FRO..serie..." />
-            <marker date="1495310285200" expanded="true" signature="3611:3861" placeholder="SELECT * FRO..serie..." />
-            <marker date="1495310285200" expanded="true" signature="12503:14401" placeholder="INSERT INTO `comprobante`..." />
-            <marker date="1495310285200" expanded="true" signature="14543:14616" placeholder="SELECT compr..comprobante..." />
-            <marker date="1495310285200" expanded="true" signature="14817:15172" placeholder="INSERT INTO `notaVenta`..." />
-            <marker date="1495310285200" expanded="true" signature="15398:15465" placeholder="SELECT notaV..notaVenta..." />
-            <marker date="1495310285200" expanded="true" signature="15742:16317" placeholder="INSERT INTO `concepto`..." />
-            <marker date="1495310285200" expanded="true" signature="16465:16599" placeholder="UPDATE produ..." />
-            <marker date="1495310285200" expanded="true" signature="16864:16988" placeholder="INSERT INTO payment..." />
-            <marker date="1495310285200" expanded="true" signature="17186:17281" placeholder="UPDATE notaV..." />
-            <marker date="1495310285200" expanded="true" signature="17655:17728" placeholder="UPDATE serie..." />
-            <marker date="1495310285200" expanded="true" signature="17978:18041" placeholder="UPDATE serie..." />
-            <marker date="1495310285200" expanded="true" signature="18219:18314" placeholder="UPDATE notaV..." />
-            <marker date="1495310285200" expanded="true" signature="18653:18748" placeholder="UPDATE notaV..." />
+            <marker date="1498339659995" expanded="true" signature="3281:3503" placeholder="SELECT * FRO..serie..." />
+            <marker date="1498339659995" expanded="true" signature="3611:3861" placeholder="SELECT * FRO..serie..." />
+            <marker date="1498339659995" expanded="true" signature="12503:14401" placeholder="INSERT INTO `comprobante`..." />
+            <marker date="1498339659995" expanded="true" signature="14543:14616" placeholder="SELECT compr..comprobante..." />
+            <marker date="1498339659995" expanded="true" signature="14817:15172" placeholder="INSERT INTO `notaVenta`..." />
+            <marker date="1498339659995" expanded="true" signature="15398:15465" placeholder="SELECT notaV..notaVenta..." />
+            <marker date="1498339659995" expanded="true" signature="15742:16317" placeholder="INSERT INTO `concepto`..." />
+            <marker date="1498339659995" expanded="true" signature="16465:16599" placeholder="UPDATE produ..." />
+            <marker date="1498339659995" expanded="true" signature="16864:16988" placeholder="INSERT INTO payment..." />
+            <marker date="1498339659995" expanded="true" signature="17186:17281" placeholder="UPDATE notaV..." />
+            <marker date="1498339659995" expanded="true" signature="17655:17728" placeholder="UPDATE serie..." />
+            <marker date="1498339659995" expanded="true" signature="17978:18041" placeholder="UPDATE serie..." />
+            <marker date="1498339659995" expanded="true" signature="18219:18314" placeholder="UPDATE notaV..." />
+            <marker date="1498339659995" expanded="true" signature="18653:18748" placeholder="UPDATE notaV..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/services/Xml.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30533117">
-          <caret line="366" column="0" selection-start-line="366" selection-start-column="0" selection-end-line="366" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="455" column="79" selection-start-line="455" selection-start-column="79" selection-end-line="455" selection-end-column="79" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/producto.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2347084">
+          <caret line="608" column="23" selection-start-line="608" selection-start-column="23" selection-end-line="608" selection-end-column="23" />
+          <folding>
+            <marker date="1498346134020" expanded="true" signature="7219:7376" placeholder="SELECT * FRO..producto..." />
+            <marker date="1498346134020" expanded="true" signature="7573:7697" placeholder="SELECT COUNT..producto..." />
+            <marker date="1498346134020" expanded="true" signature="8032:8150" placeholder="SELECT * FRO..producto..." />
+            <marker date="1498346134020" expanded="true" signature="8504:8614" placeholder="SELECT * FRO..producto..." />
+            <marker date="1498346134020" expanded="true" signature="24691:25106" placeholder="INSERT INTO `producto`..." />
+            <marker date="1498346134020" expanded="true" signature="25472:25891" placeholder="UPDATE `prod..." />
+            <marker date="1498346134020" expanded="true" signature="26289:26368" placeholder="UPDATE produ..." />
+            <marker date="1498346134020" expanded="true" signature="26697:26762" placeholder="SELECT * FRO..producto..." />
+          </folding>
         </state>
       </provider>
     </entry>

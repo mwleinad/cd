@@ -109,7 +109,12 @@ switch($_POST["type"])
 		$smarty->display(DOC_ROOT.'/templates/lists/impuestos.tpl');
 	
 		break;
-	case "updateTotalesDesglosados": 
+	case "updateTotalesDesglosados":
+
+/*		$totalDesglosado = $totales->calculate();
+		//print_r($totalDesglosado);
+		$totalDesglosado = $producto->GetTotalDesglosado();*/
+
 		$totalDesglosado = $producto->GetTotalDesglosado();
 		$smarty->assign("impuestos", $totalDesglosado["impuestos"]);
 		unset($totalDesglosado["impuestos"]);		
