@@ -171,6 +171,9 @@ $smarty->assign("metodosDePago", $metodosDePago);
 $usoCfdi = $catalogo->usoCfdi();
 $smarty->assign("usoCfdi", $usoCfdi);
 
+$tipoRelacion = $catalogo->tipoRelacion();
+$smarty->assign("tipoRelacion", $tipoRelacion);
+
 $resSucursales = $sucursal->GetSucursalesByRfc();
 
 foreach($resSucursales as $key => $res)

@@ -15,6 +15,7 @@ class Xml extends Producto{
     //TODO move the xml to an object to make it global
     private $xml;
     private $root;
+    private $cfdisRelacionados;
     private $emisor;
     private $receptor;
     private $totalImpuestosTrasladados = 0;
@@ -126,7 +127,36 @@ class Xml extends Producto{
     }
 
     private function buildNodoCfdisRelacionados() {
-        //TODO nodo cfdis relacionados
+
+        $this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT * FROM comprobante
+        WHERE serie = '".$this->data['cfdiRelacionadoSerie']."'
+        AND folio = '".$this->data['cfdiRelacionadoFolio']."'");
+
+        $cfdiRelacionado = $this->Util()->DBSelect($_SESSION["empresaId"])->GetRow();
+
+        if(!$cfdiRelacionado) {
+            return;
+        }
+
+        $timbre = unserialize($cfdiRelacionado["timbreFiscal"]);
+        $uuid = $timbre["UUID"];
+
+        $this->cfdisRelacionados = $this->xml->createElement("cfdi:CfdiRelacionados");
+        $this->cfdisRelacionados = $this->root->appendChild($this->cfdisRelacionados);
+
+        $cfdiRelacionadosData = array(
+            "TipoRelacion"=>$this->Util()->CadenaOriginalVariableFormat($this->data['tipoRelacion'],false,false),
+        );
+        $this->CargaAtt($this->cfdisRelacionados, $cfdiRelacionadosData);
+
+        $cfdiRelacionado = $this->xml->createElement("cfdi:CfdiRelacionado");
+        $cfdiRelacionado = $this->cfdisRelacionados->appendChild($cfdiRelacionado);
+
+        $cfdiRelacionadoData = array(
+            "UUID"=>$this->Util()->CadenaOriginalVariableFormat($uuid,false,false),
+        );
+
+        $this->CargaAtt($cfdiRelacionado, $cfdiRelacionadoData);
         //Para comprobante tipo P el tipo debe de ser 04 (si existen errores)
         //CFDIs relacionados 0, 1 o mas (probablemente lo limitare a uno)
         //CFDI relacionado
@@ -347,6 +377,10 @@ class Xml extends Producto{
         //TODO para complemento de pagos se debe capturar 84111506
         //para P no debe existir el NoIdentificacion, en unidad debe ser ACT, descripcion debe ser pago, unitario
         //importe deben de ser 0, descuento no debe existir
+
+        //TODO para hacer lo del ieps, hay que hacer un nuevo formulario
+        //despues en producto.class.php agregarlo a donde dice nueva-factura-ieps para calcular la tasa.
+        //y si viene de ahi, el TipoFactor del ieps no es una Tasa, sino Un Rango
         foreach($this->nodosConceptos as $concepto)
         {
             $myConcepto = $this->xml->createElement("cfdi:Concepto");

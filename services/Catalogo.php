@@ -29,6 +29,15 @@ class Catalogo extends Main {
         return $result;
     }
 
+    function tipoRelacion() {
+        $this->Util()->DB()->setQuery("
+			SELECT * FROM c_TipoRelacion
+			ORDER BY descripcion");
+        $result = $this->Util()->DB()->GetResult();
+
+        return $result;
+    }
+
 }
 
 

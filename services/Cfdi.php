@@ -259,7 +259,7 @@ class Cfdi extends Comprobante
         $xml->Generate($data, $totales, $_SESSION["conceptos"],$empresa);
 
         //Generacion de cadena original
-
+            $xmlDb = $nufa;
             $zipFile = $root.$nufa.".zip";
 
             $signedFile = $root."SIGN_".$nufa.".xml";
@@ -296,24 +296,12 @@ class Cfdi extends Comprobante
                     $strAddenda .= "  <cfdi:impuesto tipo=\"".$impuesto["tipo"]."\" nombre=\"".$impuesto["impuesto"]."\" importe=\"".$impuesto["importe"]."\" tasa=\"".$impuesto["tasaIva"]."\" />";
                 }
                 $strAddenda .= "</cfdi:Addenda>";
-
-//				$fh = fopen($realSignedXml, 'r');
-//			$theData = fread($fh, filesize($realSignedXml));
-//				fclose($fh);
-//				$theData = str_replace("</cfdi:Complemento>", "</cfdi:Complemento>".$strAddenda, $theData);
-
-
-//				$fh = fopen($realSignedXml, 'w') or die("can't open file");
-//				fwrite($fh, $theData);
-//				fclose($fh);
             }
 
             include_once(DOC_ROOT."/addendas/addenda_xml.php");
 
 
             $data["timbreFiscal"] = $cadenaOriginalTimbre;
-        //generatePDF
-        //cambios 29 junio 2011
 
         switch($data["metodoDePago"])
         {

@@ -186,6 +186,27 @@
        		<div style="clear:both"></div>
         </div>
 
+      <div class="formLine">
+          <div style="width:140px;float:left">CFDi relacionado Serie:</div>
+          <div style="width:100px;float:left">
+          <input name="cfdiRelacionadoSerie" id="cfdiRelacionadoSerie" type="text" value="" placeholder="A" class="largeInput" size="6"/></div>
+
+          <div style="width:60px;float:left">Folio:</div>
+          <div style="width:100px;float:left">
+          <input name="cfdiRelacionadoFolio" id="cfdiRelacionadoFolio" type="text" value="" placeholder="125" class="largeInput"  size="6"/></div>
+
+          <div style="width:100px;float:left">Tipo relacion:</div>
+          <div style="width:150px;float:left">
+          <select name="tipoRelacion" id="tipoRelacion"  class="largeInput" style="width:315px">
+            <option value="04" selected>No tiene CFDi relacionado</option>
+         	{foreach from=$tipoRelacion item=relacion}
+                <option value="{$relacion.c_TipoRelacion}">{$relacion.descripcion}</option>
+            {/foreach}
+          </select>
+
+       		<div style="clear:both"></div>
+        </div>
+
         {if $info.empresaId == 113}
         <div class="formLine">
         	<div style="width:90px;float:left">Tiempo Limite:</div>
