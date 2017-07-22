@@ -54,6 +54,7 @@ switch($_POST["type"])
         $producto->setValorUnitario($_POST["valorUnitario"]);
         $producto->setExcentoIva($_POST["excentoIva"]);
         $producto->setExcentoIsh($_POST["excentoIsh"]);
+        $producto->setIepsTasaOCuota($_POST["iepsTasaOCouta"]);
         $producto->setPorcentajeIeps($_POST["iepsConcepto"]);
         $producto->setPorcentajeIsh($_POST["ishConcepto"]);
         $producto->setCuentaPredial($_POST["cuentaPredial"]);
@@ -114,6 +115,7 @@ switch($_POST["type"])
         break;
     case "updateTotalesDesglosados":
         $totalDesglosado = $producto->GetTotalDesglosado();
+        print_r($totalDesglosado);
         $smarty->assign("impuestos", $totalDesglosado["impuestos"]);
         unset($totalDesglosado["impuestos"]);
         if($totalDesglosado){

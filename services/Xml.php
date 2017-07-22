@@ -20,11 +20,16 @@ class Xml extends Producto{
     private $receptor;
     private $totalImpuestosTrasladados = 0;
     private $totalImpuestosRetenidos = 0;
+    private $totalImpuestosLocales = 0;
 
     private $trasladosGlobales;
     private $retencionesGlobales;
 
     private $tipoComprobante;
+
+    private $complementos;
+    private $impuestosLocales;
+    private $impuestoLocal;
 
     public function CadenaOriginal($xmlFile) {
         $xslFile = DOC_ROOT."/xslt/cadenaoriginal_3_3.xslt";
@@ -271,7 +276,7 @@ class Xml extends Producto{
             $rootData["TipoCambio"] =  $this->Util()->CadenaOriginalFormat($this->tipoDeCambio, $decimals,false);;
         }
 
-        $total = $this->totales["subtotal"] - $descuento + $this->totalImpuestosTrasladados - $this->totalImpuestosRetenidos;
+        $total = $this->totales["subtotal"] - $descuento + $this->totalImpuestosTrasladados - $this->totalImpuestosRetenidos + $this->totalImpuestosLocales;
         //Si el campo es del tipo T o P debe de ser 0
         $rootData["Total"] = $this->Util()->CadenaOriginalVariableFormat($total, true,false);
 
@@ -317,8 +322,8 @@ class Xml extends Producto{
         }
 
         foreach($this->trasladosGlobales as $keyImpuesto => $impuesto ) {
-            foreach($impuesto as $keyTasa => $importe) {
-                $this->totalImpuestosTrasladados += $this->Util()->CadenaOriginalVariableFormat($importe,true,false);
+            foreach($impuesto as $keyTasa => $data) {
+                $this->totalImpuestosTrasladados += $this->Util()->CadenaOriginalVariableFormat($data['importe'],true,false);
             }
         }
     }
@@ -446,7 +451,8 @@ class Xml extends Producto{
                         );
 
                         //construye nodo impuestos globales
-                        $this->trasladosGlobales['002'][(string)$tasa] +=  $this->Util()->CadenaOriginalVariableFormat($concepto["totalIva"],true,false);
+                        $this->trasladosGlobales['002'][(string)$tasa]["importe"] +=  $this->Util()->CadenaOriginalVariableFormat($concepto["totalIva"],true,false);
+                        $this->trasladosGlobales['002'][(string)$tasa]["tasaOCuota"] =  'Tasa';
                     }
 
                     if($concepto["totalIeps"] > 0) {
@@ -458,14 +464,15 @@ class Xml extends Producto{
                         $this->CargaAtt($trasladoConcepto, array(
                                 "Base" => $this->Util()->CadenaOriginalVariableFormat($concepto["importeTotal"],true,false),
                                 "Impuesto" => $this->Util()->CadenaOriginalVariableFormat("003",false,false),
-                                "TipoFactor" => $this->Util()->CadenaOriginalVariableFormat("Tasa",false,false),
+                                "TipoFactor" => $this->Util()->CadenaOriginalVariableFormat($concepto["iepsTasaOCuota"],false,false),
                                 "TasaOCuota" => $this->Util()->CadenaOriginalFormat($tasaIeps,6,false),
                                 "Importe" => $this->Util()->CadenaOriginalVariableFormat($concepto["totalIeps"],true,false)
                             )
                         );
 
                         //construye nodo impuestos globales
-                        $this->trasladosGlobales['003'][(string)$tasaIeps] += $this->Util()->CadenaOriginalVariableFormat($concepto["totalIeps"],true,false);
+                        $this->trasladosGlobales['003'][(string)$tasaIeps]["importe"] += $this->Util()->CadenaOriginalVariableFormat($concepto["totalIeps"],true,false);
+                        $this->trasladosGlobales['003'][(string)$tasaIeps]["tasaOCuota"] = $concepto["iepsTasaOCuota"];
                     }
 
                     //TODO ish (aunque creo que ese es impuesto local y va en el complemento
@@ -571,15 +578,15 @@ class Xml extends Producto{
                 $traslados = $impuestos->appendChild($traslados);
 
                 foreach($this->trasladosGlobales as $keyImpuesto => $impuesto ) {
-                    foreach($impuesto as $keyTasa => $importe) {
+                    foreach($impuesto as $keyTasa => $data) {
                         $traslado = $this->xml->createElement("cfdi:Traslado");
                         $traslado = $traslados->appendChild($traslado);
 
                         $this->CargaAtt($traslado, array(
                                 "Impuesto" => $this->Util()->CadenaOriginalVariableFormat($keyImpuesto,false,false),
-                                "TipoFactor" => $this->Util()->CadenaOriginalVariableFormat("Tasa",false,false),
+                                "TipoFactor" => $this->Util()->CadenaOriginalVariableFormat($data['tasaOCuota'],false,false),
                                 "TasaOCuota" => $this->Util()->CadenaOriginalFormat($keyTasa,6,false),
-                                "Importe" => $this->Util()->CadenaOriginalVariableFormat($importe,true,false)
+                                "Importe" => $this->Util()->CadenaOriginalVariableFormat($data['importe'],true,false)
                             )
                         );
                     }
@@ -590,15 +597,17 @@ class Xml extends Producto{
 
     private function buildNodoComplementos() {
         //TODO Para tipo N, P, o T no debe existir
-        $complementos = $this->xml->createElement("cfdi:Complemento");
-        $complementos = $this->root->appendChild($complementos);
+        $this->complementos = $this->xml->createElement("cfdi:Complemento");
+        $this->complementos = $this->root->appendChild($this->complementos);
 
+        //TODO from nomina
         if($this->data["fromNomina"])
         {
             include_once(DOC_ROOT."/classes/complemento_nomina_12_xml.php");
             $this->xsdNomina = "http://www.sat.gob.mx/nomina http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd";
         }
 
+        //TODO donatarias
         if($this->miEmpresa["donatarias"] == "Si")
         {
             include_once(DOC_ROOT."/addComplementos/complemento_donataria_xml.php");
@@ -606,7 +615,7 @@ class Xml extends Producto{
         }
 
         if($this->totales['porcentajeISH'] > 0){
-            include_once(DOC_ROOT."/addImpuestos/complemento_ish_xml.php");
+            include(DOC_ROOT."/services/complementos/Ish.php");
             $this->xsdImplocal = "http://www.sat.gob.mx/implocal http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xsd";
         }
 

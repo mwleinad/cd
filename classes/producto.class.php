@@ -191,6 +191,13 @@ class Producto extends Sucursal
 		$this->claveUnidad = $value;
 	}
 
+	private $iepsTasaOCuota;
+	public function setIepsTasaOCuota($value)
+	{
+		$this->Util()->ValidateString($value, $max_chars=200, $minChars = 0, "IEPS Tasa o Cuota");
+		$this->iepsTasaOCuota = $value;
+	}
+
 	public function getItem()
 	{
 		return $this->item;
@@ -380,13 +387,14 @@ class Producto extends Sucursal
 		@end($_SESSION["conceptos"]);
 		
 		$totalIeps = $this->importe * ($this->porcentajeIeps / 100);
-		if($this->from == "nueva-factura-ieps")
+		if($this->from == "nueva-factura-ieps" || $this->iepsTasaOCuota == 'Cuota')
 		{
 			//calcular porcentaje de ieps //cada litro es $1
 			$litrosTotales = $this->porcentajeIeps * $this->cantidad;
 			$totalIeps = $litrosTotales;
 			
-			$tasaIeps100 = $this->importe + $totalIeps;
+			//echo $tasaIeps100 = $this->importe + $totalIeps;
+			$tasaIeps100 = $this->importe;
 			$this->porcentajeIeps = ($totalIeps * 100) / $tasaIeps100;
 		}
 		//
@@ -408,6 +416,7 @@ class Producto extends Sucursal
 		$_SESSION["conceptos"][$conceptos]["claveUnidad"] = $this->claveUnidad;
 
 		//ieps
+		$_SESSION["conceptos"][$conceptos]["iepsTasaOCuota"] = $this->iepsTasaOCuota;
 		$_SESSION["conceptos"][$conceptos]["porcentajeIeps"] = $this->porcentajeIeps;
 		$_SESSION["conceptos"][$conceptos]["totalIeps"] = $totalIeps;
 
@@ -418,7 +427,6 @@ class Producto extends Sucursal
 
 		//iva
 		$_SESSION["conceptos"][$conceptos]["excentoIva"] = $this->excentoIva;
-
 		return true;
 	}
 

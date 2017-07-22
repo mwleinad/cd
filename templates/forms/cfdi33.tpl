@@ -272,8 +272,10 @@
       <div class="formLine">
           <div style="width:100px;float:left">Clv Prod o Serv</div>
           <div style="width:100px;float:left">Clave Unidad</div>
-          <div style="width:100px;float:left">% IEPS</div>
           <div style="width:100px;float:left">C. Predial</div>
+          <div style="width:120px;float:left">IEPS Tasa o Cuota</div>
+          <div style="width:100px;float:left">IEPS</div>
+          <div style="width:100px;float:left">ISH</div>
 
       		<div style="clear:both"></div>
         </div>
@@ -286,12 +288,21 @@
           </div>
 
           <div style="width:100px;float:left">
-            <input name="iepsConcepto" id="iepsConcepto" type="text" value="{$post.ieps}"  size="8" class="largeInput"  placeholder="% IEPS"/>
-          </div>
-
-          <div style="width:100px;float:left">
             <input name="cuentaPredial" id="cuentaPredial" type="text" value="{$post.cuentaPredial}"  size="8" class="largeInput"  placeholder="Opcional"/>
           </div>
+          <div style="width:100px;float:left">
+            <select style="width: 100px" name="iepsTasaOCouta" id="iepsTasaOCouta" class="largeInput">
+                <option value="Tasa">Tasa</option>
+                <option value="Cuota">Cuota</option>
+            </select>
+          </div>
+          <div style="width:100px;float:left">
+            <input name="iepsConcepto" id="iepsConcepto" type="text" value="{$post.ieps}"  size="8" class="largeInput"  placeholder="IEPS"/>
+          </div>
+          <div style="width:100px;float:left">
+            <input name="ishConcepto" id="ishConcepto" type="text" value="2"  size="8" class="largeInput"  placeholder="% ISH"/>
+          </div>
+
 
       		<div style="clear:both"></div>
         </div>

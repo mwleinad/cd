@@ -54,7 +54,7 @@ switch($_POST["type"])
 		$producto->setValorUnitario($_POST["valorUnitario"]);
 		$producto->setExcentoIva($_POST["excentoIva"]);
 		$producto->setExcentoIsh($_POST["excentoIsh"]);
-		$producto->setPorcentajeIeps($_POST["iepsConcepto"]);
+		$producto->setIepsTasaOCuota($_POST["iepsTasaOCouta"]);
 		$producto->setPorcentajeIsh($_POST["ishConcepto"]);
 		$producto->setCuentaPredial($_POST["cuentaPredial"]);
 	

@@ -207,18 +207,28 @@ function FillConceptoData()
 
 function UpdateValorUnitarioConIva()
 {
+    var ish = parseInt($('ishConcepto').value) || 0;
+    ish = ish / 100;
+
     valor = parseFloat($('valorUnitario').value) || 0;
+
     valorConIva = valor + (valor * (parseInt($('tasaIva').value) / 100));
-    $('valorUnitarioCI').value = valorConIva.toFixed(6);
+    valorConIsh = valorConIva + (valor * ish);
+
+    $('valorUnitarioCI').value = valorConIsh.toFixed(6);
 }
 
 function UpdateValorUnitarioSinIva(valor)
 {
-    valor = $('valorUnitarioCI').value;
+    var ish = parseInt($('ishConcepto').value) || 0;
+    ish = ish / 100;
+
+    valor = parseFloat($('valorUnitarioCI').value) || 0;
     valorSinIva = parseFloat(valor) || 0;
     tasaIva = 1 + (parseInt($('tasaIva').value) / 100);
+    tasaTotal = tasaIva + ish;
 
-    valorSinIva = valorSinIva / tasaIva;
+    valorSinIva = valorSinIva / tasaTotal;
     $('valorUnitario').value = valorSinIva.toFixed(6);
 }
 
@@ -377,7 +387,7 @@ function AddBorrarImpuestosListeners(elements)
 function UpdateTotalesDesglosados()
 {
     var form = $('nuevaFactura').serialize();
-    new Ajax.Request(WEB_ROOT+'/ajax/sistema.php',
+    new Ajax.Request(WEB_ROOT+'/ajax/cfdi33.php',
         {
             parameters: {form: form, type: "updateTotalesDesglosados"},
             method:'post',

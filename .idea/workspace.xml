@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="639956da-fb65-4151-8e07-f83d31de76de" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/services/complementos/Ish.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/cfdi33-generate.php" afterPath="$PROJECT_DIR$/modules/cfdi33-generate.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/Catalogo.php" afterPath="$PROJECT_DIR$/services/Catalogo.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/Cfdi.php" afterPath="$PROJECT_DIR$/services/Cfdi.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/cfdi33.php" afterPath="$PROJECT_DIR$/ajax/cfdi33.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ajax/sistema.php" afterPath="$PROJECT_DIR$/ajax/sistema.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/classes/producto.class.php" afterPath="$PROJECT_DIR$/classes/producto.class.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/cfdi33-generate.js" afterPath="$PROJECT_DIR$/javascript/cfdi33-generate.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/services/Xml.php" afterPath="$PROJECT_DIR$/services/Xml.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/forms/cfdi33.tpl" afterPath="$PROJECT_DIR$/templates/forms/cfdi33.tpl" />
     </list>
@@ -32,14 +34,33 @@
       <file leaf-file-name="Xml.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/services/Xml.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65265083">
-              <caret line="146" column="38" selection-start-line="146" selection-start-column="38" selection-end-line="146" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.56">
+              <caret line="653" column="27" selection-start-line="653" selection-start-column="26" selection-end-line="653" selection-end-column="27" />
               <folding>
-                <marker date="1498946853070" expanded="true" signature="3924:4034" placeholder="SELECT * FRO..comprobante..." />
-                <marker date="1498946853070" expanded="true" signature="3924:4074" placeholder="SELECT * FRO..comprobante..." />
-                <marker date="1498946853070" expanded="true" signature="3924:4075" placeholder="SELECT * FRO..comprobante..." />
-                <marker date="1498946853070" expanded="true" signature="3924:4077" placeholder="SELECT * FRO..comprobante..." />
+                <marker date="1499540352450" expanded="true" signature="4051:4161" placeholder="SELECT * FRO..comprobante..." />
+                <marker date="1499540352450" expanded="true" signature="4051:4201" placeholder="SELECT * FRO..comprobante..." />
+                <marker date="1499540352450" expanded="true" signature="4051:4202" placeholder="SELECT * FRO..comprobante..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Ish.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/services/complementos/Ish.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.769231">
+              <caret line="18" column="28" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nueva-factura-ish.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/javascript/nueva-factura-ish.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="233" column="30" selection-start-line="230" selection-start-column="4" selection-end-line="233" selection-end-column="30" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -47,92 +68,44 @@
       <file leaf-file-name="cfdi33.tpl" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/forms/cfdi33.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.5">
-              <caret line="199" column="36" selection-start-line="199" selection-start-column="24" selection-end-line="199" selection-end-column="36" />
+            <state vertical-scroll-proportion="0.21818182">
+              <caret line="278" column="0" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
               <folding>
-                <element signature="n#style#0;n#div#0;n#div#7;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#7;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#7;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#8;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#8;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#8;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#3;n#div#8;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#4;n#div#8;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#5;n#div#8;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#5;n#div#8;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#1;n#form#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#5;n#div#1;n#form#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#div#3;n#div#2;n#form#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#2;n#form#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#5;n#div#2;n#form#1;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cfdi33-generate.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/cfdi33-generate.php">
+      <file leaf-file-name="total-desglosado.tpl" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/boxes/total-desglosado.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.423077">
-              <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
-              <folding>
-                <marker date="1498945996877" expanded="true" signature="122:143" placeholder="SELECT * FRO..usuario..." />
-                <marker date="1498945996877" expanded="true" signature="6399:6473" placeholder="SELECT * FRO..empresa..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Catalogo.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/services/Catalogo.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.23077">
-              <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
-              <folding>
-                <marker date="1498946018668" expanded="true" signature="111:160" placeholder="SELECT * FRO..c_FormaPago..." />
-                <marker date="1498946018668" expanded="true" signature="322:372" placeholder="SELECT * FRO..c_MetodoPago..." />
-                <marker date="1498946018668" expanded="true" signature="528:575" placeholder="SELECT * FRO..c_UsoCfdi..." />
-                <marker date="1498946018668" expanded="true" signature="736:788" placeholder="SELECT * FRO..c_TipoRelacion..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.9454546">
-              <caret line="66" column="23" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="23" />
+            <state vertical-scroll-proportion="-16.23077">
+              <caret line="80" column="4" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Cfdi.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/services/Cfdi.php">
+      <file leaf-file-name="cfdi33-generate.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/javascript/cfdi33-generate.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.7090907">
-              <caret line="126" column="9" selection-start-line="122" selection-start-column="8" selection-end-line="126" selection-end-column="9" />
-              <folding>
-                <marker date="1498944661928" expanded="true" signature="3281:3503" placeholder="SELECT * FRO..serie..." />
-                <marker date="1498944661928" expanded="true" signature="3611:3861" placeholder="SELECT * FRO..serie..." />
-                <marker date="1498944661928" expanded="true" signature="12148:14046" placeholder="INSERT INTO `comprobante`..." />
-                <marker date="1498944661928" expanded="true" signature="14188:14261" placeholder="SELECT compr..comprobante..." />
-                <marker date="1498944661928" expanded="true" signature="14462:14817" placeholder="INSERT INTO `notaVenta`..." />
-                <marker date="1498944661928" expanded="true" signature="15043:15110" placeholder="SELECT notaV..notaVenta..." />
-                <marker date="1498944661928" expanded="true" signature="15387:15962" placeholder="INSERT INTO `concepto`..." />
-                <marker date="1498944661928" expanded="true" signature="16110:16244" placeholder="UPDATE produ..." />
-                <marker date="1498944661928" expanded="true" signature="16509:16633" placeholder="INSERT INTO payment..." />
-                <marker date="1498944661928" expanded="true" signature="16831:16926" placeholder="UPDATE notaV..." />
-                <marker date="1498944661928" expanded="true" signature="17300:17373" placeholder="UPDATE serie..." />
-                <marker date="1498944661928" expanded="true" signature="17623:17686" placeholder="UPDATE serie..." />
-                <marker date="1498944661928" expanded="true" signature="17864:17959" placeholder="UPDATE notaV..." />
-                <marker date="1498944661928" expanded="true" signature="18298:18393" placeholder="UPDATE notaV..." />
-              </folding>
+            <state vertical-scroll-proportion="-7.7586207">
+              <caret line="389" column="40" selection-start-line="389" selection-start-column="40" selection-end-line="389" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="generate_xml_default.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ajax/generate_xml_default.class.php">
+      <file leaf-file-name="sistema.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ajax/sistema.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="6.581818">
-              <caret line="163" column="41" selection-start-line="163" selection-start-column="41" selection-end-line="163" selection-end-column="41" />
+            <state vertical-scroll-proportion="-8.384615">
+              <caret line="57" column="44" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -141,8 +114,8 @@
       <file leaf-file-name="cfdi33.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ajax/cfdi33.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="9.615385">
-              <caret line="194" column="9" selection-start-line="194" selection-start-column="9" selection-end-line="194" selection-end-column="9" />
+            <state vertical-scroll-proportion="-4.2545457">
+              <caret line="117" column="34" selection-start-line="117" selection-start-column="34" selection-end-line="117" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -156,7 +129,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/xslt/ecb.xslt" />
         <option value="$PROJECT_DIR$/xslt/ecc.xslt" />
         <option value="$PROJECT_DIR$/xslt/ecc11.xslt" />
         <option value="$PROJECT_DIR$/xslt/iedu.xslt" />
@@ -188,7 +160,6 @@
         <option value="$PROJECT_DIR$/classes/complemento_nomina_12.class.php" />
         <option value="$PROJECT_DIR$/templates/cfdi33-generate.tpl" />
         <option value="$PROJECT_DIR$/services/Catalogos.php" />
-        <option value="$PROJECT_DIR$/javascript/cfdi33-generate.js" />
         <option value="$PROJECT_DIR$/classes/util.class.php" />
         <option value="$PROJECT_DIR$/xslt/cadenaoriginal_3_3.xslt" />
         <option value="$PROJECT_DIR$/xslt/Pagos10.xslt" />
@@ -198,15 +169,17 @@
         <option value="$PROJECT_DIR$/classes/complemento_nomina_12_xml.php" />
         <option value="$PROJECT_DIR$/libraries.php" />
         <option value="$PROJECT_DIR$/services/Totales.php" />
-        <option value="$PROJECT_DIR$/ajax/sistema.php" />
         <option value="$PROJECT_DIR$/classes/comprobante.class.php" />
-        <option value="$PROJECT_DIR$/classes/producto.class.php" />
-        <option value="$PROJECT_DIR$/ajax/cfdi33.php" />
         <option value="$PROJECT_DIR$/services/Cfdi.php" />
         <option value="$PROJECT_DIR$/modules/cfdi33-generate.php" />
         <option value="$PROJECT_DIR$/services/Catalogo.php" />
+        <option value="$PROJECT_DIR$/ajax/sistema.php" />
+        <option value="$PROJECT_DIR$/classes/producto.class.php" />
         <option value="$PROJECT_DIR$/templates/forms/cfdi33.tpl" />
+        <option value="$PROJECT_DIR$/javascript/cfdi33-generate.js" />
+        <option value="$PROJECT_DIR$/ajax/cfdi33.php" />
         <option value="$PROJECT_DIR$/services/Xml.php" />
+        <option value="$PROJECT_DIR$/services/complementos/Ish.php" />
       </list>
     </option>
   </component>
@@ -220,9 +193,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-7" />
-    <option name="width" value="1604" />
-    <option name="height" value="867" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1616" />
+    <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -250,6 +224,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -278,7 +253,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
+              <option name="myItemId" value="services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -295,10 +270,13 @@
               <option name="myItemId" value="services" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="complementos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -311,7 +289,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="SearchEverywhereHistoryKey" value="cfdi&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/modules/cfdi33-generate.php&#10;producto&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/producto.class.php&#10;libra&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/libraries.php&#10;comproban&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/comprobante.class.php&#10;pac.cla&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/pac.class.php&#10;cfd&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/services/Cfdi.php&#10;test2&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/test2.php&#10;comprobante.class&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/comprobante.class.php&#10;complemento_ish_xml&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/addImpuestos/complemento_ish_xml.php&#10;empresa&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="complemento_ish_xml&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/addImpuestos/complemento_ish_xml.php&#10;xml&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/services/Xml.php&#10;tpl&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/templates/forms/cfdi33.tpl&#10;util.cl&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/util.class.php&#10;producto&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/producto.class.php&#10;cfdi&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/modules/cfdi33-generate.php&#10;libra&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/libraries.php&#10;comproban&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/comprobante.class.php&#10;pac.cla&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/pac.class.php&#10;cfd&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/services/Cfdi.php&#10;test2&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/test2.php&#10;comprobante.class&#9;FILE&#9;file://C:/Users/Daniel/PhpstormProjects/CFDI3.3/classes/comprobante.class.php&#10;empresa&#9;null&#9;null" />
     <property name="last_opened_file_path" value="C:/wamp/www/tareas" />
   </component>
   <component name="RecentsManager">
@@ -383,15 +361,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1604" height="867" extended-state="0" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24811083" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16776751" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10835509" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -423,34 +401,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/xslt/ventavehiculos11.xslt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.02660407">
-          <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xslt/valesdedespensa.xslt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3818183">
-          <caret line="25" column="53" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xslt/ComercioExterior11.xslt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="26" selection-start-line="1" selection-start-column="26" selection-end-line="1" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test3.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="29" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/classes/paqFolios.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -575,20 +525,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classes/util.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.066895366">
-          <caret line="738" column="74" selection-start-line="738" selection-start-column="4" selection-end-line="738" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/cfdi33-generate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5738994">
-          <caret line="280" column="43" selection-start-line="280" selection-start-column="43" selection-end-line="280" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/xslt/utilerias.xslt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-12.423077">
@@ -675,14 +611,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ajax/sistema.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5326923">
-          <caret line="116" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/services/Totales.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7673611">
@@ -729,47 +657,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.0727272">
           <caret line="429" column="47" selection-start-line="429" selection-start-column="47" selection-end-line="429" selection-end-column="47" />
-          <folding>
-            <marker date="1492875674232" expanded="true" signature="2752:2974" placeholder="SELECT * FRO..serie..." />
-            <marker date="1492875674232" expanded="true" signature="3055:3305" placeholder="SELECT * FRO..serie..." />
-            <marker date="1492875674232" expanded="true" signature="11280:13209" placeholder="INSERT INTO `comprobante`..." />
-            <marker date="1492875674232" expanded="true" signature="13341:13414" placeholder="SELECT compr..comprobante..." />
-            <marker date="1492875674232" expanded="true" signature="13592:13954" placeholder="INSERT INTO `notaVenta`..." />
-            <marker date="1492875674232" expanded="true" signature="14153:14220" placeholder="SELECT notaV..notaVenta..." />
-            <marker date="1492875674232" expanded="true" signature="14452:15045" placeholder="INSERT INTO `concepto`..." />
-            <marker date="1492875674232" expanded="true" signature="15161:15295" placeholder="UPDATE produ..." />
-            <marker date="1492875674232" expanded="true" signature="15501:15625" placeholder="INSERT INTO payment..." />
-            <marker date="1492875674232" expanded="true" signature="15784:15879" placeholder="UPDATE notaV..." />
-            <marker date="1492875674232" expanded="true" signature="16198:16271" placeholder="UPDATE serie..." />
-            <marker date="1492875674232" expanded="true" signature="16476:16539" placeholder="UPDATE serie..." />
-            <marker date="1492875674232" expanded="true" signature="16681:16776" placeholder="UPDATE notaV..." />
-            <marker date="1492875674232" expanded="true" signature="17051:17146" placeholder="UPDATE notaV..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classes/producto.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.8461537">
-          <caret line="382" column="47" selection-start-line="382" selection-start-column="47" selection-end-line="382" selection-end-column="47" />
-          <folding>
-            <marker date="1498346134020" expanded="true" signature="7219:7376" placeholder="SELECT * FRO..producto..." />
-            <marker date="1498346134020" expanded="true" signature="7573:7697" placeholder="SELECT COUNT..producto..." />
-            <marker date="1498346134020" expanded="true" signature="8032:8150" placeholder="SELECT * FRO..producto..." />
-            <marker date="1498346134020" expanded="true" signature="8504:8614" placeholder="SELECT * FRO..producto..." />
-            <marker date="1498346134020" expanded="true" signature="24691:25106" placeholder="INSERT INTO `producto`..." />
-            <marker date="1498346134020" expanded="true" signature="25472:25891" placeholder="UPDATE `prod..." />
-            <marker date="1498346134020" expanded="true" signature="26289:26368" placeholder="UPDATE produ..." />
-            <marker date="1498346134020" expanded="true" signature="26697:26762" placeholder="SELECT * FRO..producto..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ajax/generate_xml_default.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="6.581818">
-          <caret line="163" column="41" selection-start-line="163" selection-start-column="41" selection-end-line="163" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -785,31 +672,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7170139">
           <caret line="231" column="37" selection-start-line="231" selection-start-column="25" selection-end-line="231" selection-end-column="37" />
-          <folding>
-            <element signature="n#style#0;n#div#6;n#div#10;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.9454546">
+        <state vertical-scroll-proportion="0.0">
           <caret line="66" column="23" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ajax/cfdi33.php">
+    <entry file="file://$PROJECT_DIR$/ajax/generate_xml_default.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="9.615385">
-          <caret line="194" column="9" selection-start-line="194" selection-start-column="9" selection-end-line="194" selection-end-column="9" />
+        <state vertical-scroll-proportion="2.8545454">
+          <caret line="165" column="76" selection-start-line="165" selection-start-column="71" selection-end-line="165" selection-end-column="76" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/Catalogo.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5945946">
+          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
+          <folding>
+            <marker date="1498946018668" expanded="true" signature="111:160" placeholder="SELECT * FRO..c_FormaPago..." />
+            <marker date="1498946018668" expanded="true" signature="322:372" placeholder="SELECT * FRO..c_MetodoPago..." />
+            <marker date="1498946018668" expanded="true" signature="528:575" placeholder="SELECT * FRO..c_UsoCfdi..." />
+            <marker date="1498946018668" expanded="true" signature="736:788" placeholder="SELECT * FRO..c_TipoRelacion..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/services/Cfdi.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.7090907">
+        <state vertical-scroll-proportion="0.27027026">
           <caret line="126" column="9" selection-start-line="122" selection-start-column="8" selection-end-line="126" selection-end-column="9" />
           <folding>
             <marker date="1498944661928" expanded="true" signature="3281:3503" placeholder="SELECT * FRO..serie..." />
@@ -830,23 +728,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/services/Catalogo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.23077">
-          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
-          <folding>
-            <marker date="1498946018668" expanded="true" signature="111:160" placeholder="SELECT * FRO..c_FormaPago..." />
-            <marker date="1498946018668" expanded="true" signature="322:372" placeholder="SELECT * FRO..c_MetodoPago..." />
-            <marker date="1498946018668" expanded="true" signature="528:575" placeholder="SELECT * FRO..c_UsoCfdi..." />
-            <marker date="1498946018668" expanded="true" signature="736:788" placeholder="SELECT * FRO..c_TipoRelacion..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/cfdi33-generate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.423077">
-          <caret line="166" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
+        <state vertical-scroll-proportion="-3.2692308">
+          <caret line="170" column="32" selection-start-line="170" selection-start-column="32" selection-end-line="170" selection-end-column="32" />
           <folding>
             <marker date="1498945996877" expanded="true" signature="122:143" placeholder="SELECT * FRO..usuario..." />
             <marker date="1498945996877" expanded="true" signature="6399:6473" placeholder="SELECT * FRO..empresa..." />
@@ -854,34 +739,116 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/classes/util.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.3846154">
+          <caret line="771" column="0" selection-start-line="771" selection-start-column="0" selection-end-line="771" selection-end-column="0" />
+          <folding>
+            <marker date="1495302292771" expanded="true" signature="1439:1777" placeholder="..." />
+            <marker date="1495302292771" expanded="false" signature="1460:1477" placeholder="..." />
+            <marker date="1495302292771" expanded="false" signature="1537:1554" placeholder="..." />
+            <marker date="1495302292771" expanded="false" signature="1625:1642" placeholder="..." />
+            <marker date="1495302292771" expanded="false" signature="1706:1723" placeholder="..." />
+            <marker date="1495302292771" expanded="true" signature="11186:11239" placeholder="SELECT perio..periodo..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classes/producto.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.5365853">
+          <caret line="398" column="9" selection-start-line="398" selection-start-column="9" selection-end-line="398" selection-end-column="9" />
+          <folding>
+            <marker date="1499535047569" expanded="true" signature="7422:7579" placeholder="SELECT * FRO..producto..." />
+            <marker date="1499535047569" expanded="true" signature="7776:7900" placeholder="SELECT COUNT..producto..." />
+            <marker date="1499535047569" expanded="true" signature="8235:8353" placeholder="SELECT * FRO..producto..." />
+            <marker date="1499535047569" expanded="true" signature="8707:8817" placeholder="SELECT * FRO..producto..." />
+            <marker date="1499535047569" expanded="true" signature="25050:25465" placeholder="INSERT INTO `producto`..." />
+            <marker date="1499535047569" expanded="true" signature="25831:26250" placeholder="UPDATE `prod..." />
+            <marker date="1499535047569" expanded="true" signature="26648:26727" placeholder="UPDATE produ..." />
+            <marker date="1499535047569" expanded="true" signature="27056:27121" placeholder="SELECT * FRO..producto..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/forms/cfdi33.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.5">
-          <caret line="199" column="36" selection-start-line="199" selection-start-column="24" selection-end-line="199" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.21818182">
+          <caret line="278" column="0" selection-start-line="278" selection-start-column="0" selection-end-line="278" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#7;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#7;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#7;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#8;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#8;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#8;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#3;n#div#8;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#div#8;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#5;n#div#8;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#5;n#div#8;n#fieldset#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#1;n#form#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#1;n#form#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#div#3;n#div#2;n#form#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#2;n#form#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#div#2;n#form#1;n#div#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/boxes/total-desglosado.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.23077">
+          <caret line="80" column="4" selection-start-line="80" selection-start-column="4" selection-end-line="80" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript/cfdi33-generate.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.7586207">
+          <caret line="389" column="40" selection-start-line="389" selection-start-column="40" selection-end-line="389" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax/cfdi33.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.2545457">
+          <caret line="117" column="34" selection-start-line="117" selection-start-column="34" selection-end-line="117" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ajax/sistema.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.384615">
+          <caret line="57" column="44" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addImpuestos/complemento_ish_xml.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="18" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript/nueva-factura-ish.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="233" column="30" selection-start-line="230" selection-start-column="4" selection-end-line="233" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/services/complementos/Ish.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.769231">
+          <caret line="18" column="28" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="28" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/services/Xml.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65265083">
-          <caret line="146" column="38" selection-start-line="146" selection-start-column="38" selection-end-line="146" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.56">
+          <caret line="653" column="27" selection-start-line="653" selection-start-column="26" selection-end-line="653" selection-end-column="27" />
           <folding>
-            <marker date="1498946853070" expanded="true" signature="3924:4034" placeholder="SELECT * FRO..comprobante..." />
-            <marker date="1498946853070" expanded="true" signature="3924:4074" placeholder="SELECT * FRO..comprobante..." />
-            <marker date="1498946853070" expanded="true" signature="3924:4075" placeholder="SELECT * FRO..comprobante..." />
-            <marker date="1498946853070" expanded="true" signature="3924:4077" placeholder="SELECT * FRO..comprobante..." />
+            <marker date="1499540352450" expanded="true" signature="4051:4161" placeholder="SELECT * FRO..comprobante..." />
+            <marker date="1499540352450" expanded="true" signature="4051:4201" placeholder="SELECT * FRO..comprobante..." />
+            <marker date="1499540352450" expanded="true" signature="4051:4202" placeholder="SELECT * FRO..comprobante..." />
           </folding>
         </state>
       </provider>
