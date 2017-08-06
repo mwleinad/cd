@@ -115,7 +115,6 @@ switch($_POST["type"])
         break;
     case "updateTotalesDesglosados":
         $totalDesglosado = $producto->GetTotalDesglosado();
-        print_r($totalDesglosado);
         $smarty->assign("impuestos", $totalDesglosado["impuestos"]);
         unset($totalDesglosado["impuestos"]);
         if($totalDesglosado){

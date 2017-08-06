@@ -260,10 +260,6 @@ class Xml extends Producto{
 
         $rootData["Moneda"] = $this->Util()->CadenaOriginalVariableFormat($this->data["tiposDeMoneda"], false,false);
 
-        if($this->isPago()){
-            $rootData["Moneda"] = "XXX";
-        }
-
         $decimals = 2;
         if($this->data["tiposDeMoneda"] == "MXN") {
             $decimals = 0;
@@ -288,7 +284,9 @@ class Xml extends Producto{
 
         //TODO viene de catalogo metodo de pago
         //Revisar tipo de pago PPD, es posible que no lo soportemos por ahora.
-        $rootData["MetodoPago"] = $this->Util()->CadenaOriginalVariableFormat($this->data["metodoDePago"],false,false);
+        if(!$this->isPago()){
+            $rootData["MetodoPago"] = $this->Util()->CadenaOriginalVariableFormat($this->data["metodoDePago"],false,false);
+        }
 
         $rootData["LugarExpedicion"] = $this->Util()->CadenaOriginalVariableFormat($this->data["nodoEmisor"]["rfc"]["cp"],false,false);
 
@@ -379,13 +377,7 @@ class Xml extends Producto{
     private function buildNodoConceptos() {
         $conceptos = $this->xml->createElement("cfdi:Conceptos");
         $conceptos = $this->root->appendChild($conceptos);
-        //TODO para complemento de pagos se debe capturar 84111506
-        //para P no debe existir el NoIdentificacion, en unidad debe ser ACT, descripcion debe ser pago, unitario
-        //importe deben de ser 0, descuento no debe existir
 
-        //TODO para hacer lo del ieps, hay que hacer un nuevo formulario
-        //despues en producto.class.php agregarlo a donde dice nueva-factura-ieps para calcular la tasa.
-        //y si viene de ahi, el TipoFactor del ieps no es una Tasa, sino Un Rango
         foreach($this->nodosConceptos as $concepto)
         {
             $myConcepto = $this->xml->createElement("cfdi:Concepto");
@@ -405,14 +397,33 @@ class Xml extends Producto{
 
             $conceptoData = array(
                 "ClaveProdServ"=>$this->Util()->CadenaOriginalVariableFormat($concepto["claveProdServ"],false,false),
-                "NoIdentificacion"=>$this->Util()->CadenaOriginalVariableFormat($concepto["noIdentificacion"],false,false),
-                "Cantidad"=>$cantidad,
-                "ClaveUnidad"=>$this->Util()->CadenaOriginalVariableFormat($concepto["claveUnidad"],false,false),
-                "Unidad"=>$this->Util()->CadenaOriginalVariableFormat($concepto["unidad"],false,false),
-                "Descripcion"=>$this->Util()->CadenaOriginalVariableFormat($concepto["descripcion"],false,false),
-                "ValorUnitario"=>$this->Util()->CadenaOriginalVariableFormat($concepto["valorUnitario"],true,false),
-                "Importe"=>$this->Util()->CadenaOriginalVariableFormat($concepto["importe"],true,false),
             );
+
+            if(!$this->isPago()) {
+                $conceptoData["NoIdentificacion"] = $this->Util()->CadenaOriginalVariableFormat($concepto["noIdentificacion"],false,false);
+            }
+
+            $conceptoData["Cantidad"] = $cantidad;
+            $conceptoData["ClaveUnidad"] = $this->Util()->CadenaOriginalVariableFormat($concepto["claveUnidad"],false,false);
+
+            if(!$this->isPago()) {
+                $conceptoData["Unidad"] = $this->Util()->CadenaOriginalVariableFormat($concepto["unidad"],false,false);
+            }
+
+            $conceptoData["Descripcion"] = $this->Util()->CadenaOriginalVariableFormat($concepto["descripcion"],false,false);
+
+            if($this->isPago()) {
+                $conceptoData["ValorUnitario"] = $this->Util()->CadenaOriginalFormat($concepto["valorUnitario"], 0, false);
+            } else{
+                $conceptoData["ValorUnitario"] = $this->Util()->CadenaOriginalVariableFormat($concepto["valorUnitario"],true,false);
+            }
+
+            if($this->isPago()) {
+                $conceptoData["Importe"] = $this->Util()->CadenaOriginalFormat($concepto["importe"], 0, false);
+            } else{
+                $conceptoData["Importe"] = $this->Util()->CadenaOriginalVariableFormat($concepto["importe"],true,false);
+            }
+
 
             if($concepto["descuento"] > 0) {
                 $conceptoData["Descuento"] = $this->Util()->CadenaOriginalVariableFormat($concepto["descuento"],true,false);
@@ -545,6 +556,9 @@ class Xml extends Producto{
             return;
         }*/
         //TODO return si no hay impuestos
+        if($this->isPago()) {
+            return;
+        }
 
         $impuestos = $this->xml->createElement("cfdi:Impuestos");
         $impuestos = $this->root->appendChild($impuestos);

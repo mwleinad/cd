@@ -2,13 +2,6 @@
 <project version="4">
   <component name="PublishConfigData" serverName="comprobantedigital" promptOnLocalOverwrite="false">
     <serverData>
-      <paths name="ILOS-VM">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
       <paths name="comprobantedigital">
         <serverdata>
           <mappings>

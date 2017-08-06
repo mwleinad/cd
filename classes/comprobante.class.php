@@ -472,8 +472,11 @@ class Comprobante extends Producto
 	
 	protected function GetTipoComprobante($value)
 	{
-			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT tipoDeComprobante FROM tiposComprobante WHERE tiposComprobanteId = ".$value." LIMIT 1");
-			return $this->Util()->DBSelect($_SESSION["empresaId"])->GetSingle();
+		//$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT tipoDeComprobante FROM tiposComprobante WHERE tiposComprobanteId = ".$value." LIMIT 1");
+		$this->Util()->DB()->setQuery("SELECT tipoDeComprobante FROM tiposComprobante WHERE tiposComprobanteId = ".$value." LIMIT 1");
+		$tipoComprobante = $this->Util()->DB()->GetSingle();
+
+		return $tipoComprobante;
 	}
 
 

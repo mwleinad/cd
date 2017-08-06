@@ -30,9 +30,9 @@ class Cfdi extends Comprobante
             $vs->Util()->setError(10041, "error", "El numero de dias pagados debe de ser un numero");
         }
 
-        $vs->setRFC($data["rfc"]);
-        $vs->setCalle($data["calle"]);
-        $vs->setPais($data["pais"]);
+        //$vs->setRFC($data["rfc"]);
+        //$vs->setCalle($data["calle"]);
+        //$vs->setPais($data["pais"]);
 
         if(strlen($data["formaDePago"]) <= 0)
         {
@@ -174,31 +174,9 @@ class Cfdi extends Comprobante
             if($vs->Util()->PrintErrors()){ return false; }
         }
 
-        if($_SESSION["version"] == "auto")
-        {
-            $rootQr = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/qrs/";
-            $qrRfc = strtoupper($nodoEmisorRfc["rfc"]);
-            $nufa = $serie["serieId"]."_".$serie["noAprobacion"]."_".$qrRfc.".png";
-            if(!file_exists($rootQr.$nufa))
-            {
-                $nufa = $serie["serieId"]."_".$serie["noAprobacion"]."_".$qrRfc."_.png";
-                if(!file_exists($rootQr.$nufa))
-                {
-                    $nufa = $serie["serieId"].".png";
-                    if(!file_exists($rootQr.$nufa))
-                    {
-                        $vs->Util()->setError(10048, "error");
-                    }
-                }
-            }
-
-            if($vs->Util()->PrintErrors()){ return false; }
-
-        }
         $userId = $data["userId"];
 
         //build informacion nodo receptor
-
         if(!$data["fromNomina"])
         {
             $vs->setUserId($userId, 1);
@@ -388,7 +366,8 @@ class Cfdi extends Comprobante
 				`impuestos`,
 				`cadenaOriginal`,
 				".$add."
-				`timbreFiscal`
+				`timbreFiscal`,
+				`version`
 			) VALUES
 			(
 			 	NULL,
@@ -428,7 +407,8 @@ class Cfdi extends Comprobante
 				'".$myImpuestos."',
 				'".$data["cadenaOriginal"]."',
 				".$add2."
-				'".$cadenaOriginalTimbreSerialized."'
+				'".$cadenaOriginalTimbreSerialized."',
+				'3.3'
 			)");
         $this->Util()->DBSelect($_SESSION["empresaId"])->InsertData();
         $this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT comprobanteId FROM comprobante ORDER BY comprobanteId DESC LIMIT 1");
@@ -495,6 +475,7 @@ class Cfdi extends Comprobante
                 $this->Util()->DBSelect($_SESSION["empresaId"])->UpdateData();
 
             }
+
             if($data['cuentaPorPagar'] != "yes")
             {
                 $sql = "INSERT INTO payment(`notaVentaId`,`amount`,`paymentDate`) VALUES(".$notaVentaId.",".$totales["total"].",'".date("Y-m-d")."')";

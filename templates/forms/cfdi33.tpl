@@ -159,9 +159,10 @@
           {/foreach}
           </select></div>
 
-        <div style="width:190px;float:left">Esta Factura esta Pagada?:</div>
+        <div style="width:190px;float:left">Generar cuenta por cobrar?<br>
+        <span style="color: #f00;">Por default la factura se considerara pagada</span></div>
         <div style="width:40px;float:left">
-        	<input checked="checked" name="cuentaPorPagar" id="cuentaPorPagar" type="checkbox" value="yes" class="largeInput"/>
+        	<input name="cuentaPorPagar" id="cuentaPorPagar" type="checkbox" value="yes" class="largeInput"/>
 		</div>
         <div style="width:90px;float:left"><label for="cuentaPorPagar">Si</label></div>
 				{if $SITENAME == "FACTURASE" && ($info.empresaId == 249 || $info.empresaId == 307 || $info.empresaId == 308 || $info.empresaId == 483 || $info.empresaId == 535)}
@@ -300,7 +301,7 @@
             <input name="iepsConcepto" id="iepsConcepto" type="text" value="{$post.ieps}"  size="8" class="largeInput"  placeholder="IEPS"/>
           </div>
           <div style="width:100px;float:left">
-            <input name="ishConcepto" id="ishConcepto" type="text" value="2"  size="8" class="largeInput"  placeholder="% ISH"/>
+            <input name="ishConcepto" id="ishConcepto" type="text" value="0"  size="8" class="largeInput"  placeholder="% ISH"/>
           </div>
 
 

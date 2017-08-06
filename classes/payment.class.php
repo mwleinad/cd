@@ -5,7 +5,8 @@ class Payment extends Util
 	private $amount;
 	private $fecha;
 	private $metodoPago;
-	
+	private $generarComprobantePago;
+
 	public function setAmount($value)
 	{
 		if(!is_numeric($value)){
@@ -23,6 +24,11 @@ class Payment extends Util
 	public function setMetodoPago($value)
 	{
 			$this->metodoPago = $value;		
+	}
+
+	public function setGenerarComprobantePago($value)
+	{
+		$this->generarComprobantePago = $value;
 	}
 
 	public function setFecha($value)
@@ -66,13 +72,20 @@ class Payment extends Util
 		$venta = new Venta;
 		
 		$infoComprobante = $venta->GetInfoVenta($this->comprobanteId);
-		
+
 		if($this->amount > round( $infoComprobante["debt_noformat"] , 2 ))
 		{
 			$this->Util()->setError(10041, "error", "El pago no puede ser mayor a la deuda");
 		}
 		if($this->Util()->PrintErrors()){ return false; }
-		
+
+		//generar comprobante de pago
+		if($this->generarComprobantePago == true){
+			$comprobantePago = new ComprobantePago();
+			$comprobantePago->generar($infoComprobante, $this);
+			exit;
+		}
+
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("
 			INSERT INTO `payment` ( 
 				`notaVentaId`, 
@@ -86,8 +99,14 @@ class Payment extends Util
 				'".$this->metodoPago."',
 				'".$this->fecha."'
 			)"
-			);
+		);
+
 		$sucursalId = $this->Util()->DBSelect($_SESSION["empresaId"])->InsertData();
+
+		//generar comprobante de pago
+		if($this->generarComprobantePago == true){
+
+		}
 
 		$this->Util()->setError(20030, "complete", "");
 		$this->Util()->PrintErrors();
