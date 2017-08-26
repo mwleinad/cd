@@ -1,11 +1,7 @@
 <?php
 
-//$complementos = $xml->createElement("cfdi:Complemento");
-//$complementos = $root->appendChild($complementos);
 $myConplementoNomina = $xml->createElement("nomina12:Nomina");
 $myConplementoNomina = $complementos->appendChild($myConplementoNomina);
-
-$myConplementoNomina->setAttribute("xmlns:nomina12", "http://www.sat.gob.mx/nomina12");
 
 if($data["nodoReceptor"]["fechaInicioRelLaboral"] == "0000-00-00")
 {
@@ -59,27 +55,31 @@ if($totalOtrosPagos > 0)
 }
 
 $this->CargaAtt(
-	$myConplementoNomina, 
+	$myConplementoNomina,
 		 $nominaMain
 		);
 
 		//nodo emisor
-		$emisor = $xml->createElement("nomina12:Emisor");
-		$emisor = $myConplementoNomina->appendChild($emisor);
 
-		$emisorData = array(
-					"RegistroPatronal"=>$this->Util()->CadenaOriginalVariableFormat($data["nodoReceptor"]["registroPatronal"], false, false),
-				);		
-				
+		$emisorData = [];
+		if($data["nodoReceptor"]["registroPatronal"]) {
+			$emisorData["RegistroPatronal"] =$this->Util()->CadenaOriginalVariableFormat($data["nodoReceptor"]["registroPatronal"], false, false);
+		}
+
 		if(strlen($data["nodoEmisor"]["rfc"]["rfc"]) == 13 && strlen($data["nodoEmisor"]["rfc"]["curp"]) > 0)
 		{
 			$emisorData["Curp"] = $this->Util()->CadenaOriginalVariableFormat($data["nodoEmisor"]["rfc"]["curp"],false,false);
 		}
-				
-		$this->CargaAtt(
-			$emisor, $emisorData
+
+		if(count($emisorData) > 0) {
+			$emisor = $xml->createElement("nomina12:Emisor");
+			$emisor = $myConplementoNomina->appendChild($emisor);
+
+			$this->CargaAtt(
+					$emisor, $emisorData
 			);
-		
+		}
+
 		//nodo receptor (sin subcontratacion)
 		$antiguedad = $this->Util()->weeks($data["nodoReceptor"]["fechaInicioRelLaboral"], $data["fechaPago"]);
 		$antiguedad = "P".$antiguedad."W";

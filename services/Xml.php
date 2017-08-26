@@ -31,6 +31,18 @@ class Xml extends Producto{
     private $impuestosLocales;
     private $impuestoLocal;
 
+    private $pagos;
+
+    private $cfdiUtil;
+    private $comprobantePago;
+    private $uuidRelacionado;
+
+    public function __construct()
+    {
+        $this->cfdiUtil = new CfdiUtil();
+        $this->comprobantePago = new ComprobantePago();
+    }
+
     public function CadenaOriginal($xmlFile) {
         $xslFile = DOC_ROOT."/xslt/cadenaoriginal_3_3.xslt";
         $xsl = new DOMDocument();
@@ -61,6 +73,9 @@ class Xml extends Producto{
         $this->xml = new DOMdocument("1.0","UTF-8");
 
         $this->formatDate();
+
+        $this->getUUIDRelacionado();
+
         $this->getTipoComprobante();
 
         $this->buildNodoRoot();
@@ -81,13 +96,22 @@ class Xml extends Producto{
 
         $this->buildNodoComplementos();
 
+        $this->buildNodoPagos();
 
         $this->CargaAtt($this->root, $this->buildRootData());
         //$this->CargaAtt($this->root, $this->buildRootData());
 
-        $this->root->setAttribute("xsi:schemaLocation", "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd ".$this->xsdNomina." ".$this->xsdDonataria." ".$this->xsdImplocal);
+        if($this->isPago()) {
+            $xsdPagos = 'http://www.sat.gob.mx/Pagos http://www.sat.gob.mx/sitio_internet/cfd/Pagos/Pagos10.xsd';
+        }
+
+        $this->root->setAttribute("xsi:schemaLocation", "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd ".$this->xsdNomina." ".$this->xsdDonataria." ".$this->xsdImplocal." ".$xsdPagos);
 
         return $this->save();
+    }
+
+    private function getUUIDRelacionado(){
+        $this->uuidRelacionado = $this->cfdiUtil->getUUID($this->data['cfdiRelacionadoSerie'], $this->data['cfdiRelacionadoFolio']);
     }
 
     private function CargaAtt(&$nodo, $attr)
@@ -133,18 +157,9 @@ class Xml extends Producto{
 
     private function buildNodoCfdisRelacionados() {
 
-        $this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT * FROM comprobante
-        WHERE serie = '".$this->data['cfdiRelacionadoSerie']."'
-        AND folio = '".$this->data['cfdiRelacionadoFolio']."'");
-
-        $cfdiRelacionado = $this->Util()->DBSelect($_SESSION["empresaId"])->GetRow();
-
-        if(!$cfdiRelacionado) {
+        if(!$this->uuidRelacionado) {
             return;
         }
-
-        $timbre = unserialize($cfdiRelacionado["timbreFiscal"]);
-        $uuid = $timbre["UUID"];
 
         $this->cfdisRelacionados = $this->xml->createElement("cfdi:CfdiRelacionados");
         $this->cfdisRelacionados = $this->root->appendChild($this->cfdisRelacionados);
@@ -158,7 +173,7 @@ class Xml extends Producto{
         $cfdiRelacionado = $this->cfdisRelacionados->appendChild($cfdiRelacionado);
 
         $cfdiRelacionadoData = array(
-            "UUID"=>$this->Util()->CadenaOriginalVariableFormat($uuid,false,false),
+            "UUID"=>$this->Util()->CadenaOriginalVariableFormat($this->uuidRelacionado,false,false),
         );
 
         $this->CargaAtt($cfdiRelacionado, $cfdiRelacionadoData);
@@ -191,6 +206,10 @@ class Xml extends Producto{
 
         if($this->miEmpresa['donatarias'] == "Si"){
             $this->root->setAttribute("xmlns:implocal", "http://www.sat.gob.mx/donat");
+        }
+
+        if($this->isPago()) {
+            $this->root->setAttribute("xmlns:pago10", "http://www.sat.gob.mx/Pagos");
         }
 
         $this->tipoDeCambio = $this->Util()->CadenaOriginalVariableFormat($this->data["tipoDeCambio"], true,false, true);
@@ -393,6 +412,10 @@ class Xml extends Producto{
             else
             {
                 $cantidad = $this->Util()->CadenaOriginalVariableFormat($concepto["cantidad"],true,false);
+            }
+
+            if($this->isPago()){
+                $cantidad = $this->Util()->CadenaOriginalFormat($concepto["cantidad"],0,false);
             }
 
             $conceptoData = array(
@@ -609,8 +632,88 @@ class Xml extends Producto{
         }
     }
 
+    private function buildNodoPagos() {
+
+        if(!$this->isPago()) {
+            return;
+        }
+
+        $this->complementos = $this->xml->createElement("cfdi:Complemento");
+        $this->complementos = $this->root->appendChild($this->complementos);
+
+        $this->pagos = $this->xml->createElement("pago10:Pagos");
+        $this->pagos = $this->complementos->appendChild($this->pagos);
+
+        $this->CargaAtt($this->pagos, array(
+                "Version" => '1.0',
+            )
+        );
+
+        $pago = $this->xml->createElement("pago10:Pago");
+        $pago = $this->pagos->appendChild($pago);
+
+        $fechaPago = $this->data['infoPago']->fecha.'T12:00:00';
+
+        switch($this->data['infoPago']->metodoPago) {
+            case "Efectivo": $metodoPago = "01";break;
+            case "Tarjeta Credito o Debito": $metodoPago = "04";break;
+            case "Transferencia": $metodoPago = "03";break;
+            case "Cheque": $metodoPago = "02";break;
+            case "Otro": $metodoPago = "01";break;
+        }
+
+        switch($this->data['tiposDeMonedaPago']) {
+            case "peso": $tipoDeMoneda = "MXN"; break;
+            case "dolar": $tipoDeMoneda = "USD"; break;
+            case "euro": $tipoDeMoneda = "EUR"; break;
+        }
+
+        $pagoData = [
+            "FechaPago" => $fechaPago,
+            "FormaDePagoP" => $metodoPago,
+            "MonedaP" => $tipoDeMoneda,
+            "Monto" => $this->Util()->CadenaOriginalFormat($this->data['infoPago']->amount,2,false),
+            //"NumOperacion" => uniqid(),
+            "NumOperacion" => 1,
+        ];
+
+        if($this->data['tiposDeMonedaPago'] != 'peso'){
+            $pagoData['TipoCambioP'] = $this->Util()->CadenaOriginalFormat($this->data['tiposDeCambioPago'],4,false);
+        }
+
+        $this->CargaAtt($pago, $pagoData);
+
+        $doctoRelacionado = $this->xml->createElement("pago10:DoctoRelacionado");
+        $doctoRelacionado = $pago->appendChild($doctoRelacionado);
+
+        $comprobante = $this->cfdiUtil->getInfoComprobanteRelacionado($this->data['cfdiRelacionadoSerie'], $this->data['cfdiRelacionadoFolio']);
+        $infoPagos = $this->comprobantePago->getPagos($comprobante, $this->data['infoPago']->amount);
+
+        $doctoRelacionadoData = [
+            "IdDocumento" => $this->uuidRelacionado,
+            "Serie" => $this->data['cfdiRelacionadoSerie'],
+            "Folio" => $this->data['cfdiRelacionadoFolio'],
+            "MonedaDR" => $tipoDeMoneda,
+            "MetodoDePagoDR" => 'PPD',
+            "NumParcialidad" => $infoPagos['numParcialidad'],
+            'ImpSaldoAnt' => $this->Util()->CadenaOriginalFormat($infoPagos['impSaldoAnt'],2,false),
+            'ImpPagado' => $this->Util()->CadenaOriginalFormat($infoPagos['impPagado'],2,false),
+            'ImpSaldoInsoluto' => $this->Util()->CadenaOriginalFormat($infoPagos['impSaldoInsoluto'],2,false),
+        ];
+
+        if($this->data['tiposDeMonedaPago'] != 'peso'){
+            $doctoRelacionadoData['TipoCambioDR'] = $this->Util()->CadenaOriginalFormat($this->data['tiposDeCambioPago'],4,false);
+        }
+
+        $this->CargaAtt($doctoRelacionado, $doctoRelacionadoData);
+    }
+
     private function buildNodoComplementos() {
         //TODO Para tipo N, P, o T no debe existir
+        if(!$this->isIngreso()) {
+            return;
+        }
+
         $this->complementos = $this->xml->createElement("cfdi:Complemento");
         $this->complementos = $this->root->appendChild($this->complementos);
 
@@ -632,37 +735,6 @@ class Xml extends Producto{
             include(DOC_ROOT."/services/complementos/Ish.php");
             $this->xsdImplocal = "http://www.sat.gob.mx/implocal http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xsd";
         }
-
-        //TODO complemento pagos
-        /*Nodo Pagos
-            Version 1.0
-            Nodo Pago
-                FechaPago (puede uno poner la fecha que uno desee)
-                FormaPagoP (viene del catalogo c_FormaPago)
-                MonedaP
-                TipoCambioP (debe existir si es diferente de MXN)
-                Monto
-                NumOperacion
-                RfcEmisorCtaOrd opcional (probablemente no se ponga) rfc de la cuenta del emisor a donde se hizo el deposito
-                NomBancoOrdExt (requerido si el RfcEmosorCtaOrd es extranjera probablemente no lo usaremos)
-                CtaOrdenante (opcional)
-                RfcEmisorCtaBen (opcional)
-                CtaBeneficiario (opcional)
-                TipoCadPago (opcional)
-                CertPago (opcional)
-                CadPago (opcional)
-                SelloPago (opcional)
-            Nodo DoctoRelacionado
-                idDocumento (uuid)
-                Serie
-                Folio
-                MonedaDR
-                TipoCambioDR (opcional)
-                MetodoPagoDR (se debe capturar PPD)
-                NumParcialidad
-                ImpSaldoAnt (lo que aun se debe)
-                ImpPagado (lo que se va pagando)
-                ImpSaldoInsoluto (resta ImpSaldoAnt - ImpPagado)*/
     }
 
     private function save() {

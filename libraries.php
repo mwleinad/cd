@@ -109,12 +109,14 @@ include_once(DOC_ROOT."/services/Catalogo.php");
 include_once(DOC_ROOT."/services/Sello.php");
 include_once(DOC_ROOT."/services/Totales.php");
 include_once(DOC_ROOT."/services/ComprobantePago.php");
+include_once(DOC_ROOT."/services/CfdiUtil.php");
 
 $cfdi = new Cfdi;
 $catalogo = new Catalogo;
 $sello = new Sello;
 $totales = new Totales;
 $comprobantePago = new ComprobantePago;
+$cfdiUtil = new CfdiUtil;
 
 //$util->wwwRedirect();
 

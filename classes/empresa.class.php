@@ -73,8 +73,8 @@ class Empresa extends Main
 	
 	public function setTelPersonal($value)
 	{
-		$this->Util()->ValidateRequireField($value, 'Tel&eacute;fono');
-		$this->Util()->ValidateString($value, $max_chars=300, $minChars = 0, "Tel&eacute;fono");
+		$this->Util()->ValidateRequireField($value, 'Tel&eacute;fono 2');
+		$this->Util()->ValidateString($value, $max_chars=300, $minChars = 0, "Tel&eacute;fono 2");
 		$this->telPersonal = $value;
 	}
 	

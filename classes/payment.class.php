@@ -2,10 +2,10 @@
 
 class Payment extends Util
 {
-	private $amount;
-	private $fecha;
-	private $metodoPago;
-	private $generarComprobantePago;
+	public $amount;
+	public $fecha;
+	public $metodoPago;
+	public $generarComprobantePago;
 
 	public function setAmount($value)
 	{
@@ -80,10 +80,10 @@ class Payment extends Util
 		if($this->Util()->PrintErrors()){ return false; }
 
 		//generar comprobante de pago
+		$comprobanteId = null;
 		if($this->generarComprobantePago == true){
 			$comprobantePago = new ComprobantePago();
-			$comprobantePago->generar($infoComprobante, $this);
-			exit;
+			$comprobanteId = $comprobantePago->generar($infoComprobante, $this);
 		}
 
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("
@@ -91,22 +91,19 @@ class Payment extends Util
 				`notaVentaId`, 
 				`amount`, 
 				`metodoPago`, 
-				`paymentDate`
-				) 
+				`paymentDate`,
+				`comprobantePagoId`
+				)
 			VALUES (
 				'".$this->comprobanteId."',
 				'".$this->amount."',
 				'".$this->metodoPago."',
-				'".$this->fecha."'
+				'".$this->fecha."',
+				'".$comprobanteId."'
 			)"
 		);
 
 		$sucursalId = $this->Util()->DBSelect($_SESSION["empresaId"])->InsertData();
-
-		//generar comprobante de pago
-		if($this->generarComprobantePago == true){
-
-		}
 
 		$this->Util()->setError(20030, "complete", "");
 		$this->Util()->PrintErrors();

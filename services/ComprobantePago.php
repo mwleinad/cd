@@ -59,27 +59,6 @@ class ComprobantePago extends Comprobante {
             'unidad' => 'NO DEBE EXISTIR', //esto lo quita en la clase xml, pero la clase cfdi espera un valor
 
         ];
-        //TODO check if this needs something else
-       /* Array
-        (
-            [1] => Array
-            (
-            [] => 1
-            [cuentaPredial] =>
-            [iepsTasaOCuota] => Tasa
-            [porcentajeIeps] => 0
-            [totalIeps] => 0
-            [porcentajeIsh] => 2
-            [totalIsh] => 0.02
-            [excentoIsh] =>
-            [excentoIva] => no
-            [tasaIva] => 16
-            [descuento] => 0
-            [importeTotal] => 1
-            [totalIva] => 0.16
-            [totalRetencionIva] => 0
-            [totalRetencionIsr] => 0
-        )*/
     }
 
     private function getCfdiRelacionado($infoComprobante) {
@@ -114,60 +93,34 @@ class ComprobantePago extends Comprobante {
             'usoCfdi' => 'P01',
             'formaDePago' => 'NO DEBE EXISTIR', //esto lo quita en la clase xml, pero la clase cfdi espera un valor
             'metodoDePago' => 'NO DEBE EXISTIR', //esto lo quita en la clase xml, pero la clase cfdi espera un valor
-
+            'infoPago' => $infoPago,
+            'tiposDeMonedaPago' => $comprobante['tipoDeMoneda'],
+            'tiposDeCambioPago' => $comprobante['tipoDeCambio'],
         ];
 
-/*        Array
-        (
-    [calle] => CALLE%206
-    [pais] => MEXICO
-    [ticketChain] =>
-    [rfc] => ACO971119HFA
-    [razonSocial] => ABASTECEDORA%20DE%20CORRUGADOS%20SA%20DE%20CV%0ADIRECCION%3A%20CALLE%206%20NO%2015%20%20COL%20RUSTICA%20XALOSTOC%20ECATEPEC%20ESTADO%20DE%20MEXICO%20ECATEPEC%20%20MEXICO%20CP%3A%2055340%20%0AEMAIL%3A%20ventas%40trazzos.com
-    [formaDePago] => 01
-    [NumCtaPago] =>
-    [tasaIva] => 16
-    [tiposDeMoneda] => MXN
-    [tipoDeCambio] =>
-    [porcentajeDescuento] =>
-    [metodoDePago] => PUE
-    [condicionesDePago] =>
-    [porcentajeRetIva] => 0
-    [porcentajeRetIsr] => 0
-    [porcentajeIEPS] =>
-    [sucursalId] => 1
-    [tiposComprobanteId] => 1-5
-    [usoCfdi] => G03
-    [type] => agregarConcepto
-    [cantidad] => 1
-    [noIdentificacion] =>
-    [unidad] => a
-    [valorUnitario] => 1.000000
-    [valorUnitarioCI] => 1.180000
-    [excentoIva] => no
-    [c_ClaveProdServ] => 01010101
-    [c_ClaveUnidad] => EA
-    [cuentaPredial] =>
-    [iepsTasaOCouta] => Tasa
-    [iepsConcepto] =>
-    [ishConcepto] => 2
-    [descripcion] => a
-    [tasa] =>
-    [impuestoId] =>
-    [iva] => 0
-    [importe] => 0
-    [tipo] => retencion
-    [folioSobre] =>
-)*/
-        echo "kere";
-        if(!$cfdi->Generar($data))
-        {
-            $error = new Error;
-            print_r($error->PrintErrors());
-            echo "test";
-            $vs = new User;
-            $vs->Util()->PrintErrors();
+        if(!$comprobanteId = $cfdi->Generar($data)) {
+            return null;
         }
+
+        return $comprobanteId;
+    }
+
+    public function getPagos($comprobante, $impPagado) {
+        $sql =  "SELECT COUNT(*) as pagos, SUM(payment.amount) as totalPagado FROM  payment
+        LEFT JOIN notaVenta ON payment.notaVentaId = notaVenta.notaVentaId
+        WHERE notaVenta.comprobanteId = '".$comprobante["comprobanteId"]."'";
+        $this->Util()->DBSelect($_SESSION["empresaId"])->setQuery($sql);
+        $infoPagos = $this->Util()->DBSelect($_SESSION["empresaId"])->GetRow();
+
+        $impSaldoAnt = $comprobante['total'] - $infoPagos['totalPagado'];
+        $impSaldoInsoluto = $impSaldoAnt - $impPagado;
+
+        $data["numParcialidad"] = $infoPagos['pagos'] + 1;
+        $data["impSaldoAnt"] = $impSaldoAnt;
+        $data["impPagado"] = $impPagado;
+        $data["impSaldoInsoluto"] = $impSaldoInsoluto;
+
+        return $data;
     }
 }
 

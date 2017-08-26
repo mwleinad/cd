@@ -143,6 +143,7 @@ class Cfdi extends Comprobante
         {
             //$fecha = "2016-06-30 21:49:52";
         }
+        //$fecha = "2017-08-19 10:49:52";
 
         $data["fechaPago"] = $fechaPago;
 
@@ -219,9 +220,8 @@ class Cfdi extends Comprobante
         $xmlFile = $root.$nufa.".xml";
 
         $cadenaOriginal = $xml->cadenaOriginal($xmlFile);
-
-        //$data["cadenaOriginal"] = utf8_encode($cadenaOriginal);
-        $data["cadenaOriginal"] = $cadenaOriginal;
+        $data["cadenaOriginal"] = utf8_encode($cadenaOriginal);
+        //$data["cadenaOriginal"] = $cadenaOriginal;
         $md5Cadena = utf8_decode($cadenaOriginal);
 
         $md5 = hash( 'sha256', $md5Cadena );
@@ -414,7 +414,7 @@ class Cfdi extends Comprobante
         $this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT comprobanteId FROM comprobante ORDER BY comprobanteId DESC LIMIT 1");
         $comprobanteId = $this->Util()->DBSelect($_SESSION["empresaId"])->GetSingle();
 
-        if(!isset($data['notaVentaId']) && !isset($_SESSION['ticketsId']))
+        if(!isset($data['notaVentaId']) && !isset($_SESSION['ticketsId']) && $tipoDeComprobante != 'pago')
         {
             $sql = "
 			INSERT INTO `notaVenta` (
@@ -520,7 +520,7 @@ class Cfdi extends Comprobante
         }
         unset($_SESSION['ticketsId']);
 
-        return true;
+        return $comprobanteId;
     }//Generar
 }
 

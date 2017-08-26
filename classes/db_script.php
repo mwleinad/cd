@@ -24,6 +24,7 @@ $newDb->setQuery("CREATE TABLE IF NOT EXISTS `payment` (
   `amount` float(20,6) NOT NULL,
   `paymentDate` date NOT NULL,
   `notaVentaId` int(11) NOT NULL,
+  `comprobantePagoId` int(11) NOT NULL,
   PRIMARY KEY (`paymentId`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;");
 $newDb->executeQuery();
