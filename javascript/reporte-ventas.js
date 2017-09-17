@@ -108,7 +108,6 @@
 						AddPayment();
 					}
     			});//fin funcion tecla enter
-				$('paymentContent').observe("click", DeletePaymentListeners);
 				$('imprimir').observe("click", PrintPayments);
 			},
 		onFailure: function(){ alert('Something went wrong...') }
@@ -355,18 +354,5 @@ function pressEnter()
 			
 		}
 		
-		DeletePaymentListeners = function(e) {
-			
-			var el = e.element();
-			var del = el.hasClassName('spanDeletePayment');
-			var id = el.identify();
-			
-			if(del == true)
-				DeletePayment(id);
-			
-		}
-	
 	$('facturasListDiv').observe("click", AddEditItemsListeners);
-	//$('facturaTickets').observe("click", FacturarNoFacturados);
-		
 });

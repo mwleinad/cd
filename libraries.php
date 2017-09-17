@@ -110,6 +110,9 @@ include_once(DOC_ROOT."/services/Sello.php");
 include_once(DOC_ROOT."/services/Totales.php");
 include_once(DOC_ROOT."/services/ComprobantePago.php");
 include_once(DOC_ROOT."/services/CfdiUtil.php");
+include_once(DOC_ROOT."/services/PdfService.php");
+include_once(DOC_ROOT."/services/XmlReaderService.php");
+include_once(DOC_ROOT."/services/QrService.php");
 
 $cfdi = new Cfdi;
 $catalogo = new Catalogo;
@@ -117,6 +120,9 @@ $sello = new Sello;
 $totales = new Totales;
 $comprobantePago = new ComprobantePago;
 $cfdiUtil = new CfdiUtil;
+$pdfService = new PdfService;
+$xmlReaderService = new XmlReaderService;
+$qrService = new QrService;
 
 //$util->wwwRedirect();
 
@@ -135,4 +141,5 @@ $newDesignExclude = $main->NewDesignExclude();
 $smarty->assign('newDesignExclude', $newDesignExclude);
 //empresas a las que NO se les cambiara el formato
 
+require 'vendor/autoload.php';
 ?>

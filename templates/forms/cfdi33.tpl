@@ -301,7 +301,7 @@
             <input name="iepsConcepto" id="iepsConcepto" type="text" value="{$post.ieps}"  size="8" class="largeInput"  placeholder="IEPS"/>
           </div>
           <div style="width:100px;float:left">
-            <input name="ishConcepto" id="ishConcepto" type="text" value="0"  size="8" class="largeInput"  placeholder="% ISH"/>
+            <input name="ishConcepto" id="ishConcepto" type="text" value="{$post.ish}"  size="8" class="largeInput"  placeholder="% ISH"/>
           </div>
 
 

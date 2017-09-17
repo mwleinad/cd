@@ -618,7 +618,6 @@ function EnviarEmail(id){
 		onSuccess: function(transport){
 			var response = transport.responseText || "no response text";
 			console.log(response);
-		//	alert(response);
 			var splitResponse = response.split("[#]");
 			if(splitResponse[0] == "ok"){					
 				ShowStatusPopUp(splitResponse[1])									

@@ -721,7 +721,13 @@ class Xml extends Producto{
         if($this->data["fromNomina"])
         {
             include_once(DOC_ROOT."/classes/complemento_nomina_12_xml.php");
+            //TODO todo esto debe de ir en el root xml al inicio, no olvidar las lineas comentadas
             $this->xsdNomina = "http://www.sat.gob.mx/nomina http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd";
+
+/*            $root->setAttribute('xmlns:nomina12', "http://www.sat.gob.mx/nomina12");
+            $root->setAttribute('xmlns:catNomina', "http://www.sat.gob.mx/sitio_internet/cfd/catalogos/Nomina");
+            $root->setAttribute('xmlns:tdCFDI', "http://www.sat.gob.mx/sitio_internet/cfd/tipoDatos/tdCFDI");
+            $root->setAttribute('xmlns:catCFDI', "http://www.sat.gob.mx/sitio_internet/cfd/catalogos");*/
         }
 
         //TODO donatarias

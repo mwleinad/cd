@@ -30,6 +30,21 @@ class CfdiUtil extends Comprobante
 
         return $cfdiRelacionado;
     }
+
+    public function cadenaOriginalTimbre($timbre){
+        $cadenaOriginal = "||";
+        $cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($timbre["Version"]);
+        $cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($timbre["UUID"]);
+        $cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($timbre["FechaTimbrado"]);
+        $cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($timbre["SelloCFD"]);
+        $cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($timbre["NoCertificadoSAT"]);
+        $cadenaOriginal .= "|";
+
+        $cadena = utf8_encode($cadenaOriginal);
+        $data["original"] = $cadena;
+        $data["sha1"] = sha1($cadena);
+        return $data;
+    }
 }
 
 

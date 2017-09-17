@@ -15,13 +15,13 @@ class Pac extends Util
 		$response = $client->__soapCall("add", array($params));
 	}
 	
-	function CancelaCfdi($user, $pw, $rfc, $uuid, $pfx, $pfxPassword, $showErrors = false)
+	function CancelaCfdi($user, $pw, $rfc, $uuid, $pfx, $pfxPassword, $showErrors = false, $idComprobante)
 	{
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("
 			SELECT * FROM comprobante 
-			WHERE fecha < '2016-02-01'");
+			WHERE fecha < '2016-02-01' AND comprobanteId = '".$idComprobante."'");
 		$viejoTimbre = $this->Util()->DBSelect($_SESSION["empresaId"])->GetRow();
-		
+
 		if($viejoTimbre)
 		{
 			$pacOld = new PacOld;
@@ -88,22 +88,14 @@ class Pac extends Util
 		);
 		
 		$response = $client->__soapCall("cancel", array($params));
-		
-		//print_r($response);
+
 		$error = "UUID: ".$uuid." No Encontrado";
 		if($response->cancelResult->Folios->Folio->EstatusUUID == 201 || $response->cancelResult->Folios->Folio->EstatusUUID == 202)
 		{
 			return true;
 		}
 
-//		if($response->cancelResult->CodEstatus == $error)
-//		{
-			
-			return false;
-			
-//		}
-		
-//		return true;
+		return false;
 	}
 	
 	function GetCfdi($user, $pw, $zipFile, $path, $newFile, $empresa)

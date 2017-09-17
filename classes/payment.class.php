@@ -145,6 +145,24 @@ class Payment extends Util
 	
 	function DeletePayment()
 	{
+		$payment = $this->Info();
+
+		$eliminarPago = true;
+		if($payment["comprobantePagoId"]) {
+
+			$empresa = new Empresa();
+			$empresa->setComprobanteId($payment["comprobantePagoId"]);
+			$empresa->setMotivoCancelacion("Pago eliminado");
+
+			if(!$empresa->CancelarComprobante()){
+				$eliminarPago = false;
+			}
+		}
+
+		if($eliminarPago === false){
+			return;
+		}
+
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("DELETE FROM payment WHERE paymentId = '".$this->paymentId."'");
 		$this->Util()->DBSelect($_SESSION["empresaId"])->DeleteData();
 		$this->Util()->setError(20008, "complete", "Has eliminado el pago exitosamente");
