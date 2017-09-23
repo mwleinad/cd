@@ -45,6 +45,28 @@ class CfdiUtil extends Comprobante
         $data["sha1"] = sha1($cadena);
         return $data;
     }
+
+    public function getFilename($id) {
+
+        $id = explode("_", $id);
+
+        if(!isset($id[1])) {
+            return null;
+        }
+
+        $this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT xml FROM comprobante
+        WHERE comprobanteId = '".$id[1]."'");
+
+        $xml = $this->Util()->DBSelect($_SESSION["empresaId"])->GetSingle();
+
+        if(!$xml) {
+            return null;
+        }
+
+        $fileName = "SIGN_".$xml;
+
+        return $fileName;
+    }
 }
 
 

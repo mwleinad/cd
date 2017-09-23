@@ -133,7 +133,6 @@ class Pac extends Util
 			$response = $client->__soapcall("stamp", array($params));
 			if(count($response->stampResult->Incidencias->Incidencia))
 			{
-				//print_r($response);
 				if($response->stampResult->Incidencias->Incidencia->MensajeIncidencia == "XML mal formado")
 				{
 					$add = "Revisar que el RFC del Cliente sea Correcto.";
@@ -142,7 +141,12 @@ class Pac extends Util
 				$retVal['tipo'] = 'error';
 				return $retVal;
 			}
-			
+
+			//todo remove
+			if($_SESSION["empresaId"] == 15)
+			{
+				//print_r($response);
+			}
 			$data = $response->stampResult->xml;
 		
 			$fh = fopen($newFile, 'w') or die("can't open file");

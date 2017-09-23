@@ -2,7 +2,6 @@
 
 class Cfdi extends Comprobante
 {
-
     function Generar($data, $notaCredito = false)
     {
         $myData = urlencode(serialize($data));
@@ -29,10 +28,6 @@ class Cfdi extends Comprobante
         {
             $vs->Util()->setError(10041, "error", "El numero de dias pagados debe de ser un numero");
         }
-
-        //$vs->setRFC($data["rfc"]);
-        //$vs->setCalle($data["calle"]);
-        //$vs->setPais($data["pais"]);
 
         if(strlen($data["formaDePago"]) <= 0)
         {
@@ -143,13 +138,14 @@ class Cfdi extends Comprobante
         {
             //$fecha = "2016-06-30 21:49:52";
         }
-        //$fecha = "2017-08-19 10:49:52";
+        //$fecha = "2017-09-23 10:49:52";
 
         $data["fechaPago"] = $fechaPago;
 
         //el tipo de comprobante lo determina tiposComprobanteId
-        $tipoDeComprobante = $this->GetTipoComprobante($data["tiposComprobanteId"]);
+         $tipoDeComprobante = $this->GetTipoComprobante($data["tiposComprobanteId"]);
         $data["comprobante"] = $this->InfoComprobante($data["tiposComprobanteId"]);
+
 
         $data["serie"] = $serie;
         $data["folio"] = $folio;
@@ -177,21 +173,20 @@ class Cfdi extends Comprobante
 
         $userId = $data["userId"];
 
-        //build informacion nodo receptor
-        if(!$data["fromNomina"])
-        {
+        include_once(DOC_ROOT.'/services/Xml.php');
+        $xml = new Xml($data);
+
+        //TODO might move to constructor
+        if(!$xml->isNomina()){
             $vs->setUserId($userId, 1);
             $nodoReceptor = $vs->GetUserInfo($userId);
 
             $nodoReceptor["rfc"] = str_replace("&AMP;", "&", $nodoReceptor["rfc"]);
 
-        }
-        else
-        {
+        } else {
             $usuario = new Usuario;
             $usuario->setUsuarioId($userId);
             $nodoReceptor = $usuario->InfoUsuario();
-
         }
         $data["nodoReceptor"] = $nodoReceptor;
         //checar si nos falta unidad en alguno
@@ -203,10 +198,8 @@ class Cfdi extends Comprobante
             }
         }
 
-        include_once(DOC_ROOT.'/services/Xml.php');
-
-        $xml = new Xml;
-        $xml->Generate($data, $totales, $_SESSION["conceptos"],$empresa);
+        $xml = new Xml($data);
+        $xml->Generate($totales, $_SESSION["conceptos"],$empresa);
 
         //despues de la generacion del xml, viene el timbrado.
         $nufa = $empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
@@ -214,74 +207,65 @@ class Cfdi extends Comprobante
 
         $root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/facturas/xml/";
 
-        $root_dos = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/facturas/xml/timbres/";
-        $nufa_dos = "SIGN_".$empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
-
         $xmlFile = $root.$nufa.".xml";
 
         $cadenaOriginal = $xml->cadenaOriginal($xmlFile);
-        $data["cadenaOriginal"] = utf8_encode($cadenaOriginal);
-        //$data["cadenaOriginal"] = $cadenaOriginal;
-        $md5Cadena = utf8_decode($cadenaOriginal);
+        //TODO acordarse que se le quito el utf8 decode
+        $data["cadenaOriginal"] = $cadenaOriginal;
+        $md5Cadena = $cadenaOriginal;
 
         $md5 = hash( 'sha256', $md5Cadena );
-
 
         $selloObject = new Sello;
         $sello = $selloObject->generar($cadenaOriginal, $md5);
         $data["sello"] = $sello["sello"];
         $data["certificado"] = $sello["certificado"];
 
-        //$xml->updateSello($xmlFile);
-        $xml = new Xml;
-        $xml->Generate($data, $totales, $_SESSION["conceptos"],$empresa);
+        $xml = new Xml($data);
+        $xml->Generate($totales, $_SESSION["conceptos"],$empresa);
 
-        //Generacion de cadena original
-            $xmlDb = $nufa;
-            $zipFile = $root.$nufa.".zip";
+        $xmlDb = $nufa;
+        $zipFile = $root.$nufa.".zip";
 
-            $signedFile = $root."SIGN_".$nufa.".xml";
-            $timbreFile = $root.$nufa."_timbre.zip";
-            $timbradoFile = $root.$nufa_dos.".xml";
+        $signedFile = $root."SIGN_".$nufa.".xml";
 
-            $user = USER_PAC;
-            $pw = PW_PAC;
-            $pac = new Pac;
-            $response = $pac->GetCfdi($user, $pw, $zipFile, $root, $signedFile, $empresa["empresaId"]);
+        $user = USER_PAC;
+        $pw = PW_PAC;
+        $pac = new Pac;
+        $response = $pac->GetCfdi($user, $pw, $zipFile, $root, $signedFile, $empresa["empresaId"]);
 
-            if(is_array($response))
+        if(is_array($response))
+        {
+            if($response["tipo"] == "error")
             {
-                if($response["tipo"] == "error")
-                {
-                    $vs->Util()->setError(10047, "error", utf8_encode($response["msg"]));
-                    if($vs->Util()->PrintErrors()){ return false; }
-                }
+                $vs->Util()->setError(10047, "error", utf8_encode($response["msg"]));
+                if($vs->Util()->PrintErrors()){ return false; }
             }
+        }
 
-            $timbreXml = $pac->ParseTimbre($response, $data["sello"]);
+        $timbreXml = $pac->ParseTimbre($response, $data["sello"]);
 
-            $cadenaOriginalTimbre = $pac->GenerateCadenaOriginalTimbre($timbreXml);
-            $cadenaOriginalTimbreSerialized = serialize($cadenaOriginalTimbre);
+        $cadenaOriginalTimbre = $pac->GenerateCadenaOriginalTimbre($timbreXml);
+        $cadenaOriginalTimbreSerialized = serialize($cadenaOriginalTimbre);
 
-            //add addenda
-            if($_SESSION["impuestos"])
+        //add addenda
+        if($_SESSION["impuestos"])
+        {
+            $nufa = "SIGN_".$empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
+            $realSignedXml = $root.$nufa.".xml";
+            $strAddenda = "<cfdi:Addenda>";
+            foreach($_SESSION["impuestos"] as $impuesto)
             {
-                $nufa = "SIGN_".$empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
-                $realSignedXml = $root.$nufa.".xml";
-                $strAddenda = "<cfdi:Addenda>";
-                foreach($_SESSION["impuestos"] as $impuesto)
-                {
-                    $strAddenda .= "  <cfdi:impuesto tipo=\"".$impuesto["tipo"]."\" nombre=\"".$impuesto["impuesto"]."\" importe=\"".$impuesto["importe"]."\" tasa=\"".$impuesto["tasaIva"]."\" />";
-                }
-                $strAddenda .= "</cfdi:Addenda>";
+                $strAddenda .= "  <cfdi:impuesto tipo=\"".$impuesto["tipo"]."\" nombre=\"".$impuesto["impuesto"]."\" importe=\"".$impuesto["importe"]."\" tasa=\"".$impuesto["tasaIva"]."\" />";
             }
+            $strAddenda .= "</cfdi:Addenda>";
+        }
 
-            include_once(DOC_ROOT."/addendas/addenda_xml.php");
+        //TODO addendas
+        include_once(DOC_ROOT."/addendas/addenda_xml.php");
+        $data["timbreFiscal"] = $cadenaOriginalTimbre;
 
-
-            $data["timbreFiscal"] = $cadenaOriginalTimbre;
-
-        switch($data["metodoDePago"])
+        /*switch($data["metodoDePago"])
         {
             case "01": $data["metodoDePagoLetra"] = "Efectivo"; break;
             case "02": $data["metodoDePagoLetra"] = "Cheque"; break;
@@ -293,16 +277,16 @@ class Cfdi extends Comprobante
             case "28": $data["metodoDePagoLetra"] = "Tarjeta de Debito"; break;
             case "29": $data["metodoDePagoLetra"] = "Tarjeta de Servici"; break;
             case "99": $data["metodoDePagoLetra"] = "Otros"; break;
-        }
+        }*/
 
-        if(!$data["fromNomina"])
+        /*if(!$data["fromNomina"])
         {
             include_once(DOC_ROOT."/classes/disenios_facturase.php");
         }
         else
         {
             include_once(DOC_ROOT."/classes/disenios_facturase_nomina.php");
-        }
+        }*/
 
         //	return false;
         //cambios 29 junio 2011
@@ -314,6 +298,7 @@ class Cfdi extends Comprobante
             case "EUR": $data["tiposDeMoneda"] = "euro"; break;
         }
 
+        //TODO lo del tec
         if($_SESSION["empresaId"] == 333)
         {
             $add = "
@@ -327,6 +312,7 @@ class Cfdi extends Comprobante
 				'".$data["referencia"]."',";
 
         }
+
         $this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("
 			INSERT INTO `comprobante` (
 				`comprobanteId`,

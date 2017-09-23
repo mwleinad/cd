@@ -20,15 +20,28 @@ class PdfService extends Producto{
 
         $rfcActivo = $this->getRfcActive();
 
-        $xmlPath = DOC_ROOT.'/empresas/'.$empresaId.'/certificados/'.$rfcActivo.'/facturas/xml/'.$fileName.".xml";
-        $xmlData = $xmlReaderService->execute($xmlPath);
+        //No se envio un nombre de archivo, buscar la serie y folio del comprobante
+        if(strpos($fileName, 'UID') !== false){
+            $fileName = $this->cfdiUtil->getFilename($fileName);
+        }
 
+        $xmlPath = DOC_ROOT.'/empresas/'.$empresaId.'/certificados/'.$rfcActivo.'/facturas/xml/'.$fileName.".xml";
+        $xmlData = $xmlReaderService->execute($xmlPath, $empresaId);
         $this->smarty->assign('xmlData', $xmlData);
 
         $dompdf = new Dompdf();
 
         $qrFile = $this->qrService->generate($xmlData);
         $this->smarty->assign('qrFile', $qrFile);
+
+        $logo = DOC_ROOT."/empresas/".$empresaId."/qrs/".$xmlData['serie']["serieId"].".jpg";
+
+        if(file_exists($logo)) {
+            $this->smarty->assign('logo', $logo);
+        }
+
+        $catalogos = $this->getFromCatalogo($xmlData, $empresaId);
+        $this->smarty->assign('catalogos', $catalogos);
 
         //Uncomment if you want to see a html version
         //$this->smarty->display(DOC_ROOT.'/templates/pdf/basico.tpl');exit;
@@ -50,6 +63,44 @@ class PdfService extends Producto{
         }
 
         exit(0);
+    }
+
+    private function getFromCatalogo($xmlData, $empresaId){
+        $sql = 'SELECT tipoDeComprobante FROM tiposComprobante
+				WHERE tiposComprobanteId = "'.$xmlData["serie"]['tiposComprobanteId'].'"';
+        $this->Util()->DB()->setQuery($sql);
+        $data["EfectoComprobante"] = strtoupper($this->Util()->DB()->GetSingle());
+
+        $sql = 'SELECT nombreRegimen FROM tipoRegimen
+				WHERE claveRegimen = "'.$xmlData["emisor"]['RegimenFiscal'].'"';
+        $this->Util()->DB()->setQuery($sql);
+        $data["RegimenFiscal"] = strtoupper($this->Util()->DB()->GetSingle());
+
+        $sql = 'SELECT * FROM c_Impuesto';
+        $this->Util()->DB()->setQuery($sql);
+        $impuestos = $this->Util()->DB()->GetResult();
+
+        $data["impuestos"] = [];
+        foreach($impuestos as $key => $impuesto) {
+            $data["impuestos"][$impuesto['c_Impuesto']] = $impuesto['descripcion'];
+        }
+
+        $sql = 'SELECT descripcion FROM c_FormaPago
+				WHERE c_formaPago = "'.$xmlData["cfdi"]['FormaPago'].'"';
+        $this->Util()->DB()->setQuery($sql);
+        $data["FormaPago"] = strtoupper($this->Util()->DB()->GetSingle());
+
+        $sql = 'SELECT descripcion FROM c_MetodoPago
+				WHERE c_metodoPago = "'.$xmlData["cfdi"]['MetodoPago'].'"';
+        $this->Util()->DB()->setQuery($sql);
+        $data["MetodoPago"] = strtoupper($this->Util()->DB()->GetSingle());
+
+        $sql = 'SELECT descripcion FROM c_UsoCfdi
+				WHERE c_UsoCfdi = "'.$xmlData["receptor"]['UsoCFDI'].'"';
+        $this->Util()->DB()->setQuery($sql);
+        $data["UsoCFDI"] = strtoupper($this->Util()->DB()->GetSingle());
+
+        return $data;
     }
 }
 ?>

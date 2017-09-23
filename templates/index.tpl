@@ -225,6 +225,7 @@ function validar(nombre,correo,telefono,mensaje)
     $page == "donatarias" ||
     $page == "vencimientos" ||
     $page == "cfdi33-generate" ||
+    $page == "cfdi33-generate-nomina" ||
     $page == "cliente-consulta"}
 	<link href="{$WEB_ROOT}/css/960.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="{$WEB_ROOT}/css/reset.css" rel="stylesheet" type="text/css" media="all" />
@@ -394,7 +395,8 @@ window._fbq.push(['track', '6025321891664', {'value':'0.00','currency':'USD'}]);
 	$page == "actualizar" ||
     $page == "vencimientos" ||
     $page == "cfdi33-generate" ||
-	$page == "impuesto" || 
+    $page == "cfdi33-generate-nomina" ||
+	$page == "impuesto" ||
   $page == "reporte-sat" ||
   $page == "nueva-venta" ||
   $page == "nueva-factura-ish" ||
