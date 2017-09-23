@@ -265,30 +265,6 @@ class Cfdi extends Comprobante
         include_once(DOC_ROOT."/addendas/addenda_xml.php");
         $data["timbreFiscal"] = $cadenaOriginalTimbre;
 
-        /*switch($data["metodoDePago"])
-        {
-            case "01": $data["metodoDePagoLetra"] = "Efectivo"; break;
-            case "02": $data["metodoDePagoLetra"] = "Cheque"; break;
-            case "03": $data["metodoDePagoLetra"] = "Transferencia"; break;
-            case "04": $data["metodoDePagoLetra"] = "Tarjetas de Credito"; break;
-            case "05": $data["metodoDePagoLetra"] = "Monederos electronicos"; break;
-            case "06": $data["metodoDePagoLetra"] = "Dinero electronico"; break;
-            case "08": $data["metodoDePagoLetra"] = "Vales de despensa"; break;
-            case "28": $data["metodoDePagoLetra"] = "Tarjeta de Debito"; break;
-            case "29": $data["metodoDePagoLetra"] = "Tarjeta de Servici"; break;
-            case "99": $data["metodoDePagoLetra"] = "Otros"; break;
-        }*/
-
-        /*if(!$data["fromNomina"])
-        {
-            include_once(DOC_ROOT."/classes/disenios_facturase.php");
-        }
-        else
-        {
-            include_once(DOC_ROOT."/classes/disenios_facturase_nomina.php");
-        }*/
-
-        //	return false;
         //cambios 29 junio 2011
         //insert new comprobante
         switch($data["tiposDeMoneda"])
@@ -400,7 +376,7 @@ class Cfdi extends Comprobante
         $this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT comprobanteId FROM comprobante ORDER BY comprobanteId DESC LIMIT 1");
         $comprobanteId = $this->Util()->DBSelect($_SESSION["empresaId"])->GetSingle();
 
-        if(!isset($data['notaVentaId']) && !isset($_SESSION['ticketsId']) && $tipoDeComprobante != 'pago')
+        if(!isset($data['notaVentaId']) && !isset($_SESSION['ticketsId']) && (!$xml->isPago() && !$xml->isNomina()))
         {
             $sql = "
 			INSERT INTO `notaVenta` (

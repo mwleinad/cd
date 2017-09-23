@@ -243,7 +243,7 @@ class Xml extends Producto{
         return $this->tipoComprobante == 'T';
     }
 
-    private function isPago() {
+    public function isPago() {
         return $this->tipoComprobante == 'P';
     }
 

@@ -646,7 +646,9 @@ class Nomina extends Producto
 			$cadenaOriginal = explode("|", $val["cadenaOriginal"]);
 			$card['subTotal'] = $val["subTotal"];
 			$card['total'] = $val["total"];
-																		 
+			$card['version'] = $val["version"];
+			$card['xml'] = $val["xml"];
+
 			foreach($cadenaOriginal as $keyCadena => $cadena)
 			{
 				if($cadena == "IVA")
@@ -782,6 +784,7 @@ class Nomina extends Producto
 			$card['tipoDeComprobante'] = $val['tipoDeComprobante'];
 			$card['observaciones'] = $val['observaciones'];
 			$card['xml'] = $val['xml'];
+			$card['version'] = $val['version'];
 
 
 			//get payments

@@ -10,6 +10,7 @@ class XmlReaderService extends Comprobante
         $xml->registerXPathNamespace('t',$ns['tfd']);
         $xml->registerXPathNamespace('pago10',$ns['pago10']);
         $xml->registerXPathNamespace('impLocal',$ns['implocal']);
+        $xml->registerXPathNamespace('nomina12',$ns['nomina12']);
 
         //cfdi
         $data["cfdi"] = $xml->xpath('//cfdi:Comprobante')[0];
@@ -99,6 +100,59 @@ class XmlReaderService extends Comprobante
 
                 $data["pagos"][] = $card;
             }
+        }
+
+        $nomina = $xml->xpath('//nomina12:Nomina');
+
+        if(isset($nomina[0])){
+            $card["data"] = $nomina[0];
+            $card['emisor'] = $nomina[0]->xpath('//nomina12:Emisor')[0];
+            $card['receptor'] = $nomina[0]->xpath('//nomina12:Receptor')[0];
+
+            $card['receptor']['Antiguedad'] = $card['receptor']["Antigüedad"];
+
+            $card['percepciones']["data"] = $nomina[0]->xpath('//nomina12:Percepciones')[0];
+
+            $percepciones = $card['percepciones']["data"]->xpath('//nomina12:Percepcion');
+
+            //TODO horas extra
+            foreach($percepciones as $percepcion) {
+                $card['percepciones']["percepcion"][] = $percepcion;
+            }
+
+            $card['deducciones']["data"] = $nomina[0]->xpath('//nomina12:Deducciones')[0];
+
+            if($card['deducciones']["data"]){
+                $deducciones = $card['deducciones']["data"]->xpath('//nomina12:Deduccion');
+
+                //TODO partes como CompensacionSaldosAFavor SubsidioAlEmpleo etc
+                foreach($deducciones as $deduccion) {
+                    $card['deducciones']["deduccion"][] = $deduccion;
+                }
+            }
+
+            $card['otrosPagos']["data"] = $nomina[0]->xpath('//nomina12:OtrosPagos')[0];
+
+            if(isset($card['otrosPagos']["data"])) {
+                $otrosPagos = $card['otrosPagos']["data"]->xpath('//nomina12:OtroPago');
+
+
+                foreach($otrosPagos as $otroPago) {
+                    $card['otrosPagos']["otroPago"][] = $otroPago;
+                }
+            }
+
+            $card['incapacidades']["data"] = $nomina[0]->xpath('//nomina12:Incapacidades')[0];
+
+            if(isset($card['incapacidades']["data"])) {
+                $incapacidades = $card['incapacidades']["data"]->xpath('//nomina12:Incapacidad');
+
+                foreach($incapacidades as $incapacidad) {
+                    $card['incapacidades']["incapacidad"][] = $incapacidad;
+                }
+            }
+
+            $data['nomina'] = $card;
         }
 
         return $data;
