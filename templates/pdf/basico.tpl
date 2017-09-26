@@ -334,6 +334,9 @@
     {*Complemento de nomina*}
     {include file="pdf/complementoNomina.tpl"}
 
+    {*Complemento de nomina*}
+    {include file="pdf/complementoDonatarias.tpl"}
+
     <p class=""><span class="no-bold word-break pre">{$xmlData.db.observaciones|urldecode}</span> </p>
 
     <table width="100%" class="font-smaller">

@@ -11,6 +11,7 @@ class XmlReaderService extends Comprobante
         $xml->registerXPathNamespace('pago10',$ns['pago10']);
         $xml->registerXPathNamespace('impLocal',$ns['implocal']);
         $xml->registerXPathNamespace('nomina12',$ns['nomina12']);
+        $xml->registerXPathNamespace('donat',$ns['donat']);
 
         //cfdi
         $data["cfdi"] = $xml->xpath('//cfdi:Comprobante')[0];
@@ -72,6 +73,26 @@ class XmlReaderService extends Comprobante
 
         //TODO complementos y addendas
         //Complementos ImpuestosLocales
+        $donatarias = $xml->xpath('//donat:Donatarias ');
+
+        if(isset($donatarias[0])){
+            $data['donatarias'] = $donatarias[0];
+        }
+
+        if(isset($impuestos[0])){
+            $data['impuestosLocales']['totales'] = $impuestos[0];
+
+            $trasladosLocales = $impuestos[0]->xpath('//implocal:TrasladosLocales');
+
+            foreach($trasladosLocales as $con){
+                if($con['ImpLocTrasladado'] == 'ISH') {
+                    $data['impuestosLocales']['ish'] = $con;
+                } else {
+                    $data['impuestosLocales']['traslados'] = $con;
+                }
+            }
+        }
+
         $impuestos = $xml->xpath('//impLocal:ImpuestosLocales');
 
         if(isset($impuestos[0])){

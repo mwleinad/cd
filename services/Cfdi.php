@@ -2,7 +2,7 @@
 
 class Cfdi extends Comprobante
 {
-    function Generar($data, $notaCredito = false)
+    public function Generar($data, $notaCredito = false)
     {
         $myData = urlencode(serialize($data));
         $empresa = $this->Info();
@@ -198,41 +198,21 @@ class Cfdi extends Comprobante
             }
         }
 
+        //XML sin sello
         $xml = new Xml($data);
         $xml->Generate($totales, $_SESSION["conceptos"],$empresa);
 
-        //despues de la generacion del xml, viene el timbrado.
-        $nufa = $empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
-        $rfcActivo = $this->getRfcActive();
 
-        $root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/facturas/xml/";
+        //XML con sello
+        $xmlConSello = $this->stamp($empresa, $serie, $data, $xml, $totales);
 
-        $xmlFile = $root.$nufa.".xml";
+        if($data['format'] == 'vistaPrevia'){
+            return $xmlConSello;
+        }
 
-        $cadenaOriginal = $xml->cadenaOriginal($xmlFile);
-        //TODO acordarse que se le quito el utf8 decode
-        $data["cadenaOriginal"] = $cadenaOriginal;
-        $md5Cadena = $cadenaOriginal;
-
-        $md5 = hash( 'sha256', $md5Cadena );
-
-        $selloObject = new Sello;
-        $sello = $selloObject->generar($cadenaOriginal, $md5);
-        $data["sello"] = $sello["sello"];
-        $data["certificado"] = $sello["certificado"];
-
-        $xml = new Xml($data);
-        $xml->Generate($totales, $_SESSION["conceptos"],$empresa);
-
-        $xmlDb = $nufa;
-        $zipFile = $root.$nufa.".zip";
-
-        $signedFile = $root."SIGN_".$nufa.".xml";
-
-        $user = USER_PAC;
-        $pw = PW_PAC;
+        //Timbrado PAC
         $pac = new Pac;
-        $response = $pac->GetCfdi($user, $pw, $zipFile, $root, $signedFile, $empresa["empresaId"]);
+        $response = $pac->GetCfdi($xmlConSello["xmlFile"], $xmlConSello['xmlSignedFile']);
 
         if(is_array($response))
         {
@@ -248,8 +228,8 @@ class Cfdi extends Comprobante
         $cadenaOriginalTimbre = $pac->GenerateCadenaOriginalTimbre($timbreXml);
         $cadenaOriginalTimbreSerialized = serialize($cadenaOriginalTimbre);
 
-        //add addenda
-        if($_SESSION["impuestos"])
+        //add addenda TODO constructoras
+        /*if($_SESSION["impuestos"])
         {
             $nufa = "SIGN_".$empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
             $realSignedXml = $root.$nufa.".xml";
@@ -259,10 +239,10 @@ class Cfdi extends Comprobante
                 $strAddenda .= "  <cfdi:impuesto tipo=\"".$impuesto["tipo"]."\" nombre=\"".$impuesto["impuesto"]."\" importe=\"".$impuesto["importe"]."\" tasa=\"".$impuesto["tasaIva"]."\" />";
             }
             $strAddenda .= "</cfdi:Addenda>";
-        }
+        }*/
 
         //TODO addendas
-        include_once(DOC_ROOT."/addendas/addenda_xml.php");
+        /*include_once(DOC_ROOT."/addendas/addenda_xml.php");*/
         $data["timbreFiscal"] = $cadenaOriginalTimbre;
 
         //cambios 29 junio 2011
@@ -361,7 +341,7 @@ class Cfdi extends Comprobante
 				'".$data["motivoDescuento"]."',
 				'".$totales["total"]."',
 				'".$tipoDeComprobante."',
-				'".$xmlDb."',
+				'".$xmlConSello['fileName']."',
 				'".$data["nodoEmisor"]["rfc"]["rfcId"]."',
 				'".$totales["iva"]."',
 				'".$myData."',
@@ -484,6 +464,36 @@ class Cfdi extends Comprobante
 
         return $comprobanteId;
     }//Generar
+
+    private function stamp($empresa, $serie, $data, $xml, $totales){
+        //despues de la generacion del xml, viene el timbrado.
+        $fileName = $empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
+        $rfcActivo = $this->getRfcActive();
+        $root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/facturas/xml/";
+
+        $xmlFile = $root.$fileName.".xml";
+
+        $cadenaOriginal = $xml->cadenaOriginal($xmlFile);
+        //TODO acordarse que se le quito el utf8 decode
+        $data["cadenaOriginal"] = $cadenaOriginal;
+        $md5Cadena = $cadenaOriginal;
+
+        $md5 = hash( 'sha256', $md5Cadena );
+
+        $selloObject = new Sello;
+        $sello = $selloObject->generar($cadenaOriginal, $md5);
+        $data["sello"] = $sello["sello"];
+        $data["certificado"] = $sello["certificado"];
+
+        $xml = new Xml($data);
+        $xml->Generate($totales, $_SESSION["conceptos"],$empresa);
+
+        $response['fileName'] = $fileName;
+        $response['root'] = $root;
+        $response['xmlFile'] = $root.$fileName.".xml";
+        $response['xmlSignedFile'] = $root."SIGN_".$fileName.".xml";
+        return $response;
+    }
 }
 
 

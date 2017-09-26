@@ -150,6 +150,8 @@ switch($_POST["type"])
         $data["fechaDeposito"] = $_POST["fechaDeposito"];
         $data["referencia"] = $_POST["referencia"];
 
+        $data["format"] = $_POST["format"];
+
 
         if($_POST["fechaSobreDia"] && $_POST["fechaSobreMes"] && $_POST["fechaSobreAnio"])
         {
@@ -195,13 +197,20 @@ switch($_POST["type"])
             $data["firmaVendedor"] = $_POST["firmaVendedor"];
         }
 
-        if(!$cfdi->Generar($data))
+        if(!$response = $cfdi->Generar($data))
         {
             echo "fail|";
             $smarty->display(DOC_ROOT.'/templates/boxes/status.tpl');
         }
         else
         {
+            if($data['format'] == 'vistaPrevia'){
+                echo "ok|";
+                $smarty->assign("response", $response);
+                $smarty->display(DOC_ROOT.'/templates/boxes/cfdi33-vista-previa.tpl');
+                exit;
+            }
+
             echo "ok|";
             $info = $user->Info();
             $smarty->assign("info", $info);
@@ -214,60 +223,6 @@ switch($_POST["type"])
     case "cambiarRfcActivo":
         $rfc->setRfcId($_POST["rfcId"]);
         $rfc->SetAsActive();
-        break;
-
-    case "vistaPreviaComprobante":
-
-        $data["datosFacturacion"] = $_POST["nuevaFactura"];
-        $data["observaciones"] = $_POST["observaciones"];
-
-        $data["reviso"] = $_POST["reviso"];
-        $data["autorizo"] = $_POST["autorizo"];
-        $data["recibio"] = $_POST["recibio"];
-        $data["vobo"] = $_POST["vobo"];
-        $data["pago"] = $_POST["pago"];
-        $data["tiempoLimite"] = $_POST["tiempoLimite"];
-        $data["formatoNormal"] = $_POST["formatoNormal"];
-
-        $data["spf"] = $_POST["spf"];
-        $data["isn"] = $_POST["isn"];
-
-        $data["banco"] = $_POST["banco"];
-        $data["fechaDeposito"] = $_POST["fechaDeposito"];
-        $data["referencia"] = $_POST["referencia"];
-
-        $values = explode("&", $data["datosFacturacion"]);
-        foreach($values as $key => $val)
-        {
-            $array = explode("=", $values[$key]);
-            $data[$array[0]] = $array[1];
-        }
-
-        if($data["fromAgrario"] == "Si")
-        {
-            $data["noRegistro"] = $_POST["idPedido"];
-            $data["noGuiaTraslado"] = $_POST["idSolicitudDePago"];
-            $data["uppOrigen"] = $_POST["referencia"];
-            $data["patenteVendedor"] = $_POST["idProveedor"];
-            $data["finalidad"] = $_POST["finalidad"];
-            $data["uppDestino"] = $_POST["uppDestino"];
-            $data["firmaVendedor"] = $_POST["firmaVendedor"];
-        }
-
-        if(!$vistaPrevia->vistaPreviaComprobante($data))
-        {
-            echo "fail|";
-            $smarty->display(DOC_ROOT.'/templates/boxes/status.tpl');
-        }
-        else
-        {
-            echo "ok|";
-            $com["path"] = urlencode(WEB_ROOT."/empresas/");
-            $smarty->assign("comprobante", $com);
-            $smarty->assign("empresaId", $_SESSION["empresaId"]);
-            $smarty->display(DOC_ROOT.'/templates/boxes/export-vista-previa.tpl');
-        }
-
         break;
 }
 

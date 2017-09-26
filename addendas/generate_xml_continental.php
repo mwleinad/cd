@@ -1,11 +1,4 @@
 <?php
-//	$strAddenda = "<cfdi:Addenda>";
-//	$strAddenda .= "</cfdi:Addenda>";
-				
-//	$fh = fopen($realSignedXml, 'r');
-//	$theData = fread($fh, filesize($realSignedXml));
-//	fclose($fh);
-//	$theData = str_replace("</cfdi:Complemento>", "</cfdi:Complemento>".$strAddenda, $theData);
 		$xml = new DOMdocument();
 		$root = $xml->createElement("cfdi:Addenda");
 		$root = $xml->appendChild($root);
@@ -54,11 +47,6 @@
 			$ii++;
 		}
 		
-/*		if($data['referencia'] != ''){
-			$pedimento = $xml->createElement("Pedimento", $data['referencia']);
-			$pedimento = $request->appendChild($pedimento);
-		}
-*/
 		$codigo = $xml->createElement("Codigo_Compania", 154);
 		$codigo = $request->appendChild($codigo);
 

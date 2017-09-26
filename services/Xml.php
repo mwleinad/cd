@@ -31,6 +31,7 @@ class Xml extends Producto{
     private $impuestosLocales;
     private $impuestoLocal;
     private $myComplementoNomina;
+    private $complementoDonataria;
 
     private $pagos;
 
@@ -106,7 +107,6 @@ class Xml extends Producto{
             $xsd = 'http://www.sat.gob.mx/Pagos http://www.sat.gob.mx/sitio_internet/cfd/Pagos/Pagos10.xsd';
         }
 
-        $xsdNomina = null;
         if($this->isNomina()){
             $xsd = "http://www.sat.gob.mx/nomina http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd";
 
@@ -116,13 +116,17 @@ class Xml extends Producto{
             $this->root->setAttribute('xmlns:catCFDI', "http://www.sat.gob.mx/sitio_internet/cfd/catalogos");
         }
 
+        if($this->isDonataria()){
+            $xsd = "http://www.sat.gob.mx/donat http://www.sat.gob.mx/sitio_internet/cfd/donat/donat11.xsd";
+        }
+
         $this->buildXsd($xsd);
 
         return $this->save();
     }
 
-    private function buildXsd($xsd){
-        $this->root->setAttribute("xsi:schemaLocation", "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd ".$xsd." ".$this->xsdDonataria." ".$this->xsdImplocal);
+    private function buildXsd($xsd = null){
+        $this->root->setAttribute("xsi:schemaLocation", "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd ".$xsd." ".$xsd->xsdImplocal);
     }
 
     private function getUUIDRelacionado(){
@@ -219,7 +223,8 @@ class Xml extends Producto{
             $this->root->setAttribute("xmlns:implocal", "http://www.sat.gob.mx/implocal");
         }
 
-        if($this->miEmpresa['donatarias'] == "Si"){
+        //recibo de donataria
+        if($this->isDonataria()) {
             $this->root->setAttribute("xmlns:implocal", "http://www.sat.gob.mx/donat");
         }
 
@@ -257,6 +262,10 @@ class Xml extends Producto{
 
     public function isNomina() {
         return $this->tipoComprobante == 'N';
+    }
+
+    public function isDonataria() {
+        return $this->data['comprobante']["tiposComprobanteId"] == 9;
     }
 
     private function buildRootData() {
@@ -735,11 +744,9 @@ class Xml extends Producto{
             include(DOC_ROOT."/services/complementos/Nomina.php");
         }
 
-        //TODO donatarias
-        if($this->miEmpresa["donatarias"] == "Si")
+        if($this->isDonataria())
         {
-            include(DOC_ROOT."/addComplementos/complemento_donataria_xml.php");
-            $this->xsdDonataria = "http://www.sat.gob.mx/donat http://www.sat.gob.mx/sitio_internet/cfd/donat/donat11.xsd";
+            include(DOC_ROOT."/services/complementos/Donatarias.php");
         }
 
         if($this->totales['porcentajeISH'] > 0){
