@@ -28,6 +28,7 @@ class PdfService extends Producto{
         $xmlPath = DOC_ROOT.'/empresas/'.$empresaId.'/certificados/'.$rfcActivo.'/facturas/xml/'.$fileName.".xml";
         $xmlData = $xmlReaderService->execute($xmlPath, $empresaId);
         $this->smarty->assign('xmlData', $xmlData);
+        $this->smarty->assign('empresaId', $empresaId);
 
         $dompdf = new Dompdf();
 
@@ -38,6 +39,12 @@ class PdfService extends Producto{
 
         if(file_exists($logo)) {
             $this->smarty->assign('logo', $logo);
+        }
+
+        $logoEscuela = DOC_ROOT."/images/header_333.jpg";
+
+        if(file_exists($logoEscuela)) {
+            $this->smarty->assign('logoEscuela', $logoEscuela);
         }
 
         $catalogos = $this->getFromCatalogo($xmlData, $empresaId);

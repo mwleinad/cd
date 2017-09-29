@@ -12,6 +12,7 @@ class XmlReaderService extends Comprobante
         $xml->registerXPathNamespace('impLocal',$ns['implocal']);
         $xml->registerXPathNamespace('nomina12',$ns['nomina12']);
         $xml->registerXPathNamespace('donat',$ns['donat']);
+        $xml->registerXPathNamespace('AddendaEscuela',$ns['AddendaEscuela']);
 
         //cfdi
         $data["cfdi"] = $xml->xpath('//cfdi:Comprobante')[0];
@@ -174,6 +175,12 @@ class XmlReaderService extends Comprobante
             }
 
             $data['nomina'] = $card;
+        }
+
+        $escuela = $xml->xpath('//AddendaEscuela');
+
+        if(isset($escuela[0])){
+            $data['escuela'] = $escuela[0];
         }
 
         return $data;

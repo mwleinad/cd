@@ -486,7 +486,9 @@
     <div class="formLine" style="text-align:center" id ="reemplazarBoton">
         <a class="button" id="generarFactura" name="generarFactura"><span>Generar Comprobante</span></a>
         <a class="button" id="vistaPrevia" name="vistaPrevia"><span>Vista Previa</span></a>
+{*
         <a class="button" id="GuardarNomina" name="GuardarNomina"><span>Guardar Nomina</span></a>
+*}
 
     </div>
 

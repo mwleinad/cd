@@ -211,7 +211,8 @@ class Cfdi extends Comprobante
         }
 
         //Timbrado PAC
-        $pac = new Pac;
+        include_once(DOC_ROOT."/services/Pac.php");
+        $pac = new Pac33;
         $response = $pac->GetCfdi($xmlConSello["xmlFile"], $xmlConSello['xmlSignedFile']);
 
         if(is_array($response))
@@ -243,6 +244,18 @@ class Cfdi extends Comprobante
 
         //TODO addendas
         /*include_once(DOC_ROOT."/addendas/addenda_xml.php");*/
+        if($empresa["empresaId"] == 15){
+
+            if($data['nodoReceptor']['noControl'] ||
+                $data['nodoReceptor']['carrera'] ||
+                $data['banco'] ||
+                $data['fechaDeposito'] ||
+                $data['referencia']) {
+                include_once(DOC_ROOT."/services/Addendas/Escuela.php");
+                $escuela = new Escuela();
+                $escuela->generar($xmlConSello, $data);
+            }
+        }
         $data["timbreFiscal"] = $cadenaOriginalTimbre;
 
         //cambios 29 junio 2011

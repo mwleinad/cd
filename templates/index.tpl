@@ -227,7 +227,7 @@ function validar(nombre,correo,telefono,mensaje)
     $page == "cfdi33-generate" ||
     $page == "cfdi33-generate-nomina" ||
     $page == "cliente-consulta"}
-	<link href="{$WEB_ROOT}/css/960.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="{$WEB_ROOT}/css/960.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="{$WEB_ROOT}/css/reset.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="{$WEB_ROOT}/css/text.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="{$WEB_ROOT}/css/blue.css" rel="stylesheet" type="text/css" media="all" />

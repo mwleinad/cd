@@ -387,6 +387,15 @@ function GenerarComprobante(format)
         var formatoNormal = 0;
     }
 
+    if($('banco')) var banco = $('banco').value;
+    else var banco = 0;
+
+    if($('fechaDeposito')) var fechaDeposito = $('fechaDeposito').value;
+    else var fechaDeposito = 0;
+
+    if($('referencia')) var referencia = $('referencia').value;
+    else var referencia = 0;
+
     new Ajax.Request(WEB_ROOT+'/ajax/cfdi33.php',
         {
             parameters: {
@@ -399,14 +408,16 @@ function GenerarComprobante(format)
                 vobo: vobo,
                 pago: pago,
                 fechaSobreDia: fechaSobreDia,
-                fechaSobreMes:
-                fechaSobreMes,
+                fechaSobreMes: fechaSobreMes,
                 fechaSobreAnio: fechaSobreAnio,
                 folioSobre: folioSobre,
                 tiempoLimite:tiempoLimite,
                 cuentaPorPagar:cuentaPorPagar,
                 formatoNormal:formatoNormal,
                 format:format,
+                banco:banco,
+                fechaDeposito:fechaDeposito,
+                referencia:referencia,
             },
             method:'post',
             onSuccess: function(transport){

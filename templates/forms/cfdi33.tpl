@@ -344,93 +344,98 @@
  					<hr />
   		</div>
 
-{if $info.moduloImpuestos == "Si"}
+      {if $info.empresaId == 15}
+          <div class="formLine">
+              Extra Escuela:<br>
+              <div style="width:200px;float:left">
+              <input name="banco" id="banco" type="text" value="{$post.unidad}"  size="20" class="largeInput"  placeholder="Banco"/></div>
+              <div style="width:200px;float:left">
+              <input name="fechaDeposito" id="fechaDeposito" type="text" value="{$post.valorUnitario}"  size="20" class="largeInput"  placeholder="Fecha Deposito"  onblur=""/></div>
+              <div style="width:200px;float:left">
+              <input name="referencia" id="referencia" type="text" value="{$post.valorUnitarioCI}"  size="20" class="largeInput"  placeholder="Referencia" onblur="UpdateValorUnitarioSinIva()"/></div>
+          <div style="clear:both"></div>
+  		</div>
+  		<br>
+      {/if}
 
-      {if $expiredImpuestos}
-      	Modulo de Impuestos Locales Congelado hasta confirmacion de Pago.
-      {else}
-      <div class="formLine">
-				<div style="width:300px;float:left; cursor:pointer" onclick="ToggleDiv('impuestosOpciones')">[+] Mostrar Formulario de Impuestos<br /><br /></div>
-			</div>
-			<span id="loadingDivImpuesto"></span>
 
-      <div id="impuestosOpciones" style="display:none">
+    {if $info.moduloImpuestos == "Si"}
+        {if $expiredImpuestos}
+      	    Modulo de Impuestos Locales Congelado hasta confirmacion de Pago.
+        {else}
         <div class="formLine">
-            <div style="width:80px;float:left">Tasa %:</div>
-            <div style="width:350px;float:left">Impuesto</div>
-            <div style="width:80px;float:left">IVA%</div>
-            <div style="width:80px;float:left">Importe</div>
-            <div style="clear:both"></div>
-          </div>
+		    <div style="width:300px;float:left; cursor:pointer" onclick="ToggleDiv('impuestosOpciones')">[+] Mostrar Formulario de Impuestos<br /><br /></div>
+		</div>
+		<span id="loadingDivImpuesto"></span>
+		<br>
 
-        <form id="impuestoForm" name="impuestoForm">
-        <div class="formLine">
-            <div style="width:80px;float:left">
-            <input name="tasa" id="tasa" type="text" value="{$post.tasa}"  size="5" class="largeInput"/></div>
-            <div style="width:350px;float:left">
-            <input name="impuestoId" id="impuestoId" type="text" value="{$post.impuestoId}"  size="44" class="largeInput"/>
-            <div style="position:relative">
-              <div style="display:none;position:absolute;top:-2px; left:2px; z-index:100" id="suggestionImpuestoDiv">
-              </div>
-           </div>
+        <div style="clear:both"></div>
+        <div id="impuestosOpciones" style="display:none">
+            <div class="formLine">
+                <div style="width:80px;float:left">Tasa %:</div>
+                <div style="width:350px;float:left">Impuesto</div>
+                <div style="width:80px;float:left">IVA%</div>
+                <div style="width:80px;float:left">Importe</div>
             </div>
-            <div style="width:80px;float:left">
-            <input name="iva" id="iva" type="text" value="0"  size="5" class="largeInput"/></div>
-            <div style="width:80px;float:left">
-            <input name="importe" id="importe" type="text" value="0"  size="5" class="largeInput"/></div>
-            <div style="width:146px;float:left">
-            <select name="tipo" id="tipo" class="largeInput">
-          <option value="retencion">Retenci&oacute;n</option>
-          <option value="deduccion">Deducci&oacute;n</option>
-          <option value="impuesto">Impuesto</option>
-          <option value="amortizacion">Amortizaci&oacute;n</option>
-          </select>
-          </div>
-            <div style="width:145px;float:left; cursor:pointer" id="agregarImpuestoDiv" class="button"><span>Agregar Impuesto</span></div>
             <div style="clear:both"></div>
-            <hr />
-          </div>
-        </form>
+
+            <form id="impuestoForm" name="impuestoForm">
+            <div class="formLine">
+                <div style="width:80px;float:left">
+                    <input name="tasa" id="tasa" type="text" value="{$post.tasa}"  size="5" class="largeInput"/>
+                </div>
+                <div style="width:350px;float:left">
+                    <input name="impuestoId" id="impuestoId" type="text" value="{$post.impuestoId}"  size="39" class="largeInput"/>
+                    <div style="position:relative">
+                        <div style="display:none;position:absolute;top:-2px; left:2px; z-index:100" id="suggestionImpuestoDiv"></div>
+                    </div>
+                </div>
+                <div style="width:80px;float:left">
+                    <input name="iva" id="iva" type="text" value="0"  size="5" class="largeInput"/></div>
+                <div style="width:80px;float:left">
+                    <input name="importe" id="importe" type="text" value="0"  size="5" class="largeInput"/></div>
+                <div style="width:146px;float:left">
+                    <select name="tipo" id="tipo" class="largeInput">
+                        <option value="retencion">Retenci&oacute;n</option>
+                        <option value="deduccion">Deducci&oacute;n</option>
+                        <option value="impuesto">Impuesto</option>
+                        <option value="amortizacion">Amortizaci&oacute;n</option>
+                    </select>
+                </div>
+                <div style="width:145px;float:left; cursor:pointer" id="agregarImpuestoDiv" class="button"><span>Agregar Impuesto</span></div>
+                <div style="clear:both"></div>
+                <hr />
+              </div>
+            </form>
         Impuestos Cargados:
         <div id="impuestos">
         Ninguno (Has click en Agregar Impuesto o Retenci&oacute;n para agregar)
         </div>
         <br /><br />
 
-  {if $info.empresaId == 86}
-       <div class="formLine">
-            <div>menos-2% I.S.N:</div>
-            <div><input name="isn" id="isn" /></div>
-        </div>
-       <div class="formLine">
-            <div>menos-5% al millar S.F.P</div>
-            <div><input name="spf" id="spf" /></div>
-        </div>
-  {/if}
-
-       <div class="formLine" style="float:left; width:180px">
+        <div class="formLine" style="float:left; width:180px">
             <div>Autorizo:</div>
             <div><textarea name="autorizo" id="autorizo" class="largeInput" style="text-align:center"></textarea></div>
         </div>
-       <div class="formLine"  style="float:left; width:180px">
+        <div class="formLine"  style="float:left; width:180px">
             <div>Recibi&oacute;:</div>
             <div><textarea name="recibio" id="recibio" class="largeInput" style="text-align:center"></textarea></div>
         </div>
-       <div class="formLine"  style="float:left; width:180px">
+        <div class="formLine"  style="float:left; width:180px">
             <div>VoBo:</div>
             <div><textarea name="vobo" id="vobo" class="largeInput" style="text-align:center"></textarea></div>
         </div>
-       <div class="formLine"  style="float:left; width:180px">
+        <div class="formLine"  style="float:left; width:180px">
             <div>Reviso:</div>
             <div><textarea name="reviso" id="reviso" class="largeInput" style="text-align:center"></textarea></div>
         </div>
-       <div class="formLine"  style="float:left; width:180px">
+        <div class="formLine"  style="float:left; width:180px">
             <div>Pago:</div>
             <div><textarea name="pago" id="pago" class="largeInput" style="text-align:center"></textarea></div>
             <hr />
         </div>
         <div style="clear:both"></div>
-			</div>
+            </div>
       {/if}
 {/if}
             <div style="clear:both"></div>

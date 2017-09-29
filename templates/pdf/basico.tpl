@@ -97,6 +97,42 @@
 </head>
 <body>
 <div id="page-wrap">
+
+    {*TODO I really don't like this, the whole purpose of just having one version is defeated <_<*}
+    {if $empresaId != 15}
+    <table width="100%">
+        <tbody>
+            <tr>
+                <td colspan="2" width="100%" valign="top">
+                    <img src="{$logoEscuela}" width="700px">
+                </td>
+            </tr>
+        <tr>
+            <td width="50%" valign="top">
+                <strong>Nombre emisor:</strong>{$xmlData.emisor.Nombre}<br>
+                <strong>RFC emisor:</strong> {$xmlData.emisor.Rfc}<br>
+                <strong>Nombre receptor:</strong> {$xmlData.receptor.Nombre}<br>
+                <strong>RFC receptor:</strong> {$xmlData.receptor.Rfc}<br>
+                <strong>Uso CFDI:</strong> {$xmlData.receptor.UsoCFDI} {$catalogos.UsoCFDI}<br>
+                {if $xmlData.escuela.noControl} <strong># Control:</strong> {$xmlData.escuela.noControl} {/if}<br>
+                {if $xmlData.escuela.carrera} <strong>Carrera:</strong> {$xmlData.escuela.carrera} {/if}<br>
+            </td>
+            <td width="50%" valign="top">
+                <strong>Folio fiscal:</strong> {$xmlData.timbreFiscal.UUID}<br>
+                <strong>No. de serie del CSD:</strong> {$xmlData.cfdi.NoCertificado}<br>
+                <strong>Lugar, fecha y hora de emisión:</strong> {$xmlData.cfdi.LugarExpedicion} {$xmlData.cfdi.Fecha|replace:'T':' '}<br>
+                <strong>Efecto de comprobante:</strong> {$xmlData.cfdi.TipoDeComprobante} {$catalogos.EfectoComprobante}<br>
+                <strong>Folio y serie:</strong> {$xmlData.cfdi.Serie} {$xmlData.cfdi.Folio}<br>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" width="100%" valign="top">
+                <strong>Régimen fiscal:</strong> {$xmlData.emisor.RegimenFiscal} {$catalogos.RegimenFiscal}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    {else}
     <table width="100%">
         <tbody>
         <tr>
@@ -109,6 +145,8 @@
                 <strong>Nombre receptor:</strong> {$xmlData.receptor.Nombre}<br>
                 <strong>RFC receptor:</strong> {$xmlData.receptor.Rfc}<br>
                 <strong>Uso CFDI:</strong> {$xmlData.receptor.UsoCFDI} {$catalogos.UsoCFDI}<br>
+                {if $xmlData.escuela.noControl} <strong># Control:</strong> {$xmlData.escuela.noControl} {/if}<br>
+                {if $xmlData.escuela.carrera} <strong>Carrera:</strong> {$xmlData.escuela.carrera} {/if}<br>
             </td>
             <td width="40%" valign="top">
                 <strong>Folio fiscal:</strong> {$xmlData.timbreFiscal.UUID}<br>
@@ -125,6 +163,8 @@
         </tr>
         </tbody>
     </table>
+    {/if}
+
     <p class="bold">Conceptos</p>
     {foreach from=$xmlData.conceptos item=concepto}
     <table width="100%" class="outline-table">
@@ -239,6 +279,17 @@
                             <strong>Condiciones de pago:</strong> {$xmlData.cfdi.CondicionesDePago}
                         </td>
                     </tr>
+                    {if $xmlData.escuela.banco || $xmlData.escuela.referencia || $xmlData.escuela.fechaDeposito}
+                        <tr>
+                            <td width="50%" valign="top">
+                                <strong>Banco:</strong> {$xmlData.escuela.banco} Referencia: {$xmlData.escuela.referencia}
+                            </td>
+                            <td width="50%" valign="top">
+                                <strong>Fecha deposito:</strong> {$xmlData.escuela.fechaDeposito}
+                            </td>
+                        </tr>
+                    {/if}
+
                     </tbody>
                 </table>
             </td>
@@ -328,6 +379,20 @@
         </tbody>
     </table>
 
+    {if $empresaId == 15}
+        <table width="100%" class="outline-table">
+            <tbody>
+            <tr class="border-bottom border-right center font-smallest">
+                <td class="border-top" width="50%"><strong>Nombre y firma del cajero</strong></td>
+                <td class="border-top" width="50%"><strong>Sello</strong></td>
+            </tr>
+            <tr class="border-right border-bottom">
+                <td class="left">&nbsp;<br>&nbsp;</td>
+                <td class="left">&nbsp;<br>&nbsp;</td>
+            </tr>
+            </tbody>
+        </table>
+    {/if}
     {*Complemento de pagos*}
     {include file="pdf/complementoPago.tpl"}
 
