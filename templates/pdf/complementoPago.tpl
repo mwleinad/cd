@@ -14,7 +14,7 @@
                 <td class="left">{$pago.pago.FechaPago|replace:"T":" "}</td>
                 <td class="left">{$pago.pago.FormaDePagoP}</td>
                 <td class="left">{$pago.pago.MonedaP}</td>
-                <td class="left">{$pago.pago.Monto}</td>
+                <td class="left">{$pago.pago.Monto|number}</td>
                 <td class="left">{$pago.pago.NumOperacion}</td>
             </tr>
             <tr class="border-right">
@@ -50,9 +50,9 @@
                         </tr>
                         <tr class="border-right font-smallest">
                             <td class="center border-bottom border-left">{$pago.doctoRelacionado.NumParcialidad}</td>
-                            <td class="center border-bottom">{$pago.doctoRelacionado.ImpSaldoAnt}</td>
-                            <td class="center border-bottom">{$pago.doctoRelacionado.ImpPagado}</td>
-                            <td class="center border-bottom">{$pago.doctoRelacionado.ImpSaldoInsoluto}</td>
+                            <td class="center border-bottom">{$pago.doctoRelacionado.ImpSaldoAnt|number}</td>
+                            <td class="center border-bottom">{$pago.doctoRelacionado.ImpPagado|number}</td>
+                            <td class="center border-bottom">{$pago.doctoRelacionado.ImpSaldoInsoluto|number}</td>
                             <td class="center border-bottom"></td>
                         </tr>
                         </tbody>

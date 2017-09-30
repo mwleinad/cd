@@ -198,6 +198,54 @@ class Cfdi extends Comprobante
             }
         }
 
+        //workaround para mostrar observaciones en la vista previa
+        $_SESSION['observaciones'] = $data["observaciones"];
+
+        if($data["reviso"]){
+            $_SESSION['firmas']['reviso'] = [
+                "nombre" => 'REVISO',
+                "valor" => urldecode($data["reviso"])
+            ];
+        } else {
+            unset($_SESSION['firmas']['reviso']);
+        }
+
+        if($data["autorizo"]){
+            $_SESSION['firmas']['autorizo'] = [
+                "nombre" => 'AUTORIZO',
+                "valor" => urldecode($data["autorizo"])
+            ];
+        } else {
+            unset($_SESSION['firmas']['autorizo']);
+        }
+
+        if($data["recibio"]){
+            $_SESSION['firmas']['recibio'] = [
+                "nombre" => 'RECIBIO',
+                "valor" => urldecode($data["recibio"])
+            ];
+        } else {
+            unset($_SESSION['firmas']['recibio']);
+        }
+
+        if($data["vobo"]){
+            $_SESSION['firmas']['vobo'] = [
+                "nombre" => 'VoBo',
+                "valor" => urldecode($data["vobo"])
+            ];
+        } else {
+            unset($_SESSION['firmas']['vobo']);
+        }
+
+        if($data["pago"]){
+            $_SESSION['firmas']['pago'] = [
+                "nombre" => 'PAGO',
+                "valor" => urldecode($data["pago"])
+            ];
+        } else {
+            unset($_SESSION['firmas']['pago']);
+        }
+
         //XML sin sello
         $xml = new Xml($data);
         $xml->Generate($totales, $_SESSION["conceptos"],$empresa);
@@ -229,20 +277,14 @@ class Cfdi extends Comprobante
         $cadenaOriginalTimbre = $pac->GenerateCadenaOriginalTimbre($timbreXml);
         $cadenaOriginalTimbreSerialized = serialize($cadenaOriginalTimbre);
 
-        //add addenda TODO constructoras
-        /*if($_SESSION["impuestos"])
-        {
-            $nufa = "SIGN_".$empresa["empresaId"]."_".$serie["serie"]."_".$data["folio"];
-            $realSignedXml = $root.$nufa.".xml";
-            $strAddenda = "<cfdi:Addenda>";
-            foreach($_SESSION["impuestos"] as $impuesto)
-            {
-                $strAddenda .= "  <cfdi:impuesto tipo=\"".$impuesto["tipo"]."\" nombre=\"".$impuesto["impuesto"]."\" importe=\"".$impuesto["importe"]."\" tasa=\"".$impuesto["tasaIva"]."\" />";
-            }
-            $strAddenda .= "</cfdi:Addenda>";
-        }*/
+        if($_SESSION["impuestos"] || $_SESSION["firmas"]){
 
-        //TODO addendas
+            include_once(DOC_ROOT."/services/Addendas/Impuestos.php");
+            $impuestos = new Impuestos();
+            $impuestos->generar($xmlConSello, $_SESSION["impuestos"], $_SESSION['firmas']);
+        }
+
+        //TODO addenda continental
         /*include_once(DOC_ROOT."/addendas/addenda_xml.php");*/
         if($empresa["empresaId"] == 15){
 

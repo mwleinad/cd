@@ -13,6 +13,8 @@ class XmlReaderService extends Comprobante
         $xml->registerXPathNamespace('nomina12',$ns['nomina12']);
         $xml->registerXPathNamespace('donat',$ns['donat']);
         $xml->registerXPathNamespace('AddendaEscuela',$ns['AddendaEscuela']);
+        $xml->registerXPathNamespace('AddendaImpuesto',$ns['AddendaImpuesto']);
+        $xml->registerXPathNamespace('AddendaFirma',$ns['AddendaFirma']);
 
         //cfdi
         $data["cfdi"] = $xml->xpath('//cfdi:Comprobante')[0];
@@ -22,6 +24,10 @@ class XmlReaderService extends Comprobante
 				WHERE serie = "'.$data["cfdi"]['Serie'].'" AND folio = "'. $data["cfdi"]['Folio'].'"';
         $this->Util()->DBSelect($empresaId)->setQuery($sql);
         $data["db"] = $this->Util()->DBSelect($empresaId)->GetRow();
+
+        if($_SESSION['observaciones']){
+            $data['db']['observaciones'] = $_SESSION['observaciones'];
+        }
 
         $sql = 'SELECT * FROM serie
 				WHERE serie = "'.$data["cfdi"]['Serie'].'"';
@@ -72,7 +78,6 @@ class XmlReaderService extends Comprobante
         $temp->setNumero($data['cfdi']["Total"]);
         $data["letra"] = $temp->letra();
 
-        //TODO complementos y addendas
         //Complementos ImpuestosLocales
         $donatarias = $xml->xpath('//donat:Donatarias ');
 
@@ -177,10 +182,67 @@ class XmlReaderService extends Comprobante
             $data['nomina'] = $card;
         }
 
+        //Addenda escuela
         $escuela = $xml->xpath('//AddendaEscuela');
 
         if(isset($escuela[0])){
             $data['escuela'] = $escuela[0];
+        }
+
+        //Addenda impuestos
+        $impuestos = $xml->xpath('//AddendaImpuesto');
+
+        if(count($impuestos) > 0) {
+            $impuestosLocales = [];
+            foreach($impuestos as $key => $impuesto){
+                if(strpos($impuesto['impuesto'][0], '16% IVA') === false){
+                    $impuestosLocales[$key]['impuesto'] = $impuesto;
+
+                    $nextImpuesto = $impuestos[$key + 1];
+                    if(strpos($nextImpuesto['impuesto'][0], '16% IVA') !== false){
+                        $impuestosLocales[$key]['extra'] = $nextImpuesto;
+                    }
+                }
+            }
+            //print_r($impuestosLocales);
+            $data['impuestosLocales'] = $impuestosLocales;
+        }
+
+        //Workaround as the impuestos only exists in the addenda, this is to show them in the preview
+        if(count($impuestos) == 0 && $_SESSION['impuestos']){
+            $impuestosLocales = [];
+            foreach($_SESSION['impuestos'] as $key => $impuesto){
+                //print_r($impuesto);
+                if(strpos($impuesto['impuesto'], '16% IVA') === false){
+                    $impuestosLocales[$key]['impuesto'] = $impuesto;
+
+                    $nextImpuesto = $_SESSION['impuestos'][$key + 1];
+                    if(strpos($nextImpuesto['impuesto'], '16% IVA') !== false){
+                        $impuestosLocales[$key]['extra'] = $nextImpuesto;
+                    }
+                }
+            }
+            $data['impuestosLocales'] = $impuestosLocales;
+        }
+
+        //Addenda firmas
+        $firmas = $xml->xpath('//AddendaFirma');
+
+        if(count($firmas) > 0) {
+            $firmasLocales = [];
+            foreach($firmas as $key => $firma){
+                $firmasLocales[$key] = $firma;
+            }
+            $data['firmasLocales'] = $firmasLocales;
+        }
+
+        //Workaround as the firmas only exists in the addenda, this is to show them in the preview
+        if(count($firmas) == 0 && $_SESSION['firmas']){
+            $firmasLocales = [];
+            foreach($_SESSION['firmas'] as $key => $firma){
+                $firmasLocales[$key] = $firma;
+            }
+            $data['firmasLocales'] = $firmasLocales;
         }
 
         return $data;

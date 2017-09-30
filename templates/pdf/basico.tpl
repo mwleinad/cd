@@ -91,6 +91,13 @@
         .pre {
             font-family:"Courier New";
         }
+        pre {
+            line-height: 10px;
+            white-space: pre-wrap;
+        }
+        .no-margin{
+            margin: 0;
+        }
     </style>
     <meta charset="UTF-8">
     <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
@@ -165,7 +172,7 @@
     </table>
     {/if}
 
-    <p class="bold">Conceptos</p>
+    <p class="bold no-margin">Conceptos</p>
     {foreach from=$xmlData.conceptos item=concepto}
     <table width="100%" class="outline-table">
         <tbody>
@@ -183,12 +190,14 @@
             <td class="left">{$concepto.NoIdentificacion}</td>
             <td class="left">{$concepto.concepto.Cantidad}</td>
             <td class="left">{$concepto.concepto.Unidad}</td>
-            <td class="left">{$concepto.concepto.ValorUnitario}</td>
-            <td class="left">{$concepto.concepto.Importe}</td>
-            <td class="left">{$concepto.concepto.Descuento}</td>
+            <td class="right">{$concepto.concepto.ValorUnitario|number}</td>
+            <td class="right">{$concepto.concepto.Importe|number}</td>
+            <td class="right">{$concepto.concepto.Descuento|number}</td>
         </tr>
         <tr class="border-right border-bottom">
-            <td colspan="7" class="pad-left">{$concepto.concepto.Descripcion}</td>
+            <td colspan="7" class="pad-left pre" style="font-family: monospace">
+                {$concepto.concepto.Descripcion|nl2br|replace:" ":"&nbsp;"|replace:"[%]MAS[%]":"+"}
+            </td>
         </tr>
         <tr class="border-right">
             <td colspan="3" width="100%" class="pad-left no-border-right">
@@ -210,11 +219,11 @@
                     </tr>
                     {foreach from=$concepto.traslados item=traslado}
                         <tr class="border-right font-smallest">
-                            <td class="center border-bottom border-left">{$traslado.Base}</td>
+                            <td class="center border-bottom border-left">{$traslado.Base|number}</td>
                             <td class="center border-bottom">{$catalogos.impuestos[{$traslado.Impuesto}]}</td>
                             <td class="center border-bottom">{$traslado.TipoFactor}</td>
                             <td class="center border-bottom">{$traslado.TasaOCuota}</td>
-                            <td class="center border-bottom">{$traslado.Importe}</td>
+                            <td class="center border-bottom">{$traslado.Importe|number}</td>
                         </tr>
                     {/foreach}
                     </tbody>
@@ -236,11 +245,11 @@
                     </tr>
                     {foreach from=$concepto.retenciones item=retencion}
                     <tr class="border-right font-smallest">
-                        <td class="center border-bottom border-left">{$retencion.Base}</td>
+                        <td class="center border-bottom border-left">{$retencion.Base|number}</td>
                         <td class="center border-bottom">{$catalogos.impuestos[{$retencion.Impuesto}]}</td>
                         <td class="center border-bottom">{$retencion.TipoFactor}</td>
                         <td class="center border-bottom">{$retencion.TasaOCuota}</td>
-                        <td class="center border-bottom">{$retencion.Importe}</td>
+                        <td class="center border-bottom">{$retencion.Importe|number}</td>
                     </tr>
                     {/foreach}
                     </tbody>
@@ -257,129 +266,16 @@
     <p class="small-height">&nbsp;</p>
     {/foreach}
 
-    <table width="100%">
-        <tbody>
-        <tr>
-            <td width="60%" valign="top">
-                <table width="100%">
-                    <tbody>
-                    <tr>
-                        <td width="50%" valign="top">
-                            <strong>Moneda:</strong> {$xmlData.cfdi.Moneda}
-                        </td>
-                        <td width="50%" valign="top">
-                            <strong>Forma de pago:</strong> {$xmlData.cfdi.FormaPago} {$catalogos.FormaPago}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="50%" valign="top">
-                            <strong>Método de pago:</strong> {$xmlData.cfdi.MetodoPago} {$catalogos.MetodoPago}
-                        </td>
-                        <td width="50%" valign="top">
-                            <strong>Condiciones de pago:</strong> {$xmlData.cfdi.CondicionesDePago}
-                        </td>
-                    </tr>
-                    {if $xmlData.escuela.banco || $xmlData.escuela.referencia || $xmlData.escuela.fechaDeposito}
-                        <tr>
-                            <td width="50%" valign="top">
-                                <strong>Banco:</strong> {$xmlData.escuela.banco} Referencia: {$xmlData.escuela.referencia}
-                            </td>
-                            <td width="50%" valign="top">
-                                <strong>Fecha deposito:</strong> {$xmlData.escuela.fechaDeposito}
-                            </td>
-                        </tr>
-                    {/if}
+    {*Complemento de impuestos*}
+    {include file="pdf/complementoImpuestos.tpl"}
 
-                    </tbody>
-                </table>
-            </td>
-            <td width="40%" valign="top">
-                <table width="100%">
-                    <tbody>
-                    <tr>
-                        <td class="right" width="50%" valign="top">
-                            <strong>Subtotal: $</strong>
-                        </td>
-                        <td class="right border-bottom" width="50%" valign="top">
-                            <span class="underline">{$xmlData.cfdi.SubTotal}</span>
-                        </td>
-                    </tr>
-                    {if $xmlData.cfdi.Descuento > 0}
-                    <tr>
-                        <td class="right" width="50%" valign="top">
-                            <strong>Descuento: $</strong>
-                        </td>
-                        <td class="right border-bottom" width="50%" valign="top">
-                            {$xmlData.cfdi.Descuento}
-                        </td>
-                    </tr>
-                    {/if}
-                    {if count($xmlData.impuestos.traslados) > 0}
-                        <tr>
-                            <td class="right" width="50%" valign="top">
-                                <strong>Impuestos trasladados</strong>
-                            </td>
-                            <td class="right" width="50%" valign="top">
-                                &nbsp;
-                            </td>
-                        </tr>
-                        {foreach from=$xmlData.impuestos.traslados item=traslado}
-                            <tr>
-                                <td class="right" width="50%" valign="top">
-                                    <strong>{$catalogos.impuestos[{$traslado.Impuesto}]}: $</strong>
-                                </td>
-                                <td class="right border-bottom" width="50%" valign="top">
-                                    {$traslado.Importe}
-                                </td>
-                            </tr>
-                        {/foreach}
-                    {/if}
-                    {if $xmlData.impuestosLocales.ish.Importe > 0}
-                        <tr>
-                            <td class="right" width="50%" valign="top">
-                                <strong>{$xmlData.impuestosLocales.ish.ImpLocTrasladado}: $</strong>
-                            </td>
-                            <td class="right border-bottom" width="50%" valign="top">
-                                {$xmlData.impuestosLocales.ish.Importe}
-                            </td>
-                        </tr>
-                    {/if}
-                    {if count($xmlData.impuestos.retenciones) > 0}
-                        <tr>
-                            <td class="right" width="50%" valign="top">
-                                <strong>Impuestos retenidos</strong>
-                            </td>
-                            <td class="right" width="50%" valign="top">
-                                &nbsp;
-                            </td>
-                        </tr>
-                        {foreach from=$xmlData.impuestos.retenciones item=retencion}
-                            <tr>
-                                <td class="right" width="50%" valign="top">
-                                    <strong>{$catalogos.impuestos[{$retencion.Impuesto}]}: $</strong>
-                                </td>
-                                <td class="right border-bottom" width="50%" valign="top">
-                                    {$retencion.Importe}
-                                </td>
-                            </tr>
-                        {/foreach}
-                    {/if}
-                    <tr>
-                        <td class="right" width="50%" valign="top">
-                            <strong>TOTAL: $</strong>
-                        </td>
-                        <td class="right border-bottom" width="50%" valign="top">
-                            {$xmlData.cfdi.Total}
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <p class=""><span class="no-bold word-break pre">{$xmlData.db.observaciones|urldecode|replace:"[%]MAS[%]":"+"}</span> </p>
 
-    {if $empresaId == 15}
+    {*Totales*}
+    {include file="pdf/totales.tpl"}
+
+
+    {if $empresaId == 15 && $xmlData.impuestosLocales|count == 0}
         <table width="100%" class="outline-table">
             <tbody>
             <tr class="border-bottom border-right center font-smallest">
@@ -393,6 +289,18 @@
             </tbody>
         </table>
     {/if}
+
+    {if $xmlData.firmasLocales}
+        <table width="100%" class="outline-table">
+            <tbody>
+                <tr class="border-bottom border-right center font-smallest">
+                    {foreach from=$xmlData.firmasLocales item=firma}
+                        <td class="border-top" width="20%"><strong>{$firma.nombre}<br><br><br>{$firma.valor|nl2br}</strong></td>
+                    {/foreach}
+                </tr>
+            </tbody>
+        </table>
+    {/if}
     {*Complemento de pagos*}
     {include file="pdf/complementoPago.tpl"}
 
@@ -402,83 +310,9 @@
     {*Complemento de nomina*}
     {include file="pdf/complementoDonatarias.tpl"}
 
-    <p class=""><span class="no-bold word-break pre">{$xmlData.db.observaciones|urldecode}</span> </p>
+    {*Cadenas y timbres*}
+    {include file="pdf/cadenasTimbres.tpl"}
 
-    <table width="100%" class="font-smaller">
-        <tbody>
-        <tr>
-            <td width="1-0%" valign="top" class="word-break">
-                <strong>Total con letra:</strong><br>
-                <span class="no-bold">{$xmlData.letra}</span>
-            </td>
-        </tr>
-        <tr>
-            <td width="1-0%" valign="top" class="word-break">
-                <strong>Sello digital del CFDI:</strong><br>
-                <span class="no-bold word-break">{$xmlData.timbreFiscal.SelloCFD|wordwrap:135:"<br />\n":true}</span>
-            </td>
-        </tr>
-        <tr>
-            <td width="1-0%" valign="top">
-                <strong>Sello digital del SAT:</strong><br>
-                <span class="no-bold word-break">{$xmlData.timbreFiscal.SelloSAT|wordwrap:135:"<br />\n":true}</span>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <table width="100%" class="font-smaller">
-        <tbody>
-        <tr>
-            <td rowspan="2" width="30%" valign="top">
-                <img width="200px" src="{$qrFile}">
-            </td>
-            <td width="70%" valign="top">
-                <strong>Cadena Original del complemento de certificación digital del SAT:</strong> <br>
-                <span class="no-bold word-break">{$xmlData.timbre.original|wordwrap:100:"<br />\n":true}</span>
-            </td>
-        </tr>
-        <tr>
-            <td width="70%" valign="top">
-                <table width="100%" class="font-smaller">
-                    <tbody>
-                    <tr>
-                        <td width="30%" valign="top">
-                            <strong>Folio fiscal:</strong> <br>
-                        </td>
-                        <td width="70%" valign="top" class="no-bold">
-                            {$xmlData.timbreFiscal.UUID}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="30%" valign="top">
-                            <strong>No. de serie del certificado SAT:</strong> <br>
-                        </td>
-                        <td width="70%" valign="top" class="no-bold">
-                            {$xmlData.timbreFiscal.NoCertificadoSAT}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="30%" valign="top">
-                            <strong>Fecha y hora de certificación:</strong> <br>
-                        </td>
-                        <td width="70%" valign="top" class="no-bold">
-                            {$xmlData.timbreFiscal.FechaTimbrado|replace:'T':' '}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td width="30%" valign="top">
-                            <strong>RFC del proveedor de certificación:</strong> <br>
-                        </td>
-                        <td width="70%" valign="top" class="no-bold">
-                            {$xmlData.timbreFiscal.RfcProvCertif}
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-        </tbody>
-    </table>
     <p class="text-center small-height">Este documento es una representación impresa de un CFDI</p>
     <p class="text-center small-height">www.comprobantedigital.mx</p>
 </div>

@@ -4,8 +4,10 @@
 		<h1 class="content_edit">
 			{if $includedTpl == "datos-generales"}
 				Datos Generales de mi Empresa
+			{elseif $includedTpl == "cfdi33-generate"}
+				Crear CFDi 3.3
 			{elseif $includedTpl == "sistema_nueva-factura"}
-				Crear Nuevo Comprobante
+				Crear CFDi
 			{elseif $includedTpl == "sistema_consultar-facturas"}
 				Consultar Comprobantes
 			{elseif $includedTpl == "sistema_consultar-nominas"}

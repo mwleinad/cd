@@ -120,13 +120,23 @@ class Xml extends Producto{
             $xsd = "http://www.sat.gob.mx/donat http://www.sat.gob.mx/sitio_internet/cfd/donat/donat11.xsd";
         }
 
+        if($this->totales['porcentajeISH'] > 0){
+            $xsd = "http://www.sat.gob.mx/implocal http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xsd";
+            $this->root->setAttribute('xmlns:implocal', "http://www.sat.gob.mx/implocal");
+        }
+
+        if(count($_SESSION["impuestos"]) > 0) {
+            $xsd = "http://www.sat.gob.mx/implocal http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xsd";
+            $this->root->setAttribute('xmlns:implocal', "http://www.sat.gob.mx/implocal");
+        }
+
         $this->buildXsd($xsd);
 
         return $this->save();
     }
 
     private function buildXsd($xsd = null){
-        $this->root->setAttribute("xsi:schemaLocation", "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd ".$xsd." ".$xsd->xsdImplocal);
+        $this->root->setAttribute("xsi:schemaLocation", "http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv33.xsd ".$xsd);
     }
 
     private function getUUIDRelacionado(){
@@ -287,6 +297,22 @@ class Xml extends Producto{
 
         if($this->isIngreso() || $this->isEgreso()){
             $rootData["CondicionesDePago"] = $this->Util()->CadenaOriginalVariableFormat($this->data["condicionesDePago"],false,false);
+        }
+
+        $totalRetenciones = 0;
+        if(count($_SESSION["impuestos"]) > 0) {
+            foreach($_SESSION["impuestos"] as $key => $impuesto) {
+
+                if(!isset($impuesto["parent"])) {
+                    continue;
+                }
+                if($impuesto["tasaIva"] > 0){
+                    $tasa = $impuesto["tasaIva"] / 100;
+                    $impuesto['importe'] = $impuesto['importe'] * (1 + $tasa);
+                }
+                $totalRetenciones += $impuesto['importe'];
+            }
+            $this->totales["subtotal"] = $this->totales["subtotal"] + $totalRetenciones;
         }
 
         $rootData["SubTotal"] = $this->Util()->CadenaOriginalVariableFormat($this->totales["subtotal"],true,false);
@@ -461,7 +487,7 @@ class Xml extends Producto{
                 $conceptoData["Unidad"] = $this->Util()->CadenaOriginalVariableFormat($concepto["unidad"],false,false);
             }
 
-            $conceptoData["Descripcion"] = $this->Util()->CadenaOriginalVariableFormat($concepto["descripcion"],false,false);
+            $conceptoData["Descripcion"] = $concepto["descripcion"];
 
             if($this->isPago()) {
                 $conceptoData["ValorUnitario"] = $this->Util()->CadenaOriginalFormat($concepto["valorUnitario"], 0, false);
@@ -474,7 +500,6 @@ class Xml extends Producto{
             } else{
                 $conceptoData["Importe"] = $this->Util()->CadenaOriginalVariableFormat($concepto["importe"],true,false);
             }
-
 
             if($concepto["descuento"] > 0) {
                 $conceptoData["Descuento"] = $this->Util()->CadenaOriginalVariableFormat($concepto["descuento"],true,false);
@@ -501,6 +526,12 @@ class Xml extends Producto{
                         $trasladoConcepto = $trasladosConcepto->appendChild($trasladoConcepto);
 
                         $tasa = $concepto["tasaIva"] / 100;
+
+                        //Recalculamos importe e iva si tenemos impuesots, estoy es un workaround para no cambiar el desglose
+                        if($_SESSION['impuestos']){
+                            $concepto["importeTotal"] = $concepto['importe'] - $concepto['descuento'];
+                            $concepto["totalIva"] = $concepto["importeTotal"] * $tasa;
+                        }
 
                         $this->CargaAtt($trasladoConcepto, array(
                                 "Base" => $this->Util()->CadenaOriginalVariableFormat($concepto["importeTotal"],true,false),
@@ -535,8 +566,6 @@ class Xml extends Producto{
                         $this->trasladosGlobales['003'][(string)$tasaIeps]["importe"] += $this->Util()->CadenaOriginalVariableFormat($concepto["totalIeps"],true,false);
                         $this->trasladosGlobales['003'][(string)$tasaIeps]["tasaOCuota"] = $concepto["iepsTasaOCuota"];
                     }
-
-                    //TODO ish (aunque creo que ese es impuesto local y va en el complemento
                 }
 
                 if($this->totales["retIva"] + $this->totales["retIsr"] > 0) {
@@ -582,10 +611,7 @@ class Xml extends Producto{
                     }
                 }
             }
-            //TODO hacer pruebas con conceptos exentos
-            //TODO ahora cada concepto lleva Nodo Impuestos, Retenciones y Traslados
 
-            //TODO informacion aduanera
             if(strlen($concepto["cuentaPredial"]) > 0)
             {
                 $cuentaPredial = $this->xml->createElement("cfdi:CuentaPredial");
@@ -595,9 +621,6 @@ class Xml extends Producto{
                     )
                 );
             }
-
-            //TODO complemento concepto  (probablemente nunca se haga)
-            //TODO parte (probablemente nunca se haga)
         }
     }
 
@@ -751,6 +774,11 @@ class Xml extends Producto{
 
         if($this->totales['porcentajeISH'] > 0){
             include(DOC_ROOT."/services/complementos/Ish.php");
+            $this->xsdImplocal = "http://www.sat.gob.mx/implocal http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xsd";
+        }
+
+        if(count($_SESSION["impuestos"]) > 0) {
+            include(DOC_ROOT."/services/complementos/Impuestos.php");
             $this->xsdImplocal = "http://www.sat.gob.mx/implocal http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xsd";
         }
     }

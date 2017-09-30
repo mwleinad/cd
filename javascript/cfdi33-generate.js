@@ -230,7 +230,7 @@ function AgregarImpuesto()
                 }
                 $('impuestos').innerHTML = splitResponse[2];
                 var elements = $$('span.linkBorrarImpuesto');
-                //AddBorrarImpuestosListeners(elements);
+                AddBorrarImpuestosListeners(elements);
 
                 UpdateTotalesDesglosados();
             },
@@ -468,7 +468,6 @@ function ShowPopUpDiv(id)
 Event.observe(window, 'load', function() {
     if($('rfc'))
     {
-//		Event.observe($('rfc'), "keyup", function(){ SuggestUser(); FillDatosFacturacion();});
         Event.observe($('rfc'), "keyup", function(){ SuggestUser(); });
     }
     if($('rfc'))
@@ -505,7 +504,6 @@ Event.observe(window, 'load', function() {
     if($$('span.linkBorrar'))
     {
         var elements = $$('span.linkBorrar');
-        //AddBorrarConceptoListeners(elements);
     }
 
     AddSuggestListener = function(e) {

@@ -311,9 +311,10 @@
 
       <div class="formLine">
           <div style="width:30%;float:left">
-          <textarea placeholder="Escribe tu concepto aqui" name="descripcion" id="descripcion" cols="33" rows="5" class="largeInput wide">{$post.descripcion}</textarea>
+          <textarea placeholder="Escribe tu concepto aqui" name="descripcion" id="descripcion" cols="33" rows="5" class="largeInput wide" style="font-family: Courier New, Courier, monospace !important">{$post.descripcion}</textarea>
 </div>
       		<div style="clear:both"></div>
+      		<span style="color: #f00; font-weight: bold">La descripcion solo puede tener un maximo de 1000 caracteres. Nueva regla del SAT! </span>
  					<hr />
         </div>
       {if $info.empresaId == 86}
@@ -402,17 +403,18 @@
                         <option value="amortizacion">Amortizaci&oacute;n</option>
                     </select>
                 </div>
-                <div style="width:145px;float:left; cursor:pointer" id="agregarImpuestoDiv" class="button"><span>Agregar Impuesto</span></div>
+                <div style="width:145px;float:left; cursor:pointer" id="agregarImpuestoDiv" class="button">
+                    <span>Agregar Impuesto</span>
+                    </div>
                 <div style="clear:both"></div>
                 <hr />
               </div>
             </form>
         Impuestos Cargados:
         <div id="impuestos">
-        Ninguno (Has click en Agregar Impuesto o Retenci&oacute;n para agregar)
+            Ninguno (Has click en Agregar Impuesto o Retenci&oacute;n para agregar)
         </div>
         <br /><br />
-
         <div class="formLine" style="float:left; width:180px">
             <div>Autorizo:</div>
             <div><textarea name="autorizo" id="autorizo" class="largeInput" style="text-align:center"></textarea></div>

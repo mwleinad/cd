@@ -330,14 +330,7 @@ class Override extends Comprobante
 		$count = 1;
 		foreach($nodosConceptos as $concepto)
 		{
-/*			if($count % 2 == 0)
-			{
-				$pdf->SetTextColor(100, 100, 100);
-			}
-			else
-			{
-*/					$pdf->SetTextColor(0, 0, 0);
-	//		}
+					$pdf->SetTextColor(0, 0, 0);
 		$count++;
 			$concepto["descripcion"] = str_replace("&quot;", "\"", $concepto["descripcion"]);
 			$concepto["descripcion"] = str_replace("&#039;", "'", $concepto["descripcion"]);
