@@ -106,7 +106,7 @@
 <div id="page-wrap">
 
     {*TODO I really don't like this, the whole purpose of just having one version is defeated <_<*}
-    {if $empresaId != 15}
+    {if $empresaId == 15}
     <table width="100%">
         <tbody>
             <tr>
