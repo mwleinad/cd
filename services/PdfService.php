@@ -9,6 +9,9 @@ class PdfService extends Producto{
     {
         //$this->domPdf = new Dompdf();
         $this->smarty = new Smarty;
+        $this->smarty->caching = false;
+        $this->smarty->compile_check = true;
+
         $this->cfdiUtil = new CfdiUtil();
         $this->comprobantePago = new ComprobantePago();
         $this->qrService = new QrService();
@@ -24,6 +27,8 @@ class PdfService extends Producto{
         if(strpos($fileName, 'UID') !== false){
             $fileName = $this->cfdiUtil->getFilename($fileName);
         }
+
+        $this->smarty->assign('DOC_ROOT', DOC_ROOT);
 
         $xmlPath = DOC_ROOT.'/empresas/'.$empresaId.'/certificados/'.$rfcActivo.'/facturas/xml/'.$fileName.".xml";
         $xmlData = $xmlReaderService->execute($xmlPath, $empresaId);

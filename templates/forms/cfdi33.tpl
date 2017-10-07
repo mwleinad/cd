@@ -308,6 +308,42 @@
       		<div style="clear:both"></div>
         </div>
 
+        {if $info.moduloImpuestos == "Si"}
+        {if $expiredImpuestos}
+      	    Modulo de Impuestos Locales Congelado hasta confirmacion de Pago.
+        {else}
+                <div class="formLine">
+                    <div style="width:500px;float:left"><b>Extras para impuestos (Si es 0, no se mostrara)</b></div>
+                    <div style="width:100px;float:left">Subtotal</div>
+                    <div style="width:100px;float:left">IVA</div>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="formLine">
+                    <div style="width:500px;float:left">
+                      <input name="amortizacionFiniquito" id="amortizacionFiniquito" type="text" size="48" class="largeInput" placeholder="" value="IMPORTE DE LA ESTIMACION No 01 (UNO) Y FINIQUITO"/></div>
+                    <div style="width:100px;float:left">
+                      <input name="amortizacionFiniquitoSubtotal" id="amortizacionFiniquitoSubtotal" type="text" value="0.00"  size="8"  class="largeInput" placeholder=""/>
+                    </div>
+                    <div style="width:100px;float:left">
+                      <input name="amortizacionFiniquitoIva" id="amortizacionFiniquitoIva" type="text" value="0.00"  size="8"  class="largeInput" placeholder=""/>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+<div class="formLine">
+                    <div style="width:300px;float:left">Amortizacion del anticipo</div>
+                    <div style="width:200px;float:left">IVA Amortizacion</div>
+                    <div style="clear:both"></div>
+                </div>
+                <div class="formLine">
+                    <div style="width:300px;float:left">
+                      <input name="amortizacion" id="amortizacion" type="text" size="28" class="largeInput" placeholder="" value="0.00"/></div>
+                    <div style="width:200px;float:left">
+                      <input name="amortizacionIva" id="amortizacionIva" type="text" value="0.00"  size="8"  class="largeInput" placeholder=""/>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            {/if}
+            {/if}
 
       <div class="formLine">
           <div style="width:30%;float:left">
@@ -317,15 +353,6 @@
       		<span style="color: #f00; font-weight: bold">La descripcion solo puede tener un maximo de 1000 caracteres. Nueva regla del SAT! </span>
  					<hr />
         </div>
-      {if $info.empresaId == 86}
-      <div class="formLine">
-          <div style="width:30%;float:left">
-          Categoria: <input name="categoriaConcepto" id="categoriaConcepto" type="text" value="{$post.categoriaConcepto}"  size="100" class="largeInput"  placeholder="Categoria: Cambiar Si desea Crear una nueva categoria de Concepto."/>
-</div>
-      		<div style="clear:both"></div>
- 					<hr />
-        </div>
-      {/if}
 			</form>
       <b>Conceptos Cargados:</b>
 			<div id="conceptos">
@@ -337,6 +364,8 @@
 
       	</div>
       <br /><br />
+
+
 
 
      <div class="formLine">

@@ -36,8 +36,10 @@
         </td>
         <td width="40%" valign="top">
             {if $xmlData.impuestosLocales|count > 0}
-                {assign var="impuestosSubtotal" value=$xmlData.cfdi.Total / 1.16}
-                {assign var="impuestosIva" value=$xmlData.cfdi.Total - $impuestosSubtotal}
+                {foreach from=$xmlData.impuestosLocales key=keyTipo item=impuesto}
+                    {assign var="totalDeducciones" value=(string)$totalDeducciones+(string)$impuesto.impuesto.importe}
+                {/foreach}
+                {assign var="impuestosSubtotal" value=(string)$xmlData.cfdi.SubTotal-(string)$totalDeducciones}
             {/if}
             <table width="100%">
                 <tbody>
@@ -80,15 +82,7 @@
                                 <strong>{$catalogos.impuestos[{$traslado.Impuesto}]}:</strong>
                             </td>
                             <td class="right border-bottom" width="50%" valign="top">
-                                {if $traslado.Impuesto == '002'}
-                                    {if $xmlData.impuestosLocales|count > 0}
-                                        {$impuestosIva|number}
-                                    {else}
-                                        {$traslado.Importe|number}
-                                    {/if}
-                                {else}
-                                    {$traslado.Importe|number}
-                                {/if}
+                                {$traslado.Importe|number}
                             </td>
                         </tr>
                     {/foreach}

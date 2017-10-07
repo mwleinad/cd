@@ -13,6 +13,17 @@ $empresa->hasPermission($_GET['section']);
 $producto->CleanConceptos();
 $producto->CleanImpuestos();
 
+$publicInfo = $empresa->GetPublicEmpresaInfo();
+$smarty->assign("publicInfo", $publicInfo);
+
+if(isset($_POST['AceptarTerminos']))
+{
+    $sql = 'UPDATE empresa SET aceptacionTerminosDeServicio2017 = "'.$_POST['AceptarTerminos'].'" WHERE empresaId = "'.$info['empresaId'].'"';
+    $empresa->Util()->DB()->setQuery($sql);
+    $empresa->Util()->DB->UpdateData();
+    $info = $empresa->Info();
+    $smarty->assign("info", $info);
+}
 
 if(isset($_GET['id']))
 {
@@ -280,5 +291,9 @@ $totalSistema = $subtotalSistema + $ivaSistema;
 $smarty->assign('subtotalSistema', $subtotalSistema);
 $smarty->assign('ivaSistema', $ivaSistema);
 $smarty->assign('totalSistema', $totalSistema);
+
+unset($_SESSION["impuestos"]);
+unset($_SESSION["firmas"]);
+unset($_SESSION["amortizacion"]);
 
 ?>

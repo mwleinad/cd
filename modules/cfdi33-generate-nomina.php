@@ -14,6 +14,19 @@ $empresa->hasPermission("nueva-factura");
 $producto->CleanConceptos();
 $producto->CleanImpuestos();
 
+$publicInfo = $empresa->GetPublicEmpresaInfo();
+$smarty->assign("publicInfo", $publicInfo);
+
+if(isset($_POST['AceptarTerminos']))
+{
+    $sql = 'UPDATE empresa SET aceptacionTerminosDeServicio2017 = "'.$_POST['AceptarTerminos'].'" WHERE empresaId = "'.$info['empresaId'].'"';
+    $empresa->Util()->DB()->setQuery($sql);
+    $empresa->Util()->DB->UpdateData();
+    $info = $empresa->Info();
+    $smarty->assign("info", $info);
+}
+
+
 if(isset($_GET['id']))
 {
     $db->setQuery("SELECT * FROM usuario WHERE usuarioId = '".$_GET['id']."'");

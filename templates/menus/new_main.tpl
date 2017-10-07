@@ -46,7 +46,7 @@
         	<a href="{$WEB_ROOT}/nomina" {if $page == "nomina"}class="current"{/if}><span>CFDi N&oacute;mina</span></a>
 		</li>
 		<li class="item middle" id="seven">
-			<a href="{$WEB_ROOT}/cfdi-generate-nomina" {if $page == "nomina"}class="current"{/if}><span>CFDi N&oacute;mina 3.3</span></a>
+			<a href="{$WEB_ROOT}/cfdi33-generate-nomina" {if $page == "nomina"}class="current"{/if}><span>CFDi N&oacute;mina 3.3</span></a>
 		</li>
         {/if}
     {/if}

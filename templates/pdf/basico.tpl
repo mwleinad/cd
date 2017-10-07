@@ -197,6 +197,50 @@
         <tr class="border-right border-bottom">
             <td colspan="7" class="pad-left pre" style="font-family: monospace">
                 {$concepto.concepto.Descripcion|nl2br|replace:" ":"&nbsp;"|replace:"[%]MAS[%]":"+"}
+
+                {if $xmlData.amortizacionData.amortizacionFiniquitoSubtotal > 0 || $xmlData.amortizacionData.amortizacion > 0}
+                    <table width="100%" class="">
+                        {if $xmlData.amortizacionData.amortizacionFiniquitoSubtotal > 0}
+                            <tr class="no-border">
+                                <td class="no-border left" width="55%">{$xmlData.amortizacionData.amortizacionFiniquito|urldecode}</td>
+                                <td class="no-border right" width="15%">SUBTOTAL</td>
+                                <td class="no-border right" width="15%">{$xmlData.amortizacionData.amortizacionFiniquitoSubtotal|number}</td>
+                                <td class="no-border right" width="15%">&nbsp;</td>
+                            </tr>
+                            <tr class="no-border">
+                                <td class="no-border left" width="55%"></td>
+                                <td class="no-border right" width="15%">IVA</td>
+                                <td class="no-border right" width="15%">{$xmlData.amortizacionData.amortizacionFiniquitoIva|number}</td>
+                                <td class="no-border right" width="15%"><u>{$xmlData.amortizacionData.amortizacionFiniquitoIva+$xmlData.amortizacionData.amortizacionFiniquitoSubtotal|number}</u></td>
+                            </tr>
+                        {/if}
+                        {if $xmlData.amortizacionData.amortizacion > 0}
+                            <tr class="no-border">
+                                <td class="no-border left">AMORTIZACION DEL ANTICIPO</td>
+                                <td class="no-border right">SUBTOTAL</td>
+                                <td class="no-border right">{$xmlData.amortizacionData.amortizacion|number}</td>
+                                <td class="no-border right">&nbsp;</td>
+                            </tr>
+                            <tr class="no-border">
+                                <td class="no-border left"></td>
+                                <td class="no-border right">IVA</td>
+                                <td class="no-border right">{$xmlData.amortizacionData.amortizacionIva|number}</td>
+                                <td class="no-border right"><u>{$xmlData.amortizacionData.amortizacionIva+$xmlData.amortizacionData.amortizacion|number}</u></td>
+                            </tr>
+                        {/if}
+                        <tr>
+                            <td colspan="4">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr class="no-border">
+                            <td class="no-border left"></td>
+                            <td class="no-border right"></td>
+                            <td class="no-border right">ALCANCE LIQUIDO</td>
+                            <td class="no-border right"><u>{$xmlData.cfdi.Total|number}</u></td>
+                        </tr>
+                    </table>
+                {/if}
             </td>
         </tr>
         <tr class="border-right">
@@ -208,10 +252,10 @@
                 <table width="100%" class="outline-table no-border">
                     <tbody>
                     <tr class="border-bottom">
-                        <td colspan="5" class="font-smaller"><strong>Traslados</strong></td>
+                        <td colspan="5" class="font-smaller">Traslados</strong></td>
                     </tr>
                     <tr class="border-bottom border-right center font-smallest">
-                        <td class="border-left" width="15%"><strong>Base</strong></td>
+                        <td class="border-left" width="15%">Base</strong></td>
                         <td width="10%"><strong>Impuesto</strong></td>
                         <td width="10%"><strong>Tipo factor</strong></td>
                         <td width="20%"><strong>Tasa o cuota</strong></td>
@@ -267,12 +311,12 @@
     {/foreach}
 
     {*Complemento de impuestos*}
-    {include file="pdf/complementoImpuestos.tpl"}
+    {include file="{$DOC_ROOT}/templates/pdf/complementoImpuestos.tpl"}
 
     <p class=""><span class="no-bold word-break pre">{$xmlData.db.observaciones|urldecode|replace:"[%]MAS[%]":"+"}</span> </p>
 
     {*Totales*}
-    {include file="pdf/totales.tpl"}
+    {include file="{$DOC_ROOT}/templates/pdf/totales.tpl"}
 
 
     {if $empresaId == 15 && $xmlData.impuestosLocales|count == 0}
@@ -302,16 +346,16 @@
         </table>
     {/if}
     {*Complemento de pagos*}
-    {include file="pdf/complementoPago.tpl"}
+    {include file="{$DOC_ROOT}/templates/pdf/complementoPago.tpl"}
 
     {*Complemento de nomina*}
-    {include file="pdf/complementoNomina.tpl"}
+    {include file="{$DOC_ROOT}/templates/pdf/complementoNomina.tpl"}
 
     {*Complemento de nomina*}
-    {include file="pdf/complementoDonatarias.tpl"}
+    {include file="{$DOC_ROOT}/templates/pdf/complementoDonatarias.tpl"}
 
     {*Cadenas y timbres*}
-    {include file="pdf/cadenasTimbres.tpl"}
+    {include file="{$DOC_ROOT}/templates/pdf/cadenasTimbres.tpl"}
 
     <p class="text-center small-height">Este documento es una representación impresa de un CFDI</p>
     <p class="text-center small-height">www.comprobantedigital.mx</p>

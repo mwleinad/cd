@@ -15,6 +15,7 @@ class XmlReaderService extends Comprobante
         $xml->registerXPathNamespace('AddendaEscuela',$ns['AddendaEscuela']);
         $xml->registerXPathNamespace('AddendaImpuesto',$ns['AddendaImpuesto']);
         $xml->registerXPathNamespace('AddendaFirma',$ns['AddendaFirma']);
+        $xml->registerXPathNamespace('AddendaAmortizacion',$ns['AddendaAmortizacion']);
 
         //cfdi
         $data["cfdi"] = $xml->xpath('//cfdi:Comprobante')[0];
@@ -243,6 +244,21 @@ class XmlReaderService extends Comprobante
                 $firmasLocales[$key] = $firma;
             }
             $data['firmasLocales'] = $firmasLocales;
+        }
+
+        //Addenda amortizacion
+        $amortizacionInfo = $xml->xpath('//AddendaAmortizacion');
+        if(count($amortizacionInfo) > 0) {
+            $data['amortizacionData'] = $amortizacionInfo[0];
+        }
+
+        //Workaround as the firmas only exists in the addenda, this is to show them in the preview
+        if(count($amortizacionInfo) == 0 && $_SESSION['amortizacion']){
+            $amortizacionData = [];
+            foreach($_SESSION['amortizacion'] as $key => $firma){
+                $amortizacionData[$key] = $firma;
+            }
+            $data['amortizacionData'] = $amortizacionData;
         }
 
         return $data;

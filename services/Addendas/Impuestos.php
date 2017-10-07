@@ -2,7 +2,7 @@
 
 class Impuestos extends Comprobante
 {
-    public function Generar($xmlConSello, $impuestos, $firmas)
+    public function Generar($xmlConSello, $impuestos, $firmas, $amortizacionInfo)
     {
         $xml = new DOMdocument();
         $root = $xml->createElement("cfdi:Addenda");
@@ -24,6 +24,12 @@ class Impuestos extends Comprobante
 
                 $this->CargaAtt($request, $firma);
             }
+        }
+
+        if(count($amortizacionInfo) > 0){
+            $request = $xml->createElement("AddendaAmortizacion");
+            $request = $root->appendChild($request);
+            $this->CargaAtt($request, $amortizacionInfo);
         }
 
         $strAddenda = $xml->saveXML();

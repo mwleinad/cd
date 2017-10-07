@@ -57,19 +57,23 @@
     </div><br />
 {/if}
 
-<div style="font-size:14px; border:solid; border-width:1px; background-color:#CAFFF8; padding:5px; text-align: center">
-    <p>
-        Esta es una version nueva por lo que puede tener errores. <br>
-        Favor de reportar cualquier error de esta version al correo de:<br>
-        <a href="mailto:dlopez@trazzos.com">dlopez@trazzos.com</a>
-    </p>
-    <p>
-        Para conocer mas de la nueva version puedes consultar la pagina del SAT en:
-        <a target="_blank" href="http://sat.gob.mx/informacion_fiscal/factura_electronica/Paginas/Anexo_20_version3.3.aspx">CFDi 3.3</a>
-    </p>
-</div>
-<br><br>
-{include file="forms/cfdi33.tpl"}
+{if $info.aceptacionTerminosDeServicio2017 != ''}
+    <div style="font-size:14px; border:solid; border-width:1px; background-color:#CAFFF8; padding:5px; text-align: center">
+        <p>
+            Esta es una version nueva por lo que puede tener errores. <br>
+            Favor de reportar cualquier error de esta version al correo de:<br>
+            <a href="mailto:comprobantefiscal@braunhuerin.com.mx">comprobantefiscal@braunhuerin.com.mx</a>
+        </p>
+        <p>
+            Para conocer mas de la nueva version puedes consultar la pagina del SAT en:
+            <a target="_blank" href="http://sat.gob.mx/informacion_fiscal/factura_electronica/Paginas/Anexo_20_version3.3.aspx">CFDi 3.3</a>
+        </p>
+    </div>
+    <br><br>
+    {include file="forms/cfdi33.tpl"}
+{else}
+    {include file="terminos2017.tpl"}
+{/if}
 
 {include file="boxes/footer_factura.tpl"}
 {include file="boxes/white_close.tpl"}

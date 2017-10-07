@@ -173,6 +173,16 @@ class Cfdi extends Comprobante
 
         $userId = $data["userId"];
 
+        if($data['amortizacionFiniquitoSubtotal'] > 0 ||  $data['amortizacionFiniquitoIva'] > 0 || $data['amortizacion'] > 0 || $data['amortizacionIva'] > 0){
+            $_SESSION['amortizacion']['amortizacionFiniquito'] = $data['amortizacionFiniquito'];
+            $_SESSION['amortizacion']['amortizacionFiniquitoSubtotal'] = $data['amortizacionFiniquitoSubtotal'];
+            $_SESSION['amortizacion']['amortizacionFiniquitoIva'] = $data['amortizacionFiniquitoIva'];
+            $_SESSION['amortizacion']['amortizacion'] = $data['amortizacion'];
+            $_SESSION['amortizacion']['amortizacionIva'] = $data['amortizacionIva'];
+        } else {
+            unset($_SESSION['amortizacion']);
+        }
+
         include_once(DOC_ROOT.'/services/Xml.php');
         $xml = new Xml($data);
 
@@ -188,6 +198,7 @@ class Cfdi extends Comprobante
             $usuario->setUsuarioId($userId);
             $nodoReceptor = $usuario->InfoUsuario();
         }
+
         $data["nodoReceptor"] = $nodoReceptor;
         //checar si nos falta unidad en alguno
         foreach($_SESSION["conceptos"] as $concepto)
@@ -277,11 +288,11 @@ class Cfdi extends Comprobante
         $cadenaOriginalTimbre = $pac->GenerateCadenaOriginalTimbre($timbreXml);
         $cadenaOriginalTimbreSerialized = serialize($cadenaOriginalTimbre);
 
-        if($_SESSION["impuestos"] || $_SESSION["firmas"]){
+        if($_SESSION["impuestos"] || $_SESSION["firmas"] || $_SESSION["amortizacion"]){
 
             include_once(DOC_ROOT."/services/Addendas/Impuestos.php");
             $impuestos = new Impuestos();
-            $impuestos->generar($xmlConSello, $_SESSION["impuestos"], $_SESSION['firmas']);
+            $impuestos->generar($xmlConSello, $_SESSION["impuestos"], $_SESSION['firmas'], $_SESSION['amortizacion']);
         }
 
         //TODO addenda continental

@@ -137,9 +137,9 @@ class ComprobanteForma extends Comprobante
 		$fecha = $this->Util()->FormatDateAndTime(time() - 600);
 		$fechaPago = $this->Util()->FormatDate(time());
 		
-		if($_SESSION["empresaId"] == 76)
+		if($_SESSION["empresaId"] >= 1254)
 		{
-			$fecha = "2013-31-12 23:29:52";
+			$fecha = "2017-09-30 23:29:52";
 		}
 		
 		$data["fechaPago"] = $fechaPago;

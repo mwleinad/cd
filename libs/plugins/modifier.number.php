@@ -12,8 +12,10 @@ function smarty_modifier_number($number)
     if(!(string)$number){
         return null;
     }
+    $number = floatval((string)$number);
 
-    return "$".number_format((string)$number, 2, '.', ',');
+
+    return "$".number_format($number, 2, '.', ',');
 }
 
 ?>
