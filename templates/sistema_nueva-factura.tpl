@@ -57,6 +57,18 @@ Para saber los pasos, costos y datos de deposito para contratar nuevos timbres v
 </div><br />
 {/if}
 
+<div style="font-size:14px; border:solid; border-width:1px; background-color:#CAFFF8; padding:5px; text-align: center">
+    <p>
+        Ya esta disponible la version 3.3 de CFDi. Puedes generar tus comprobantes usando la nueva version a traves del siguiente link:<br>
+        <a style="font-size: 20px" href="{$WEB_ROOT}/cfdi33-generate"><span><b>Generar CFDi v3.3</b></span></a>
+    </p>
+    <p>
+        Para conocer mas de la nueva version puedes consultar la pagina del SAT en:
+        <a target="_blank" href="http://sat.gob.mx/informacion_fiscal/factura_electronica/Paginas/Anexo_20_version3.3.aspx">CFDi 3.3</a>
+    </p>
+</div>
+<br><br>
+
 {if $version == "auto" && ($info.empresaId == 39 || $info.empresaId == 180)}  
 	{include file="forms/nueva-factura-hotel.tpl"}
 {else}

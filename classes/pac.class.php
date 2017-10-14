@@ -15,13 +15,13 @@ class Pac extends Util
 		$response = $client->__soapCall("add", array($params));
 	}
 	
-	function CancelaCfdi($user, $pw, $rfc, $uuid, $pfx, $pfxPassword, $showErrors = false)
+	function CancelaCfdi($user, $pw, $rfc, $uuid, $pfx, $pfxPassword, $showErrors = false, $idComprobante)
 	{
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("
 			SELECT * FROM comprobante 
-			WHERE fecha < '2016-02-01'");
+			WHERE fecha < '2016-02-01' AND comprobanteId = '".$idComprobante."'");
 		$viejoTimbre = $this->Util()->DBSelect($_SESSION["empresaId"])->GetRow();
-		
+
 		if($viejoTimbre)
 		{
 			$pacOld = new PacOld;
@@ -88,31 +88,20 @@ class Pac extends Util
 		);
 		
 		$response = $client->__soapCall("cancel", array($params));
-		
-		//print_r($response);
+
 		$error = "UUID: ".$uuid." No Encontrado";
 		if($response->cancelResult->Folios->Folio->EstatusUUID == 201 || $response->cancelResult->Folios->Folio->EstatusUUID == 202)
 		{
 			return true;
 		}
 
-//		if($response->cancelResult->CodEstatus == $error)
-//		{
-			
-			return false;
-			
-//		}
-		
-//		return true;
+		return false;
 	}
 	
-	function GetCfdi($user, $pw, $zipFile, $path, $newFile, $empresa)
+	function GetCfdi($xmlFile, $signedXmlFile)
 	{
-		$zipFile = substr($zipFile, 0, -4).".xml";
-		
-		$fh = fopen($zipFile, 'r');
-		$theData = fread($fh, filesize($zipFile));
-		$zipFileEncoded = $theData;
+		$fh = fopen($xmlFile, 'r');
+		$xmlData = fread($fh, filesize($xmlFile));
 		fclose($fh);
 		
 		$username = PAC_USER;
@@ -132,30 +121,36 @@ class Pac extends Util
 		$client = new SoapClient($url);
 
 		$params = array(
-			'xml' => $zipFileEncoded,
+			'xml' => $xmlData,
 			'username' => $username,
 			'password' => $pw
 		);
 
-			$namespace = "http://facturacion.finkok.com/stamp";
-			$response = $client->__soapcall("stamp", array($params));
-			if(count($response->stampResult->Incidencias->Incidencia))
+		//$namespace = "http://facturacion.finkok.com/stamp";
+		$response = $client->__soapcall("stamp", array($params));
+		if(count($response->stampResult->Incidencias->Incidencia))
+		{
+			if($response->stampResult->Incidencias->Incidencia->MensajeIncidencia == "XML mal formado")
 			{
-				//print_r($response);
-				if($response->stampResult->Incidencias->Incidencia->MensajeIncidencia == "XML mal formado")
-				{
-					$add = "Revisar que el RFC del Cliente sea Correcto.";
-				}
-				$retVal['msg'] = utf8_decode($response->stampResult->Incidencias->Incidencia->MensajeIncidencia)." ".$add;
-				$retVal['tipo'] = 'error';
-				return $retVal;
+				$add = "Revisar que el RFC del Cliente sea Correcto.";
 			}
-			
-			$data = $response->stampResult->xml;
-		
-			$fh = fopen($newFile, 'w') or die("can't open file");
-			$fh = fwrite($fh, $data);
-		
+			$retVal['msg'] = utf8_decode($response->stampResult->Incidencias->Incidencia->MensajeIncidencia)." ".$add;
+			$retVal['tipo'] = 'error';
+			return $retVal;
+		}
+
+		//todo remove
+		if($_SESSION["empresaId"] == 15)
+		{
+			//print_r($response);
+		}
+
+		$data = $response->stampResult->xml;
+
+		$fh = fopen($signedXmlFile, 'w') or die("can't open file");
+		fwrite($fh, $data);
+		fclose($fh);
+
 		return $response;
 	}
 

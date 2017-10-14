@@ -107,7 +107,9 @@ class Venta extends Producto
 	
 	function GetInfoVenta($id_venta){
 	
-		$sqlQuery = 'SELECT * FROM notaVenta WHERE notaVentaId = '.$id_venta;
+		$sqlQuery = 'SELECT notaVenta.*, comprobante.version FROM notaVenta
+		LEFT JOIN comprobante ON comprobante.comprobanteId = notaVenta.comprobanteId
+		WHERE notaVentaId = '.$id_venta;
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery($sqlQuery);
 		$row = $this->Util()->DBSelect($_SESSION["empresaId"])->GetRow();
 		

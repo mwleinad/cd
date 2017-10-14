@@ -93,10 +93,38 @@ else
 		{
 //			$totalSueldos = $_SESSION["conceptos"]["1"]["percepciones"]["totalGravado"] + $_SESSION["conceptos"]["1"]["percepciones"]["totalExcento"];
 
-$totalSueldos = $_SESSION["conceptos"]["1"]["percepciones"]["totalGravado"] + $_SESSION["conceptos"]["1"]["percepciones"]["totalExcento"] + $horasExtraImporte;
-$totalGravado = $_SESSION["conceptos"]["1"]["percepciones"]["totalGravado"] + $horasExtraImporte;
+
+		$totalSueldos = 0;
+		$totalSeparacionIndemnizacion = 0;
+		$totalJubilacionPensionRetiro = 0;
+		foreach($_SESSION["percepciones"] as $myPercepcion)
+		{
+			if($myPercepcion["tipoPercepcion"] != "022" &&
+				$myPercepcion["tipoPercepcion"] != "023" &&
+				$myPercepcion["tipoPercepcion"] != "025" &&
+				$myPercepcion["tipoPercepcion"] != "039" &&
+				$myPercepcion["tipoPercepcion"] != "044") {
+				$totalSueldos += $myPercepcion["importeGravado"] + $myPercepcion["importeExcento"];
+			}
+			
+			if($myPercepcion["tipoPercepcion"] == "022" ||
+				$myPercepcion["tipoPercepcion"] == "023" ||
+				$myPercepcion["tipoPercepcion"] == "025") {
+				$totalSeparacionIndemnizacion += $myPercepcion["importeGravado"] + $myPercepcion["importeExcento"];
+			}
+			
+			if($myPercepcion["tipoPercepcion"] == "039" ||
+				$myPercepcion["tipoPercepcion"] == "044") {
+				$totalJubilacionPensionRetiro += $myPercepcion["importeGravado"] + $myPercepcion["importeExcento"];
+			}		
+
+		}
+		$totalSueldos = $totalSueldos + $horasExtraImporte;
+		$totalGravado = $_SESSION["conceptos"]["1"]["percepciones"]["totalGravado"] + $horasExtraImporte;
 			
 			$cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($totalSueldos, true);
+			$cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($totalSeparacionIndemnizacion, true);
+			$cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($totalJubilacionPensionRetiro, true);
 			$cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($totalGravado, true);
 			$cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($_SESSION["conceptos"]["1"]["percepciones"]["totalExcento"], true);
 		
@@ -133,6 +161,27 @@ $totalGravado = $_SESSION["conceptos"]["1"]["percepciones"]["totalGravado"] + $h
 			}
 		}
 		
+if($totalSeparacionIndemnizacion > 0){
+		$aniosServicio = ceil($this->Util()->weeks($data["nodoReceptor"]["fechaInicioRelLaboral"], $data["fechaPago"]) / 52);
+		$ingresoAcumulable = 0;
+		if($totalSueldos > $totalSeparacionIndemnizacion) {
+			$ingresoAcumulable = $totalSeparacionIndemnizacion;
+		} else {
+			$ingresoAcumulable = $totalSueldos;
+		}
+		
+		$ingresoNoAcumulable = $totalSeparacionIndemnizacion - $totalSueldos;
+		
+		if($ingresoNoAcumulable < 0) {
+			$ingresoNoAcumulable = 0;
+		}
+		
+				$cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($totalSeparacionIndemnizacion, false);
+				$cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($aniosServicio, false);
+				$cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($totalSueldos, false);
+				$cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($ingresoAcumulable, true);
+				$cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($ingresoNoAcumulable, true);
+}		
 		//nodo deducciones
 		$totalOtrasDeducciones = 0;
 		if(count($_SESSION["deducciones"]) > 0)
@@ -174,7 +223,6 @@ $totalGravado = $_SESSION["conceptos"]["1"]["percepciones"]["totalGravado"] + $h
 			}
 		}
 		
-	
 		if(count($_SESSION["otrosPagos"]) > 0)
 		{
 			foreach($_SESSION["otrosPagos"] as $myOtroPago)
@@ -197,7 +245,7 @@ $totalGravado = $_SESSION["conceptos"]["1"]["percepciones"]["totalGravado"] + $h
 				}
 			}
 		}		
-
+		
 		if(count($_SESSION["incapacidades"]) > 0)
 		{
 			foreach($_SESSION["incapacidades"] as $incapacidad)
@@ -208,6 +256,7 @@ $totalGravado = $_SESSION["conceptos"]["1"]["percepciones"]["totalGravado"] + $h
 				$cadenaOriginal .= $this->Util()->CadenaOriginalVariableFormat($incapacidad["descuento"], true);
 			}
 		}
+		
 		
 
 		return $cadenaOriginal;

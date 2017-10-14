@@ -135,6 +135,10 @@
 			$payment->setAmount($_POST["importe"]);
 			$payment->setMetodoPago($_POST["metodoPago"]);
 			$payment->setFecha($_POST["fecha"]);
+			if(isset($_POST["generarComprobantePago"])) {
+				$payment->setGenerarComprobantePago(true);
+			}
+
 			if(!$payment->AddPayment())
 			{
 				echo "fail[#]";

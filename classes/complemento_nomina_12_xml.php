@@ -1,12 +1,7 @@
 <?php
 
-//$complementos = $xml->createElement("cfdi:Complemento");
-//$complementos = $root->appendChild($complementos);
-
 $myConplementoNomina = $xml->createElement("nomina12:Nomina");
 $myConplementoNomina = $complementos->appendChild($myConplementoNomina);
-
-$myConplementoNomina->setAttribute("xmlns:nomina12", "http://www.sat.gob.mx/nomina12");
 
 if($data["nodoReceptor"]["fechaInicioRelLaboral"] == "0000-00-00")
 {
@@ -19,7 +14,6 @@ if(!$data["nodoReceptor"]["periodicidadPago"])
 }
 
 $versionNomina = VERSION_NOMINA_12;
-
 
 		$totalPercepciones = $_SESSION["conceptos"]["1"]["percepciones"]["totalGravado"] + $_SESSION["conceptos"]["1"]["percepciones"]["totalExcento"] + $horasExtraImporte;
 
@@ -61,27 +55,31 @@ if($totalOtrosPagos > 0)
 }
 
 $this->CargaAtt(
-	$myConplementoNomina, 
+	$myConplementoNomina,
 		 $nominaMain
 		);
 
 		//nodo emisor
-		$emisor = $xml->createElement("nomina12:Emisor");
-		$emisor = $myConplementoNomina->appendChild($emisor);
 
-		$emisorData = array(
-					"RegistroPatronal"=>$this->Util()->CadenaOriginalVariableFormat($data["nodoReceptor"]["registroPatronal"], false, false),
-				);		
-				
+		$emisorData = [];
+		if($data["nodoReceptor"]["registroPatronal"]) {
+			$emisorData["RegistroPatronal"] =$this->Util()->CadenaOriginalVariableFormat($data["nodoReceptor"]["registroPatronal"], false, false);
+		}
+
 		if(strlen($data["nodoEmisor"]["rfc"]["rfc"]) == 13 && strlen($data["nodoEmisor"]["rfc"]["curp"]) > 0)
 		{
 			$emisorData["Curp"] = $this->Util()->CadenaOriginalVariableFormat($data["nodoEmisor"]["rfc"]["curp"],false,false);
 		}
-				
-		$this->CargaAtt(
-			$emisor, $emisorData
+
+		if(count($emisorData) > 0) {
+			$emisor = $xml->createElement("nomina12:Emisor");
+			$emisor = $myConplementoNomina->appendChild($emisor);
+
+			$this->CargaAtt(
+					$emisor, $emisorData
 			);
-		
+		}
+
 		//nodo receptor (sin subcontratacion)
 		$antiguedad = $this->Util()->weeks($data["nodoReceptor"]["fechaInicioRelLaboral"], $data["fechaPago"]);
 		$antiguedad = "P".$antiguedad."W";
@@ -115,13 +113,41 @@ $this->CargaAtt(
 $percepcion = $xml->createElement("nomina12:Percepciones");
 $percepcion = $myConplementoNomina->appendChild($percepcion);
 
-$totalSueldos = $_SESSION["conceptos"]["1"]["percepciones"]["totalGravado"] + $_SESSION["conceptos"]["1"]["percepciones"]["totalExcento"] + $horasExtraImporte;
+$totalSueldos = 0;
+$totalSeparacionIndemnizacion = 0;
+$totalJubilacionPensionRetiro = 0;
+foreach($_SESSION["percepciones"] as $myPercepcion)
+{
+	if($myPercepcion["tipoPercepcion"] != "022" &&
+		$myPercepcion["tipoPercepcion"] != "023" &&
+		$myPercepcion["tipoPercepcion"] != "025" &&
+		$myPercepcion["tipoPercepcion"] != "039" &&
+		$myPercepcion["tipoPercepcion"] != "044") {
+		$totalSueldos += $myPercepcion["importeGravado"] + $myPercepcion["importeExcento"];
+	}
+	
+	if($myPercepcion["tipoPercepcion"] == "022" ||
+		$myPercepcion["tipoPercepcion"] == "023" ||
+		$myPercepcion["tipoPercepcion"] == "025") {
+		$totalSeparacionIndemnizacion += $myPercepcion["importeGravado"] + $myPercepcion["importeExcento"];
+	}
+	
+	if($myPercepcion["tipoPercepcion"] == "039" ||
+		$myPercepcion["tipoPercepcion"] == "044") {
+		$totalJubilacionPensionRetiro += $myPercepcion["importeGravado"] + $myPercepcion["importeExcento"];
+	}		
+	
+}
+$totalSueldos = $totalSueldos + $horasExtraImporte;
+$_SESSION["conceptos"]["1"]["percepciones"]["totalExcento"] + $horasExtraImporte;
 $totalGravado = $_SESSION["conceptos"]["1"]["percepciones"]["totalGravado"] + $horasExtraImporte;
 
 $this->CargaAtt(
 	$percepcion, 
 		array(
 			"TotalSueldos"=>$this->Util()->CadenaOriginalVariableFormat($totalSueldos, true, false),
+			"TotalSeparacionIndemnizacion"=>$this->Util()->CadenaOriginalVariableFormat($totalSeparacionIndemnizacion, true, false),
+			"TotalJubilacionPensionRetiro"=>$this->Util()->CadenaOriginalVariableFormat($totalJubilacionPensionRetiro, true, false),
 			"TotalGravado"=>$this->Util()->CadenaOriginalVariableFormat($totalGravado, true, false),
 			"TotalExento"=>$this->Util()->CadenaOriginalVariableFormat($_SESSION["conceptos"]["1"]["percepciones"]["totalExcento"], true, false),
 		)
@@ -182,21 +208,54 @@ if(count($_SESSION["horasExtras"]) > 0)
 	}	
 }
 
+if($totalSeparacionIndemnizacion > 0){
+	
+		$separacionIndemnizacion = $xml->createElement("nomina12:SeparacionIndemnizacion");
+		$separacionIndemnizacion = $percepcion->appendChild($separacionIndemnizacion);
+
+		$aniosServicio = ceil($this->Util()->weeks($data["nodoReceptor"]["fechaInicioRelLaboral"], $data["fechaPago"]) / 52);
+		$ingresoAcumulable = 0;
+		if($totalSueldos > $totalSeparacionIndemnizacion) {
+			$ingresoAcumulable = $totalSeparacionIndemnizacion;
+		} else {
+			$ingresoAcumulable = $totalSueldos;
+		}
+		
+		$ingresoNoAcumulable = $totalSeparacionIndemnizacion - $totalSueldos;
+		
+		if($ingresoNoAcumulable < 0) {
+			$ingresoNoAcumulable = 0;
+		}
+		
+		$this->CargaAtt(
+			$separacionIndemnizacion, 
+				array(
+					"TotalPagado"=>$this->Util()->CadenaOriginalVariableFormat($totalSeparacionIndemnizacion, false, false),
+					"NumAñosServicio"=>$this->Util()->CadenaOriginalVariableFormat($aniosServicio, false, false),
+					"UltimoSueldoMensOrd"=>$this->Util()->CadenaOriginalVariableFormat($totalSueldos, false, false),
+					"IngresoAcumulable"=>$this->Util()->CadenaOriginalVariableFormat($ingresoAcumulable, true, false),
+					"IngresoNoAcumulable"=>$this->Util()->CadenaOriginalVariableFormat($ingresoNoAcumulable, true, false)
+				)
+			);
+}
+	
 //nodo deducciones
-if(count($_SESSION["deducciones"]) > 0)
+if(count($_SESSION["deducciones"]) > 0 || count($_SESSION["incapacidades"]) > 0)
 {
 	$totalOtrasDeducciones = 0;
 	$totalImpuestosRetenidos = 0;
 	
-	foreach($_SESSION["deducciones"] as $myDeduccion)
-	{
-		if($myDeduccion["tipoDeduccion"] == "002")
+	if(count($_SESSION["deducciones"]) > 0) {
+		foreach($_SESSION["deducciones"] as $myDeduccion)
 		{
-			$totalImpuestosRetenidos += $myDeduccion["importeExcento"] + $myDeduccion["importeGravado"];
-		}
-		else
-		{
-			$totalOtrasDeducciones += $myDeduccion["importeExcento"] + $myDeduccion["importeGravado"];
+			if($myDeduccion["tipoDeduccion"] == "002")
+			{
+				$totalImpuestosRetenidos += $myDeduccion["importeExcento"] + $myDeduccion["importeGravado"];
+			}
+			else
+			{
+				$totalOtrasDeducciones += $myDeduccion["importeExcento"] + $myDeduccion["importeGravado"];
+			}
 		}
 	}
 	
@@ -223,21 +282,24 @@ if(count($_SESSION["deducciones"]) > 0)
 			$atributosDeduccion
 		);
 	
-	foreach($_SESSION["deducciones"] as $myDeduccion)
-	{
-		$deducciones = $xml->createElement("nomina12:Deduccion");
-		$deducciones = $deduccion->appendChild($deducciones);
-
-		$importe = $myDeduccion["importeGravado"] + $myDeduccion["importeExcento"];
-		$this->CargaAtt(
-			$deducciones, 
-				array(
-					"TipoDeduccion"=>$this->Util()->CadenaOriginalVariableFormat($myDeduccion["tipoDeduccion"], false, false),
-					"Clave"=>$this->Util()->CadenaOriginalVariableFormat($myDeduccion["tipoDeduccion"], false, false),
-					"Concepto"=>$this->Util()->CadenaOriginalVariableFormat($myDeduccion["nombreDeduccion"], false, false),
-					"Importe"=>$this->Util()->CadenaOriginalVariableFormat($importe, true, false),
-				)
-			);
+	if(count($_SESSION["deducciones"]) > 0) {
+	
+		foreach($_SESSION["deducciones"] as $myDeduccion)
+		{
+			$deducciones = $xml->createElement("nomina12:Deduccion");
+			$deducciones = $deduccion->appendChild($deducciones);
+	
+			$importe = $myDeduccion["importeGravado"] + $myDeduccion["importeExcento"];
+			$this->CargaAtt(
+				$deducciones, 
+					array(
+						"TipoDeduccion"=>$this->Util()->CadenaOriginalVariableFormat($myDeduccion["tipoDeduccion"], false, false),
+						"Clave"=>$this->Util()->CadenaOriginalVariableFormat($myDeduccion["tipoDeduccion"], false, false),
+						"Concepto"=>$this->Util()->CadenaOriginalVariableFormat($myDeduccion["nombreDeduccion"], false, false),
+						"Importe"=>$this->Util()->CadenaOriginalVariableFormat($importe, true, false),
+					)
+				);
+		}
 	}
 }//count deducciones
 
@@ -245,59 +307,60 @@ if(count($_SESSION["deducciones"]) > 0)
 //nodo otros pagos
 if(count($_SESSION["otrosPagos"]) > 0)
 {
-$otroPago = $xml->createElement("nomina12:OtrosPagos");
-$otroPago = $myConplementoNomina->appendChild($otroPago);
+	$otroPago = $xml->createElement("nomina12:OtrosPagos");
+	$otroPago = $myConplementoNomina->appendChild($otroPago);
 
 //$totalSueldos = $_SESSION["conceptos"]["1"]["percepciones"]["totalGravado"] + $_SESSION["conceptos"]["1"]["percepciones"]["totalExcento"] + $horasExtraImporte;
 //$totalGravado = $_SESSION["conceptos"]["1"]["percepciones"]["totalGravado"] + $horasExtraImporte;
 
-$this->CargaAtt(
-	$otroPago, 
-		array(
-//			"TotalSueldos"=>$this->Util()->CadenaOriginalVariableFormat($totalSueldos, true, false),
-//			"TotalGravado"=>$this->Util()->CadenaOriginalVariableFormat($totalGravado, true, false),
-//			"TotalExento"=>$this->Util()->CadenaOriginalVariableFormat($_SESSION["conceptos"]["1"]["percepciones"]["totalExcento"], true, false),
-		)
-	);
-
-foreach($_SESSION["otrosPagos"] as $myOtroPago)
-{
-	$otrosPagos = $xml->createElement("nomina12:OtroPago");
-	$otrosPagos = $otroPago->appendChild($otrosPagos);
 	$this->CargaAtt(
-		$otrosPagos, 
+		$otroPago, 
 			array(
-				"TipoOtroPago"=>$this->Util()->CadenaOriginalVariableFormat($myOtroPago["tipoOtroPago"], false, false),
-				"Clave"=>$this->Util()->CadenaOriginalVariableFormat($myOtroPago["tipoOtroPago"], false, false),
-				"Concepto"=>$this->Util()->CadenaOriginalVariableFormat($myOtroPago["nombreOtroPago"], false, false),
-				"Importe"=>$this->Util()->CadenaOriginalVariableFormat($myOtroPago["importe"], true, false),
+	//			"TotalSueldos"=>$this->Util()->CadenaOriginalVariableFormat($totalSueldos, true, false),
+	//			"TotalGravado"=>$this->Util()->CadenaOriginalVariableFormat($totalGravado, true, false),
+	//			"TotalExento"=>$this->Util()->CadenaOriginalVariableFormat($_SESSION["conceptos"]["1"]["percepciones"]["totalExcento"], true, false),
 			)
 		);
+
+	foreach($_SESSION["otrosPagos"] as $myOtroPago)
+	{
+		$otrosPagos = $xml->createElement("nomina12:OtroPago");
+		$otrosPagos = $otroPago->appendChild($otrosPagos);
+		$this->CargaAtt(
+			$otrosPagos, 
+				array(
+					"TipoOtroPago"=>$this->Util()->CadenaOriginalVariableFormat($myOtroPago["tipoOtroPago"], false, false),
+					"Clave"=>$this->Util()->CadenaOriginalVariableFormat($myOtroPago["tipoOtroPago"], false, false),
+					"Concepto"=>$this->Util()->CadenaOriginalVariableFormat($myOtroPago["nombreOtroPago"], false, false),
+					"Importe"=>$this->Util()->CadenaOriginalVariableFormat($myOtroPago["importe"], true, false),
+				)
+			);
+			
+		if($myOtroPago["tipoOtroPago"] == "002")
+		{
+			$subsidio = $xml->createElement("nomina12:SubsidioAlEmpleo");
+			$subsidio = $otrosPagos->appendChild($subsidio);
+			$this->CargaAtt(
+				$subsidio, 
+					array(
+						"SubsidioCausado"=>$this->Util()->CadenaOriginalVariableFormat($myOtroPago["importe"], true, false),
+					)
+				);
+		}
 		
-	if($myOtroPago["tipoOtroPago"] == "002")
-	{
-		$subsidio = $xml->createElement("nomina12:SubsidioAlEmpleo");
-		$subsidio = $otrosPagos->appendChild($subsidio);
-		$this->CargaAtt(
-			$subsidio, 
-				array(
-					"SubsidioCausado"=>$this->Util()->CadenaOriginalVariableFormat($myOtroPago["importe"], true, false),
-				)
-			);
-	}
-	
-	if($myOtroPago["tipoOtroPago"] == "004")
-	{
-		$subsidio = $xml->createElement("nomina12:CompensacionSaldosAFavor");
-		$subsidio = $otrosPagos->appendChild($subsidio);
-		$this->CargaAtt(
-			$subsidio, 
-				array(
-					"SaldoAFavor"=>$this->Util()->CadenaOriginalVariableFormat($myOtroPago["importe"], true, false),
-					"Año"=>$this->Util()->CadenaOriginalVariableFormat(date("Y"), true, false),
-					"RemanenteSalFav"=>$this->Util()->CadenaOriginalVariableFormat("0", true, false),
-				)
-			);
+		if($myOtroPago["tipoOtroPago"] == "004")
+		{
+			$subsidio = $xml->createElement("nomina12:CompensacionSaldosAFavor");
+			$subsidio = $otrosPagos->appendChild($subsidio);
+			$this->CargaAtt(
+				$subsidio, 
+					array(
+						"SaldoAFavor"=>$this->Util()->CadenaOriginalVariableFormat($myOtroPago["importe"], true, false),
+						"Año"=>$this->Util()->CadenaOriginalVariableFormat(date("Y"), true, false),
+						"RemanenteSalFav"=>$this->Util()->CadenaOriginalVariableFormat("0", true, false),
+					)
+				);
+		}
 	}
 }
 
@@ -322,5 +385,4 @@ if(count($_SESSION["incapacidades"]) > 0)
 	}
 }
 
-}
 ?>

@@ -298,6 +298,11 @@ if(!$data["fromNomina"])
 		{
 				include_once(DOC_ROOT."/classes/complemento_nomina_12_xml.php");
 				$xsdNomina = "http://www.sat.gob.mx/nomina http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd";
+
+				$root->setAttribute('xmlns:nomina12', "http://www.sat.gob.mx/nomina12");
+				$root->setAttribute('xmlns:catNomina', "http://www.sat.gob.mx/sitio_internet/cfd/catalogos/Nomina");
+				$root->setAttribute('xmlns:tdCFDI', "http://www.sat.gob.mx/sitio_internet/cfd/tipoDatos/tdCFDI");
+				$root->setAttribute('xmlns:catCFDI', "http://www.sat.gob.mx/sitio_internet/cfd/catalogos");
 		}
 
 		if($miEmpresa["donatarias"] == "Si")

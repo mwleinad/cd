@@ -2,10 +2,11 @@
 
 class Payment extends Util
 {
-	private $amount;
-	private $fecha;
-	private $metodoPago;
-	
+	public $amount;
+	public $fecha;
+	public $metodoPago;
+	public $generarComprobantePago;
+
 	public function setAmount($value)
 	{
 		if(!is_numeric($value)){
@@ -23,6 +24,11 @@ class Payment extends Util
 	public function setMetodoPago($value)
 	{
 			$this->metodoPago = $value;		
+	}
+
+	public function setGenerarComprobantePago($value)
+	{
+		$this->generarComprobantePago = $value;
 	}
 
 	public function setFecha($value)
@@ -59,34 +65,48 @@ class Payment extends Util
 	public function getComprobanteId()
 	{
 		return $this->comprobanteId;
-	}	
+	}
+
+	public $operacion;
 	
 	function AddPayment()
-	{		
+	{
 		$venta = new Venta;
 		
 		$infoComprobante = $venta->GetInfoVenta($this->comprobanteId);
-		
+
 		if($this->amount > round( $infoComprobante["debt_noformat"] , 2 ))
 		{
 			$this->Util()->setError(10041, "error", "El pago no puede ser mayor a la deuda");
 		}
 		if($this->Util()->PrintErrors()){ return false; }
-		
+
+		$this->operacion = uniqid();
+
+		//generar comprobante de pago
+		$comprobanteId = null;
+		if($this->generarComprobantePago == true){
+			$comprobantePago = new ComprobantePago();
+			$comprobanteId = $comprobantePago->generar($infoComprobante, $this);
+		}
+
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("
 			INSERT INTO `payment` ( 
 				`notaVentaId`, 
 				`amount`, 
 				`metodoPago`, 
-				`paymentDate`
-				) 
+				`paymentDate`,
+				`comprobantePagoId`
+				)
 			VALUES (
 				'".$this->comprobanteId."',
 				'".$this->amount."',
 				'".$this->metodoPago."',
-				'".$this->fecha."'
+				'".$this->fecha."',
+				'".$comprobanteId."'
 			)"
-			);
+		);
+
 		$sucursalId = $this->Util()->DBSelect($_SESSION["empresaId"])->InsertData();
 
 		$this->Util()->setError(20030, "complete", "");
@@ -129,6 +149,24 @@ class Payment extends Util
 	
 	function DeletePayment()
 	{
+		$payment = $this->Info();
+
+		$eliminarPago = true;
+		if($payment["comprobantePagoId"]) {
+
+			$empresa = new Empresa();
+			$empresa->setComprobanteId($payment["comprobantePagoId"]);
+			$empresa->setMotivoCancelacion("Pago eliminado");
+
+			if(!$empresa->CancelarComprobante()){
+				$eliminarPago = false;
+			}
+		}
+
+		if($eliminarPago === false){
+			return;
+		}
+
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("DELETE FROM payment WHERE paymentId = '".$this->paymentId."'");
 		$this->Util()->DBSelect($_SESSION["empresaId"])->DeleteData();
 		$this->Util()->setError(20008, "complete", "Has eliminado el pago exitosamente");

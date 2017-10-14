@@ -15,6 +15,5 @@
 					"Importe"          => $this->Util()->CadenaOriginalVariableFormat($totales['ish'],true,false)
 						)
 					);
-						$xsdImplocal = "http://www.sat.gob.mx/implocal http://www.sat.gob.mx/sitio_internet/cfd/implocal/implocal.xsd";
 
 ?>

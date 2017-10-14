@@ -15,7 +15,7 @@ switch($_POST["type"])
 			
 			$modulos = $usuario->GetModulos();
 			$tipoUsuario = $db->EnumSelect( 'usuario', 'type' );
-			
+
 			//tipos de regimen
 			$db->setQuery("SELECT * FROM regimenEmpleado ORDER BY nombreRegimen ASC");
 			$tiposRegimen = $db->GetResult();
@@ -30,7 +30,22 @@ switch($_POST["type"])
 			$db->setQuery("SELECT * FROM riesgo ORDER BY riesgoNombre ASC");
 			$riesgos = $db->GetResult();
 			$smarty->assign('riesgos',$riesgos);
-			
+
+			//contrato
+			$db->setQuery("SELECT * FROM tipoContrato ORDER BY nombreTipoContrato ASC");
+			$contratos = $db->GetResult();
+			$smarty->assign('contratos',$contratos);
+
+			//periodicidadPago
+			$db->setQuery("SELECT * FROM periodicidadPago ORDER BY nombrePeriodicidadPago ASC");
+			$periodicidadPagos = $db->GetResult();
+			$smarty->assign('periodicidadPagos',$periodicidadPagos);
+
+			//estado
+			$db->setQuery("SELECT * FROM estado ORDER BY nombreEstado ASC");
+			$estados = $db->GetResult();
+			$smarty->assign('estados',$estados);
+
 			$smarty->assign('modulos',$modulos);
 			$smarty->assign('tipoUsuario', $tipoUsuario);
 			$smarty->assign('sucursales', $sucursales);

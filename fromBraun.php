@@ -29,7 +29,7 @@ print_r($_POST);
 			$empresa->setSocioId($_POST["socioId"]);
 				$empresa->setNombre($_POST['nombre']);
 				$empresa->setEmailPersonal($_POST['rfc']);
-				$empresa->setTelPersonal($_POST['telPersonal']);
+				$empresa->setTelPersonal($_POST['telefono']);
 				$empresa->setCelular($_POST['celular']);
 				$empresa->setRazonSocial($_POST["razonSocial"]);
 				$empresa->setCalle($_POST["calle"]);

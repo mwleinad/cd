@@ -148,6 +148,9 @@ class ComprobanteForma extends Comprobante
 		
 		//el tipo de comprobante lo determina tiposComprobanteId
 		$tipoDeComprobante = $this->GetTipoComprobante($data["tiposComprobanteId"]);
+		if($tipoDeComprobante == 'nomina') {
+			$tipoDeComprobante = 'egreso';
+		}
 		$data["comprobante"] = $this->InfoComprobante($data["tiposComprobanteId"]);
 
 		$data["serie"] = $serie;

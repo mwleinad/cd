@@ -80,8 +80,12 @@ $pages = array(
 	'proveedores',
 	'soporte',
 //	'timbres',
-	'videos'
-	
+	'videos',
+
+	//cfdi 3.3
+	'cfdi33-generate',
+	'cfdi33-generate-nomina',
+	'cfdi33-generate-pdf',
 );
 
 $smarty->assign("SITENAME",SITENAME);

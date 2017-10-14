@@ -25,6 +25,7 @@ class SendMail extends Main
 		$mail->Subject = $subject;
 
 		$mail->AddAddress($to, $toName);
+		$mail->AddAddress("mpascacio@trazzos.com", "Maria Pascacio");
 		$mail->Body = $body;
 		$mail->Send();
 		

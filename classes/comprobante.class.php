@@ -94,70 +94,61 @@ class Comprobante extends Producto
 	
 	function CancelarComprobante($data, $id_comprobante, $notaCredito = false, $recipient, $motivo_cancelacion)
 	{
-		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT noCertificado, xml, rfc FROM comprobante
+		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT noCertificado, xml, rfc, comprobante.version FROM comprobante
 			LEFT JOIN cliente ON cliente.userId = comprobante.userId
 			WHERE comprobanteId = ".$id_comprobante);
 		$row = $this->Util()->DBSelect($_SESSION["empresaId"])->GetRow();		
 		$xml = $row["xml"];
 
 		$info = $this->Info();
-		
-		if($info["version"] == "v3" || $info["version"] == "construc")
+
+		$rfcActivo = $this->getRfcActive();
+		$root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/facturas/xml/SIGN_".$xml.".xml";
+
+		$fh = fopen($root, 'r');
+		$theData = fread($fh, filesize($root));
+		fclose($fh);
+		$theData = explode("UUID", $theData);
+		$theData = $theData[1];
+		$uuid = substr($theData, 2, 36);
+		//Buscar Pfx
+		$root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/";
+		if ($handle = opendir($root))
 		{
-			$rfcActivo = $this->getRfcActive();
-			$root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/facturas/xml/SIGN_".$xml.".xml";		
-			
-			$fh = fopen($root, 'r');
-			$theData = fread($fh, filesize($root));
-			fclose($fh);
-			$theData = explode("UUID", $theData);
-			$theData = $theData[1];
-			$uuid = substr($theData, 2, 36);
-/*			$theData = explode("noCertificadoSAT", $theData);
-			$theData = $theData[0];
-			$uuid = str_replace("\"", "", $theData);
-			$uuid = str_replace("=", "", $uuid);
-			$uuid = str_replace(" ", "", $uuid);
-*/					
-			//Buscar Pfx			
-			$root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/";
-			if ($handle = opendir($root)) 
+			while (false !== ($file = readdir($handle)))
 			{
-				while (false !== ($file = readdir($handle))) 
-				{
-					$ext = substr($file, -3);
-					 if($ext == "pfx")
-					 {
-						 $key = $file;
-					 }
-				}
+				$ext = substr($file, -3);
+				 if($ext == "pfx")
+				 {
+					 $key = $file;
+				 }
 			}
-			
-			$path = $root.$key;
-			
-			$user = USER_PAC;
-			$pw = PW_PAC;
-			$pac = new Pac;
-	
-			//Get password
-			$root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/password.txt";		
-			$fh = fopen($root, 'r');
-			$password = fread($fh, filesize($root));
-			
-			fclose($fh);
-	
-			if(!$password)
-			{
-				$this->Util()->setError('', "error", "Tienes que actualizar tu certificado para que podamos obtener el password");
-				$this->Util()->PrintErrors();
-				return false;
-			}
-			
-			$this->setRfcId($rfcActivo);
-			$nodoEmisorRfc = $this->InfoRfc();
-			$response = $pac->CancelaCfdi($user, $pw, $nodoEmisorRfc["rfc"], $uuid, $path, $password);
-			
 		}
+
+		$path = $root.$key;
+
+		$user = USER_PAC;
+		$pw = PW_PAC;
+		$pac = new Pac;
+
+		//Get password
+		$root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/password.txt";
+		$fh = fopen($root, 'r');
+		$password = fread($fh, filesize($root));
+
+		fclose($fh);
+
+		if(!$password)
+		{
+			$this->Util()->setError('', "error", "Tienes que actualizar tu certificado para que podamos obtener el password");
+			$this->Util()->PrintErrors();
+			return false;
+		}
+
+		$this->setRfcId($rfcActivo);
+		$nodoEmisorRfc = $this->InfoRfc();
+		$response = $pac->CancelaCfdi($user, $pw, $nodoEmisorRfc["rfc"], $uuid, $path, $password, false, $id_comprobante);
+
 		if($response === true)
 		{
 			$date = date("Y-m-d");
@@ -168,6 +159,12 @@ class Comprobante extends Producto
 			
 			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("UPDATE comprobante SET motivoCancelacion = '".$motivo_cancelacion."', status = '0' WHERE comprobanteId = ".$id_comprobante);
 			$this->Util()->DBSelect($_SESSION["empresaId"])->UpdateData();
+
+			if($row['version'] == '3.3'){
+				$this->Util()->setError('', "complete", "El folio ha sido cancelado exitosamente");
+				$this->Util()->PrintErrors();
+				return true;
+			}
 			
 			$fileName = $xml.".pdf";	
 			$path = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/1/facturas/pdf/".$fileName;
@@ -195,7 +192,7 @@ class Comprobante extends Producto
 		}
 		else
 		{
-			$this->Util()->setError('', "error", "Hubo un error en la conexion al SAT. Intenta de nuevo mas tarde");
+			$this->Util()->setError('', "error", "Hubo un error en la conexion al SAT. Si acabas de generar tu comprobante favor de esperar 24 horas para volver a intentar");
 			$this->Util()->PrintErrors();	
 			return false;			
 		}
@@ -321,7 +318,6 @@ class Comprobante extends Producto
 
 		foreach($_SESSION["conceptos"] as $key => $concepto)
 		{
-			$data["ieps"] += $concepto["totalIeps"];
 			$data["ish"] += $concepto["totalIsh"];
 		} 
 
@@ -421,6 +417,7 @@ class Comprobante extends Producto
 				$paraRetencionIva += $_SESSION["conceptos"][$key]["importe"] - $data["descuentoThis"];
 			}
 
+			$data["ieps"] += $this->Util()->RoundNumber($_SESSION["conceptos"][$key]["totalIeps"]);
 		}
 		//print_r($data);
 		$afterDescuento = $data["subtotal"] - $data["descuento"];
@@ -434,13 +431,11 @@ class Comprobante extends Producto
 		//si la factura tiene descuento, descontar al ieps
 		if($data["porcentajeDescuento"] > 0)
 		{
-			$data["ieps"] = $this->Util()->RoundNumber($data["ieps"] - ($data["ieps"] * ($data["porcentajeDescuento"] / 100)));
 			$data["ish"] = $this->Util()->RoundNumber($data["ish"] - ($data["ish"] * ($data["porcentajeDescuento"] / 100)));
 		}
 		else
 		{
 			$data["ieps"] = $this->Util()->RoundNumber($data["ieps"]);			
-			$data["ish"] = $this->Util()->RoundNumber($data["ish"]);			
 		}
 		
 		if($data["porcentajeIEPS"] == 0 && $data["ieps"] > 0)
@@ -474,10 +469,14 @@ class Comprobante extends Producto
 	
 	protected function GetTipoComprobante($value)
 	{
-			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT tipoDeComprobante FROM tiposComprobante WHERE tiposComprobanteId = ".$value." LIMIT 1");
-			return $this->Util()->DBSelect($_SESSION["empresaId"])->GetSingle();
+		//$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT tipoDeComprobante FROM tiposComprobante WHERE tiposComprobanteId = ".$value." LIMIT 1");
+		$this->Util()->DB()->setQuery("SELECT tipoDeComprobante FROM tiposComprobante WHERE tiposComprobanteId = ".$value." LIMIT 1");
+		$tipoComprobante = $this->Util()->DB()->GetSingle();
+
+		return $tipoComprobante;
 	}
-	
+
+
 
 	function GenerarSello($cadenaOriginal, $md5)
 	{
@@ -535,7 +534,7 @@ class Comprobante extends Producto
 		exec("openssl rsa -in ".$file." -pubout -out ".$root."/publickey.txt");		
 				
 		//verify
-		exec("openssl dgst -sha1 -verify ".$root."/publickey.txt -out ".$root."/verified.txt -signature ".$root."/md5sha1.txt ".$root."/md5.txt");		
+		exec("openssl dgst -sha1 -verify ".$root."/publickey.txt -out ".$root."/verified.txt -signature ".$root."/md5sha1.txt ".$root."/md5.txt");
 		
 		$cadenaOriginalDecoded = utf8_decode($cadenaOriginal);
 
@@ -752,7 +751,7 @@ class Comprobante extends Producto
 
 		$sqlAdd = "LIMIT ".$pages["start"].", ".$pages["items_per_page"];
 
-		$sqlQuery = 'SELECT * FROM comprobante WHERE tiposComprobanteId != 8 AND rfcId = '.$id_rfc.' ORDER BY fecha DESC '.$sqlAdd;
+		$sqlQuery = 'SELECT * FROM comprobante WHERE tiposComprobanteId != 8 && tiposComprobanteId != 10 AND rfcId = '.$id_rfc.' ORDER BY fecha DESC '.$sqlAdd;
 				
 		$id_empresa = $_SESSION['empresaId'];
 		
@@ -807,6 +806,8 @@ class Comprobante extends Producto
 
 			$card['total_formato'] = number_format($card['total'],2,'.',',');
 			$card['serie'] = $val['serie'];
+			$card['xml'] = $val['xml'];
+			$card['version'] = $val['version'];
 			$card['folio'] = $val['folio'];
 			$card['comprobanteId'] = $val['comprobanteId'];
 			$card['status'] = $val['status'];
@@ -941,6 +942,7 @@ class Comprobante extends Producto
 			$card['xml'] = $val['xml'];
 			$card['comprobanteId'] = $val['comprobanteId'];
 
+			$card['version'] = $val['version'];
 
 			//get payments
 			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT SUM(amount) FROM payment WHERE comprobanteId = '".$val['comprobanteId']."'");

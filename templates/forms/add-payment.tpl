@@ -25,6 +25,15 @@
         <!-- CAMPO IMPORTE   -->
         <input name="importe" id="importe" type="text" value="{$infoComprobante.debt_noformat|number_format:2:'.':''}"  size="50" autofocus class="largeInput wide2"/>
         </div>
+
+        {if $infoComprobante.version == '3.3'}
+        <div class="formLine" style="width:100%; text-align:left">
+            <div style="width:60%;float:left; color:#f00">Generar comprobante con complemento de pago por este importe?</div>
+            <!-- CAMPO generarComprobantePago   -->
+            <input type="checkbox" name="generarComprobantePago" checked id="generarComprobantePago">
+        </div>
+        {/if}
+
         <div style="clear:both"></div>
     
         <div class="formLine" style="margin-left:280px">

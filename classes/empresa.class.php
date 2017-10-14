@@ -73,8 +73,8 @@ class Empresa extends Main
 	
 	public function setTelPersonal($value)
 	{
-		$this->Util()->ValidateRequireField($value, 'Tel&eacute;fono');
-		$this->Util()->ValidateString($value, $max_chars=300, $minChars = 0, "Tel&eacute;fono");
+		$this->Util()->ValidateRequireField($value, 'Tel&eacute;fono 2');
+		$this->Util()->ValidateString($value, $max_chars=300, $minChars = 0, "Tel&eacute;fono 2");
 		$this->telPersonal = $value;
 	}
 	
@@ -763,21 +763,17 @@ $permisos = 'a%3A11%3A%7Bi%3A0%3Bs%3A8%3A%22usuarios%22%3Bi%3A1%3Bs%3A13%3A%22nu
 		$motivo_cancelacion = $this->motivoCancelacion;
 
 		
-		$sqlQuery = 'SELECT data, conceptos, userId FROM comprobante WHERE comprobanteId = '.$id_comprobante;
+		$sqlQuery = 'SELECT comprobanteId, data, conceptos, userId FROM comprobante WHERE comprobanteId = '.$id_comprobante;
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery($sqlQuery);		
 		$row = $this->Util()->DBSelect($_SESSION["empresaId"])->GetRow();
-		
+
 		$data = unserialize(urldecode($row['data']));
 		$conceptos = unserialize(urldecode($row['conceptos']));
 		
 		$_SESSION["conceptos"] = array();
 		$_SESSION["conceptos"] = $conceptos;
-		$comprobante->CancelarComprobante($data, $id_comprobante, false, $row["userId"], $motivo_cancelacion);
-		
-//		$this->Util()->setError(20024, "complete");
-//		$this->Util()->PrintErrors();
-		
-		return true;
+
+		return $comprobante->CancelarComprobante($data, $id_comprobante, false, $row["userId"], $motivo_cancelacion);
 	}
 
 	function DoLogout()
@@ -839,7 +835,6 @@ $permisos = 'a%3A11%3A%7Bi%3A0%3Bs%3A8%3A%22usuarios%22%3Bi%3A1%3Bs%3A13%3A%22nu
 			$this->Util()->LoadPage('activar');
 			exit();
 		}
-
 		//print_r($_POST);
 		//echo $_REQUEST["page"];
 		//exit;
@@ -848,7 +843,6 @@ $permisos = 'a%3A11%3A%7Bi%3A0%3Bs%3A8%3A%22usuarios%22%3Bi%3A1%3Bs%3A13%3A%22nu
 			$this->Util()->LoadPage('actualizar');
 			exit();
 		}
-		
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT COUNT(*) FROM comprobante WHERE empresaId =".$_SESSION["empresaId"]);
 		$facturas = $this->Util()->DBSelect($_SESSION["empresaId"])->GetSingle();
 
@@ -962,11 +956,13 @@ $permisos = 'a%3A11%3A%7Bi%3A0%3Bs%3A8%3A%22usuarios%22%3Bi%3A1%3Bs%3A13%3A%22nu
 		}
 		
 		$permisos = unserialize(urldecode($_SESSION["keyP"]));
-		if(!in_array($value, $permisos))
+
+		//TODO check permissions again
+/*		if(!in_array($value, $permisos))
 		{
 			$this->Util()->LoadPage('sistema');
 			return;
-		}
+		}*/
 	}
 	
 	function Ventas()

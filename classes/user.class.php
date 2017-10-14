@@ -137,47 +137,38 @@ class User extends Sucursal
 		$id_empresa = $compInfo['empresaId'];
 		$serie = $compInfo['serie'];
 		$folio = $compInfo['folio'];
-		
-		$archivo = $id_empresa.'_'.$serie.'_'.$folio.'.pdf';
-				
-		$enlace = DOC_ROOT.'/empresas/'.$id_empresa.'/certificados/'.$id_rfc.'/facturas/pdf/'.$archivo; 
 
-
-		if($_SESSION["version"] == "v3" || $_SESSION["version"] == "construc")
-		{
-			$archivo_xml = "SIGN_".$id_empresa.'_'.$serie.'_'.$folio.'.xml';
-		}
-		else
-		{
-			$archivo_xml = $id_empresa.'_'.$serie.'_'.$folio.'.xml';
+		if($compInfo['version'] == '3.3') {
+			$pdfService = new PdfService();
+			$fileName = 'SIGN_'.$id_empresa.'_'.$serie.'_'.$folio;
+			$archivo = $id_empresa.'_'.$serie.'_'.$folio.'.pdf';
+			$pdf = $pdfService->generate($id_empresa, $fileName, 'email');
+			$enlace = DOC_ROOT.'/empresas/'.$id_empresa.'/certificados/'.$id_rfc.'/facturas/pdf/'.$archivo;
+			file_put_contents($enlace, $pdf);
+		} else {
+			$archivo = $id_empresa.'_'.$serie.'_'.$folio.'.pdf';
+			$enlace = DOC_ROOT.'/empresas/'.$id_empresa.'/certificados/'.$id_rfc.'/facturas/pdf/'.$archivo;
 		}
 
-		$enlace_xml = DOC_ROOT.'/empresas/'.$id_empresa.'/certificados/'.$id_rfc.'/facturas/xml/'.$archivo_xml; 
+		$archivo_xml = "SIGN_".$id_empresa.'_'.$serie.'_'.$folio.'.xml';
+		$enlace_xml = DOC_ROOT.'/empresas/'.$id_empresa.'/certificados/'.$id_rfc.'/facturas/xml/'.$archivo_xml;
 		
 		/*** End Archivo PDF ***/
 		//print_r($_SESSION);	
 		$empresa = new Empresa;
 		$info = $empresa->GetPublicEmpresaInfo();
-		//print_r($info);
 		$mail = new PHPMailer();
-//		$mail->Host = 'localhost';
-		$mail->IsSMTP(); 
+		$mail->IsSMTP();
 		
 		$mail->SMTPAuth = true; 
-    //$mail->SMTPSecure = "false";
 
 		$mail->Host = SMTP_HOST;
 		$mail->Username = SMTP_USER;
 		$mail->Password = SMTP_PASS;
 		$mail->Port = SMTP_PORT;
-		//print_r($mail);
-		//$mail->SMTPSecure = "ssl";
 		$mail->From = "comprobantefiscal@braunhuerin.com.mx";
 
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT razonSocial FROM rfc WHERE empresaId ='".$_SESSION["empresaId"]."'");
-		
-		$razonSocial = $this->Util()->DBSelect($_SESSION["empresaId"])->GetSingle();
-		$razonSocial = urldecode($razonSocial);
 		
 		$mail->FromName = urldecode($info["razonSocial"]);
 		$mail->Subject = 'Envio de Factura con Folio ['.$serie.$folio.']';
@@ -186,7 +177,8 @@ class User extends Sucursal
 		{
 			$mail->addReplyTo($_SESSION["loginKey"], urldecode($info["razonSocial"]));
 		}
-		
+		print_r($emails);
+
 		foreach($emails as $email)
 		{
 			if($email == "")
@@ -208,6 +200,10 @@ class User extends Sucursal
 		$mail->AddAttachment($enlace, 'Factura_'.$folio.'.pdf');
 		$mail->AddAttachment($enlace_xml, 'XML_Factura_'.$folio.'.xml');
 		$mail->Send();
+
+		if($compInfo['version'] == '3.3') {
+			unlink($enlace);
+		}
 				
 		$this->Util()->setError(20023, 'complete');
 		

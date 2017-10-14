@@ -177,6 +177,27 @@ class Producto extends Sucursal
 		$this->cuentaPredial = $value;
 	}
 
+	private $claveProdServ;
+	public function setClaveProdServ($value)
+	{
+		$this->Util()->ValidateString($value, $max_chars=200, $minChars = 0, "Clave Prod Serv");
+		$this->claveProdServ = $value;
+	}
+
+	private $claveUnidad;
+	public function setClaveUnidad($value)
+	{
+		$this->Util()->ValidateString($value, $max_chars=200, $minChars = 0, "Clave Unidad");
+		$this->claveUnidad = $value;
+	}
+
+	private $iepsTasaOCuota;
+	public function setIepsTasaOCuota($value)
+	{
+		$this->Util()->ValidateString($value, $max_chars=200, $minChars = 0, "IEPS Tasa o Cuota");
+		$this->iepsTasaOCuota = $value;
+	}
+
 	public function getItem()
 	{
 		return $this->item;
@@ -366,13 +387,14 @@ class Producto extends Sucursal
 		@end($_SESSION["conceptos"]);
 		
 		$totalIeps = $this->importe * ($this->porcentajeIeps / 100);
-		if($this->from == "nueva-factura-ieps")
+		if($this->from == "nueva-factura-ieps" || $this->iepsTasaOCuota == 'Cuota')
 		{
 			//calcular porcentaje de ieps //cada litro es $1
 			$litrosTotales = $this->porcentajeIeps * $this->cantidad;
 			$totalIeps = $litrosTotales;
 			
-			$tasaIeps100 = $this->importe + $totalIeps;
+			//echo $tasaIeps100 = $this->importe + $totalIeps;
+			$tasaIeps100 = $this->importe;
 			$this->porcentajeIeps = ($totalIeps * 100) / $tasaIeps100;
 		}
 		//
@@ -382,21 +404,29 @@ class Producto extends Sucursal
 		$_SESSION["conceptos"][$conceptos]["unidad"] = $this->unidad;
 		$_SESSION["conceptos"][$conceptos]["valorUnitario"] = $this->valorUnitario;
 		$_SESSION["conceptos"][$conceptos]["importe"] = $this->importe;
-		$_SESSION["conceptos"][$conceptos]["porcentajeIeps"] = $this->porcentajeIeps;
-		$_SESSION["conceptos"][$conceptos]["porcentajeIsh"] = $this->porcentajeIsh;
-		$_SESSION["conceptos"][$conceptos]["totalIeps"] = $totalIeps;
-		$_SESSION["conceptos"][$conceptos]["totalIsh"] = $this->importe * ($this->porcentajeIsh / 100);
-		$_SESSION["conceptos"][$conceptos]["excentoIva"] = $this->excentoIva;
 		$_SESSION["conceptos"][$conceptos]["descripcion"] = urldecode($this->descripcion);
 		$_SESSION["conceptos"][$conceptos]["categoriaConcepto"] = urldecode($this->categoriaConcepto);
-		$_SESSION["conceptos"][$conceptos]["excentoIsh"] = $this->excentoIsh;
 		$_SESSION["conceptos"][$conceptos]["idRecepcion"] = $this->idRecepcion;
 		$_SESSION["conceptos"][$conceptos]["item"] = $this->item;
 		$_SESSION["conceptos"][$conceptos]["ordenCompra"] = $this->ordenCompra;
 		$_SESSION["conceptos"][$conceptos]["tipoGanado"] = $this->tipoGanado;
 		$_SESSION["conceptos"][$conceptos]["peso"] = $this->peso;
 		$_SESSION["conceptos"][$conceptos]["cuentaPredial"] = $this->cuentaPredial;
-		
+		$_SESSION["conceptos"][$conceptos]["claveProdServ"] = $this->claveProdServ;
+		$_SESSION["conceptos"][$conceptos]["claveUnidad"] = $this->claveUnidad;
+
+		//ieps
+		$_SESSION["conceptos"][$conceptos]["iepsTasaOCuota"] = $this->iepsTasaOCuota;
+		$_SESSION["conceptos"][$conceptos]["porcentajeIeps"] = $this->porcentajeIeps;
+		$_SESSION["conceptos"][$conceptos]["totalIeps"] = $totalIeps;
+
+		//ish
+		$_SESSION["conceptos"][$conceptos]["porcentajeIsh"] = $this->porcentajeIsh;
+		$_SESSION["conceptos"][$conceptos]["totalIsh"] = $this->importe * ($this->porcentajeIsh / 100);
+		$_SESSION["conceptos"][$conceptos]["excentoIsh"] = $this->excentoIsh;
+
+		//iva
+		$_SESSION["conceptos"][$conceptos]["excentoIva"] = $this->excentoIva;
 		return true;
 	}
 
@@ -425,11 +455,9 @@ class Producto extends Sucursal
 			$_SESSION["impuestos"][$impuestos]["impuesto"] = urldecode($this->tasaIva."% IVA ".$this->impuesto);
 			$_SESSION["impuestos"][$impuestos]["tipo"] = $this->tipo;
 			$_SESSION["impuestos"][$impuestos]["importe"] = $this->importeImpuesto * ($this->tasaIva / 100);
-//			$_SESSION["impuestos"][$impuestos]["parent"] = $impuestos - 1;
 			$_SESSION["impuestos"][$impuestos]["tasaIva"] = $this->tasaIva;
 			
 		}
-		//	print_r($_SESSION);
 		return true;
 	}
 
@@ -486,7 +514,6 @@ class Producto extends Sucursal
 //echo "<pre>";
 		foreach($_SESSION["conceptos"] as $key => $concepto)
 		{
-			$data["ieps"] += $concepto["totalIeps"];
 			$data["ish"] += $concepto["totalIsh"];
 		} 
 
@@ -501,7 +528,6 @@ class Producto extends Sucursal
 				foreach($_SESSION["impuestos"] as $keyImpuesto => $impuesto)
 				{
 					
-			//		print_r($impuesto);
 					//impuesto extra, suma
 					if($_SESSION["impuestos"][$keyImpuesto]["importe"] != 0)
 					{
@@ -563,9 +589,9 @@ class Producto extends Sucursal
 			{
 				$data["porcentajeDescuento"];
 			}
-			
+
 			$data["descuentoThis"] = $this->Util()->RoundNumber($_SESSION["conceptos"][$key]["importe"] * ($data["porcentajeDescuento"] / 100));
-			$data["descuento"] += $data["descuentoThis"]; 
+			$data["descuento"] += $data["descuentoThis"];
 			
 			$afterDescuento = $_SESSION["conceptos"][$key]["importe"] - $data["descuentoThis"];
 			if($concepto["excentoIva"] == "si")
@@ -585,15 +611,21 @@ class Producto extends Sucursal
 			{
 				$paraRetencionIva += $concepto["importe"] - $data["descuentoThis"];
 			}
-			
+
+			$_SESSION["conceptos"][$key]["descuento"] = $data["descuentoThis"];
+			$_SESSION["conceptos"][$key]["importeTotal"] = $concepto["importe"] - $data["descuentoThis"];
+			$_SESSION["conceptos"][$key]["totalIva"] = $_SESSION["conceptos"][$key]["importeTotal"] * (round($_SESSION["conceptos"][$key]["tasaIva"] / 100, 6));
+			$_SESSION["conceptos"][$key]["totalIeps"] = $_SESSION["conceptos"][$key]["importeTotal"] * (round($_SESSION["conceptos"][$key]["porcentajeIeps"] / 100, 6));
+
+			$_SESSION["conceptos"][$key]["totalRetencionIva"] = $_SESSION["conceptos"][$key]["importeTotal"] * (round($data["porcentajeRetIva"] / 100, 6));
+			$_SESSION["conceptos"][$key]["totalRetencionIsr"] = $_SESSION["conceptos"][$key]["importeTotal"] * (round($data["porcentajeRetIsr"] / 100, 6));
+
+			$data["ieps"] += $this->Util()->RoundNumber($_SESSION["conceptos"][$key]["totalIeps"]);
+
 		}//conceptos
 		$data["impuestos"] = $_SESSION["impuestos"];
 		$afterDescuento = $data["subtotal"] - $data["descuento"];
 		$data["afterDescuento"] = $afterDescuento;
-		
-//		echo $data["afterDescuento"];
-		//aplicar otros impuestos y retenciones aplican despues del descuento
-//		$afterDescuento = $data["afterDescuento"];
 		
 		$data["afterIva"] = $afterDescuento + $data["iva"];
 		//ieps de descuento
@@ -610,13 +642,11 @@ class Producto extends Sucursal
 		//si la factura tiene descuento, descontar al ieps
 		if($data["porcentajeDescuento"] > 0)
 		{
-			$data["ieps"] = $this->Util()->RoundNumber($data["ieps"] - ($data["ieps"] * ($data["porcentajeDescuento"] / 100)));
 			$data["ish"] = $this->Util()->RoundNumber($data["ish"] - ($data["ish"] * ($data["porcentajeDescuento"] / 100)));
 		}
 		else
 		{
-			$data["ieps"] = $this->Util()->RoundNumber($data["ieps"]);			
-			$data["ish"] = $this->Util()->RoundNumber($data["ish"]);			
+			$data["ish"] = $this->Util()->RoundNumber($data["ish"]);
 		}
 
 		//ish
@@ -625,20 +655,15 @@ class Producto extends Sucursal
 		if($_SESSION["empresaId"] == "416")
 		{
 			$data["retIva"] = $this->Util()->RoundNumber(($data["afterDescuento"] - $totalImpuesto) * ($data["porcentajeRetIva"] / 100));
-			//$data["retIva"] = $this->Util()->RoundNumber(($paraRetencionIva) * ($data["porcentajeRetIva"] / 100));
 		}
 		else
 		{
-			//$data["retIva"] = $this->Util()->RoundNumber($data["afterDescuento"] * ($data["porcentajeRetIva"] / 100));
 			$data["retIva"] = $this->Util()->RoundNumber(($paraRetencionIva) * ($data["porcentajeRetIva"] / 100));
 		}
 		
 		$data["retIsr"] = $this->Util()->RoundNumber($data["afterDescuento"] * ($data["porcentajeRetIsr"] / 100));
 		$data["total"] = $this->Util()->RoundNumber($data["subtotal"] - $data["descuento"] + $data["iva"] + $data["ieps"] + $data["ish"] - $data["retIva"] - $data["retIsr"]);
 
-//echo "</pre>";
-
-//		echo "<pre>";		print_r($data);		echo "</pre>";
 		return $data;
 	}
 	
@@ -682,7 +707,6 @@ class Producto extends Sucursal
 				foreach($_SESSION["impuestos"] as $keyImpuesto => $impuesto)
 				{
 					
-			//		print_r($impuesto);
 					//impuesto extra, suma
 					if($_SESSION["impuestos"][$keyImpuesto]["importe"] != 0)
 					{
@@ -750,7 +774,9 @@ class Producto extends Sucursal
 			}
 			
 			$data["descuentoThis"] = $this->Util()->RoundNumber($_SESSION["conceptos"][$key]["importe"] * ($data["porcentajeDescuento"] / 100));
-			$data["descuento"] += $data["descuentoThis"]; 
+
+			//agregamos aqui lo restante de los conceptos
+			$data["descuento"] += $data["descuentoThis"];
 			
 			$afterDescuento = $_SESSION["conceptos"][$key]["importe"] - $data["descuentoThis"];
 			if($concepto["excentoIva"] == "si")
@@ -776,8 +802,11 @@ class Producto extends Sucursal
 			$data["ivaThis"] = $this->Util()->RoundNumber($afterDescuento * ($_SESSION["conceptos"][$key]["tasaIva"] / 100));
 			$data["iva"] += $data["ivaThis"];
 
-//			$data["ishThis"] = $this->Util()->RoundNumber($afterDescuento * ($_SESSION["conceptos"][$key]["tasaIsh"] / 100));
-//			$data["ish"] += $data["ishThis"];
+			$_SESSION["conceptos"][$key]["descuento"] = $data["descuentoThis"];
+			$_SESSION["conceptos"][$key]["importeTotal"] = $concepto["importe"] - $data["descuentoThis"];
+			$_SESSION["conceptos"][$key]["totalIva"] = $_SESSION["conceptos"][$key]["importeTotal"] * ($_SESSION["conceptos"][$key]["tasaIva"] / 100);
+			$_SESSION["conceptos"][$key]["totalIeps"] = $_SESSION["conceptos"][$key]["importeTotal"] * ($_SESSION["conceptos"][$key]["porcentajeIeps"] / 100);
+			$data["ieps"] += $this->Util()->RoundNumber($_SESSION["conceptos"][$key]["totalIeps"]);
 
 		}
 		$data["impuestos"] = $_SESSION["impuestos"];
@@ -794,7 +823,6 @@ class Producto extends Sucursal
 		{
 			$data["porcentajeIEPS"] = 0;
 		}
-		$data["ieps"] = $this->Util()->RoundNumber($data["afterDescuento"] * ($data["porcentajeIEPS"] / 100));
 
 		//ish
 		if(!$data["porcentajeIsh"])
@@ -810,10 +838,6 @@ class Producto extends Sucursal
 		$data["retIva"] = $this->Util()->RoundNumber($data["afterDescuento"] * ($data["porcentajeRetIva"] / 100));
 		$data["retIsr"] = $this->Util()->RoundNumber($data["afterDescuento"] * ($data["porcentajeRetIsr"] / 100));
 		$data["total"] = $this->Util()->RoundNumber($data["subtotal"] - $data["descuento"] + $data["iva"] + $data["ieps"] + $data["ish"] - $data["retIva"] - $data["retIsr"]);
-
-//echo "</pre>";
-
-//		echo "<pre>";		print_r($data);		echo "</pre>";
 		return $data;
 	}
 	
