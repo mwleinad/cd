@@ -10,10 +10,10 @@
 <div class="grid_8">
   <!-- USER TOOLS START -->
   <div id="user_tools">
-    <span>Bienvenido <a href="#">{$info.email}</a>  |  <a id="logoutDiv" style="cursor:pointer">Salir</a>
+    <span>Bienvenido <a href="#">{$info.email}</a>  Empresa #: <a>{$info.empresaId}</a>|  <a id="logoutDiv" style="cursor:pointer">Salir</a>
     
       <div style="display:inline;color:#FFFF33; background-image:none; text-align:center;">
-      | {$info.limite - $info.expedidos} timbres Restantes.
+      | {$info.limite - $info.expedidos} creditos Restantes.
       {$certAboutToExpire}
         </div>
     </span>

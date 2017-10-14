@@ -1,6 +1,6 @@
 <?php
 
-		if($empresa['moduloImpuestos'] == 'Si'){
+		if($empresa['moduloImpuestos'] == 'Si' && $empresa["empresaId"] != 416 &&  $empresa["empresaId"] != 285){
 			include_once(DOC_ROOT."/classes/override_generate_pdf_117.php");
 			$override = new Override;
 			$pdf = $override->GeneratePDF($data, $serie, $totales, $nodoEmisor, $nodoReceptor, $_SESSION["conceptos"],$empresa);

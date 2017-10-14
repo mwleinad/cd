@@ -94,7 +94,7 @@ class Comprobante extends Producto
 	
 	function CancelarComprobante($data, $id_comprobante, $notaCredito = false, $recipient, $motivo_cancelacion)
 	{
-		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT noCertificado, xml, rfc FROM comprobante
+		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT noCertificado, xml, rfc, comprobante.version FROM comprobante
 			LEFT JOIN cliente ON cliente.userId = comprobante.userId
 			WHERE comprobanteId = ".$id_comprobante);
 		$row = $this->Util()->DBSelect($_SESSION["empresaId"])->GetRow();		
@@ -159,6 +159,12 @@ class Comprobante extends Producto
 			
 			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("UPDATE comprobante SET motivoCancelacion = '".$motivo_cancelacion."', status = '0' WHERE comprobanteId = ".$id_comprobante);
 			$this->Util()->DBSelect($_SESSION["empresaId"])->UpdateData();
+
+			if($row['version'] == '3.3'){
+				$this->Util()->setError('', "complete", "El folio ha sido cancelado exitosamente");
+				$this->Util()->PrintErrors();
+				return true;
+			}
 			
 			$fileName = $xml.".pdf";	
 			$path = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/1/facturas/pdf/".$fileName;
@@ -936,6 +942,7 @@ class Comprobante extends Producto
 			$card['xml'] = $val['xml'];
 			$card['comprobanteId'] = $val['comprobanteId'];
 
+			$card['version'] = $val['version'];
 
 			//get payments
 			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT SUM(amount) FROM payment WHERE comprobanteId = '".$val['comprobanteId']."'");

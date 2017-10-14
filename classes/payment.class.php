@@ -65,10 +65,12 @@ class Payment extends Util
 	public function getComprobanteId()
 	{
 		return $this->comprobanteId;
-	}	
+	}
+
+	public $operacion;
 	
 	function AddPayment()
-	{		
+	{
 		$venta = new Venta;
 		
 		$infoComprobante = $venta->GetInfoVenta($this->comprobanteId);
@@ -78,6 +80,8 @@ class Payment extends Util
 			$this->Util()->setError(10041, "error", "El pago no puede ser mayor a la deuda");
 		}
 		if($this->Util()->PrintErrors()){ return false; }
+
+		$this->operacion = uniqid();
 
 		//generar comprobante de pago
 		$comprobanteId = null;
