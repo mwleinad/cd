@@ -64,7 +64,9 @@ class Cfdi extends Comprobante
 
         $userId = $data["userId"];
 
-        $totales = $this->GetTotalDesglosado($data);
+        $total = new Totales();
+        $totales = $total->calculate($data);
+
         if($vs->Util()->PrintErrors()){ return false; }
 
         if(!$data["tipoDeCambio"])
