@@ -66,10 +66,23 @@
         </p>
         <p>
             Para conocer mas de la nueva version puedes consultar la pagina del SAT en:
-            <a target="_blank" href="http://sat.gob.mx/informacion_fiscal/factura_electronica/Paginas/Anexo_20_version3.3.aspx">CFDi 3.3</a>
+            <a target="_blank" href="https://app.ilosvideos.com/view/mWfBcgUKU2So">CFDi 3.3</a>
         </p>
     </div>
-    <br><br>
+    <br>
+    <div style="font-size:14px; border:solid; border-width:1px; background-color:#5A5A5A; padding:5px; text-align: center">
+        <p style="color: #fff; font-size: 20px">
+            <a style="color: #fff; font-size: 20px" href="#" onclick="ToggleDiv('tutorial33')">Video tutorial CFDi 3.3</a> -
+            <div id='tutorial33' style="display: none">
+                <iframe title="cfdi 3.3" width="640" height="360" allowTransparency="true" mozallowfullscreen webkitallowfullscreen allowfullscreen style="background-color:transparent;" frameBorder="0" src="https://app.ilosvideos.com/embed/mWfBcgUKU2So"></iframe>
+            </div>
+            <a style="color: #fff; font-size: 20px" href="#" onclick="ToggleDiv('tutorial33Obra')">Video tutorial CFDi 3.3 para Obra Publica</a>
+        <div id='tutorial33Obra' style="display: none">
+            <iframe title="cfdi constructora" width="640" height="360" allowTransparency="true" mozallowfullscreen webkitallowfullscreen allowfullscreen style="background-color:transparent;" frameBorder="0" src="https://app.ilosvideos.com/embed/sLF3kANsp5GH"></iframe>
+        </div>
+        </p>
+    </div>
+    <br>
     {include file="forms/cfdi33.tpl"}
 {else}
     {include file="terminos2017.tpl"}

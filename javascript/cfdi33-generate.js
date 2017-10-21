@@ -498,7 +498,7 @@ Event.observe(window, 'load', function() {
 
     if($('impuestoId'))
     {
-        Event.observe($('impuestoId'), "keyup", function(){ SuggestImpuesto(); FillImpuestoData();});
+        Event.observe($('impuestoId'), "keyup", function(){ SuggestImpuesto(); });
     }
 
     if($$('span.linkBorrar'))

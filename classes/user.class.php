@@ -177,7 +177,6 @@ class User extends Sucursal
 		{
 			$mail->addReplyTo($_SESSION["loginKey"], urldecode($info["razonSocial"]));
 		}
-		print_r($emails);
 
 		foreach($emails as $email)
 		{

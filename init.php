@@ -9,7 +9,7 @@ if ( !defined( 'E_DEPRECATED' ) )		define( 'E_DEPRECATED', 8192 );
 ini_set("memory_limit", "1024M"); 
 ini_set("display_errors", "ON"); 
 
-echo $version = PHP_MAJOR_VERSION.".".PHP_MINOR_VERSION;
+$version = PHP_MAJOR_VERSION.".".PHP_MINOR_VERSION;
 
 switch($version)
 {

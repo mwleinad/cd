@@ -173,7 +173,7 @@
     {/if}
 
     <p class="bold no-margin">Conceptos</p>
-    {foreach from=$xmlData.conceptos item=concepto}
+    {foreach from=$xmlData.conceptos item=concepto  name='conceptos'}
     <table width="100%" class="outline-table">
         <tbody>
         <tr class="border-bottom border-right center font-smallest">
@@ -197,8 +197,8 @@
         <tr class="border-right border-bottom">
             <td colspan="7" class="pad-left pre" style="font-family: monospace">
                 {$concepto.concepto.Descripcion|nl2br|replace:" ":"&nbsp;"|replace:"[%]MAS[%]":"+"}
-
-                {if $xmlData.amortizacionData.amortizacionFiniquitoSubtotal > 0 || $xmlData.amortizacionData.amortizacion > 0}
+                {$smarty.foreach.conceptos.iteration}
+                {if ($xmlData.amortizacionData.amortizacionFiniquitoSubtotal > 0 || $xmlData.amortizacionData.amortizacion > 0) && $smarty.foreach.conceptos.iteration == 1}
                     <table width="100%" class="">
                         {if $xmlData.amortizacionData.amortizacionFiniquitoSubtotal > 0}
                             <tr class="no-border">
@@ -309,7 +309,7 @@
     </table>
     <p class="small-height">&nbsp;</p>
     {/foreach}
-    {if $xmlData.db.status == 0}
+    {if $xmlData.db.status === 0}
         <span style="font-size: 96px; color: #f00; text-align: center">CANCELADO</span>
     {/if}
 
