@@ -66,8 +66,8 @@
             </select>
           </div>
 
-          <div style="width:90px;float:left">N&uacute;mero de Cuenta:</div>
-          <div style="width:100px;float:left"><input name="NumCtaPago" id="NumCtaPago" type="text" value=""  size="4" maxlength="4" class="largeInput"/></div>
+          <div style="width:90px;float:left">&nbsp;</div>
+          <div style="width:100px;float:left"><&nbsp;</div>
 
           <div style="width:250px;float:left; cursor:pointer" onclick="ToggleDiv('facturaOpciones')"><b>[+] M&aacute;s Opciones</b></div>
 

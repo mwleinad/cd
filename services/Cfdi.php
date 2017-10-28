@@ -93,13 +93,15 @@ class Cfdi extends Comprobante
             $vs->Util()->setError(10047, "error", "El metodo de pago no puede ser vacio");
         }
 
-        if($data["NumCtaPago"])
+/*
+        Se elimino
+         if($data["NumCtaPago"])
         {
             if(strlen($data["NumCtaPago"]) < 4)
             {
                 $vs->Util()->setError(10047, "error", "El numero de cuenta debe de tener 4 digitos");
             }
-        }
+        }*/
 
         if(!$data["tiposComprobanteId"])
         {
