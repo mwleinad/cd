@@ -19,6 +19,7 @@ class Escuela extends Comprobante
             "referencia"=>$data['referencia'],
         ];
 
+
         $this->CargaAtt($request, $data);
 
         $strAddenda = $xml->saveXML();

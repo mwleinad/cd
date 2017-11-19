@@ -106,7 +106,7 @@
 <div id="page-wrap">
 
     {*TODO I really don't like this, the whole purpose of just having one version is defeated <_<*}
-    {if $empresaId == 15}
+    {if $empresaId == 15 || $empresaId == 333}
     <table width="100%">
         <tbody>
             <tr>
@@ -130,6 +130,9 @@
                 <strong>Lugar, fecha y hora de emisión:</strong> {$xmlData.cfdi.LugarExpedicion} {$xmlData.cfdi.Fecha|replace:'T':' '}<br>
                 <strong>Efecto de comprobante:</strong> {$xmlData.cfdi.TipoDeComprobante} {$catalogos.EfectoComprobante}<br>
                 <strong>Folio y serie:</strong> {$xmlData.cfdi.Serie} {$xmlData.cfdi.Folio}<br>
+                {if $xmlData.escuela.banco} <strong>Banco:</strong> {$xmlData.escuela.banco} {/if}<br>
+                {if $xmlData.escuela.fechaDeposito} <strong>Fecha deposito:</strong> {$xmlData.escuela.fechaDeposito|urldecode} {/if}<br>
+                {if $xmlData.escuela.referencia} <strong>Referencia:</strong> {$xmlData.escuela.referencia} {/if}<br>
             </td>
         </tr>
         <tr>
@@ -177,7 +180,8 @@
     <table width="100%" class="outline-table">
         <tbody>
         <tr class="border-bottom border-right center font-smallest">
-            <td class="border-top" width="10%"><strong>Cve del producto/servicio</strong></td>
+            <td class="border-top" width="5%"><strong>Cve del prd./ser.</strong></td>
+            <td class="border-top" width="5%"><strong>Cve unidad</strong></td>
             <td class="border-top" width="10%"><strong>No. identification</strong></td>
             <td class="border-top" width="10%"><strong>Cantidad</strong></td>
             <td class="border-top" width="10%"><strong>Unidad</strong></td>
@@ -187,6 +191,7 @@
         </tr>
         <tr class="border-right border-bottom">
             <td class="left">{$concepto.concepto.ClaveProdServ}</td>
+            <td class="left">{$concepto.concepto.ClaveUnidad}</td>
             <td class="left">{$concepto.NoIdentificacion}</td>
             <td class="left">{$concepto.concepto.Cantidad}</td>
             <td class="left">{$concepto.concepto.Unidad}</td>
@@ -195,7 +200,7 @@
             <td class="right">{$concepto.concepto.Descuento|number}</td>
         </tr>
         <tr class="border-right border-bottom">
-            <td colspan="7" class="pad-left pre" style="font-family: monospace">
+            <td colspan="8" class="pad-left pre" style="font-family: monospace">
                 {$concepto.concepto.Descripcion|nl2br|replace:" ":"&nbsp;"|replace:"[%]MAS[%]":"+"}
 
                 {if $xmlData.amortizacionData.amortizacionFiniquitoSubtotal > 0 || $xmlData.amortizacionData.amortizacion > 0}
@@ -247,7 +252,7 @@
             <td colspan="3" width="100%" class="pad-left no-border-right">
                 &nbsp;
             </td>
-            <td colspan="4" width="100%" class="pad-left no-border-left padding-vertical">
+            <td colspan="5" width="100%" class="pad-left no-border-left padding-vertical">
                 {if count($concepto.traslados) > 0}
                 <table width="100%" class="outline-table no-border">
                     <tbody>
@@ -309,8 +314,10 @@
     </table>
     <p class="small-height">&nbsp;</p>
     {/foreach}
-    {if $xmlData.db.status == 0}
+    {if isset($xmlData.db.status) && $xmlData.db.status == 0}
         <span style="font-size: 96px; color: #f00; text-align: center">CANCELADO</span>
+    {elseif !isset($xmlData.db.status)}
+        <span style="font-size: 48px; color: #f00; text-align: center">VISTA PREVIA</span>
     {/if}
 
     {*Complemento de impuestos*}
@@ -322,7 +329,7 @@
     {include file="{$DOC_ROOT}/templates/pdf/totales.tpl"}
 
 
-    {if $empresaId == 15 && $xmlData.impuestosLocales|count == 0}
+    {if ($empresaId == 15 || $empresaId == 333) && $xmlData.impuestosLocales|count == 0}
         <table width="100%" class="outline-table">
             <tbody>
             <tr class="border-bottom border-right center font-smallest">

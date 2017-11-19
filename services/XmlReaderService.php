@@ -190,6 +190,11 @@ class XmlReaderService extends Comprobante
             $data['escuela'] = $escuela[0];
         }
 
+        if(isset($_SESSION['escuela'])){
+            $data['escuela'] = $_SESSION['escuela'];
+            unset($_SESSION['escuela']);
+        }
+
         //Addenda impuestos
         $impuestos = $xml->xpath('//AddendaImpuesto');
 

@@ -318,6 +318,9 @@ function UpdateTotalesDesglosados()
 function GenerarComprobante(format)
 {
     var message = "Realmente deseas generar un comprobante. Asegurate de que lo estes generando para tu RFC Correcto.";
+    if(format == 'vistaPrevia'){
+        message = "Generar vista previa del comprobante?";
+    }
     if(!confirm(message))
     {
         return;

@@ -265,6 +265,14 @@ class Cfdi extends Comprobante
         //XML con sello
         $xmlConSello = $this->stamp($empresa, $serie, $data, $xml, $totales);
 
+        $_SESSION['escuela'] = [
+            "noControl"=>$data['nodoReceptor']['noControl'],
+            "carrera"=>$data['nodoReceptor']['carrera'],
+            "banco"=>$data['banco'],
+            "fechaDeposito"=>$data['fechaDeposito'],
+            "referencia"=>$data['referencia'],
+        ];
+
         if($data['format'] == 'vistaPrevia'){
             return $xmlConSello;
         }
@@ -297,7 +305,7 @@ class Cfdi extends Comprobante
 
         //TODO addenda continental
         /*include_once(DOC_ROOT."/addendas/addenda_xml.php");*/
-        if($empresa["empresaId"] == 15){
+        if($empresa["empresaId"] == 15 || $empresa["empresaId"] == 333){
 
             if($data['nodoReceptor']['noControl'] ||
                 $data['nodoReceptor']['carrera'] ||

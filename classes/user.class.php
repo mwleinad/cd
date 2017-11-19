@@ -162,11 +162,21 @@ class User extends Sucursal
 		
 		$mail->SMTPAuth = true; 
 
-		$mail->Host = SMTP_HOST;
-		$mail->Username = SMTP_USER;
-		$mail->Password = SMTP_PASS;
-		$mail->Port = SMTP_PORT;
-		$mail->From = "comprobantefiscal@braunhuerin.com.mx";
+		//$mail->Host = SMTP_HOST;
+		//$mail->Username = SMTP_USER;
+		//$mail->Password = SMTP_PASS;
+		//$mail->Port = SMTP_PORT;
+		//$mail->From = "comprobantefiscal@braunhuerin.com.mx";
+        //$mail->From = "ventas@comprobantedigital.mx";
+        //$mail->SMTPDebug = 2;
+
+        $mail->SMTPSecure = 'ssl'; // secure transfer enabled REQUIRED for Gmail
+        $mail->Host = "smtp.gmail.com";
+        $mail->Port = 465; // or 587
+        $mail->IsHTML(true);
+        $mail->Username = "mwleinad@gmail.com";
+        $mail->Password = "Strong47-";
+        $mail->SetFrom("mwleinad@gmail.com");
 
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT razonSocial FROM rfc WHERE empresaId ='".$_SESSION["empresaId"]."'");
 		
@@ -175,9 +185,10 @@ class User extends Sucursal
 		
 		if(strpos($_SESSION["loginKey"], "@") > 0)
 		{
-			$mail->addReplyTo($_SESSION["loginKey"], urldecode($info["razonSocial"]));
+			//$mail->addReplyTo($_SESSION["loginKey"], urldecode($info["razonSocial"]));
+            $mail->addReplyTo('ventas@comprobantedigital.mx', urldecode($info["razonSocial"]));
 		}
-		print_r($emails);
+		//print_r($emails);
 
 		foreach($emails as $email)
 		{
@@ -200,6 +211,7 @@ class User extends Sucursal
 		$mail->AddAttachment($enlace, 'Factura_'.$folio.'.pdf');
 		$mail->AddAttachment($enlace_xml, 'XML_Factura_'.$folio.'.xml');
 		$mail->Send();
+		//print_r($mail);
 
 		if($compInfo['version'] == '3.3') {
 			unlink($enlace);

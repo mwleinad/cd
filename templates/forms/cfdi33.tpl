@@ -374,7 +374,7 @@
  					<hr />
   		</div>
 
-      {if $info.empresaId == 15}
+      {if $info.empresaId == 15 || $info.empresaId == 333}
           <div class="formLine">
               Extra Escuela:<br>
               <div style="width:200px;float:left">
