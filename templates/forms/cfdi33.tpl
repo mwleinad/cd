@@ -57,7 +57,7 @@
 
       <div class="formLine">
           <div style="width:90px;float:left">Forma de Pago:(*)</div>
-          <div style="width:250px;float:left"><select name="formaDePago" id="formaDePago"  class="largeInput">
+          <div style="width:300px;float:left"><select name="formaDePago" id="formaDePago"  class="largeInput">
             {foreach from=$formasDePago item=formaDePago}
                 <option value="{$formaDePago.c_FormaPago}"
                     {if $formaDePago.c_FormaPago == "01"} selected{/if}
@@ -66,10 +66,11 @@
             </select>
           </div>
 
-          <div style="width:90px;float:left">N&uacute;mero de Cuenta:</div>
-          <div style="width:100px;float:left"><input name="NumCtaPago" id="NumCtaPago" type="text" value=""  size="4" maxlength="4" class="largeInput"/></div>
+          <input name="NumCtaPago" id="NumCtaPago" type="hidden" value=""  size="4" maxlength="4" class="largeInput"/>
+          {*<div style="width:90px;float:left">N&uacute;mero de Cuenta:</div>
+          <div style="width:100px;float:left"></div>*}
 
-          <div style="width:250px;float:left; cursor:pointer" onclick="ToggleDiv('facturaOpciones')"><b>[+] M&aacute;s Opciones</b></div>
+          <div style="width:250px;float:left; font-size: 18px; cursor:pointer" onclick="ToggleDiv('facturaOpciones')"><b>[+] M&aacute;s Opciones</b></div>
 
       		<div style="clear:both"></div>
         </div>

@@ -17,8 +17,8 @@ Paquete Minimo es de 50 Facturas.
 				{*}<input name="cantidad" id="cantidad" type="text" value="{$post.cantidad}" size="50"/>{*}
 				 <select id="cantidad" name="cantidad" style="width:300px">
 				   <option  value="1">1 facturas</option>
-{*}				   <option  value="15">15 facturas</option>
-				   <option  value="25">25 facturas</option>{*}
+{*}				   <option  value="15">15 facturas</option>{*}
+				   <option  value="25">25 facturas</option>
 				   <option  value="50">50 facturas</option>
 				   <option  value="100">100 facturas</option>
 				   <option  value="150">150 facturas</option>

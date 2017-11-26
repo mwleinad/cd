@@ -63,9 +63,9 @@
     {if in_array("create",$nuevosPermisos.consultar_facturas)}
     <img title="Generar Reporte de Comprobantes" src="{$WEB_ROOT}/images/excel.PNG" width="30" height="30" />
     <br />
-    <a style="cursor:pointer" name="btnExportar" id="btnExportar">Generar Reporte</a>
+    <a style="cursor:pointer" name="btnExportar" id="btnExportar">Generar reporte en Excel</a>
     <br /><br />
-    <a href="{$WEB_ROOT}/download.php?file=empresas/{$info.empresaId}_reporte_comprobantes.csv&id={$info.empresaId}">Descargar Reporte</a> | <a style="cursor:pointer" name="btnDescargar" id="btnDescargar">Descargar PDFs y XMLs</a>
+    <a href="{$WEB_ROOT}/download.php?file=empresas/{$info.empresaId}_reporte_comprobantes.csv&id={$info.empresaId}">Descargar Reporte</a> | <a style="cursor:pointer" name="btnDescargar" id="btnDescargar">Descargar XMLs (Debido a cambios en la version 3.3 no se podrá descargar PDFs)</a>
 	<br /><br />
     <div id="loadBusqueda" style="display:none">
         <img src="http://www.facturase.com/images/loading.gif" width="16" height="16" />Cargando...
