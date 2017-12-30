@@ -36,6 +36,7 @@
                 Antiguedad: {$xmlData.nomina.receptor.Antiguedad}<br>
                 Tipo contrato: {$xmlData.nomina.receptor.TipoContrato}<br>
                 Tipo regimen: {$xmlData.nomina.receptor.TipoRegimen}<br>
+                Tipo jornada: {$xmlData.nomina.receptor.TipoJornada}<br>
                 # Empleado: {$xmlData.nomina.receptor.NumEmpleado}<br>
             </td>
             <td colspan="4" class="left">
@@ -46,6 +47,8 @@
                 Salario base: {$xmlData.nomina.receptor.SalarioBaseCotApor}<br>
                 Salario diario integrado: {$xmlData.nomina.receptor.SalarioDiarioIntegrado}<br>
                 Clave entidad federativa: {$xmlData.nomina.receptor.ClaveEntFed}<br>
+                Banco: {$xmlData.nomina.receptor.Banco}<br>
+                Cuenta bancaria: {$xmlData.nomina.receptor.CuentaBancaria}<br>
             </td>
         </tr>
         {if $xmlData.nomina.percepciones.percepcion|count > 0}

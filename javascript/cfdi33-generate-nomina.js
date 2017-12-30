@@ -18,7 +18,7 @@ function GuardarNomina()
     $('rfc').enable();
     $('userId').enable();
     $('formaDePago').enable();
-    $('condicionesDePago').enable();
+    //$('condicionesDePago').enable();
     $('metodoDePago').enable();
     $('tasaIva').enable();
     $('tiposDeMoneda').enable();
@@ -249,7 +249,7 @@ function GenerarComprobante(format)
     $('rfc').enable();
     $('userId').enable();
     $('formaDePago').enable();
-    $('condicionesDePago').enable();
+    //$('condicionesDePago').enable();
     $('metodoDePago').enable();
     $('tasaIva').enable();
     $('tiposDeMoneda').enable();

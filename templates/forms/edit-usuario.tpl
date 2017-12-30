@@ -75,10 +75,10 @@
           	<div style="width:30%;float:left">Departamento:</div> 
             <input name="departamento" id="departamento" type="text" size="30" class="largeInput wide2" value="{$post.departamento}"/>
 
-          	<div style="width:30%;float:left">CLABE:</div> 
+          	<div style="width:30%;float:left">Cuenta Bancaria:</div>
             <input name="clabe" id="clabe" type="text" size="30" class="largeInput wide2" value="{$post.clabe}"/>
 
-          	<div style="width:30%;float:left">* Banco:</div>
+          	<div style="width:30%;float:left">* Banco: (Favor de solicitar si necesita otro banco)</div>
             <select name="banco" id="banco"  class="largeInput wide2">
             	{foreach from=$bancos item=item}
               <option value="{$item.claveBanco}" {if $post.banco == $item.claveBanco} selected="selected"{/if}>{$item.nombreBanco}</option>
@@ -102,10 +102,14 @@
               {/foreach}
             </select>
 
-          	<div style="width:30%;float:left">Tipo Jornada:</div> 
-            <input name="tipoJornada" id="tipoJornada" type="text" size="30" class="largeInput wide2" value="{$post.tipoJornada}"/>
+                <div style="width:30%;float:left">Tipo Jornada:</div>
+                <select name="tipoJornada" id="tipoJornada"  class="largeInput wide2">
+                    {foreach from=$tipoJornada item=item}
+                        <option value="{$item.c_TipoJornada}" {if $post.tipoJornada == $item.c_TipoJornada} selected="selected"{/if}>{$item.descripcion}</option>
+                    {/foreach}
+                </select>
 
-          	<div style="width:30%;float:left">Periodicidad Pago:</div> 
+          	<div style="width:30%;float:left">Periodicidad Pago:</div>
               <select name="periodicidadPago" id="periodicidadPago"  class="largeInput wide2">
             	{foreach from=$periodicidadPagos item=item}
               <option value="{$item.clavePeriodicidadPago}" {if $post.periodicidadPago == $item.clavePeriodicidadPago} selected="selected"{/if}>{$item.nombrePeriodicidadPago}</option>

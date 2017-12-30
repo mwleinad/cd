@@ -1,5 +1,8 @@
-{if $info.version == "auto"}
-	No puedes facturar debido a que tu esquema de CBB expir&oacute; el 1ro de Abril. Por favor contactenos a nuestros telefonos o correos de asistencia para un cambio de esquema a CFDi.
+{if !$empresaRfcs.0.regimenFiscal|is_numeric}
+    <div style="font-size:22px; border:solid; border-width:1px; background-color:#CAFFF8; padding:5px; text-align: center">
+        No puedes facturar debido a que tu Regimen Fiscal se debe actualizar.<br>
+        <a href="http://comprobantedigital.mx/sistema/datos-generales"> Actualiza los datos de tu RFC aqui.</a>
+    </div>
 {else}
 <div id="divForm">
 	<form id="nuevaFactura" name="nuevaFactura" method="post">

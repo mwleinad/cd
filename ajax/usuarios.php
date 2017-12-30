@@ -36,6 +36,11 @@ switch($_POST["type"])
 			$contratos = $db->GetResult();
 			$smarty->assign('contratos',$contratos);
 
+        //tipo jornada
+        $db->setQuery("SELECT * FROM c_TipoJornada ORDER BY descripcion ASC");
+        $tipoJornada = $db->GetResult();
+        $smarty->assign('tipoJornada',$tipoJornada);
+
 			//periodicidadPago
 			$db->setQuery("SELECT * FROM periodicidadPago ORDER BY nombrePeriodicidadPago ASC");
 			$periodicidadPagos = $db->GetResult();
@@ -162,6 +167,11 @@ switch($_POST["type"])
 			$db->setQuery("SELECT * FROM tipoContrato ORDER BY nombreTipoContrato ASC");
 			$contratos = $db->GetResult();
 			$smarty->assign('contratos',$contratos);
+
+        //tipo jornada
+        $db->setQuery("SELECT * FROM c_TipoJornada ORDER BY descripcion ASC");
+        $tipoJornada = $db->GetResult();
+        $smarty->assign('tipoJornada',$tipoJornada);
 
 			//periodicidadPago
 			$db->setQuery("SELECT * FROM periodicidadPago ORDER BY nombrePeriodicidadPago ASC");

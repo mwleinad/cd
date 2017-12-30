@@ -121,8 +121,11 @@
                 <strong>Nombre receptor:</strong> {$xmlData.receptor.Nombre}<br>
                 <strong>RFC receptor:</strong> {$xmlData.receptor.Rfc}<br>
                 <strong>Uso CFDI:</strong> {$xmlData.receptor.UsoCFDI} {$catalogos.UsoCFDI}<br>
-                {if $xmlData.escuela.noControl} <strong># Control:</strong> {$xmlData.escuela.noControl} {/if}<br>
-                {if $xmlData.escuela.carrera} <strong>Carrera:</strong> {$xmlData.escuela.carrera} {/if}<br>
+                {if $xmlData.cfdiRelacionados}
+                    <strong>CFDI Relacionado:</strong> {$xmlData.cfdiRelacionados.uuid} <br>
+                {/if}
+                {if $xmlData.escuela.noControl} <strong># Control:</strong> {$xmlData.escuela.noControl} <br>{/if}
+                {if $xmlData.escuela.carrera} <strong>Carrera:</strong> {$xmlData.escuela.carrera} <br>{/if}
             </td>
             <td width="50%" valign="top">
                 <strong>Folio fiscal:</strong> {$xmlData.timbreFiscal.UUID}<br>
@@ -130,9 +133,12 @@
                 <strong>Lugar, fecha y hora de emisión:</strong> {$xmlData.cfdi.LugarExpedicion} {$xmlData.cfdi.Fecha|replace:'T':' '}<br>
                 <strong>Efecto de comprobante:</strong> {$xmlData.cfdi.TipoDeComprobante} {$catalogos.EfectoComprobante}<br>
                 <strong>Folio y serie:</strong> {$xmlData.cfdi.Serie} {$xmlData.cfdi.Folio}<br>
+                {if $xmlData.cfdiRelacionados}
+                    <strong>Tipo relacion:</strong> {$xmlData.cfdiRelacionados.tipoRelacion} {$catalogos.CfdiRelacionado}<br>
+                {/if}
                 {if $xmlData.escuela.banco} <strong>Banco:</strong> {$xmlData.escuela.banco} {/if}<br>
-                {if $xmlData.escuela.fechaDeposito} <strong>Fecha deposito:</strong> {$xmlData.escuela.fechaDeposito|urldecode} {/if}<br>
-                {if $xmlData.escuela.referencia} <strong>Referencia:</strong> {$xmlData.escuela.referencia} {/if}<br>
+                {if $xmlData.escuela.fechaDeposito} <strong>Fecha deposito:</strong> {$xmlData.escuela.fechaDeposito|urldecode} <br>{/if}
+                {if $xmlData.escuela.referencia} <strong>Referencia:</strong> {$xmlData.escuela.referencia} <br>{/if}
             </td>
         </tr>
         <tr>

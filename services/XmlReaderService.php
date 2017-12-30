@@ -266,6 +266,28 @@ class XmlReaderService extends Comprobante
             $data['amortizacionData'] = $amortizacionData;
         }
 
+        //Cfdis relacionados
+        //$data = [];
+        $data["cfdiRelacionados"] = [];
+        $data["cfdiRelacionados"]['tipoRelacion'] = $xml->xpath('//cfdi:CfdiRelacionados')[0]['TipoRelacion'];
+
+        //El punto hace que sea relativo al elemento, y solo una / es para buscar exactamente eso
+        foreach($xml->xpath('//cfdi:Comprobante//cfdi:CfdiRelacionados//cfdi:CfdiRelacionado') as $con){
+            $data["cfdiRelacionados"]["uuid"] = $con['UUID'];
+        }
+
+        if(isset($pagos[0])){
+            $pagos = $pagos[0]->xpath('//pago10:Pago');
+
+            foreach($pagos as $pago){
+                $card['data'] = $pagos[0];
+                $card['pago'] = $pago[0];
+                $card['doctoRelacionado'] =  $pago[0]->xpath('//pago10:DoctoRelacionado ')[0];
+
+                $data["pagos"][] = $card;
+            }
+        }
+
         return $data;
     }
 }

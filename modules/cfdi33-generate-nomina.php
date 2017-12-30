@@ -17,6 +17,9 @@ $producto->CleanImpuestos();
 $publicInfo = $empresa->GetPublicEmpresaInfo();
 $smarty->assign("publicInfo", $publicInfo);
 
+$tipoRelacion = $catalogo->tipoRelacion();
+$smarty->assign("tipoRelacion", $tipoRelacion);
+
 if(isset($_POST['AceptarTerminos']))
 {
     $sql = 'UPDATE empresa SET aceptacionTerminosDeServicio2017 = "'.$_POST['AceptarTerminos'].'" WHERE empresaId = "'.$info['empresaId'].'"';

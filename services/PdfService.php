@@ -112,6 +112,11 @@ class PdfService extends Producto{
         $this->Util()->DB()->setQuery($sql);
         $data["UsoCFDI"] = strtoupper($this->Util()->DB()->GetSingle());
 
+        $sql = 'SELECT descripcion FROM c_TipoRelacion
+				WHERE c_TipoRelacion = "'.$xmlData["cfdiRelacionados"]['tipoRelacion'].'"';
+        $this->Util()->DB()->setQuery($sql);
+        $data["CfdiRelacionado"] = strtoupper($this->Util()->DB()->GetSingle());
+
         return $data;
     }
 }

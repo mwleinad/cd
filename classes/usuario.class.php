@@ -75,7 +75,7 @@ class Usuario extends Sucursal
 	{
 		if($value != "")
 		{
-			$this->Util()->ValidateString($value, $max_chars=18, $minChars = 18, "Clabe");
+		//	$this->Util()->ValidateString($value, $max_chars=18, $minChars = 18, "Clabe");
 		}
 		$this->clabe = $value;
 	}
