@@ -9,10 +9,6 @@
 
 {if $includedTpl == "sistema_nueva-factura" || $page == "nomina" || $page == "nueva-factura-ish" || $page == "addendaPepsico" || $page == "addendaContinental" || $page == "nueva-factura-agrario" || $page == "nueva-factura-escuela" || $page == "nueva-factura-transporte" || $page == "nueva-factura-ieps" || $page == "addendaZepto" || $page == "donatarias" || $includedTpl == "sistema_consultar-facturas" || $includedTpl == "sistema_consultar-nominas" || $page == "cliente" || $page == "cfdi33-generate" || $page == "cfdi33-generate-nomina"}
 <ul>
-
-
-    <li><a href="{$WEB_ROOT}/sistema/nueva-factura" {if $includedTpl == "nueva-factura"} class="current"{/if}><span>Nuevo CFDi</span></a></li>
-
 	<li><a href="{$WEB_ROOT}/cfdi33-generate" {if $includedTpl == "nueva-factura"} class="current"{/if}><span><b>Nuevo CFDi 3.3</b></span></a></li>
 
     {if $info.moduloEscuela == "Si"}
@@ -42,9 +38,6 @@
     {if $info.moduloNomina == "Si"}
     	{if in_array("nueva_factura",$permisos)}
 		<li><a href="{$WEB_ROOT}/sistema/consultar-nominas" {if $includedTpl == "sistema_consultar-nominas"} class="current"{/if}><span>Reporte de N&oacute;mina</span></a></li>
-		<li class="item middle" id="seven">
-        	<a href="{$WEB_ROOT}/nomina" {if $page == "nomina"}class="current"{/if}><span>CFDi N&oacute;mina</span></a>
-		</li>
 		<li class="item middle" id="seven">
 			<a href="{$WEB_ROOT}/cfdi33-generate-nomina" {if $page == "nomina"}class="current"{/if}><span>CFDi N&oacute;mina 3.3</span></a>
 		</li>

@@ -1,3 +1,12 @@
+{if $certAboutToExpire}
+    <div style="font-size:18px; border:solid; border-width:1px; background-color:#eee; padding:5px; text-align: center">
+        Sello Digital Proximo a Expirar o ha expirado <a href='".WEB_ROOT."/admin-folios/actualizar-certificado'>Actualizar aqui</a><br>
+        La fecha de expiracion es: {$fechaExpiracion|date_format:"%d/%m/%Y"}
+        <br>Si no sabes que es o como se genera necesitas contactar a tu contador.
+        <br>Si tu sello digital expira no podras timbrar ningun comprobante.
+    </div>
+{/if}
+
 <div id="testmodal" style="display:none; text-align:center">
     <a href="{$WEB_ROOT}/reportePago" title="Simple form"  style="font-size:18px; text-align:center; color:#F00">Tu cuenta expira el {$vencimiento.vencimiento|date_format:"%d/%m/%Y"}. Da click aqui para saber las opciones para renovar tu cuenta.</a>
 </div>

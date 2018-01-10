@@ -41,7 +41,7 @@
       
      
 		{if $page != "cliente-factura" && $page != "datos-cliente" && $page != "cliente-consulta"}
-    		{if $info.moduloEscuela == "Si"}
+    		{*{if $info.moduloEscuela == "Si"}
 				<li class="item middle" id="six"><a href="{$WEB_ROOT}/nueva-factura-escuela" class="main
 				{if $includedTpl == "nueva-factura-escuela"}current{/if}"><span class="outer"><span class="inner dashboard">CFDi's</span></span></a>
 				</li>
@@ -49,7 +49,10 @@
 				<li class="item middle" id="six"><a href="{$WEB_ROOT}/sistema/nueva-factura" class="main
 				{if $includedTpl == "sistema_nueva-factura"}current{/if}"><span class="outer"><span class="inner dashboard">CFDi's</span></span></a>
 				</li>
-        {/if}
+        {/if}*}
+			<li class="item middle" id="six"><a href="{$WEB_ROOT}/cfdi33-generate" class="main
+				{if $includedTpl == "cfdi33-generate"}current{/if}"><span class="outer"><span class="inner dashboard">CFDi's</span></span></a>
+			</li>
 		{/if}
 
 				<li class="item last" id="six"><a href="{$WEB_ROOT}/reportePago" class="main

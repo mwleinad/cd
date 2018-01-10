@@ -450,6 +450,7 @@ class Xml extends Producto{
         $conceptos = $this->xml->createElement("cfdi:Conceptos");
         $conceptos = $this->root->appendChild($conceptos);
 
+        $this->totales["subtotal"] = 0;
 
         foreach($this->nodosConceptos as $concepto)
         {
@@ -621,6 +622,9 @@ class Xml extends Producto{
                     )
                 );
             }
+
+            //subtotal
+            $this->totales["subtotal"] += $this->Util()->CadenaOriginalFormat($concepto["importe"], 2, false);;
         }
     }
 

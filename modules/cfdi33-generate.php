@@ -296,4 +296,30 @@ unset($_SESSION["impuestos"]);
 unset($_SESSION["firmas"]);
 unset($_SESSION["amortizacion"]);
 
+$rfc->setEmpresaId($_SESSION["empresaId"], 1);
+$smarty->assign("empresaRfcs", $rfc->GetRfcsByEmpresa());
+
+
+//Checar certificado
+$id_rfc = $rfc->getRfcActive();
+$rfc->setRfcId($id_rfc);
+$ruta_dir = DOC_ROOT.'/empresas/'.$_SESSION['empresaId'].'/certificados/'.$id_rfc;
+$certNuevo = $rfc->GetCertificadoByRfc();
+if($certNuevo){
+    $expire = exec('openssl x509 -noout -in '.$ruta_dir.'/'.$certNuevo.'.cer.pem -dates');
+    $exp = explode('=',$expire);
+    $fecha_expiracion = $exp[1];
+
+    //$fecha_expiracion = "Sep  15 15:04:26 2013";
+    $fecha_exp = strtotime($fecha_expiracion);
+
+    if($fecha_exp < time() + (ALERT_CERT * 24 * 3600))
+    {
+        $certAboutToExpire = true;
+        $smarty->assign("certAboutToExpire", $certAboutToExpire);
+        $smarty->assign("fechaExpiracion", $fecha_exp);
+    }
+	$smarty->assign('certAboutToExpire', $certAboutToExpire);
+}//if
+
 ?>

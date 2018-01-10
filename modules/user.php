@@ -14,7 +14,7 @@ if($info)
 	$rfc->setRfcId($id_rfc);
 	$ruta_dir = DOC_ROOT.'/empresas/'.$_SESSION['empresaId'].'/certificados/'.$id_rfc;
 	$certNuevo = $rfc->GetCertificadoByRfc();
-	if($certNuevo){	
+	if($certNuevo){
 		$expire = exec('openssl x509 -noout -in '.$ruta_dir.'/'.$certNuevo.'.cer.pem -dates');
 		$exp = explode('=',$expire);
 		$fecha_expiracion = $exp[1];
