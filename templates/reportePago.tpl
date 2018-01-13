@@ -86,15 +86,15 @@ Clabe                   002180701081587688   <br />
 
 <div style="float:left; width:400px; text-align:center; padding:10px">
 	<img src="{$WEB_ROOT}/images/bancos/bancomer.png" /><br />
-  A nombre de:Daniel Alfonso Lopez Angel.	<br />
-  Cuenta: 2838155968	<br />
-  CLABE:012180028381559681<br />
+  A nombre de:Samuel Hernandez Toledo.	<br />
+  Cuenta: 0464051785	<br />
+  CLABE:012107004640517853<br />
 </div>
 
 <div style="float:left; width:400px; text-align:center; padding:10px">
 	<img src="{$WEB_ROOT}/images/bancos/oxxo.png" /><br />
-  A nombre de:Daniel Alfonso Lopez Angel.	<br />
-  Tarjeta: 4152313047597633	<br />
+  A nombre de:Samuel Hernandez Toledo.	<br />
+  Tarjeta: 4555103002300922	<br />
 </div>
 
 <div style="float:left; width:400px; text-align:center; padding:10px">

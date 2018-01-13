@@ -198,7 +198,7 @@
         <tr class="border-right border-bottom">
             <td class="left">{$concepto.concepto.ClaveProdServ}</td>
             <td class="left">{$concepto.concepto.ClaveUnidad}</td>
-            <td class="left">{$concepto.NoIdentificacion}</td>
+            <td class="left">{$concepto.concepto.NoIdentificacion}</td>
             <td class="left">{$concepto.concepto.Cantidad}</td>
             <td class="left">{$concepto.concepto.Unidad}</td>
             <td class="right">{$concepto.concepto.ValorUnitario|number}</td>

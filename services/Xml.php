@@ -299,7 +299,7 @@ class Xml extends Producto{
             $rootData["CondicionesDePago"] = $this->Util()->CadenaOriginalVariableFormat($this->data["condicionesDePago"],false,false);
         }
 
-        $totalRetenciones = 0;
+        /*$totalRetenciones = 0;
         if(count($_SESSION["impuestos"]) > 0) {
             foreach($_SESSION["impuestos"] as $key => $impuesto) {
 
@@ -313,7 +313,7 @@ class Xml extends Producto{
                 $totalRetenciones += $impuesto['importe'];
             }
             $this->totales["subtotal"] = $this->totales["subtotal"] + $totalRetenciones;
-        }
+        }*/
 
         $rootData["SubTotal"] = $this->Util()->CadenaOriginalVariableFormat($this->totales["subtotal"],true,false);
         if($this->isTraspaso() || $this->isPago()){

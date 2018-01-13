@@ -20,7 +20,7 @@
                         <strong>Condiciones de pago:</strong> {$xmlData.cfdi.CondicionesDePago}
                     </td>
                 </tr>
-                {if $xmlData.escuela.banco || $xmlData.escuela.referencia || $xmlData.escuela.fechaDeposito}
+                {*{if $xmlData.escuela.banco || $xmlData.escuela.referencia || $xmlData.escuela.fechaDeposito}
                     <tr>
                         <td width="50%" valign="top">
                             <strong>Banco:</strong> {$xmlData.escuela.banco} Referencia: {$xmlData.escuela.referencia}
@@ -29,7 +29,7 @@
                             <strong>Fecha deposito:</strong> {$xmlData.escuela.fechaDeposito}
                         </td>
                     </tr>
-                {/if}
+                {/if}*}
 
                 </tbody>
             </table>

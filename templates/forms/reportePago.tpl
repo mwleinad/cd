@@ -42,8 +42,8 @@
         <div style="width:150px;float:left">*Banco:</div> 
         <div style="width:750px;float:left">
         <select name="banco" id="banco" onchange=""  class="largeInput">
-        	<option value="Bancomer 2838155968">Bancomer 2838155968</option>
-        	<option value="OXXO 4152313047597633">OXXO 4152313047597633</option>
+        	<option value="Bancomer 0464051785">Bancomer 0464051785</option>
+        	<option value="OXXO 4555103002300922">OXXO 4555103002300922</option>
         	<option value="Paypal">Paypal</option>
         </select>
         </div>       
