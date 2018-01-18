@@ -943,7 +943,6 @@ class Comprobante extends Producto
 			$card['comprobanteId'] = $val['comprobanteId'];
 
 			$card['version'] = $val['version'];
-
 			//get payments
 			$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT SUM(amount) FROM payment WHERE comprobanteId = '".$val['comprobanteId']."'");
 

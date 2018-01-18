@@ -77,6 +77,9 @@
             Para conocer mas de la nueva version puedes consultar la pagina del SAT en:
             <a target="_blank" href="http://sat.gob.mx/informacion_fiscal/factura_electronica/Paginas/Anexo_20_version3.3.aspx">CFDi 3.3</a>
         </p>
+        <p style="text-align: center">
+            <a style="font-size: 20px" target="_blank" href="https://app.ilosvideos.com/view/mWfBcgUKU2So">Ver video tutorial</a>
+        </p>
     </div>
     <br><br>
     {include file="forms/cfdi33.tpl"}

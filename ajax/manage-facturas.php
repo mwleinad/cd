@@ -207,7 +207,7 @@ $smarty->assign("nuevosPermisos",$_SESSION['nuevosPermisos2']);
 				}
 				
 				$comprobantes = array();
-				$comprobantes = $comprobante->SearchComprobantesByRfc($values);				
+				$comprobantes = $comprobante->SearchComprobantesByRfc($values);
 				$smarty->assign('comprobantes',$comprobantes);
 								
 				$total = 0;

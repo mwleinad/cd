@@ -78,7 +78,7 @@ foreach($dirs as $key => $dir)
 		$fecha = $util->DBSelect($name[2])->GetSingle();
 		
 		//un anio atras
-		$anio = time() - (3600 * 24 * 365);
+		$anio = time() - (3600 * 24 * 150);
 		$compare = strtotime($fecha);
 
 		if($compare < $anio && $compare != 0)
