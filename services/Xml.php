@@ -450,7 +450,9 @@ class Xml extends Producto{
         $conceptos = $this->xml->createElement("cfdi:Conceptos");
         $conceptos = $this->root->appendChild($conceptos);
 
-        $this->totales["subtotal"] = 0;
+        if(!$this->isNomina()) {
+            $this->totales["subtotal"] = 0;
+        }
 
         foreach($this->nodosConceptos as $concepto)
         {
@@ -510,16 +512,31 @@ class Xml extends Producto{
             $this->CargaAtt($myConcepto, $conceptoData);
 
             if(!$this->isPago() && !$this->isNomina()) {
-                //Si alguno de los impuestos o retenciones existe, este nodo debe existir sino no
-                if($concepto["totalIva"] + $concepto["totalIeps"] > 0 || ($this->totales["retIva"] + $this->totales["retIsr"] > 0)) {
+
+                //Si alguno de los impuestos o retenciones existe o es exento iva, este nodo debe existir sino no
+                if($concepto["totalIva"] + $concepto["totalIeps"] > 0 || ($this->totales["retIva"] + $this->totales["retIsr"] > 0) || $concepto['excentoIva'] == 'si') {
                     $impuestosConcepto = $this->xml->createElement("cfdi:Impuestos");
                     $impuestosConcepto = $myConcepto->appendChild($impuestosConcepto);
                 }
 
                 //Si alguno de los impuestos existe el siguiente nodo debe de existir
-                if($concepto["totalIva"] > 0 || $concepto["porcentajeIeps"] > 0) {
+                if($concepto["totalIva"] > 0 || $concepto["porcentajeIeps"] > 0 || $concepto['excentoIva'] == 'si') {
                     $trasladosConcepto = $this->xml->createElement("cfdi:Traslados");
                     $trasladosConcepto = $impuestosConcepto->appendChild($trasladosConcepto);
+
+                    if($concepto['excentoIva'] == 'si') {
+                        $trasladoConcepto = $this->xml->createElement("cfdi:Traslado");
+                        $trasladoConcepto = $trasladosConcepto->appendChild($trasladoConcepto);
+
+                        $exentoIvaAttr =  array(
+                            "Base" => $this->Util()->CadenaOriginalVariableFormat($concepto["importeTotal"],true,false),
+                            "Impuesto" => $this->Util()->CadenaOriginalVariableFormat("002",false,false),
+                            "TipoFactor" => $this->Util()->CadenaOriginalVariableFormat("Exento",false,false),
+                        );
+
+                        $this->CargaAtt($trasladoConcepto, $exentoIvaAttr );
+                    }
+
 
                     //si esta exento de iva no debemos de agregar el nodo
                     if($concepto["totalIva"] > 0) {
@@ -624,7 +641,9 @@ class Xml extends Producto{
             }
 
             //subtotal
-            $this->totales["subtotal"] += $this->Util()->CadenaOriginalFormat($concepto["importe"], 2, false);;
+            if(!$this->isNomina()) {
+                $this->totales["subtotal"] += $this->Util()->CadenaOriginalFormat($concepto["importe"], 2, false);;
+            }
         }
     }
 

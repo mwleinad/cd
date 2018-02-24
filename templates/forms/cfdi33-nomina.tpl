@@ -159,12 +159,12 @@
             <div class="formLine">
                 <div style="width:90px;float:left">Fecha Inicial de Pago:</div>
                 <div style="width:340px;float:left">
-                    <input type="text" name="periodoDePagoInicial" id="periodoDePagoInicial" class="largeInput" value="" size="15"/>
+                    <input type="text" name="periodoDePagoInicial" id="periodoDePagoInicial" class="largeInput" value="2018-01-01" size="15"/>
                 </div>
 
                 <div style="width:90px;float:left">Fecha Final de Pago:</div>
                 <div style="width:340px;float:left">
-                    <input type="text" name="periodoDePagoFinal" id="periodoDePagoFinal" class="largeInput" value="" size="15"/>
+                    <input type="text" name="periodoDePagoFinal" id="periodoDePagoFinal" class="largeInput" value="2018-01-01" size="15"/>
                 </div>
 
             </div>

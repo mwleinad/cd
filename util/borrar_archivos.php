@@ -28,7 +28,7 @@ foreach($dirs as $key => $dir)
 	}
 	
 }
-print_r($noExiste);
+//print_r($noExiste);
 
 $noExiste = array();
 foreach($dirs as $key => $dir)
@@ -58,9 +58,8 @@ foreach($dirs as $key => $dir)
 	}
 	
 }
-print_r($noExiste);
 
-//mas de un anio sin facturar
+/*//mas de un anio sin facturar
 $noExiste = array();
 foreach($dirs as $key => $dir)
 {
@@ -78,7 +77,7 @@ foreach($dirs as $key => $dir)
 		$fecha = $util->DBSelect($name[2])->GetSingle();
 		
 		//un anio atras
-		$anio = time() - (3600 * 24 * 150);
+		$anio = time() - (3600 * 24 * 180);
 		$compare = strtotime($fecha);
 
 		if($compare < $anio && $compare != 0)
@@ -102,6 +101,50 @@ foreach($dirs as $key => $dir)
 	}
 	
 }
+print_r($noExiste);*/
+
+//$noExiste = array();
+foreach($dirs as $key => $dir)
+{
+    $name = explode("/", $dir);
+
+    $db->setQuery("SELECT empresaId, activo, version FROM empresa WHERE empresaId = '".$name[2]."' AND vencimiento < '2018-02-01'");
+    $result = $db->GetRow();
+
+    if($result)
+    {
+        //numero de facturas
+        $util->DBSelect($name[2])->setQuery("
+			SELECT COUNT(*) FROM comprobante ORDER by comprobanteId DESC"
+        );
+        $facturas = $util->DBSelect($name[2])->GetSingle();
+
+        if($facturas == 0)
+        {
+            $util->DBSelect($name[2])->setQuery("
+				SELECT razonSocial FROM rfc"
+            );
+            $razonSocial = $util->DBSelect($name[2])->GetSingle();
+
+            array_push($noExiste, array($name[2], $result["activo"], $result["version"], $fecha, $facturas, $razonSocial));
+        }
+
+        //print_r($name[2]);
+        //echo "empresa no existe en base de datos";
+    }
+
+}
+
+echo "sin facturas";
 print_r($noExiste);
-	
+
+
+foreach($noExiste as $empresa) {
+    echo $empresa['0'];
+    echo ',';
+}
+
+foreach($noExiste as $empresa) {
+    echo $empresa['0'].',';
+}
 ?>

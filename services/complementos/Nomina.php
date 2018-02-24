@@ -34,12 +34,13 @@ else
     $tipoNomina = "E";
 }
 
+
 $nominaMain = array(
     "Version"=>$versionNomina,
     "TipoNomina"=>$tipoNomina,
     "FechaPago"=>$this->Util()->CadenaOriginalVariableFormat($this->data["fechaPago"], false, false),
-    "FechaInicialPago"=>$this->Util()->CadenaOriginalVariableFormat($this->data["fechaPago"], false, false),
-    "FechaFinalPago"=>$this->Util()->CadenaOriginalVariableFormat($this->data["fechaPago"], false, false),
+    "FechaInicialPago"=>$this->Util()->CadenaOriginalVariableFormat($this->data["periodoDePagoInicial"], false, false),
+    "FechaFinalPago"=>$this->Util()->CadenaOriginalVariableFormat($this->data["periodoDePagoFinal"], false, false),
     "NumDiasPagados"=>$this->Util()->CadenaOriginalVariableFormat($this->data["numDiasPagados"], true, false, false, true),
     "TotalPercepciones"=>$this->Util()->CadenaOriginalVariableFormat($totalPercepciones, true, false),
 );
@@ -80,7 +81,7 @@ if(count($emisorData) > 0) {
 }
 
 //nodo receptor (sin subcontratacion)
-$antiguedad = $this->Util()->weeks($this->data["nodoReceptor"]["fechaInicioRelLaboral"], $this->data["fechaPago"]);
+$antiguedad = $this->Util()->weeks($this->data["nodoReceptor"]["fechaInicioRelLaboral"], $this->data["periodoDePagoFinal"]);
 $antiguedad = "P".$antiguedad."W";
 
 $receptor = $this->xml->createElement("nomina12:Receptor");
