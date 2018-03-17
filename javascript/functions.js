@@ -6,31 +6,31 @@ Event.observe(window, 'load', function() {
 	if($('login_0'))
 	{
 		Event.observe($('login_0'), "click", LoginCheck);
-		Event.observe($('password'), "keypress", function(evt) { 
+		Event.observe($('password'), "keypress", function(evt) {
        		if(evt.keyCode == 13)
 				LoginCheck();
-    	}); 
+    	});
 
 	}
 	/********** LOGIN CLIENTE **************/
 	if($('login_01'))
 	{
 		Event.observe($('login_01'), "click", LoginCheckCliente);
-		Event.observe($('password'), "keypress", function(evt) { 
+		Event.observe($('password'), "keypress", function(evt) {
        		if(evt.keyCode == 13)
 				LoginCheckCliente();
-    	}); 
+    	});
 
 	}
 	/********** END LOGIN CLIENTE **************/
-	
+
 });
 
 function enviarEmail()
 {
-	new Ajax.Request(WEB_ROOT+'/ajax/sistema.php', 
+	new Ajax.Request(WEB_ROOT+'/ajax/sistema.php',
 	{
-  	parameters: $('formInformes').serialize(true), 
+  	parameters: $('formInformes').serialize(true),
 		method:'post',
     onSuccess: function(transport){
       var response = transport.responseText || "no response text";
@@ -54,14 +54,14 @@ function enviarEmail()
 
 function LoginCheckCliente()
 {
-	new Ajax.Request(WEB_ROOT+'/ajax/login.php', 
+	new Ajax.Request(WEB_ROOT+'/ajax/login.php',
 	{
-  	parameters: $('loginForm').serialize(true), 
+  	parameters: $('loginForm').serialize(true),
 		method:'post',
     onSuccess: function(transport){
       		var response = transport.responseText || "no response text";
 			var splitResponse = response.split("|");
-			
+
 			if(splitResponse[0] == "fail")
 			{
 				$('errorLoginDiv').innerHTML = splitResponse[1];
@@ -77,9 +77,9 @@ function LoginCheckCliente()
 
 function LoginCheck()
 {
-	new Ajax.Request(WEB_ROOT+'/ajax/login.php', 
+	new Ajax.Request(WEB_ROOT+'/ajax/login.php',
 	{
-  	parameters: $('loginForm').serialize(true), 
+  	parameters: $('loginForm').serialize(true),
 		method:'post',
     onSuccess: function(transport){
       var response = transport.responseText || "no response text";
@@ -100,7 +100,7 @@ function LoginCheck()
 function ToogleStatusDiv()
 {
 	$('centeredDiv').toggle();
-	grayOut(false);	
+	grayOut(false);
 }
 
 function ToogleStatusDivOnPopup()
@@ -120,7 +120,7 @@ function RedirectRoot(page)
 }
 
 function Logout() {
-	new Ajax.Request(WEB_ROOT+'/ajax/logout.php', 
+	new Ajax.Request(WEB_ROOT+'/ajax/logout.php',
 	{
 		method:'post',
     onSuccess: function(transport){
@@ -137,7 +137,7 @@ Event.observe(window, 'load', function() {
 
 function CambiarRfcActivo()
 {
-	new Ajax.Request(WEB_ROOT+'/ajax/sistema.php', 
+	new Ajax.Request(WEB_ROOT+'/ajax/sistema.php',
 	{
   	parameters: {rfcId: $('rfcId').value, type: "cambiarRfcActivo"},
 		method:'post',
@@ -146,7 +146,7 @@ function CambiarRfcActivo()
 			window.location.reload();
 		},
     onFailure: function(){ alert('Something went wrong...') }
-  });	
+  });
 
 }
 

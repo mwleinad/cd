@@ -67,7 +67,7 @@ class Comprobante extends Producto
 		$fileName = $xml.".pdf";	
 		$path = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/1/facturas/pdf/".$fileName;
 
-		$pdf =& new FPDI();
+		$pdf = new FPDI();
  
 		$pagecount = $pdf->setSourceFile($path); 
 		$tplidx = $pdf->importPage(1, '/MediaBox'); 
@@ -169,7 +169,7 @@ class Comprobante extends Producto
 			$fileName = $xml.".pdf";	
 			$path = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/1/facturas/pdf/".$fileName;
 	
-			$pdf =& new FPDI();
+			$pdf = new FPDI();
 	 
 			$pagecount = $pdf->setSourceFile($path); 
 			$tplidx = $pdf->importPage(1, '/MediaBox'); 
@@ -270,7 +270,7 @@ class Comprobante extends Producto
 		$fileName = $xml.".pdf";	
 		$path = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/1/facturas/pdf/".$fileName;
 
-		$pdf =& new FPDI();
+		$pdf = new FPDI();
  
 		$pagecount = $pdf->setSourceFile($path); 
 		$tplidx = $pdf->importPage(1, '/MediaBox'); 

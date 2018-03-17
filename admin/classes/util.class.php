@@ -1,6 +1,6 @@
 <?php
 
-class Util extends Error
+class Util extends ErrorCD
 {
 
 	public function DB() 

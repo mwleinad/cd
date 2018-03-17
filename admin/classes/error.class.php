@@ -1,6 +1,6 @@
 <?php
 
-class Error
+class ErrorCD
 {
 	private $type = array();
 	private $errorField = array();

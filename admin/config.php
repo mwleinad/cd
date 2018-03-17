@@ -3,68 +3,26 @@
 $docRoot = $_SERVER['DOCUMENT_ROOT'];
 $webRoot = $_SERVER['HTTP_HOST'];
 
-if($docRoot == "/var/www/vhosts/comprobantedigital.mx/httpdocs")
-{
-	$docRoot = $docRoot."/sistema";
-	$webRoot = $webRoot."/sistema";
-	
-	$sqlDatabase = "pascacio_general";
-	$sqlUser = "admin";
-	$sqlPassword = "Strong47";
+$docRoot = $docRoot."/sistema";
+$webRoot = $webRoot."/sistema";
 
-	$userPac = "SACJ840515UPA";
-	$pwPac = "wdyewpfkj";
-	
+$sqlDatabase = "pascacio_general";
+$sqlUser = "root";
+$sqlPassword = "Strong47-";
+
+$userPac = "SACJ840515UPA";
+$pwPac = "wdyewpfkj";
+
 //	$userPac = "STI070725SAA";
 //	$pwPac = "oobrotcfl";
 
-	$siteName = "CONFACTURA";
-	$administrationName = "AVANTIKA";
-	$administrationUrl = "http://www.avantika.com.mx";
+$siteName = "CONFACTURA";
+$administrationName = "AVANTIKA";
+$administrationUrl = "http://www.avantika.com.mx";
 
-	$dbPrefix = "pascacio_";
-	$sqlHost = "localhost";
-	
-}
-elseif($docRoot == "/var/www/vhosts/facturase.com/httpdocs")
-{
-	$docRoot = $docRoot;
-	$webRoot = $webRoot;
+$dbPrefix = "pascacio_";
+$sqlHost = "localhost";
 
-	$sqlDatabase = "facturas_general";
-	$sqlUser = "admin";
-	$sqlPassword = "Strong47";
-	
-	$userPac = "SACJ840515UPA";
-	$pwPac = "wdyewpfkj";
-
-	$siteName = "FACTURASE";
-	$administrationName = "TRAZZOS";
-	$administrationUrl = "http://www.trazzos.com";
-
-	$dbPrefix = "facturas_";
-	$sqlHost = "localhost";
-
-}
-else
-{
-	$docRoot = $docRoot."/facturacion";
-	$webRoot = $webRoot."/facturacion";
-	
-	$sqlDatabase = "facturas_general";
-	$sqlUser = "root";
-	$sqlPassword = "root";
-
-	$userPac = "SACJ840515UPA";
-	$pwPac = "wdyewpfkj";
-
-	$siteName = "FACTURASE";
-	$administrationName = "TRAZZOS";
-	$administrationUrl = "http://www.trazzos.com";
-
-	$dbPrefix = "facturas_";
-	$sqlHost = "192.168.1.200";
-}
 
 define("DB_PREFIX", $dbPrefix);
 define("DOC_ROOT", $docRoot."/admin");

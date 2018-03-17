@@ -67,11 +67,6 @@
 {/if}
 
 {if $info.aceptacionTerminosDeServicio2017 != ''}
-    <div style="font-size:32px; border:solid; border-width:1px; background-color:#CAFFF8; color: #FF0000; padding:5px; text-align: center">
-        <p>
-           Se lec comunica que La aplicacion estara en mantenimiento el sabado 17 y domingo 18 de marzo. No podra realizar facturas en este periodo.
-        </p>
-    </div>
     <div style="font-size:14px; border:solid; border-width:1px; background-color:#CAFFF8; padding:5px; text-align: center">
         <p>
             Esta es una version nueva por lo que puede tener errores. <br>

@@ -143,7 +143,7 @@ class User extends Sucursal
 			$fileName = 'SIGN_'.$id_empresa.'_'.$serie.'_'.$folio;
 			$archivo = $id_empresa.'_'.$serie.'_'.$folio.'.pdf';
 			$pdf = $pdfService->generate($id_empresa, $fileName, 'email');
-			$enlace = DOC_ROOT.'/empresas/'.$id_empresa.'/certificados/'.$id_rfc.'/facturas/pdf/'.$archivo;
+			$enlace = DOC_ROOT.'/empresas/'.$id_empresa.'/certificados/'.$id_rfc.'/facturas/'.$archivo;
 			file_put_contents($enlace, $pdf);
 		} else {
 			$archivo = $id_empresa.'_'.$serie.'_'.$folio.'.pdf';

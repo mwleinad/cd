@@ -71,7 +71,7 @@ include_once(DOC_ROOT."/classes/proveedor.class.php");
 include_once(DOC_ROOT."/classes/paymentCompra.class.php");
 
 $db = new DB;
-$error = new Error;
+$error = new ErrorCD;
 $util = new Util;
 $main = new Main;
 $empresa = new Empresa;

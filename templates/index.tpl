@@ -265,14 +265,16 @@ function validar(nombre,correo,telefono,mensaje)
 {/if}
 
 <script type="text/javascript" src="{$WEB_ROOT}/javascript/prototype.js"></script>
+<script src="{$WEB_ROOT}/javascript/js-config.js" type="text/javascript"></script>
 <script src="{$WEB_ROOT}/javascript/scoluos/src/scriptaculous.js" type="text/javascript"></script>
 <script src="{$WEB_ROOT}/javascript/datetimepicker.js" type="text/javascript"></script>
 
-<script src="{$WEB_ROOT}/javascript/js-config.js" type="text/javascript"></script>
 <script src="{$WEB_ROOT}/javascript/util.js" type="text/javascript"></script>
 
 <script src="{$WEB_ROOT}/javascript/functions.js" type="text/javascript"></script>
+{*
 <script src="{$WEB_ROOT}/javascript/clearbox.js" type="text/javascript"></script>
+*}
 <script src="{$WEB_ROOT}/javascript/{$page}.js" type="text/javascript"></script>
 
 

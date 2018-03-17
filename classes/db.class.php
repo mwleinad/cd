@@ -83,8 +83,8 @@ class DB
 	}
 
 	public function DatabaseConnect(){    	
-		$this->conn_id = mysql_connect($this->sqlHost, $this->sqlUser, $this->sqlPassword, 1);		
-    	mysql_select_db($this->sqlDatabase, $this->conn_id) or die("<br/>".mysql_error()."<br/>");
+		$this->conn_id = mysqli_connect($this->sqlHost, $this->sqlUser, $this->sqlPassword, $this->sqlDatabase);
+    	//mysqli_select_db($this->conn_id) or die("<br/>".mysqli_error()."<br/>");
   	}
 	
 	public function ExecuteQuery()
@@ -92,7 +92,7 @@ class DB
 		if(!$this->conn_id)
 			$this->DatabaseConnect();
 		
-		$this->sqlResult = mysql_query($this->query, $this->conn_id)  or die (trigger_error(mysql_error()));		;
+		$this->sqlResult = mysqli_query($this->conn_id, $this->query)  or die (trigger_error(mysqli_error($this->conn_id)));		;
 	}
 	
   function GetResult()
@@ -101,7 +101,7 @@ class DB
 
 		$this->ExecuteQuery();
 		
-	  while($rs=mysql_fetch_assoc($this->sqlResult))
+	  while($rs=mysqli_fetch_assoc($this->sqlResult))
 		{
 	    	$retArray[] = $rs;
 		}	
@@ -115,36 +115,38 @@ class DB
 	{
 		$this->ExecuteQuery();
 		
-		return mysql_num_rows($this->sqlResult);
+		return mysqli_num_rows($this->sqlResult);
   }
 
   function GetRow()
   {
 		$this->ExecuteQuery();
-	  	$rs=mysql_fetch_assoc($this->sqlResult);
+	  	$rs=mysqli_fetch_assoc($this->sqlResult);
     	$this->CleanQuery();
 
     	return $rs;
   }
 
-  function GetSingle()
-	{
-		$this->ExecuteQuery();
+    function GetSingle() {
+        $this->ExecuteQuery();
 
-		$rs=@mysql_result($this->sqlResult, 0);
+        $rs = @mysqli_fetch_array($this->sqlResult);
 
-		if(!$rs)
-			$rs = 0;
-			
-    $this->CleanQuery();
+        if(!$rs) {
+            return 0;
+        }
 
-    return $rs;
-  }
+        $rs = $rs[0];
+
+        $this->CleanQuery();
+
+        return $rs;
+    }
 
   function InsertData()
 	{
 		$this->ExecuteQuery();
-		$last_id=mysql_insert_id();
+		$last_id=mysqli_insert_id($this->conn_id);
 
     $this->CleanQuery();
 
@@ -155,7 +157,7 @@ class DB
 	{
 		$this->ExecuteQuery();
 
-		$return = mysql_affected_rows($this->conn_id);
+		$return = mysqli_affected_rows($this->conn_id);
 
   	$this->CleanQuery();
 
@@ -169,8 +171,8 @@ class DB
 	
   function CleanQuery()
 	{
-    @mysql_free_result($this->sqlResult);
-    @mysql_close($this->conn_id);
+    @mysqli_free_result($this->sqlResult);
+    @mysqli_close($this->conn_id);
     unset($this->conn_id);
     //$this->query = "";
   }
@@ -180,7 +182,7 @@ class DB
 		$this->query = "SHOW COLUMNS FROM `$table` LIKE '$field' ";
 		$this->ExecuteQuery();
 
-		$row = mysql_fetch_array( $this->sqlResult , MYSQL_NUM );
+		$row = mysqli_fetch_array( $this->sqlResult , MYSQLI_NUM );
 		$regex = "/'(.*?)'/";
 
 		preg_match_all( $regex , $row[1], $enum_array );

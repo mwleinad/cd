@@ -6,7 +6,7 @@ var DOC_ROOT_SECTION = "../../";
 // clicks the element
 function registerCheck() {
 	//alert(WEB_ROOT+'/ajax/register-manual.php');
-	new Ajax.Request('http://'+document.location.hostname+'/facturacion/ajax/register-manual.php', 
+	new Ajax.Request('http://'+document.location.hostname+'/ajax/register-manual.php',
 	{
   	parameters: $('registerForm').serialize(true), 
 		method:'post',

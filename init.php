@@ -9,7 +9,7 @@ if ( !defined( 'E_DEPRECATED' ) )		define( 'E_DEPRECATED', 8192 );
 ini_set("memory_limit", "1024M"); 
 ini_set("display_errors", "ON"); 
 
-echo $version = PHP_MAJOR_VERSION.".".PHP_MINOR_VERSION;
+$version = PHP_MAJOR_VERSION.".".PHP_MINOR_VERSION;
 
 switch($version)
 {
@@ -25,4 +25,10 @@ date_default_timezone_set('America/Mexico_City');
 if(function_exists('xdebug_disable'))	
 	xdebug_disable();
 
+
+if (PHP_MAJOR_VERSION >= 7) {
+    set_error_handler(function ($errno, $errstr) {
+        return strpos($errstr, 'Declaration of') === 0;
+    }, E_WARNING);
+}
 ?>

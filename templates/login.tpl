@@ -23,6 +23,6 @@
 		  <br clear="all" />
     	</div>
         <div id="forgot">
-        <a href="http://www.pascacio.com.mx" class="forgotlink"><span>O deseas regresar a p&aacute;gina principal?</span></a></div>
+        <a href="http://www.comprobantedigital.mx" class="forgotlink"><span>O deseas regresar a p&aacute;gina principal?</span></a></div>
   </div>
 </div>

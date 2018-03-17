@@ -78,4 +78,3 @@ function FViewOffSet(response)
 	$('fview').innerHTML = response;
 	//new Draggable('fview',{scroll:window,handle:'draganddrop'});
 }
-
