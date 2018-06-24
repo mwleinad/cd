@@ -63,26 +63,6 @@
   </tr>
 </table>
 <br />
-{*}
-<table width="100%" border="1" cellpadding="0" cellspacing="0" id="box-table-a" summary="Employee Pay Sheet">
-  <tr>
-    <td>Nombre</td>
-    <td> Daniel Alfonso Lopez Angel<br /></td>
-  </tr>
-  <tr>
-    <td>Nombre</td>
-    <td>Banamex</td>
-  </tr>
-  <tr>
-    <td>Cuenta    </td>
-    <td>0179 224996</td>
-  </tr>
-  <tr>
-    <td>Clabe</td>
-    <td>002100017902249960</td>
-  </tr>
-</table>
-{*}
 </p>
 <p> {include file="boxes/white_close.tpl"}
   

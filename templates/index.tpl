@@ -40,7 +40,7 @@
 <script src="javascript/jquery-1.8.2.min.js" type="text/javascript"></script>
 <script src="javascript/jquery.bxSlider.min.js" type="text/javascript"></script>
 <script src="javascript/functions.js" type="text/javascript"></script>
-<script src="javascript/js-config.js" type="text/javascript"></script>
+<script src="javascript/js-config.js?1" type="text/javascript"></script>
 <script type="text/javascript">
 {literal}
 
@@ -265,7 +265,7 @@ function validar(nombre,correo,telefono,mensaje)
 {/if}
 
 <script type="text/javascript" src="{$WEB_ROOT}/javascript/prototype.js"></script>
-<script src="{$WEB_ROOT}/javascript/js-config.js" type="text/javascript"></script>
+<script src="{$WEB_ROOT}/javascript/js-config.js?1" type="text/javascript"></script>
 <script src="{$WEB_ROOT}/javascript/scoluos/src/scriptaculous.js" type="text/javascript"></script>
 <script src="{$WEB_ROOT}/javascript/datetimepicker.js" type="text/javascript"></script>
 

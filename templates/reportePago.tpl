@@ -105,7 +105,7 @@ Clabe                   002180701081587688   <br />
 <div style="float:left; width:400px; text-align:center; padding:10px">
 	Datos de Contacto<br />
 	comprobantefiscal@braunhuerin.com.mx<br />
-	<p>WhatsApp: 961 25 44 731. <br />Atencion Daniel Lopez Pascacio<br />
+	<p>WhatsApp: 961 25 44 731. <br />Atencion Daniel Lopez Angel<br />
 </div>
 
 {/if}

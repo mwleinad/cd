@@ -65,7 +65,7 @@
             	</a>            
             </div>
             <div id="loadBusqueda" style="display:none">
-            	<img src="http://www.facturase.com/images/loading.gif" width="16" height="16" />
+            	<img src="https://www.comprobantedigital.mx/images/loading.gif" width="16" height="16" />
                 <br />Cargando...
             </div>            
             {/if}

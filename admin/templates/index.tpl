@@ -7,7 +7,7 @@
 <meta name="keywords" content=""  />
 
 <link href="{$WEB_ROOT}/css/style.css" rel="stylesheet" type="text/css"  />
-<script type="text/javascript" src="{$WEB_ROOT}/javascript/js-config.js"></script>
+<script type="text/javascript" src="{$WEB_ROOT}/javascript/js-config.js?2"></script>
 <script type="text/javascript" src="{$WEB_ROOT}/javascript/prototype.js"></script>
 <script src="{$WEB_ROOT}/javascript/scoluos/src/scriptaculous.js" type="text/javascript"></script>
 <script src="{$WEB_ROOT}/javascript/util.js" type="text/javascript"></script>

@@ -216,6 +216,7 @@ $smarty->assign("nuevosPermisos",$_SESSION['nuevosPermisos2']);
 				$isr = 0;
 				
 				if(count($comprobantes["items"]) > 0){
+
 					foreach($comprobantes["items"] as $res){
 						if($res["status"] == 0)
 						{

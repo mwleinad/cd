@@ -8,7 +8,7 @@ $webRoot = $webRoot."/sistema";
 
 $sqlDatabase = "pascacio_general";
 $sqlUser = "root";
-$sqlPassword = "Strong47-";
+$sqlPassword = "d?8djzdTE%gg9E2P";
 
 $userPac = "SACJ840515UPA";
 $pwPac = "wdyewpfkj";
@@ -26,7 +26,7 @@ $sqlHost = "localhost";
 
 define("DB_PREFIX", $dbPrefix);
 define("DOC_ROOT", $docRoot."/admin");
-define('WEB_ROOT', "http://".$webRoot."/admin");
+define('WEB_ROOT', "https://".$webRoot."/admin");
 
 define("SQL_HOST", $sqlHost);
 define("SQL_DATABASE", $sqlDatabase);

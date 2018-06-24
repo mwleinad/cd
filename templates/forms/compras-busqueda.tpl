@@ -55,7 +55,7 @@
     <a href="{$WEB_ROOT}/download.php?file=empresas/{$info.empresaId}_reporte_compras.csv&id={$info.empresaId}">Descargar Reporte</a> | <a style="cursor:pointer" name="btnDescargar" id="btnDescargar">Descargar XMLs</a>
 	<br />
     <div id="loadBusqueda" style="display:none">
-        <img src="http://www.facturase.com/images/loading.gif" width="16" height="16" />Cargando...
+        <img src="https://www.comprobantedigital.mx/images/loading.gif" width="16" height="16" />Cargando...
     </div>
     {/if}
 </div>

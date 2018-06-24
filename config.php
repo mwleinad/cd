@@ -8,7 +8,7 @@ $webRoot = $webRoot."/sistema";
 
 $sqlDatabase = "pascacio_general";
 $sqlUser = "root";
-$sqlPassword = "Strong47-";
+$sqlPassword = "d?8djzdTE%gg9E2P";
 $sqlHost = "localhost";
 
 $userPac = "SACJ840515UPA";
@@ -27,7 +27,7 @@ $mailPort = "25";
 
 
 define("DOC_ROOT", $docRoot);
-define('WEB_ROOT', "http://".$webRoot);
+define('WEB_ROOT', "https://".$webRoot);
 	
 define("SQL_HOST", $sqlHost);
 define("SQL_DATABASE", $sqlDatabase);

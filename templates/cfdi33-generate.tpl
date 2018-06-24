@@ -55,7 +55,7 @@
         </table>
 
         Banco:Banamex.	<br />
-        A nombre de:Daniel Alfonso Lopez Angel.	<br />
+        A nombre de:Samuel Hernandez Angel.	<br />
         Cuenta: 0179 224996	<br />
         CLABE:002100017902249960.	<br /><br />
         O al paypal: dlopez@trazzos.com<br />

@@ -28,7 +28,7 @@
 <p align="justify">17. En lo relativo a la revocación del consentimiento, se estará a lo dispuesto por el artículo 56 de la Ley Federal de Protección al Consumidor.</p>
 <p align="justify">18. En lo relativo a los costos del sevicio por favor sirvase referirse al anexo 1 al final de esta hoja.</p>
 <p align="justify">19. Este acuerdo estará regido por las leyes de los Estados Unidos Mexicanos. Cualquier controversia derivada del presente acuerdo, su existencia, validez, interpretación, alcance o cumplimiento, será sometida a las leyes aplicables y a los Tribunales del Distrito Federal competentes para su conocimiento.</p>
-<p><em>ComprobanteDigital, es representada por el Ing. Daniel Alfonso Lopez Angel. Domicialiado en 4135 Moana Dr. San Antonio, TX..</em></p>
+<p><em>ComprobanteDigital, es representada por el c Samuel Hernandez Angel. Domicialiado en 4135 Moana Dr. San Antonio, TX..</em></p>
 <p>Actualizado al 22 de Enero 2015</p>
 <p>Anexo 1. de los Costos que genera el uso del Sistema.</p>
 <p>1. El sistema generara cargos por cualquiera de los siguientes conceptos.</p>
