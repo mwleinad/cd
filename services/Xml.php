@@ -658,10 +658,17 @@ class Xml extends Producto{
 
         if(!$this->isNomina())
         {
-            $this->CargaAtt($impuestos, array(
-                "TotalImpuestosRetenidos" => $this->Util()->CadenaOriginalVariableFormat($this->totalImpuestosRetenidos,true,false),
-                "TotalImpuestosTrasladados" => $this->Util()->CadenaOriginalVariableFormat($this->totalImpuestosTrasladados,true,false))
-            );
+            $nodoImpuestosRetenidosTrasladados = [];
+
+            if($this->totalImpuestosRetenidos > 0) {
+                $nodoImpuestosRetenidosTrasladados['TotalImpuestosRetenidos'] = $this->Util()->CadenaOriginalVariableFormat($this->totalImpuestosRetenidos, true, false);
+            }
+
+            if($this->totalImpuestosTrasladados > 0) {
+                $nodoImpuestosRetenidosTrasladados['TotalImpuestosTrasladados'] = $this->Util()->CadenaOriginalVariableFormat($this->totalImpuestosTrasladados, true, false);
+            }
+
+            $this->CargaAtt($impuestos, $nodoImpuestosRetenidosTrasladados);
 
             if(count($this->retencionesGlobales) > 0) {
                 $retenciones = $this->xml->createElement("cfdi:Retenciones");

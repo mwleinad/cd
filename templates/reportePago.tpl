@@ -74,11 +74,11 @@
 <span style="font-size:14px">Datos Bancarios</span>
 {if $info.rfc}
 <br />
-Nombre              BRAUN HUERIN ADMINISTRACION S.A DE C.V. <br />
-Banco                  Banamex <br />
-Cuenta                8158768      <br />
+Nombre              BHSC CONTADORES S.C <br />
+Banco                  INBURSA <br />
+Cuenta                5003-6325-646      <br />
 Sucursal              7010<br />
-Clabe                   002180701081587688   <br />
+Clabe                   036-1805-0036-3256-464   <br />
 </p>
 
 {else}
