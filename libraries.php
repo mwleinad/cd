@@ -113,6 +113,7 @@ include_once(DOC_ROOT."/services/CfdiUtil.php");
 include_once(DOC_ROOT."/services/PdfService.php");
 include_once(DOC_ROOT."/services/XmlReaderService.php");
 include_once(DOC_ROOT."/services/QrService.php");
+include_once(DOC_ROOT."/services/Cancelation.php");
 
 $cfdi = new Cfdi;
 $catalogo = new Catalogo;
@@ -123,6 +124,7 @@ $cfdiUtil = new CfdiUtil;
 $pdfService = new PdfService;
 $xmlReaderService = new XmlReaderService;
 $qrService = new QrService;
+$cancelation = new Cancelation;
 
 //$util->wwwRedirect();
 

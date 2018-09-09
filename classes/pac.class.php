@@ -73,8 +73,16 @@ class Pac extends Util
 		$fh = fopen($file_key, 'r');
 		$key_content = fread($fh, filesize($file_key));
 		fclose($fh);
-		
-		$url=  "https://facturacion.finkok.com/servicios/soap/cancel.wsdl";
+
+        if($_SESSION["empresaId"] == 15)
+        {
+            $url=  "https://demo-facturacion.finkok.com/servicios/soap/cancel.wsdl";
+        }
+        else
+        {
+            $url=  "https://facturacion.finkok.com/servicios/soap/cancel.wsdl";
+        }
+
 		$client = new SoapClient($url);
 
 		$invoices = array($uuid);

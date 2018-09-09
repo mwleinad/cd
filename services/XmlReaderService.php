@@ -276,18 +276,6 @@ class XmlReaderService extends Comprobante
             $data["cfdiRelacionados"]["uuid"] = $con['UUID'];
         }
 
-        if(isset($pagos[0])){
-            $pagos = $pagos[0]->xpath('//pago10:Pago');
-
-            foreach($pagos as $pago){
-                $card['data'] = $pagos[0];
-                $card['pago'] = $pago[0];
-                $card['doctoRelacionado'] =  $pago[0]->xpath('//pago10:DoctoRelacionado ')[0];
-
-                $data["pagos"][] = $card;
-            }
-        }
-
         return $data;
     }
 }

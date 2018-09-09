@@ -94,7 +94,7 @@ class Comprobante extends Producto
 	
 	function CancelarComprobante($data, $id_comprobante, $notaCredito = false, $recipient, $motivo_cancelacion)
 	{
-		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT noCertificado, xml, rfc, comprobante.version FROM comprobante
+		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT noCertificado, xml, rfc, comprobante.version, total FROM comprobante
 			LEFT JOIN cliente ON cliente.userId = comprobante.userId
 			WHERE comprobanteId = ".$id_comprobante);
 		$row = $this->Util()->DBSelect($_SESSION["empresaId"])->GetRow();		
@@ -148,6 +148,16 @@ class Comprobante extends Producto
 		$this->setRfcId($rfcActivo);
 		$nodoEmisorRfc = $this->InfoRfc();
 		$response = $pac->CancelaCfdi($user, $pw, $nodoEmisorRfc["rfc"], $uuid, $path, $password, false, $id_comprobante);
+
+		//TODO cancelacion remove this
+        if($_SESSION["empresaId"] == 15 && $response === true)
+        {
+            $cancelation = new Cancelation();
+            $cancelation->addPetition($_SESSION["empresaId"], $id_comprobante, $nodoEmisorRfc['rfc'], $row['rfc'], $uuid, $row['total'], $motivo_cancelacion);
+            $this->Util()->setError('', "complete", "El folio ha sido marcado como pendiente de cancelacion. Este proceso puede tardar hasta 72 horas");
+            $this->Util()->PrintErrors();
+            return true;
+        }
 
 		if($response === true)
 		{
@@ -828,7 +838,10 @@ class Comprobante extends Producto
 				$card["statusPayment"] = "Pagada";
 			}
 
-			$info[$key] = $card;
+            $this->Util()->DB()->setQuery("SELECT status FROM vin_cfdi_cancel WHERE org_id = '".$_SESSION["empresaId"]."' AND cfdi_id = '".$val['comprobanteId']."'");
+			$card["cfdi_cancel_status"] = $this->Util()->DB()->GetSingle();
+
+            $info[$key] = $card;
 			
 		}//foreach
 
@@ -971,6 +984,9 @@ class Comprobante extends Producto
 					break;
 				}
 			}
+
+            $this->Util()->DB()->setQuery("SELECT status FROM vin_cfdi_cancel WHERE org_id = '".$_SESSION["empresaId"]."' AND cfdi_id = '".$val['comprobanteId']."'");
+            $card["cfdi_cancel_status"] = $this->Util()->DB()->GetSingle();
 			
 			$info[$key] = $card;
 			
