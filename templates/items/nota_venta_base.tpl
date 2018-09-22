@@ -16,11 +16,7 @@
     <td align="center">
     <!-- Campo a validar   -->
     <span style="color:{if $fact.statusPayment == "Pagada"}#009966{else}#C30{/if}">
-    
-    ${$fact.payments|number_format:2:'.':','}
-    <!--  
-    ${$fact.payments|number_format:2:'.':','}
-    -->
+        ${$fact.payments}
     </span>
     </td>
     <td width="90" align="center">

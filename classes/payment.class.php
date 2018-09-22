@@ -88,6 +88,11 @@ class Payment extends Util
 		if($this->generarComprobantePago == true){
 			$comprobantePago = new ComprobantePago();
 			$comprobanteId = $comprobantePago->generar($infoComprobante, $this);
+
+			if(!isset($comprobanteId)) {
+                $this->Util()->setError(10047, "error", "Hubo un error al generar el comprobante de pago, favor de tratar de nuevo");
+                if($this->Util()->PrintErrors()){ return false; }
+            }
 		}
 
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("

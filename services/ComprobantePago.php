@@ -114,6 +114,13 @@ class ComprobantePago extends Comprobante {
 
         $impSaldoAnt = $comprobante['total'] - $infoPagos['totalPagado'];
         $impSaldoInsoluto = $impSaldoAnt - $impPagado;
+        if($impSaldoAnt < 0) {
+            $impSaldoAnt = 0;
+        }
+
+        if($impSaldoInsoluto < 0) {
+            $impSaldoInsoluto = 0;
+        }
 
         $data["numParcialidad"] = $infoPagos['pagos'] + 1;
         $data["impSaldoAnt"] = $impSaldoAnt;

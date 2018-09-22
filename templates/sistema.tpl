@@ -170,8 +170,12 @@ style='border: none; overflow: hidden; margin-top: -19px; width: 402px; height: 
 <div style="text-align:center">
 <br />
 
-{if $info.empresaId > 1000}
-Tutorial Basico<br />
+	<span style="font-size: 24px"> Video para Generacion de Comprobante de pago</span><br />
+	<iframe width="640" height="360" allowTransparency="true" mozallowfullscreen webkitallowfullscreen allowfullscreen style="background-color:transparent;" frameBorder="0" src="https://app.vidgrid.com/embed/XdDxNgr7xQyz"></iframe>
+	<br />
+
+    {if $info.empresaId > 1000}
+		Tutorial Basico<br />
 <iframe width="640" height="360" allowTransparency="true" mozallowfullscreen webkitallowfullscreen allowfullscreen style="background-color:transparent;" frameBorder="0" src="https://app.ilosvideos.com/embed/rXt7zospkz91"></iframe>
 {/if}
 
