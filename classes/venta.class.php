@@ -126,6 +126,7 @@ class Venta extends Producto
 		{
 			$row["statusPayment"] = "Pagada";
 		}
+
 		$row["debt"] = number_format($row["total"] - $row["payments_noformat"],2,'.',',');
 		$row["debt_noformat"] = $row["total"] - $row["payments_noformat"];
 		return $row;
