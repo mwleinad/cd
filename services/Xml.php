@@ -170,8 +170,8 @@ class Xml extends Producto{
             $_SESSION["conceptos"]["1"]["percepciones"]["totalExcento"];
 
         $this->totalDeducciones = $_SESSION["conceptos"]["1"]["deducciones"]["totalGravado"] +
-            $_SESSION["conceptos"]["1"]["deducciones"]["totalExcento"] +
-            $_SESSION["conceptos"]["1"]["incapacidades"]["total"];
+            $_SESSION["conceptos"]["1"]["deducciones"]["totalExcento"];
+            //+ $_SESSION["conceptos"]["1"]["incapacidades"]["total"];
 
         $this->totalOtrosPagos = 0;
         foreach($_SESSION["otrosPagos"] as $key => $value)
@@ -778,7 +778,7 @@ class Xml extends Producto{
         ];
 
         if($this->data['tiposDeMonedaPago'] != 'peso'){
-            $doctoRelacionadoData['TipoCambioDR'] = $this->Util()->CadenaOriginalFormat($this->data['tiposDeCambioPago'],4,false);
+            //$doctoRelacionadoData['TipoCambioDR'] = $this->Util()->CadenaOriginalFormat($this->data['tiposDeCambioPago'],4,false);
         }
 
         $this->CargaAtt($doctoRelacionado, $doctoRelacionadoData);

@@ -17,7 +17,9 @@ $versionNomina = VERSION_NOMINA_12;
 
 $totalPercepciones = $_SESSION["conceptos"]["1"]["percepciones"]["totalGravado"] + $_SESSION["conceptos"]["1"]["percepciones"]["totalExcento"] + $this->horasExtraImporte;
 
-$totalDeducciones = $_SESSION["conceptos"]["1"]["deducciones"]["totalGravado"] + $_SESSION["conceptos"]["1"]["deducciones"]["totalExcento"] + $_SESSION["conceptos"]["1"]["incapacidades"]["total"];
+$totalDeducciones = $_SESSION["conceptos"]["1"]["deducciones"]["totalGravado"] +
+    $_SESSION["conceptos"]["1"]["deducciones"]["totalExcento"];
+    //+ $_SESSION["conceptos"]["1"]["incapacidades"]["total"];
 
 $totalOtrosPagos = 0;
 foreach($_SESSION["otrosPagos"] as $key => $value)
@@ -263,7 +265,7 @@ if(count($_SESSION["deducciones"]) > 0 || count($_SESSION["incapacidades"]) > 0)
     {
         foreach($_SESSION["incapacidades"] as $myIncapacidad)
         {
-            $totalOtrasDeducciones += $myIncapacidad["descuento"];
+            //$totalOtrasDeducciones += $myIncapacidad["descuento"];
         }
     }
 

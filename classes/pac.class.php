@@ -94,7 +94,7 @@ class Pac extends Util
 			"cer" => $cer_content,
 			"key" => $key_content,
 		);
-		
+
 		$response = $client->__soapCall("cancel", array($params));
 
 		$error = "UUID: ".$uuid." No Encontrado";
@@ -192,6 +192,100 @@ class Pac extends Util
 		return $data;
 	}
 
+    function GetRelated($user, $pw, $rfc, $uuid, $pfx, $pfxPassword, $showErrors = false, $idComprobante, $rfcReceptor)
+    {
+        $this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("
+			SELECT * FROM comprobante 
+			WHERE fecha < '2016-02-01' AND comprobanteId = '".$idComprobante."'");
+        $viejoTimbre = $this->Util()->DBSelect($_SESSION["empresaId"])->GetRow();
+
+        if($viejoTimbre)
+        {
+            $pacOld = new PacOld;
+            return $pacOld->CancelaCfdi($user, $pw, $rfc, $uuid, $pfx, $pfxPassword, $showErrors);
+        }
+
+        $myRfc = new Rfc;
+        $rfcActivo = $myRfc->getRfcActive();
+        $root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/";
+        if ($handle = opendir($root))
+        {
+            while (false !== ($file = readdir($handle)))
+            {
+                $ext = substr($file, -3);
+                if($ext == "cer")
+                {
+                    $key = $file;
+                }
+            }
+        }
+
+        $cer = $root.$key.".pem";
+
+        $fh = fopen($cer, 'r');
+        $cer_content = fread($fh, filesize($cer));
+        fclose($fh);
+
+        $root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/";
+        if ($handle = opendir($root))
+        {
+            while (false !== ($file = readdir($handle)))
+            {
+                $ext = substr($file, -3);
+                if($ext == "key")
+                {
+                    $key = $file;
+                }
+            }
+        }
+
+        $key = $root.$key.".pem";
+
+        exec("openssl rsa -in ".$key." -des3 -out ".$root."des.key -passout pass:Strong47-");
+
+        exec("openssl rsa -in ".$root."des.key -out ".$root."des.key.pem -passin pass:Strong47-");
+
+        $file_key=$root.'des.key.pem';      // Nueva Ruta al archivo key
+
+        $fh = fopen($file_key, 'r');
+        $key_content = fread($fh, filesize($file_key));
+        fclose($fh);
+
+        if($_SESSION["empresaId"] == 15)
+        {
+            $url=  "https://demo-facturacion.finkok.com/servicios/soap/cancel.wsdl";
+        }
+        else
+        {
+            $url=  "https://facturacion.finkok.com/servicios/soap/cancel.wsdl";
+        }
+
+        $client = new SoapClient($url);
+
+        $invoices = $uuid;
+        $params = array(
+            "uuid" => $invoices,
+            'username' => PAC_USER,
+            'password' => PAC_PASS,
+            "rtaxpayer_id" => $rfcReceptor,
+            "cer" => $cer_content,
+            "key" => $key_content,
+        );
+
+        print_r($params);
+
+        $response = $client->__soapCall("get_related", array($params));
+        print_r($response);
+        exit;
+
+        $error = "UUID: ".$uuid." No Encontrado";
+        if($response->cancelResult->Folios->Folio->EstatusUUID == 201 || $response->cancelResult->Folios->Folio->EstatusUUID == 202)
+        {
+            return true;
+        }
+
+        return false;
+    }
 }
 
 

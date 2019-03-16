@@ -150,7 +150,7 @@ class Comprobante extends Producto
 		$response = $pac->CancelaCfdi($user, $pw, $nodoEmisorRfc["rfc"], $uuid, $path, $password, false, $id_comprobante);
 
 		//TODO cancelacion remove this
-        if($_SESSION["empresaId"] == 15 && $response === true)
+        if($response === true)
         {
             $cancelation = new Cancelation();
             $cancelation->addPetition($_SESSION["empresaId"], $id_comprobante, $nodoEmisorRfc['rfc'], $row['rfc'], $uuid, $row['total'], $motivo_cancelacion);

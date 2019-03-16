@@ -22,7 +22,11 @@ switch($_POST["type"])
 							$ordenes->setVersion($_POST['version']);
 						}
 						$usuario->AuthAdmin();
-						$ordenes = $ordenes->OrdenesLista();
+						$borrar = 'No';
+						if($_POST['inactivos']) {
+						    $borrar = 'Si';
+                        }
+						$ordenes = $ordenes->OrdenesLista($borrar);
 						$data = array();
 						foreach($ordenes as $orden)
 						{

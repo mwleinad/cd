@@ -5,7 +5,7 @@ include_once('../config.php');
 include_once(DOC_ROOT.'/libraries.php');
 
 //We need to change the data type of total and subtotal to double
-$db->setQuery("SELECT rfc, razonSocial, empresaId FROM empresa WHERE empresaId = 1285");
+$db->setQuery("SELECT rfc, razonSocial, empresaId FROM empresa WHERE empresaId = 1211");
 $result = $db->GetResult();
 
 $count = 1;
@@ -14,10 +14,25 @@ $count = 1;
 $total = 0;
 foreach($result as $key => $res)
 {
+    $util->DBSelect($res["empresaId"])->setQuery("ALTER TABLE `comprobante` CHANGE `subTotal` `subTotal` DECIMAL(20,6) NOT NULL;");
+    $util->DBSelect($res["empresaId"])->ExecuteQuery();
+
+    $util->DBSelect($res["empresaId"])->setQuery("ALTER TABLE `comprobante` CHANGE `total` `total` DECIMAL(20,6) NOT NULL;");
+    $util->DBSelect($res["empresaId"])->ExecuteQuery();
+
+    $util->DBSelect($res["empresaId"])->setQuery("ALTER TABLE `comprobante` CHANGE `descuento` `descuento` DECIMAL(20,6) NOT NULL;");
+    $util->DBSelect($res["empresaId"])->ExecuteQuery();
+
+    $util->DBSelect($res["empresaId"])->setQuery("ALTER TABLE `notaVenta` CHANGE `subtotal` `subtotal` DECIMAL(20,2) NOT NULL;");
+    $util->DBSelect($res["empresaId"])->ExecuteQuery();
+
+    $util->DBSelect($res["empresaId"])->setQuery("ALTER TABLE `notaVenta` CHANGE `total` `total` DECIMAL(20,2) NOT NULL;");
+    $util->DBSelect($res["empresaId"])->ExecuteQuery();
+
     $_SESSION['empresaId'] = $res["empresaId"];
     $util->DBSelect($res["empresaId"])->setQuery("SELECT comprobanteId, noCertificado, xml, rfc, comprobante.version, total, subTotal FROM comprobante
 			LEFT JOIN cliente ON cliente.userId = comprobante.userId 
-			WHERE comprobante.version = '3.3' AND comprobanteId = 22");
+			WHERE comprobante.version = '3.3'");
     $facturas = $util->DBSelect($res["empresaId"])->GetResult();
 
     $diff = 0;
@@ -30,17 +45,19 @@ foreach($result as $key => $res)
 
         $xmlData = $xmlReaderService->execute($root, $_SESSION['empresaId']);
         $subtotal = $xmlData['cfdi']['SubTotal'];
-        echo $total = $xmlData['cfdi']['Total'];
+        $total = $xmlData['cfdi']['Total'];
 
-        if($subtotal != $row['subTotal']) {
-            echo "diff";
-            echo PHP_EOL;
+        //if($total != $row['total']) {
             //echo $subtotal;
             $diff += $subtotal - $row['subTotal'];
             $util->DBSelect($_SESSION['empresaId'])->setQuery("UPDATE comprobante SET subTotal = ".$subtotal.", total = ".$total." WHERE comprobanteId = ".$row['comprobanteId']);
-            echo $util->DBSelect($_SESSION['empresaId'])->query;
             $util->DBSelect($_SESSION['empresaId'])->UpdateData();
-        }
+
+            $util->DBSelect($_SESSION['empresaId'])->setQuery("UPDATE notaVenta SET subtotal = ".$subtotal.", total = ".$total." WHERE comprobanteId = ".$row['comprobanteId']);
+            //echo $util->DBSelect($_SESSION['empresaId'])->query;
+            $util->DBSelect($_SESSION['empresaId'])->UpdateData();
+
+        //}
 
 
     }

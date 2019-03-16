@@ -211,9 +211,8 @@ class Ordenes extends Main
 	
 	public function OrdenesLista($borrar = "No")
 	{
-	  
 		global $months;
-		
+
 	$orderBy = "empresa.empresaId DESC";
 		
 	if($this->socioId!=0){
@@ -224,14 +223,14 @@ class Ordenes extends Main
 	  $filtro=' WHERE borrar = "'.$borrar.'"';
 	}
 
-	if($_POST["inactivos"])
+/*	if($_POST["inactivos"])
 	{
 	  $filtro .=' AND activo = "0"';
 	}
 	else
 	{
 	  $filtro .=' AND activo = "1"';
-	}
+	}*/
 	if($this->mes && $this->mes != "todos")
 	{
 	  $filtro .=' AND MONTH(vencimiento) = "'.$this->mes.'"';
@@ -280,7 +279,7 @@ class Ordenes extends Main
 			
 			$this->Util()->DB()->setQuery($sql);
 	}
-	
+
 	$result = $this->Util()->DB()->GetResult();
 	
 	

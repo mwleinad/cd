@@ -11,7 +11,8 @@
 		
 	$comprobantes = array();
 	$comprobantes = $nomina->SearchNominaByRfc($values);	
-	
+
+	$totales = [];
 	$totales['sueldo'] = 0;
 		 
 	$totales['primaVacacional'] = 0;
@@ -43,7 +44,7 @@
 		$ns = $xml->getNamespaces(true);
 		$xml->registerXPathNamespace('c', $ns['cfdi']);
 		$xml->registerXPathNamespace('t', $ns['tfd']);
-		$xml->registerXPathNamespace('n', $ns['nomina']);
+		$xml->registerXPathNamespace('n', $ns['nomina12']);
 		
 		foreach ($xml->xpath('//c:Comprobante') as $val){
 			$serie =  $val['serie'];
@@ -59,7 +60,7 @@
 		$gratificacion = 0;
 		$primaAntiguedad = 0;
 		foreach ($xml->xpath('//n:Nomina//n:Percepciones//n:Percepcion') as $perc){
-			
+
 			$total = floatval($perc['ImporteGravado']) + floatval($perc['ImporteExento']);
 			
 			if($perc['Clave'] == '001')
@@ -80,7 +81,7 @@
 				$primaAntiguedad = $total;
 			
 		}//foreach
-		
+
 		$totalPercepciones = $sueldo + $primaVacacional + $primaDominical + $subsidioEmpleo + $transporte;
 		$totalPercepciones += $otrosIngresos + $gratificacion + $primaAntiguedad;
 		
@@ -94,13 +95,16 @@
 		$incapacidad = 0;
 		foreach ($xml->xpath('//n:Nomina//n:Deducciones//n:Deduccion') as $deduc){
 			
-			$total = floatval($deduc['ImporteGravado']) + floatval($deduc['ImporteExento']);
+			//$total = floatval($deduc['ImporteGravado']) + floatval($deduc['ImporteExento']);
+            $total = floatval($deduc['Importe']);
 			
 			if($deduc['Clave'] == '001') 
 				$seguridadSocial = $total;
 			if($deduc['Clave'] == '002') 
 				$isr = $total;
-			if($deduc['Clave'] == '010') 
+            if($deduc['Clave'] == '004')
+                $otros += $total;
+			if($deduc['Clave'] == '010')
 				$pagoCreditoVivienda = $total;
 			if($deduc['Clave'] == '020') 
 				$ausencia = $total;
@@ -115,7 +119,7 @@
 			
 		}//foreach
 		
-		$totalDeducciones = $seguridadSocial + $isr + $pagoCreditoVivienda + $ausencia + $pensionAlimenticia;
+		$totalDeducciones = $seguridadSocial + $isr + $pagoCreditoVivienda + $ausencia + $pensionAlimenticia + $otros;
 		$totalDeducciones += $cuotasSindicales + $infonacot + $incapacidad;
 		
 		$netoPagar = $totalPercepciones - $totalDeducciones;
@@ -143,6 +147,7 @@
 			<td style=\"text-align:right;mso-number-format:'0.00';\">".$cuotasSindicales."</td>
 			<td style=\"text-align:right;mso-number-format:'0.00';\">".$infonacot."</td>
 			<td style=\"text-align:right;mso-number-format:'0.00';\">".$incapacidad."</td>
+			<td style=\"text-align:right;mso-number-format:'0.00';\">".$otros."</td>
 			<td style=\"text-align:right;mso-number-format:'0.00';\">".$totalDeducciones."</td>
 			<td style=\"text-align:right;mso-number-format:'0.00';\">".$netoPagar."</td>
 		</tr>";	
@@ -207,6 +212,7 @@
 			<th style=\"background:#E0E5E7;text-align:center\"><b>CUOTA SINDICAL</b></th>			
 			<th style=\"background:#E0E5E7;text-align:center\"><b>PAGO DE ABONOS INFONACOT</b></th>			
 			<th style=\"background:#E0E5E7;text-align:center\"><b>DESCUENTO POR INCAPACIDAD</b></th>
+			<th style=\"background:#E0E5E7;text-align:center\"><b>OTROS</b></th>
 			<th style=\"background:#E0E5E7;text-align:center\"><b>TOTAL DEDUCCIONES</b></th>
 			<th style=\"background:#E0E5E7;text-align:center\"><b>NETO A PAGAR</b></th>
 		</tr>

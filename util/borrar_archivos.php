@@ -58,9 +58,10 @@ foreach($dirs as $key => $dir)
 	}
 	
 }
+//print_r($noExiste);exit;
 
-/*//mas de un anio sin facturar
-$noExiste = array();
+//mas de un anio sin facturar
+/*$noExiste = array();
 foreach($dirs as $key => $dir)
 {
 	$name = explode("/", $dir);
@@ -101,14 +102,14 @@ foreach($dirs as $key => $dir)
 	}
 	
 }
-print_r($noExiste);*/
+//print_r($noExiste);
 
 //$noExiste = array();
 foreach($dirs as $key => $dir)
 {
     $name = explode("/", $dir);
 
-    $db->setQuery("SELECT empresaId, activo, version FROM empresa WHERE empresaId = '".$name[2]."' AND vencimiento < '2018-02-01'");
+    $db->setQuery("SELECT empresaId, activo, version FROM empresa WHERE empresaId = '".$name[2]."' AND vencimiento < '2018-06-01'");
     $result = $db->GetRow();
 
     if($result)
@@ -133,10 +134,10 @@ foreach($dirs as $key => $dir)
         //echo "empresa no existe en base de datos";
     }
 
-}
+}*/
 
 echo "sin facturas";
-print_r($noExiste);
+//print_r($noExiste);
 
 
 foreach($noExiste as $empresa) {

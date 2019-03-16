@@ -197,11 +197,11 @@ if($totalSeparacionIndemnizacion > 0){
 					$totalOtrasDeducciones += $myDeduccion["importeExcento"] + $myDeduccion["importeGravado"];
 				}
 			}
-			
+
 			if(count($_SESSION["incapacidades"]) > 0)
 			{
 				foreach($_SESSION["incapacidades"] as $myIncapacidad)
-				{	
+				{
 					$totalOtrasDeducciones += $myIncapacidad["descuento"];
 				}
 			}
