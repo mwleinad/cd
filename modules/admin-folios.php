@@ -264,7 +264,7 @@
 	}//if Guardar Certificado
 	
 	$certNuevo = $rfc->GetCertificadoByRfc();
-	
+
 	$nombreCertificado = $certNuevo;
 	if($certNuevo == '')
 		$nom_certificado = 'No hay certificados.';
@@ -277,7 +277,7 @@
 		$existe_certificado = true;
 		$nom_certificado = $certNuevo;
 	}//else
-	
+
 	$smarty->assign('nom_certificado', $nom_certificado);
 	
 	//Expiration Date

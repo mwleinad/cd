@@ -33,7 +33,11 @@
 					closedir($gd);
 				}//if
 			}//if
-			
+            $rfc->setEmpresaId($id_empresa, 1);
+            $rfc->setRfcId($id_rfc);
+            $certNuevo = $rfc->GetCertificadoByRfc();
+            $nom_certificado = $util->GetNoCertificado($ruta_dir, $certNuevo);
+
 			$smarty->assign('nom_certificado', $nom_certificado);
 			$smarty->assign('comprobantes', $listComp);
 			$smarty->assign('sucursales', $sucursales);
@@ -124,6 +128,12 @@
 					closedir($gd);
 				}//if
 			}//if
+
+            $rfc->setEmpresaId($id_empresa, 1);
+            $rfc->setRfcId($id_rfc);
+            $certNuevo = $rfc->GetCertificadoByRfc();
+            $nom_certificado = $util->GetNoCertificado($ruta_dir, $certNuevo);
+
 			$smarty->assign('nom_certificado', $nom_certificado);
 			$smarty->assign('comprobantes', $listComp);
 			$smarty->assign('sucursales', $sucursales);
