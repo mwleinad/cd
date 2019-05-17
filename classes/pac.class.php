@@ -98,6 +98,7 @@ class Pac extends Util
 		$response = $client->__soapCall("cancel", array($params));
 
 		$error = "UUID: ".$uuid." No Encontrado";
+		//print_r($response);
 		if($response->cancelResult->Folios->Folio->EstatusUUID == 201 || $response->cancelResult->Folios->Folio->EstatusUUID == 202)
 		{
 			return true;
@@ -152,6 +153,7 @@ class Pac extends Util
 		{
 			//print_r($response);
 		}
+		print_r($response);
 
 		$data = $response->stampResult->xml;
 

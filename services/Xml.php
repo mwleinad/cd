@@ -186,7 +186,7 @@ class Xml extends Producto{
 
     private function buildNodoCfdisRelacionados() {
 
-        if(!$this->uuidRelacionado) {
+        if(!$this->uuidRelacionado || $this->isPago()) {
             return;
         }
 
@@ -750,7 +750,7 @@ class Xml extends Producto{
             "FormaDePagoP" => $metodoPago,
             "MonedaP" => $tipoDeMoneda,
             "Monto" => $this->Util()->CadenaOriginalFormat($this->data['infoPago']->amount,2,false),
-            "NumOperacion" => $this->data['infoPago']->operacion,
+            //"NumOperacion" => $this->data['infoPago']->operacion,
         ];
 
         if($this->data['tiposDeMonedaPago'] != 'peso'){

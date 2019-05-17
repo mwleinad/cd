@@ -97,20 +97,16 @@ class Comprobante extends Producto
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT noCertificado, xml, rfc, comprobante.version, total FROM comprobante
 			LEFT JOIN cliente ON cliente.userId = comprobante.userId
 			WHERE comprobanteId = ".$id_comprobante);
-		$row = $this->Util()->DBSelect($_SESSION["empresaId"])->GetRow();		
+		$row = $this->Util()->DBSelect($_SESSION["empresaId"])->GetRow();
 		$xml = $row["xml"];
 
-		$info = $this->Info();
-
 		$rfcActivo = $this->getRfcActive();
-		$root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/facturas/xml/SIGN_".$xml.".xml";
 
-		$fh = fopen($root, 'r');
-		$theData = fread($fh, filesize($root));
-		fclose($fh);
-		$theData = explode("UUID", $theData);
-		$theData = $theData[1];
-		$uuid = substr($theData, 2, 36);
+        $xmlReaderService = new XmlReaderService;
+        $xmlPath = DOC_ROOT.'/empresas/'.$_SESSION["empresaId"].'/certificados/'.$rfcActivo.'/facturas/xml/SIGN_'.$xml.".xml";
+        $xmlData = $xmlReaderService->execute($xmlPath, $_SESSION["empresaId"]);
+        $uuid = (string)$xmlData['timbreFiscal']['UUID'];
+
 		//Buscar Pfx
 		$root = DOC_ROOT."/empresas/".$_SESSION["empresaId"]."/certificados/".$rfcActivo."/";
 		if ($handle = opendir($root))
@@ -148,6 +144,8 @@ class Comprobante extends Producto
 		$this->setRfcId($rfcActivo);
 		$nodoEmisorRfc = $this->InfoRfc();
 		$response = $pac->CancelaCfdi($user, $pw, $nodoEmisorRfc["rfc"], $uuid, $path, $password, false, $id_comprobante);
+		echo "jere";
+		print_r($response);
 
 		//TODO cancelacion remove this
         if($response === true)

@@ -88,7 +88,7 @@ class ComprobantePago extends Comprobante {
             'tiposDeMoneda' => 'XXX',
             'cfdiRelacionadoSerie' => $comprobante["serie"],
             'cfdiRelacionadoFolio' => $comprobante["folio"],
-            'tipoRelacion' => '04',
+            //'tipoRelacion' => '04',
             'userId' => $comprobante['userId'],
             'usoCfdi' => 'P01',
             'formaDePago' => 'NO DEBE EXISTIR', //esto lo quita en la clase xml, pero la clase cfdi espera un valor

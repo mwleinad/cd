@@ -128,6 +128,8 @@ class Pac33 extends Util
 
         //$namespace = "http://facturacion.finkok.com/stamp";
         $response = $client->__soapcall("stamp", array($params));
+        //print_r($response);
+        //exit;
         if(count($response->stampResult->Incidencias->Incidencia))
         {
             if($response->stampResult->Incidencias->Incidencia->MensajeIncidencia == "XML mal formado")

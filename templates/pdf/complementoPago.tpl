@@ -8,14 +8,14 @@
                 <td class="border-top" width="20%"><strong>Forma pago</strong></td>
                 <td class="border-top" width="20%"><strong>Moneda</strong></td>
                 <td class="border-top" width="20%"><strong>Monto</strong></td>
-                <td class="border-top" width="20%"><strong># Operacion</strong></td>
+                {*<td class="border-top" width="20%"><strong># Operacion</strong></td>*}
             </tr>
             <tr class="border-right border-bottom">
                 <td class="left">{$pago.pago.FechaPago|replace:"T":" "}</td>
                 <td class="left">{$pago.pago.FormaDePagoP}</td>
                 <td class="left">{$pago.pago.MonedaP}</td>
                 <td class="left">{$pago.pago.Monto|number}</td>
-                <td class="left">{$pago.pago.NumOperacion}</td>
+                {*<td class="left">{$pago.pago.NumOperacion}</td>*}
             </tr>
             <tr class="border-right">
                 <td colspan="1" width="20%" class="pad-left no-border-right">

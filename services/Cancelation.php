@@ -38,7 +38,7 @@ class Cancelation extends Main {
 
     public function getStatus($orgId, $taxPayerId, $rTaxPayerId, $uuid, $total) {
 
-        $url = $orgId ? "https://demo-facturacion.finkok.com/servicios/soap/cancel.wsdl" :
+        $url = $orgId === 15 ? "https://demo-facturacion.finkok.com/servicios/soap/cancel.wsdl" :
             "https://facturacion.finkok.com/servicios/soap/cancel.wsdl";
 
         $client = new SoapClient($url);
