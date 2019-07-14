@@ -4,6 +4,7 @@ class Cancelation extends Main {
 
     const REJECTED = 'Solicitud rechazada';
     const CANCELLED = 'Cancelado';
+    const CANCELLED_NO_ACCEPTED= 'Cancelado sin aceptación';
 
     public function addPetition($orgId, $cfdiId, $taxPayerId, $rTaxPayerId, $uuid, $total, $cancelationMotive) {
         //TODO there might be a chance that the total has to come directly from the xml just in case
@@ -61,7 +62,7 @@ class Cancelation extends Main {
             $this->deleteCancelRequest($cfdi["solicitud_cancelacion_id"]);
         }
 
-        if($response->Estado === self::CANCELLED) {
+        if($response->Estado === self::CANCELLED || $response->Estado) {
             $date = date("Y-m-d");
 
             $sqlQuery = 'UPDATE comprobante SET motivoCancelacion = "'.$cfdi['cancelation_motive'].'", 
