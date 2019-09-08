@@ -68,14 +68,20 @@
 
 {if $info.aceptacionTerminosDeServicio2017 != ''}
     <div style="font-size:14px; border:solid; border-width:1px; background-color:#CAFFF8; padding:5px; text-align: center">
+        <p style="font-size: 20px;color: red;">¡¡¡IMPORTANTE!!! ¡¡¡IMPORTANTE!!! ¡¡¡IMPORTANTE!!!</p>
         <p>
-            Esta es una version nueva por lo que puede tener errores. <br>
-            Favor de reportar cualquier error de esta version al correo de:<br>
+            Debido a las nuevas disposiciones del SAT es NECESARIO firmar el contrato de servicios del nuevo PAC<br>
+            Cualquier duda favor de comunicarse al correo:<br>
             <a href="mailto:comprobantefiscal@braunhuerin.com.mx">comprobantefiscal@braunhuerin.com.mx</a>
         </p>
+        <p style="font-weight: bold">
+            De no hacerlo no podra emitir mas timbres. La fecha limite para el registro es el 30 de Agosto del 2019.
+        </p>
         <p>
-            Para conocer mas de la nueva version puedes consultar la pagina del SAT en:
-            <a target="_blank" href="http://sat.gob.mx/informacion_fiscal/factura_electronica/Paginas/Anexo_20_version3.3.aspx">CFDi 3.3</a>
+            El contrato lo pueden firmar aqui:
+            <br>
+            <a style="font-size: 16px; font-weight: bold" target="_blank" href="https://manifiesto.cfdiquadrum.com.mx/IPmU">Contrato PAC Centro de Validacion Digital</a>
+            <br>Necesitaran su Firma Electronica.
         </p>
         <p style="text-align: center">
             <a style="font-size: 20px" target="_blank" href="https://app.ilosvideos.com/view/mWfBcgUKU2So">Ver video tutorial</a>

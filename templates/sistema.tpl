@@ -166,7 +166,15 @@ style='border: none; overflow: hidden; margin-top: -19px; width: 402px; height: 
             <p>Si desea continuar disfrutando de nuestro servicio contactanos al correo <a href="mailto:comprobantefiscal@braunhuerin.com.mx">comprobantefiscal@braunhuerin.com.mx</a></p>
 	</div>
   {/if}
-    
+
+<div style="font-size:18px; border:solid; border-width:1px; background-color:#eee; padding:5px">
+	<p style="font-size: 30px; text-align: center; color: red">¡ATENCION! COMUNICADO</p>
+	<p>Se les comunica a todos los clientes que en la proxima semana se llevara a cabo un cambio de PAC. Finkok ya no sera el PAC utilizado por el sistema. El NUEVO PAC sera
+		<a href='http://omawww.sat.gob.mx/tramitesyservicios/Paginas/pac_quadrum.htm' target='_blank'>Centro de Validacion Digital</a>
+		Se recomienda hacer caso omiso a los correos recibidos de parte del SAT. El PAC sera cambiado conforme a las disposiciones fiscales y los comprobantes seguiran siendo 100% validos
+	</p>
+</div>
+
 <div style="text-align:center">
 <br />
 
