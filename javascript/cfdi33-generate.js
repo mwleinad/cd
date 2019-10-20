@@ -399,6 +399,18 @@ function GenerarComprobante(format)
     if($('referencia')) var referencia = $('referencia').value;
     else var referencia = 0;
 
+    if($('nombreAlumno')) var nombreAlumno = $('nombreAlumno').value;
+    else var nombreAlumno = 0;
+
+    if($('curpAlumno')) var curpAlumno = $('curpAlumno').value;
+    else var curpAlumno = 0;
+
+    if($('rvoe')) var rvoe = $('rvoe').value;
+    else var rvoe = 0;
+
+    if($('nivelEducativo')) var nivelEducativo = $('nivelEducativo').value;
+    else var nivelEducativo = 0;
+
     new Ajax.Request(WEB_ROOT+'/ajax/cfdi33.php',
         {
             parameters: {
@@ -421,11 +433,14 @@ function GenerarComprobante(format)
                 banco:banco,
                 fechaDeposito:fechaDeposito,
                 referencia:referencia,
+                nombreAlumno:nombreAlumno,
+                curpAlumno:curpAlumno,
+                rvoe:rvoe,
+                nivelEducativo:nivelEducativo,
             },
             method:'post',
             onSuccess: function(transport){
                 var response = transport.responseText || "no response text";
-                console.log(response);
                 var splitResponse = response.split("|");
 
                 $('showFactura').innerHTML = "";
@@ -577,8 +592,6 @@ function EnviarEmail(id){
             parameters: {type: 'enviar_email', id_comprobante: id},
             onSuccess: function(transport){
                 var response = transport.responseText || "no response text";
-                console.log(response);
-                //	alert(response);
                 var splitResponse = response.split("[#]");
                 if(splitResponse[0] == "ok"){
                     ShowStatusPopUp(splitResponse[1])

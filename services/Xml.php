@@ -130,6 +130,10 @@ class Xml extends Producto{
             $this->root->setAttribute('xmlns:implocal', "http://www.sat.gob.mx/implocal");
         }
 
+        if($_SESSION['complementoInstEducativas']) {
+            $xsd = "http://www.sat.gob.mx/iedu http://www.sat.gob.mx/sitio_internet/cfd/iedu/iedu.xsd";
+            $this->root->setAttribute('xmlns:iedu', "http://www.sat.gob.mx/iedu");
+        }
         $this->buildXsd($xsd);
 
         return $this->save();
@@ -628,6 +632,26 @@ class Xml extends Producto{
                         $this->retencionesGlobales['001'][(string)$tasa] +=  $this->Util()->CadenaOriginalVariableFormat($concepto["totalRetencionIsr"],true,false);
                     }
                 }
+            }
+
+            if(isset($concepto['complementoEscuelaParticular'])) {
+                $complementoConcepto = $this->xml->createElement("cfdi:ComplementoConcepto");
+                $complementoConcepto = $myConcepto->appendChild($complementoConcepto);
+
+                $instEducativas = $this->xml->createElement("iedu:instEducativas");
+                $instEducativas = $complementoConcepto->appendChild($instEducativas);
+
+                $dataInstEducativas = $concepto['complementoEscuelaParticular'];
+
+                $this->CargaAtt($instEducativas, [
+                        "version"=> "1.0",
+                        "nombreAlumno"=> $this->Util()->CadenaOriginalVariableFormat($dataInstEducativas["nombreAlumno"],false,false),
+                        "CURP"=>$this->Util()->CadenaOriginalVariableFormat(strtoupper($dataInstEducativas["CURP"]),false,false),
+                        "nivelEducativo"=>$this->Util()->CadenaOriginalVariableFormat($dataInstEducativas["nivelEducativo"],false,false),
+                        "autRVOE"=>$this->Util()->CadenaOriginalVariableFormat($dataInstEducativas["autRVOE"],false,false),
+                        "rfcPago"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["rfc"],false,false),
+                    ]
+                );
             }
 
             if(strlen($concepto["cuentaPredial"]) > 0)

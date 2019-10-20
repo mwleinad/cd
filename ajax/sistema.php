@@ -89,7 +89,6 @@ switch($_POST["type"])
 			echo "ok|ok";
 		}
 		echo "|";
-		//print_r($_SESSION["conceptos"]);
 		$smarty->assign("conceptos", $_SESSION["conceptos"]);
 		$smarty->assign("DOC_ROOT", DOC_ROOT);
 		$smarty->display(DOC_ROOT.'/templates/lists/conceptos.tpl');
@@ -110,11 +109,6 @@ switch($_POST["type"])
 	
 		break;
 	case "updateTotalesDesglosados":
-
-/*		$totalDesglosado = $totales->calculate();
-		//print_r($totalDesglosado);
-		$totalDesglosado = $producto->GetTotalDesglosado();*/
-
 		$totalDesglosado = $producto->GetTotalDesglosado();
 		$smarty->assign("impuestos", $totalDesglosado["impuestos"]);
 		unset($totalDesglosado["impuestos"]);		
@@ -150,6 +144,7 @@ switch($_POST["type"])
 		$data["banco"] = $_POST["banco"];
 		$data["fechaDeposito"] = $_POST["fechaDeposito"];
 		$data["referencia"] = $_POST["referencia"];
+
 
 		
 		if($_POST["fechaSobreDia"] && $_POST["fechaSobreMes"] && $_POST["fechaSobreAnio"])

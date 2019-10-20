@@ -183,6 +183,13 @@ class Cfdi extends Comprobante
             unset($_SESSION['amortizacion']);
         }
 
+        if(!empty($data['nombreAlumno']) || !empty($data['curpAlumno']) || !empty($data['rvoe'])) {
+            if(empty($data['nombreAlumno']) || strlen($data['curpAlumno']) !== 18 || empty($data['rvoe'])) {
+                $vs->Util()->setError(10047, "error", "El complemento para escuelas particulares requiere que llenes todos los datos");
+                if($vs->Util()->PrintErrors()){ return false; }
+            }
+        }
+
         include_once(DOC_ROOT.'/services/Xml.php');
         $xml = new Xml($data);
 
@@ -201,11 +208,22 @@ class Cfdi extends Comprobante
 
         $data["nodoReceptor"] = $nodoReceptor;
         //checar si nos falta unidad en alguno
-        foreach($_SESSION["conceptos"] as $concepto)
+        unset($_SESSION['complementoInstEducativas']);
+        foreach($_SESSION["conceptos"] as $key => $concepto)
         {
             if($concepto["unidad"] == "")
             {
                 $vs->Util()->setError(10048, "error", "El campo de Unidad no puede ser vacio");
+            }
+
+            if(!empty($data['nombreAlumno']) && strlen($data['curpAlumno']) === 18 && !empty($data['rvoe'])) {
+                $_SESSION['complementoInstEducativas'] = true;
+                $_SESSION["conceptos"][$key]['complementoEscuelaParticular'] = [
+                    'nombreAlumno' => $data['nombreAlumno'],
+                    'CURP' => $data['curpAlumno'],
+                    'nivelEducativo' => $data['nivelEducativo'],
+                    'autRVOE' => $data['rvoe'],
+                ];
             }
         }
 
@@ -256,6 +274,7 @@ class Cfdi extends Comprobante
         } else {
             unset($_SESSION['firmas']['pago']);
         }
+
 
         //XML sin sello
         $xml = new Xml($data);

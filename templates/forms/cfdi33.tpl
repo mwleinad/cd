@@ -378,6 +378,37 @@
  					<hr />
   		</div>
 
+    {if $info.empresaId == 15 || $info.empresaId == 237}
+        Complemento escuelas particulares:<br>
+        <div class="formLine">
+            <div style="width:200px;float:left">Nombre alumno</div>
+            <div style="width:200px;float:left">CURP alumno</div>
+            <div style="width:250px;float:left">Nivel Educativo</div>
+            <div style="width:200px;float:left">RVOE</div>
+
+            <div style="clear:both"></div>
+        </div>
+        <div class="formLine">
+            <div style="width:200px;float:left">
+                <input name="nombreAlumno" id="nombreAlumno" type="text" value="{$post.unidad}"  size="20" class="largeInput"  placeholder="Nombre Alumno"/></div>
+            <div style="width:200px;float:left">
+                <input name="curpAlumno" id="curpAlumno" type="text" value="{$post.valorUnitario}"  size="20" class="largeInput"  placeholder="Curp Alumno"  onblur=""/></div>
+
+            <div style="width:250px;float:left">
+                <select name="nivelEducativo" id="nivelEducativo" class="largeInput" style="width: 200px">
+                    <option value="Preescolar">Preescolar</option>
+                    <option value="Primaria">Primaria</option>
+                    <option value="Secundaria">Secundaria</option>
+                    <option value="Profesional técnico">Profesional técnico</option>
+                    <option value="Bachillerato o su equivalente">Bachillerato o su equivalente</option>
+                </select>
+            </div>
+            <div style="width:200px;float:left">
+                <input name="rvoe" id="rvoe" type="text" size="20" class="largeInput" placeholder="RVOE"/></div>
+            <div style="clear:both"></div>
+        </div>
+        <br>
+    {/if}
       {if $info.empresaId == 15 || $info.empresaId == 333}
           <div class="formLine">
               Extra Escuela:<br>

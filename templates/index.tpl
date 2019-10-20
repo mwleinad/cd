@@ -275,7 +275,7 @@ function validar(nombre,correo,telefono,mensaje)
 {*
 <script src="{$WEB_ROOT}/javascript/clearbox.js" type="text/javascript"></script>
 *}
-<script src="{$WEB_ROOT}/javascript/{$page}.js" type="text/javascript"></script>
+<script src="{$WEB_ROOT}/javascript/{$page}.js?{time()}" type="text/javascript"></script>
 
 
 

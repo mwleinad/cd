@@ -93,7 +93,6 @@ switch($_POST["type"])
             echo "ok|ok";
         }
         echo "|";
-        //print_r($_SESSION["conceptos"]);
         $smarty->assign("conceptos", $_SESSION["conceptos"]);
         $smarty->assign("DOC_ROOT", DOC_ROOT);
         $smarty->display(DOC_ROOT.'/templates/lists/conceptos.tpl');
@@ -152,6 +151,11 @@ switch($_POST["type"])
 
         $data["format"] = $_POST["format"];
 
+        //Complemento escuela particular
+        $data["nombreAlumno"] = $_POST["nombreAlumno"];
+        $data["curpAlumno"] = $_POST["curpAlumno"];
+        $data["nivelEducativo"] = $_POST["nivelEducativo"];
+        $data["rvoe"] = $_POST["rvoe"];
 
         if($_POST["fechaSobreDia"] && $_POST["fechaSobreMes"] && $_POST["fechaSobreAnio"])
         {
