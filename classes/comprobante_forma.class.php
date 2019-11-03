@@ -364,7 +364,7 @@ class ComprobanteForma extends Comprobante
 			case "EUR": $data["tiposDeMoneda"] = "euro"; break;
 		}
 		
-		if($_SESSION["empresaId"] == 333)
+		if($_SESSION["empresaId"] == 333 || $_SESSION["empresaId"] == 1356)
 		{
 			$add = "
 				`banco`,

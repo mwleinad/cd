@@ -836,7 +836,6 @@ $permisos = 'a%3A11%3A%7Bi%3A0%3Bs%3A8%3A%22usuarios%22%3Bi%3A1%3Bs%3A13%3A%22nu
 			exit();
 		}
 		//print_r($_POST);
-		//echo $_REQUEST["page"];
 		//exit;
 		if($empresa["actualizado"] == 'No' && (SITENAME == "FACTURASE" OR SITENAME == "PASCACIO"))
 		{
@@ -846,7 +845,7 @@ $permisos = 'a%3A11%3A%7Bi%3A0%3Bs%3A8%3A%22usuarios%22%3Bi%3A1%3Bs%3A13%3A%22nu
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT COUNT(*) FROM comprobante WHERE empresaId =".$_SESSION["empresaId"]);
 		$facturas = $this->Util()->DBSelect($_SESSION["empresaId"])->GetSingle();
 
-		if($facturas > $empresa["limite"] && $empresa["limite"] > 0)
+		if($facturas > $empresa["limite"] && $empresa["limite"] > 0  && $_GET["section"] != "consultar-facturas")
 		{
 			$this->Util()->LoadPage('activar');
 		}

@@ -324,7 +324,7 @@ class Cfdi extends Comprobante
 
         //TODO addenda continental
         /*include_once(DOC_ROOT."/addendas/addenda_xml.php");*/
-        if($empresa["empresaId"] == 15 || $empresa["empresaId"] == 333){
+        if($empresa["empresaId"] == 15 || $empresa["empresaId"] == 333 || $_SESSION["empresaId"] == 1356){
 
             if($data['nodoReceptor']['noControl'] ||
                 $data['nodoReceptor']['carrera'] ||
@@ -348,7 +348,7 @@ class Cfdi extends Comprobante
         }
 
         //TODO lo del tec
-        if($_SESSION["empresaId"] == 333)
+        if($_SESSION["empresaId"] == 333 || $_SESSION["empresaId"] == 1356)
         {
             $add = "
 				`banco`,

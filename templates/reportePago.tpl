@@ -35,15 +35,13 @@
 <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHostedGuest">
 <table width="100%">
 <tr><td><input type="hidden" name="on0" value="Timbres Fiscales">Timbres Fiscales</td></tr><tr><td><select name="os0">
-	<option value="50">50 Timbres $400.00 MXN</option>
-	<option value="100">100 Timbres $700.00 MXN</option>
-	<option value="150">150 Timbres $900.00 MXN</option>
-	<option value="200">200 Timbres $1,200.00 MXN</option>
-	<option value="300">300 Timbres $1,300.00 MXN</option>
-	<option value="500">500 Timbres $1,500.00 MXN</option>
-	<option value="1000">1000 Timbres $2,500.00 MXN</option>
-	<option value="1500">1500 Timbres $3,000.00 MXN</option>
-	<option value="2000">2000 Timbres $3,600.00 MXN</option>
+	<option value="50">50 Timbres $464.00 MXN</option>
+	<option value="100">100 Timbres $812.00 MXN</option>
+	<option value="200">200 Timbres $1,392.00 MXN</option>
+	<option value="500">500 Timbres $1,740.00 MXN</option>
+	<option value="1000">1000 Timbres $2,900.00 MXN</option>
+	<option value="1500">1500 Timbres $3,480.00 MXN</option>
+	<option value="2000">2000 Timbres $4,176.00 MXN</option>
 </select> </td></tr>
 </table>
 <input type="hidden" name="currency_code" value="MXN">

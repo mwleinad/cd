@@ -23,6 +23,7 @@
 					//print_r($_SESSION["conceptos"]);
 					$pdf = $override->GeneratePDF($data, $serie, $totales, $nodoEmisor, $nodoReceptor, $_SESSION["conceptos"],$empresa,0);break;
 				case 333:
+                case 1356:
 					include_once(DOC_ROOT."/classes/override_generate_pdf_333.php");
 					$override = new Override;
 					//print_r($_SESSION["conceptos"]);

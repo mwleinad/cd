@@ -374,7 +374,6 @@ Andres*/
 	}	
 	if($vencimientoImpuestos < $now)
 	{
-		echo "jere";
 		$smarty->assign("expiredImpuestos", 1);
 	}
 	

@@ -285,7 +285,7 @@ $smarty->assign("nuevosPermisos",$_SESSION['nuevosPermisos2']);
 				$comprobantes = $comprobante->SearchComprobantesByRfc($values);		
 				
 				
-				if($_SESSION["empresaId"] == 333)
+				if($_SESSION["empresaId"] == 333 || $_SESSION["empresaId"] == 1356)
 				{
 					$data .= "Serie,Folio,RFC,Razon Social,Fecha,Subtotal,% Descuento,Descuento,Iva,Total,Tipo Moneda,Tipo de Cambio,% Retencion Iva,% Retencion ISR,% IEPS, Status, Tipo Comprobante, XML, Pagos, Pagos, Estatus Pago, Carrera, # Control, Banco, Fecha Deposito, Referencia, Concepto \n";
 				}
@@ -295,7 +295,7 @@ $smarty->assign("nuevosPermisos",$_SESSION['nuevosPermisos2']);
 
 				}
 
-				if($_SESSION["empresaId"] == 333)
+				if($_SESSION["empresaId"] == 333 || $_SESSION["empresaId"] == 1356)
 				{
 					foreach($comprobantes["items"] as $comprobante)
 					{

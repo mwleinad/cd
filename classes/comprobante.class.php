@@ -894,7 +894,7 @@ class Comprobante extends Producto
 					ORDER BY 
 							c.fecha DESC';*/
 
-				if($_SESSION["empresaId"] == 333)
+				if($_SESSION["empresaId"] == 333  || $_SESSION["empresaId"] == 1356)
 				{
 					$add = ", cliente.carrera, cliente.noControl";
 				}
@@ -966,7 +966,7 @@ class Comprobante extends Producto
 				$card["statusPayment"] = "Pagada";
 			}
 
-			if($_SESSION["empresaId"] == 333)
+			if($_SESSION["empresaId"] == 333  || $_SESSION["empresaId"] == 1356)
 			{
 				$card['carrera'] = $val['carrera'];
 				$card['control'] = $val['noControl'];

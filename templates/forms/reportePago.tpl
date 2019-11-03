@@ -114,17 +114,15 @@
         <div style="width:150px;float:left">*Monto y Concepto del Deposito:</div> 
         <div style="width:750px;float:left">
         <select name="monto" id="monto"  class="largeInput">
-        	<option value="50-400">50 Timbres $400.00</option>
-        	<option value="100-700">100 Timbres $700.00</option>
-        	<option value="150-900">150 Timbres $900.00</option>
-        	<option value="200-1200">200 Timbres $1,200.00</option>
-        	<option value="300-1300">300 Timbres $1,300.00</option>
-        	<option value="500-1300">500 Timbres $1,500.00</option>
-        	<option value="1000-2500">1000 Timbres $2,500.00</option>
-        	<option value="1000-3000">1500 Timbres $3,000.00</option>
-        	<option value="2000-3600">2000 Timbres $3,600.00</option>
-        	<option value="impuesto-1600">Modulo de Impuestos 1 a&Ntilde;o $1,600.00</option>
-        	<option value="nomina-1000">Modulo de Nomina 1 a&Ntilde;o $1,000.00</option>
+        	<option value="50-400">50 Timbres $464.00</option>
+        	<option value="100-700">100 Timbres $812.00</option>
+        	<option value="200-1200">200 Timbres $1,392.00</option>
+        	<option value="500-1300">500 Timbres $1,740.00</option>
+        	<option value="1000-2500">1000 Timbres $2,900.00</option>
+        	<option value="1000-3000">1500 Timbres $3,480.00</option>
+        	<option value="2000-3600">2000 Timbres $4,176.00</option>
+        	<option value="impuesto-1600">Modulo de Impuestos 1 a&Ntilde;o $1,856.00</option>
+        	<option value="nomina-1000">Modulo de Nomina 1 a&Ntilde;o $1,160.00</option>
         </select>
         </div>       
        	<div style="clear:both; padding-top:5px"></div>

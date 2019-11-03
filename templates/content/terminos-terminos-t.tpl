@@ -69,7 +69,7 @@ Empresa SA tendra disponibles 80 Timbres fiscales para el resto del año o hasta
 <p>Para que nuestro equipo le realice una factura los costos son de $100.00 por factura.</p>
 <p><strong>h) Addendas</strong></p>
 <p>Las addendas tienen un costo variable dependiendo de que addenda necesite.</p>
-<p><strong>i) Recuerde que todos los precios aqui publicados YA tienen el IVA incluido.</strong></p>
+<p><strong>i) Recuerde que todos los precios aqui publicados NO tienen el IVA incluido.</strong></p>
 <p><br />
   <br />
 </p>
