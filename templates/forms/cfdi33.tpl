@@ -409,7 +409,7 @@
         </div>
         <br>
     {/if}
-      {if $info.empresaId == 15 || $info.empresaId == 333 || $_SESSION["empresaId"] == 1356}
+      {if $info.empresaId == 15 || $info.empresaId == 333 || $info.empresaId == 1356}
           <div class="formLine">
               Extra Escuela:<br>
               <div style="width:200px;float:left">
