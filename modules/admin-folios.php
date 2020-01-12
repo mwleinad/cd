@@ -220,40 +220,44 @@
 					}//if
 				}//if
 				
-				$comprobante->GenerarSelloGral($cadenaOriginal, $md5, $certificado, $llave, $pass, $id_rfc);
-				
-				//Checamos si se genero el archivo
-				$status = '';
-				$ruta_verified = $ruta_dir.'/verified.txt';
-				
-				if(file_exists($ruta_verified))
-					$status = file_get_contents($ruta_verified);
-				
-				if(trim($status) == 'Verified OK'){
-					
-					//guardamos el password
-					$myFile = $ruta_dir."/password.txt";
-					$fh = fopen($myFile, 'w');
-					$stringData = $pass;
-					fwrite($fh, $stringData);
-					
-					$smarty->assign('cmpMsg', 'Certificado actualizado correctamente.');				
-				}else{
-					$errMsg = 'Error al actualizar el certificado. Los datos no coinciden.';
-					$smarty->assign('errMsg', $errMsg);					
-					
-					//Borramos los archivos
-					if(is_dir($ruta_dir)){
-						if($gd = opendir($ruta_dir)){
-							while($archivo = readdir($gd)){
-								@unlink($ruta_dir.'/'.$archivo);
-							}//while
-							closedir($gd);
-						}//if
-					}//if
-					
-				}//else				
-				
+				if(!$comprobante->GenerarSelloGral($cadenaOriginal, $md5, $certificado, $llave, $pass, $id_rfc)) {
+                    $errMsg = 'Error al actualizar el certificado. Verifica que tu nombre de archivo .cer no contenga letras raras como ( o &';
+                    $smarty->assign('errMsg', $errMsg);
+                } else {
+                    //Checamos si se genero el archivo
+                    $status = '';
+                    $ruta_verified = $ruta_dir.'/verified.txt';
+
+                    if(file_exists($ruta_verified))
+                        $status = file_get_contents($ruta_verified);
+
+                    if(trim($status) == 'Verified OK'){
+
+                        //guardamos el password
+                        $myFile = $ruta_dir."/password.txt";
+                        $fh = fopen($myFile, 'w');
+                        $stringData = $pass;
+                        fwrite($fh, $stringData);
+
+                        $smarty->assign('cmpMsg', 'Certificado actualizado correctamente.');
+                    }else{
+                        $errMsg = 'Error al actualizar el certificado. Los datos no coinciden.';
+                        $smarty->assign('errMsg', $errMsg);
+
+                        //Borramos los archivos
+                        if(is_dir($ruta_dir)){
+                            if($gd = opendir($ruta_dir)){
+                                while($archivo = readdir($gd)){
+                                    @unlink($ruta_dir.'/'.$archivo);
+                                }//while
+                                closedir($gd);
+                            }//if
+                        }//if
+
+                    }//else
+                }
+
+
 			}else{
 				@unlink($ruta_destino);
 				@unlink($ruta_destino2);

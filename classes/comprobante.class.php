@@ -615,10 +615,12 @@ class Comprobante extends Producto
 		//generate merge
 		$nombreCertificado = substr($llave, 0, -4);
 		$noCertificado = $this->Util()->GetNoCertificado($root, $nombreCertificado);
-		
+
 		exec('openssl pkcs12 -export -out '.$root.'/'.$noCertificado.'.pfx -inkey '.$root.'/'.$certificado.'.pem -in '.$root.'/'.$llave.'.pem -passout pass:'.$pass);
 		//changed 02 agosto
-			
+
+        return strlen($noCertificado) === 20;
+
 	
 	}//GenerarSelloGral
 

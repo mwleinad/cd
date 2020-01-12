@@ -845,7 +845,12 @@ $permisos = 'a%3A11%3A%7Bi%3A0%3Bs%3A8%3A%22usuarios%22%3Bi%3A1%3Bs%3A13%3A%22nu
 		$this->Util()->DBSelect($_SESSION["empresaId"])->setQuery("SELECT COUNT(*) FROM comprobante WHERE empresaId =".$_SESSION["empresaId"]);
 		$facturas = $this->Util()->DBSelect($_SESSION["empresaId"])->GetSingle();
 
-		if($facturas > $empresa["limite"] && $empresa["limite"] > 0  && $_GET["section"] != "consultar-facturas")
+		if($facturas > $empresa["limite"] &&
+            $empresa["limite"] > 0  &&
+            $_GET["section"] != "consultar-facturas" &&
+            $_GET["page"] != "cfdi33-generate-pdf" &&
+            $_GET["section"] != "descargar-xml"
+        )
 		{
 			$this->Util()->LoadPage('activar');
 		}

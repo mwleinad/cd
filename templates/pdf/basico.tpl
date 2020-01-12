@@ -161,6 +161,9 @@
                 <strong>Nombre receptor:</strong> {$xmlData.receptor.Nombre}<br>
                 <strong>RFC receptor:</strong> {$xmlData.receptor.Rfc}<br>
                 <strong>Uso CFDI:</strong> {$xmlData.receptor.UsoCFDI} {$catalogos.UsoCFDI}<br>
+                {if $xmlData.cfdiRelacionados}
+                    <strong>CFDI Relacionado:</strong> {$xmlData.cfdiRelacionados.uuid} <br>
+                {/if}
                 {if $xmlData.escuela.noControl} <strong># Control:</strong> {$xmlData.escuela.noControl} {/if}<br>
                 {if $xmlData.escuela.carrera} <strong>Carrera:</strong> {$xmlData.escuela.carrera} {/if}<br>
             </td>
@@ -314,6 +317,14 @@
                 {if $concepto.cuentaPredial.Numero}
                     Cuenta predial: {$concepto.cuentaPredial.Numero}
                 {/if}
+
+                {if $concepto.instEducativas}
+                    Nombre alumno: {$concepto.instEducativas[0].nombreAlumno}<br>
+                    CURP: {$concepto.instEducativas[0].CURP}<br>
+                    RVOE: {$concepto.instEducativas[0].autRVOE}<br>
+                    Nivel educativo: {$concepto.instEducativas[0].nivelEducativo}<br>
+                {/if}
+
             </td>
         </tr>
         </tbody>

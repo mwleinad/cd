@@ -56,9 +56,9 @@ class PdfService extends Producto{
         $this->smarty->assign('catalogos', $catalogos);
 
         //Uncomment if you want to see a html version
-        if($empresaId == 15) {
+        //if($empresaId == 15) {
             //$this->smarty->display(DOC_ROOT.'/templates/pdf/basico.tpl');exit;
-        }
+        //}
         //$this->smarty->display(DOC_ROOT.'/templates/pdf/basico.tpl');exit;
 
         $html = $this->smarty->fetch(DOC_ROOT.'/templates/pdf/basico.tpl');
