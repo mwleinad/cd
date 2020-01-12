@@ -346,7 +346,7 @@
     {include file="{$DOC_ROOT}/templates/pdf/totales.tpl"}
 
 
-    {if ($empresaId == 15 || $empresaId == 333 || $_SESSION["empresaId"] == 1356) && $xmlData.impuestosLocales|count == 0}
+    {if ($empresaId == 15 || $empresaId == 333 || $empresaId == 1356) && $xmlData.impuestosLocales|count == 0}
         <table width="100%" class="outline-table">
             <tbody>
             <tr class="border-bottom border-right center font-smallest">
