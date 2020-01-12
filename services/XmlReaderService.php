@@ -46,6 +46,7 @@ class XmlReaderService extends Comprobante
             $concepto["traslados"] = $con->xpath('./cfdi:Impuestos/cfdi:Traslados/cfdi:Traslado');
             $concepto["retenciones"] = $con->xpath('./cfdi:Impuestos/cfdi:Retenciones/cfdi:Retencion');
             $concepto["cuentaPredial"] = $con->xpath('./cfdi:CuentaPredial')[0];
+            $concepto["instEducativas"] = @$con->xpath('./cfdi:ComplementoConcepto/iedu:instEducativas');
 
             $data["conceptos"][] = $concepto;
         }
