@@ -137,7 +137,7 @@ class Main
 	function ListRetIva()
 	{
 		$result = array(
-			0, 4, 10, 10.666666, 16);
+			0, 4, 6, 10, 10.666666, 16);
 		return $result;
 	}
 
