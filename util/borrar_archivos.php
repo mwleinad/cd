@@ -72,7 +72,7 @@ foreach($dirs as $key => $dir)
 	{
 		//numero de facturas
 		$util->DBSelect($name[2])->setQuery("
-			SELECT fecha FROM comprobante ORDER by comprobanteId DESC"
+			SELECT fecha FROM comprobante ORDER by comprobanteId DESC LIMIT 1"
 		);
 		$fecha = $util->DBSelect($name[2])->GetSingle();
 
@@ -82,7 +82,6 @@ foreach($dirs as $key => $dir)
 
 		if($compare < $anio && $compare != 0)
 		{
-
 			$util->DBSelect($name[2])->setQuery("
 				SELECT COUNT(*) FROM comprobante"
 			);
@@ -100,9 +99,9 @@ foreach($dirs as $key => $dir)
 }
 echo "Activos pero Mas de un anio sin facturar";
 print_r($noExiste);
-/*foreach($noExiste as $empresa) {
+foreach($noExiste as $empresa) {
     echo $empresa['0'].',';
-}*/
+}
 
 /*//$noExiste = array();
 foreach($dirs as $key => $dir)

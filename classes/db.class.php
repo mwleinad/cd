@@ -4,21 +4,21 @@ class DB
 {
 	public $query = NULL;
 	private $sqlResult = NULL;
-	
+
 	private $conn_id = false;
 
 	private $sqlHost;
 	private $sqlDatabase;
 	private $sqlUser;
 	private $sqlPassword;
-	
+
 	private $projectStatus = "test";
-	
+
 	public function setSqlHost($value)
 	{
 		$this->sqlHost = $value;
 	}
-	
+
 	public function getSqlHost()
 	{
 		return $this->sqlHost;
@@ -28,7 +28,7 @@ class DB
 	{
 		$this->sqlDatabase = $value;
 	}
-	
+
 	public function getSqlDatabase()
 	{
 		return $this->sqlDatabase;
@@ -38,7 +38,7 @@ class DB
 	{
 		$this->sqlUser = $value;
 	}
-	
+
 	public function getSqlUser()
 	{
 		return $this->sqlUser;
@@ -48,7 +48,7 @@ class DB
 	{
 		$this->sqlPassword = $value;
 	}
-	
+
 	public function getSqlPassword()
 	{
 		return $this->sqlPassword;
@@ -58,7 +58,7 @@ class DB
 	{
 		$this->query = $value;
 	}
-	
+
 	public function getQuery()
 	{
 		return $this->query;
@@ -68,7 +68,7 @@ class DB
 	{
 		$this->projectStatus = $value;
 	}
-	
+
 	public function getProjectStatus()
 	{
 		return $this->projectStatus;
@@ -82,29 +82,29 @@ class DB
 		$this->sqlPassword = SQL_PASSWORD;
 	}
 
-	public function DatabaseConnect(){    	
+	public function DatabaseConnect(){
 		$this->conn_id = mysqli_connect($this->sqlHost, $this->sqlUser, $this->sqlPassword, $this->sqlDatabase);
     	//mysqli_select_db($this->conn_id) or die("<br/>".mysqli_error()."<br/>");
   	}
-	
+
 	public function ExecuteQuery()
-	{		
+	{
 		if(!$this->conn_id)
 			$this->DatabaseConnect();
-		
+
 		$this->sqlResult = mysqli_query($this->conn_id, $this->query)  or die (trigger_error(mysqli_error($this->conn_id)));		;
 	}
-	
+
   function GetResult()
 	{
   	$retArray = array();
 
 		$this->ExecuteQuery();
-		
+
 	  while($rs=mysqli_fetch_assoc($this->sqlResult))
 		{
 	    	$retArray[] = $rs;
-		}	
+		}
 
     $this->CleanQuery();
 
@@ -114,7 +114,7 @@ class DB
   function GetTotalRows()
 	{
 		$this->ExecuteQuery();
-		
+
 		return mysqli_num_rows($this->sqlResult);
   }
 
@@ -133,6 +133,7 @@ class DB
         $rs = @mysqli_fetch_array($this->sqlResult);
 
         if(!$rs) {
+            $this->CleanQuery();
             return 0;
         }
 
@@ -168,7 +169,7 @@ class DB
 	{
 		return $this->UpdateData();
   }
-	
+
   function CleanQuery()
 	{
     @mysqli_free_result($this->sqlResult);
@@ -176,7 +177,7 @@ class DB
     unset($this->conn_id);
     //$this->query = "";
   }
-	
+
 	function EnumSelect( $table , $field )
 	{
 		$this->query = "SHOW COLUMNS FROM `$table` LIKE '$field' ";
@@ -189,7 +190,7 @@ class DB
 		$enum_fields = $enum_array[1];
 
 		return( $enum_fields );
-	}	
+	}
 }
 
 ?>
