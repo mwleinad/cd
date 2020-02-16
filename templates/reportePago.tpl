@@ -82,17 +82,17 @@ Clabe                   036-1805-0036-3256-464   <br />
 {else}
 <div style="clear:both"></div>
 
-<div style="float:left; width:400px; text-align:center; padding:10px">
+	<div style="float:left; width:400px; text-align:center; padding:10px">
 	<img src="{$WEB_ROOT}/images/bancos/bancomer.png" /><br />
-  A nombre de:Samuel Hernandez Toledo.	<br />
-  Cuenta: 0464051785	<br />
-  CLABE:012107004640517853<br />
+  A nombre de:Leticia Angel Hernandez.	<br />
+  Cuenta: 0473528960	<br />
+  CLABE: 012107004735289601<br />
 </div>
 
 <div style="float:left; width:400px; text-align:center; padding:10px">
 	<img src="{$WEB_ROOT}/images/bancos/oxxo.png" /><br />
-  A nombre de:Samuel Hernandez Toledo.	<br />
-  Tarjeta: 4555103002300922	<br />
+  A nombre de:Leticia Angel Hernandez.	<br />
+  Tarjeta: 0017 8030 0485 7882	<br />
 </div>
 
 <div style="float:left; width:400px; text-align:center; padding:10px">

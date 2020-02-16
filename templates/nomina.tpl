@@ -29,11 +29,12 @@
             </tr>
             </table> 
             
-              <p>Banco:Banamex. <br />
-                A nombre de:Samuel Hernandez Angel.	<br />
-                Cuenta: 0179 224996	<br />
-              CLABE:002100017902249960.	</p>
-              <p>O al Paypal dlopez@trazzos.com</p>
+              <p>        Banco: Bancomer<br />
+                  Leticia Angel Hernandez<br />
+                  Sucursal: <b>0179</b><br />
+                  Cuenta: <b>0473528960</b><br />
+                  CLABE: <b>012107004735289601</b><br />
+    <p>O al Paypal dlopez@trazzos.com</p>
               <p><br />
                 
                 Si necesita factura o tiene alguna duda, favor de mandar un correo a ventas@pascacio.com.mx

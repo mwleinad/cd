@@ -49,7 +49,7 @@ Este documento describe los términos y condiciones generales aplicables al acce
 20. En lo relativo a los costos del servicio por favor sírvase referirse al anexo 1 al final de esta hoja.
 
 21. Este acuerdo estará regido por las leyes de los Estados Unidos Mexicanos. Cualquier controversia derivada del presente acuerdo, su existencia, validez, interpretación, alcance o cumplimiento, será sometida a las leyes aplicables y a los Tribunales del Distrito Federal competentes para su conocimiento.
-ComprobanteDigital, es representada por el c. Samuel Hernandez Angel.
+ComprobanteDigital, es representada por la c. Leticia Angel Hernandez.
 
 21. La página web www.comprobantedigital.mx así como la aplicación son gestionados por:
 ComprobanteDigital
@@ -109,7 +109,7 @@ i) Recuerde que todos los precios aquí publicados son MAS IVA.
 
 GLOSARIO:
 USUARIO: Es la persona física o moral que accede al sitio voluntariamente.
-ComprobanteDigital: Es una Pagina web y plataforma para la conexión entre USUARIO Y PAC representante legal es Samuel Hernandez Angel.
+ComprobanteDigital: Es una Pagina web y plataforma para la conexión entre USUARIO Y PAC representante legal es Leticia Angel Hernandez.
 CFDi: Comprobante Fiscal Digital a través de internet.
 PAC: Proveedor Autorizado de Certificación.
 SAT: Servicio de Administración Tributaria.

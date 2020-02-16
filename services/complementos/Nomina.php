@@ -52,8 +52,8 @@ if($totalDeducciones > 0)
     $nominaMain["TotalDeducciones"] = $this->Util()->CadenaOriginalVariableFormat($totalDeducciones, true, false);
 }
 
-if($totalOtrosPagos > 0)
-{
+
+if(count($_SESSION["otrosPagos"]) > 0) {
     $nominaMain["TotalOtrosPagos"] = $this->Util()->CadenaOriginalVariableFormat($totalOtrosPagos, true, false);
 }
 

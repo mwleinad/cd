@@ -1,6 +1,6 @@
 <?php
 $property["config"]["depositoBancario"] = "<br />Banco: banamex<br />
-Samuel Hernandez Angel<br />
+Leti<br />
 Sucursal: <b>0179</b><br />
 Cuenta: <b>224996</b><br />
 CLABE: <b>002100017902249960</b><br />";
