@@ -88,28 +88,36 @@ $antiguedad = "P".$antiguedad."W";
 
 $receptor = $this->xml->createElement("nomina12:Receptor");
 $receptor = $this->myComplementoNomina->appendChild($receptor);
-$this->CargaAtt(
-    $receptor,
-    array(
-        "Curp"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["curp"], false, false),
-        "NumSeguridadSocial"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["numSeguridadSocial"], false, false),
-        "FechaInicioRelLaboral"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["fechaInicioRelLaboral"], false, false),
-        "Antigüedad"=>$this->Util()->CadenaOriginalVariableFormat($antiguedad, false, false),
-        "TipoContrato"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["tipoContrato"], false, false),
-        "TipoJornada"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["tipoJornada"], false, false),
-        "TipoRegimen"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["tipoRegimen"], false, false),
-        "NumEmpleado"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["numEmpleado"], false, false),
-        "Departamento"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["departamento"], false, false),
-        "Puesto"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["puesto"], false, false),
-        "RiesgoPuesto"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["riesgoPuesto"], false, false),
-        "PeriodicidadPago"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["periodicidadPago"], false, false),
-        "Banco"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["banco"], false, false),
-        "CuentaBancaria"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["clabe"], false, false),
-        "SalarioBaseCotApor"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["salarioBaseCotApor"], true, false),
-        "SalarioDiarioIntegrado"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["salarioDiarioIntegrado"], true, false),
-        "ClaveEntFed"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["estado"], false, false),
-    )
+
+$datosEmpleado = array(
+    "Curp"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["curp"], false, false),
+    "NumSeguridadSocial"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["numSeguridadSocial"], false, false),
+    "FechaInicioRelLaboral"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["fechaInicioRelLaboral"], false, false),
+    "Antigüedad"=>$this->Util()->CadenaOriginalVariableFormat($antiguedad, false, false),
+    "TipoContrato"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["tipoContrato"], false, false),
+    "TipoJornada"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["tipoJornada"], false, false),
+    "TipoRegimen"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["tipoRegimen"], false, false),
+    "NumEmpleado"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["numEmpleado"], false, false),
+    "Departamento"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["departamento"], false, false),
+    "Puesto"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["puesto"], false, false),
+    "RiesgoPuesto"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["riesgoPuesto"], false, false),
+    "PeriodicidadPago"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["periodicidadPago"], false, false),
+    "Banco"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["banco"], false, false),
+    "CuentaBancaria"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["clabe"], false, false),
+    "SalarioBaseCotApor"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["salarioBaseCotApor"], true, false),
+    "SalarioDiarioIntegrado"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["salarioDiarioIntegrado"], true, false),
+    "ClaveEntFed"=>$this->Util()->CadenaOriginalVariableFormat($this->data["nodoReceptor"]["estado"], false, false),
 );
+
+if($datosEmpleado['TipoContrato'] === "09") {
+    unset($datosEmpleado['FechaInicioRelLaboral']);
+    unset($datosEmpleado['Antigüedad']);
+    unset($datosEmpleado['RiesgoPuesto']);
+    unset($datosEmpleado['SalarioDiarioIntegrado']);
+    unset($datosEmpleado['NumSeguridadSocial']);
+}
+
+$this->CargaAtt($receptor, $datosEmpleado);
 
 //percepciones
 $percepcion = $this->xml->createElement("nomina12:Percepciones");
