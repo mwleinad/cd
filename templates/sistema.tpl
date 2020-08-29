@@ -1,4 +1,4 @@
-{if ($SITENAME == "PASCACIO" OR $SITENAME == "FACTURASE")}  
+{if ($SITENAME == "PASCACIO" OR $SITENAME == "FACTURASE")}
 <!-- Facebook Popup Widget START --><!-- Brought to you by www.JasperRoberts.com - www.TheBlogWidgets.com -->
 <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js' type='text/javascript'></script>
 <style>
@@ -140,28 +140,28 @@ style='border: none; overflow: hidden; margin-top: -19px; width: 402px; height: 
 	{if $info.razonSocial == "" && $info.empresaId > 1175}
   <div style="font-size:18px; border:solid; border-width:1px; background-color:#FF9; padding:5px">
     	No has configurado tus datos de RFC <a href="{$WEB_ROOT}/datos-generales">Configuracion > Mi Empresa.</a>
-  </div>   
+  </div>
   {/if}
 
 	{if $info.version != "auto" && $certNuevo == ""}
   <div style="font-size:18px; border:solid; border-width:1px; background-color:#FF9; padding:5px">
     	No has subido tu Certificado de Sello Digital. Para subirlo Ir a la Secci&oacute;n de <a href="{$WEB_ROOT}/admin-folios/actualizar-certificado">Configuracion > Actualizar Certificado.</a>
-  </div>   
+  </div>
   {/if}
 	{if $noFolios == 0}
   <div style="font-size:18px; border:solid; border-width:1px; background-color:#FF9; padding:5px">
     	Tienes que subir al menos una serie de Folios. Para hacerlo ve a <a href="{$WEB_ROOT}/admin-folios/nuevos-folios">Configuracion > Folios > Nuevos Folios.</a>
-  </div>    
+  </div>
  {/if}
 	{if $countClientes == 0}
 	  <div style="font-size:18px; border:solid; border-width:1px; background-color:#FF9; padding:5px">
     	Tienes que agregar al menos un cliente. Para crearlo ve a la secci&oacute;n de <a href="{$WEB_ROOT}/cliente">CFDI's > Clientes > Nuevo Cliente</a></div>
   {/if}
     </ul>
-    
+
     {if $renew == 1}
    	<div style="font-size:14px; border:solid; border-width:1px; background-color:#eee; padding:5px">
-       	 
+
             <p>Recuerda que el {$vencimiento.vencimiento} es la fecha l&iacute;mite para realizar el pago de renovaci&oacute;n de tu sistema, a partir del cual se suspender&aacute; y no podr&aacute; seguir elaborando m&aacute;s Comprobantes.</p>
             <p>Si desea continuar disfrutando de nuestro servicio contactanos al correo <a href="mailto:comprobantefiscal@braunhuerin.com.mx">comprobantefiscal@braunhuerin.com.mx</a></p>
 	</div>
@@ -172,6 +172,12 @@ style='border: none; overflow: hidden; margin-top: -19px; width: 402px; height: 
 	<p>Se les comunica a todos los clientes que en la proxima semana se llevara a cabo un cambio de PAC. Finkok ya no sera el PAC utilizado por el sistema. El NUEVO PAC sera
 		<a href='http://omawww.sat.gob.mx/tramitesyservicios/Paginas/pac_quadrum.htm' target='_blank'>Centro de Validacion Digital</a>
 		Se recomienda hacer caso omiso a los correos recibidos de parte del SAT. El PAC sera cambiado conforme a las disposiciones fiscales y los comprobantes seguiran siendo 100% validos
+	</p>
+</div>
+
+<div style="font-size:18px; border:solid; border-width:1px; background-color:#eee; padding:5px">
+	<p style="font-size: 30px; text-align: center; color: red">NUMERO DE ATENCION</p>
+	<p>Se les recuerda que el número de WhatsApp es 961 25 44 731. La atención es únicamente a traves de WhatsApp. Por su comprensión, gracias.
 	</p>
 </div>
 
@@ -192,10 +198,10 @@ Adquirir Timbres y Reportar Pago<br />
 <iframe width="640" height="360" allowTransparency="true" mozallowfullscreen webkitallowfullscreen allowfullscreen style="background-color:transparent;" frameBorder="0" src="https://app.ilosvideos.com/embed/vQf9JfC1fHK8"></iframe>{/if}
 
 </div>
-{if ($SITENAME == "PASCACIO" OR $SITENAME == "FACTURASE")}  
+{if ($SITENAME == "PASCACIO" OR $SITENAME == "FACTURASE")}
 {/if}
 
-{*}    
+{*}
 <div style="font-size:18px; border:solid; border-width:1px; background-color:#FF9; padding:5px">
 	Despu&eacute;s  de la generaci&oacute;n del sello digital, puede tardar hasta 5 d&iacute;as para que el SAT los autorice basados en la lista de LCO. Si recibe el error "El RFC  no est&aacute; autorizado a firmar con el certificado XXXXXXXXXXXXXXXXXXXX (seg&uacute;n LCO).", entonces los sellos no han sido autorizados. Por favor, sea paciente mientras el SAT los autoriza.
     <br />En ocasiones si despu&eacute;s de 3 d&iacute;as no se ha recibido la autorizaci&oacute;n es posible que haya sido declinada, en este caso recomendamos hacer un nuevo sello. Si tampoco funciona acuda al centro de atenci&oacute;n del SAT m&aacute;s cercano.

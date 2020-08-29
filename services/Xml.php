@@ -108,7 +108,7 @@ class Xml extends Producto{
         }
 
         if($this->isNomina()){
-            $xsd = "http://www.sat.gob.mx/nomina http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd";
+            $xsd = "http://www.sat.gob.mx/nomina12 http://www.sat.gob.mx/sitio_internet/cfd/nomina/nomina12.xsd";
 
             $this->root->setAttribute('xmlns:nomina12', "http://www.sat.gob.mx/nomina12");
             $this->root->setAttribute('xmlns:catNomina', "http://www.sat.gob.mx/sitio_internet/cfd/catalogos/Nomina");

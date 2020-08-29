@@ -12,10 +12,10 @@
     <input type="hidden" name="rfc" value="{$info.rfc}" />
     <input type="hidden" name="razonSocial" value="{$info.razonSocial}" />
     <input type="hidden" name="interno" value="{$info.interno}" />
-    <fieldset>				
-             
+    <fieldset>
+
       <div class="formLine" style="width:100%; text-align:left">
-        <div style="width:150px;float:left">*Metodo de Pago:</div> 
+        <div style="width:150px;float:left">*Metodo de Pago:</div>
         <div style="width:750px;float:left">
         <select name="metodoPago" id="metodoPago" onchange="showHideData()"  class="largeInput">
         	<option value="">Elige...</option>
@@ -33,50 +33,50 @@
         	<option value="Paypal">Paypal</option>
           {/if}
         </select>
-        </div>       
+        </div>
        	<div style="clear:both; padding-top:5px"></div>
       </div>
 
           {if $info.interno == "No" && !$info.rfc}
       <div class="formLine" style="width:100%; text-align:left" id="showIfBanco">
-        <div style="width:150px;float:left">*Banco:</div> 
+        <div style="width:150px;float:left">*Banco:</div>
         <div style="width:750px;float:left">
         <select name="banco" id="banco" onchange=""  class="largeInput">
-        	<option value="Bancomer 0464051785">Bancomer 0464051785</option>
-        	<option value="OXXO 4555103002300922">OXXO 4555103002300922</option>
+        	<option value="Bancomer 0464051785">Bancomer 0473528960</option>
+        	<option value="OXXO 4555113006661476">OXXO 4555113006661476</option>
         	<option value="Paypal">Paypal</option>
         </select>
-        </div>       
+        </div>
        	<div style="clear:both; padding-top:5px"></div>
       </div>
           {/if}
 
           {if $info.rfc && $info.interno == "No"}
       <div class="formLine" style="width:100%; text-align:left" id="showIfBanco">
-        <div style="width:150px;float:left">*Banco:</div> 
+        <div style="width:150px;float:left">*Banco:</div>
         <div style="width:750px;float:left">
         <select name="banco" id="banco" onchange=""  class="largeInput">
         	<option value="Banamex 8158768">Banamex 8158768</option>
         </select>
-        </div>       
+        </div>
        	<div style="clear:both; padding-top:5px"></div>
       </div>
           {/if}
 
 
-      
+
           {if $info.interno != "Si"}
       <div class="formLine" style="width:100%; text-align:left">
-        <div style="width:150px;float:left">*Fecha del Deposito:</div> 
+        <div style="width:150px;float:left">*Fecha del Deposito:</div>
         <div style="width:750px;float:left"><input name="fecha" id="fecha" type="date" size="30" value="{$post.fecha}" class="largeInput"/>
-        </div>       
+        </div>
        	<div style="clear:both; padding-top:5px"></div>
       </div>
       {/if}
-      
+
           {if $info.rfc && $info.interno == "Si"}
       <div class="formLine" style="width:100%; text-align:left">
-        <div style="width:150px;float:left">*Monto y Concepto del Deposito:</div> 
+        <div style="width:150px;float:left">*Monto y Concepto del Deposito:</div>
         <div style="width:750px;float:left">
         <select name="monto" id="monto"  class="largeInput">
         	<option value="50-58">50 Timbres $58.00</option>
@@ -87,14 +87,14 @@
         	<option value="1000-1160">1000 Timbres $1,160.00</option>
         	<option value="2000-2320">2000 Timbres $2,230.00</option>
         </select>
-        </div>       
+        </div>
        	<div style="clear:both; padding-top:5px"></div>
       </div>
       	{/if}
-      
+
           {if $info.rfc  && $info.interno == "No"}
       <div class="formLine" style="width:100%; text-align:left">
-        <div style="width:150px;float:left">*Monto y Concepto del Deposito:</div> 
+        <div style="width:150px;float:left">*Monto y Concepto del Deposito:</div>
         <div style="width:750px;float:left">
         <select name="monto" id="monto"  class="largeInput">
         	<option value="100-580">100 Timbres $580.00</option>
@@ -104,14 +104,14 @@
         	<option value="1000-2900">1000 Timbres $2,900.00</option>
         	<option value="2000-4640">2000 Timbres $4,640.00</option>
         </select>
-        </div>       
+        </div>
        	<div style="clear:both; padding-top:5px"></div>
       </div>
       	{/if}
 
           {if !$info.rfc}
       <div class="formLine" style="width:100%; text-align:left">
-        <div style="width:150px;float:left">*Monto y Concepto del Deposito:</div> 
+        <div style="width:150px;float:left">*Monto y Concepto del Deposito:</div>
         <div style="width:750px;float:left">
         <select name="monto" id="monto"  class="largeInput">
         	<option value="50-400">50 Timbres $464.00</option>
@@ -124,47 +124,47 @@
         	<option value="impuesto-1600">Modulo de Impuestos 1 a&Ntilde;o $1,856.00</option>
         	<option value="nomina-1000">Modulo de Nomina 1 a&Ntilde;o $1,160.00</option>
         </select>
-        </div>       
+        </div>
        	<div style="clear:both; padding-top:5px"></div>
       </div>
       	{/if}
 
           {if $info.interno != "Si"}
       <div class="formLine" style="width:100%; text-align:left">
-        <div style="width:150px;float:left">*# autorizacion o Referencia:</div> 
+        <div style="width:150px;float:left">*# autorizacion o Referencia:</div>
         <div style="width:750px;float:left"><input name="autorizacion" id="autorizacion" type="text" size="30" value="" class="largeInput"/>
-        </div>       
+        </div>
        	<div style="clear:both; padding-top:5px"></div>
       </div>
       {/if}
-      
+
       {if $info.interno != "Si"}
       <div class="formLine" style="width:100%; text-align:left">
-        <div style="width:150px;float:left">*Comprobante de pago:</div> 
+        <div style="width:150px;float:left">*Comprobante de pago:</div>
         <div style="width:750px;float:left"><input name="comprobante" id="comprobante" type="file" size="30" value="" class="largeInput"/>
-        </div>       
+        </div>
        	<div style="clear:both; padding-top:5px"></div>
       </div>
       {/if}
-      
+
           {if $info.interno == "No" && !$info.rfc}
       <div class="formLine" style="width:100%; text-align:left" id="showIfBanco">
-        <div style="width:150px;float:left">Requiere Factura?</div> 
+        <div style="width:150px;float:left">Requiere Factura?</div>
         <div style="width:750px;float:left">
         <select name="factura" id="factura" onchange=""  class="largeInput">
         	<option value="No">No</option>
         	<option value="Si">Si</option>
         </select>
-        </div>       
+        </div>
        	<div style="clear:both; padding-top:5px"></div>
       </div>
           {/if}
 
-      
+
 
        	<div style="clear:both; padding-top:5px"></div>
       </div>
-      
+
  		<hr />
 
       <div align="left">* Campos requeridos.</div>
