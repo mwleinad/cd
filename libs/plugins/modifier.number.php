@@ -7,15 +7,19 @@
  */
 
 
-function smarty_modifier_number($number)
+function smarty_modifier_number($number, $tipoMoneda = null)
 {
     if(!(string)$number){
         return null;
     }
     $number = floatval((string)$number);
 
+    $coinSymbol = '$';
+    if($tipoMoneda == 'EUR') {
+        $coinSymbol = '€';
+    }
 
-    return "$".number_format($number, 2, '.', ',');
+    return $coinSymbol.number_format($number, 2, '.', ',');
 }
 
 ?>

@@ -69,11 +69,11 @@
                         <td class="border-top" width="15%"><strong>Total Exento</strong></td>
                     </tr>
                     <tr class="border-right border-bottom">
-                        <td class="left">{$xmlData.nomina.percepciones.data.TotalSueldos|number}</td>
-                        <td class="left">{$xmlData.nomina.percepciones.data.TotalSeparacionIndemnizacion|number}</td>
-                        <td class="left">{$xmlData.nomina.percepciones.data.TotalJubilacionPensionRetiro|number}</td>
-                        <td class="left">{$xmlData.nomina.percepciones.data.TotalGravado|number}</td>
-                        <td class="left">{$xmlData.nomina.percepciones.data.TotalExento|number}</td>
+                        <td class="left">{$xmlData.nomina.percepciones.data.TotalSueldos|number:$xmlData.cfdi.Moneda}</td>
+                        <td class="left">{$xmlData.nomina.percepciones.data.TotalSeparacionIndemnizacion|number:$xmlData.cfdi.Moneda}</td>
+                        <td class="left">{$xmlData.nomina.percepciones.data.TotalJubilacionPensionRetiro|number:$xmlData.cfdi.Moneda}</td>
+                        <td class="left">{$xmlData.nomina.percepciones.data.TotalGravado|number:$xmlData.cfdi.Moneda}</td>
+                        <td class="left">{$xmlData.nomina.percepciones.data.TotalExento|number:$xmlData.cfdi.Moneda}</td>
                     </tr>
                     <tr class="border-bottom border-right center font-smallest">
                         <td class="border-top" width="15%"><strong>Tipo Percepcion</strong></td>
@@ -87,8 +87,8 @@
                             <td class="left">{$percepcion.TipoPercepcion}</td>
                             <td class="left">{$percepcion.Clave}</td>
                             <td class="left">{$percepcion.Concepto}</td>
-                            <td class="left">{$percepcion.ImporteGravado|number}</td>
-                            <td class="left">{$percepcion.ImporteExento|number}</td>
+                            <td class="left">{$percepcion.ImporteGravado|number:$xmlData.cfdi.Moneda}</td>
+                            <td class="left">{$percepcion.ImporteExento|number:$xmlData.cfdi.Moneda}</td>
                         </tr>
                     {/foreach}
                     </tbody>
@@ -111,8 +111,8 @@
                             <td colspan="2" class="border-top" width="50%"><strong>Total Impuestos Retenidos</strong></td>
                         </tr>
                         <tr class="border-right border-bottom">
-                            <td colspan="2" class="left">{$xmlData.nomina.deducciones.data.TotalOtrasDeducciones|number}</td>
-                            <td colspan="2" class="left">{$xmlData.nomina.deducciones.data.TotalImpuestosRetenidos|number}</td>
+                            <td colspan="2" class="left">{$xmlData.nomina.deducciones.data.TotalOtrasDeducciones|number:$xmlData.cfdi.Moneda}</td>
+                            <td colspan="2" class="left">{$xmlData.nomina.deducciones.data.TotalImpuestosRetenidos|number:$xmlData.cfdi.Moneda}</td>
                         </tr>
                         <tr class="border-bottom border-right center font-smallest">
                             <td class="border-top" width="20%"><strong>Tipo Deduccion</strong></td>
@@ -125,7 +125,7 @@
                                 <td class="left">{$deduccion.TipoDeduccion}</td>
                                 <td class="left">{$deduccion.Clave}</td>
                                 <td class="left">{$deduccion.Concepto}</td>
-                                <td class="left">{$deduccion.Importe|number}</td>
+                                <td class="left">{$deduccion.Importe|number:$xmlData.cfdi.Moneda}</td>
                             </tr>
                         {/foreach}
                         </tbody>
@@ -154,7 +154,7 @@
                                 <td class="left">{$otroPago.TipoOtroPago}</td>
                                 <td class="left">{$otroPago.Clave}</td>
                                 <td class="left">{$otroPago.Concepto}</td>
-                                <td class="left">{$otroPago.Importe|number}</td>
+                                <td class="left">{$otroPago.Importe|number:$xmlData.cfdi.Moneda}</td>
                             </tr>
                         {/foreach}
                         </tbody>
@@ -181,7 +181,7 @@
                             <tr class="border-right border-bottom">
                                 <td class="left">{$incapacidad.DiasIncapacidad}</td>
                                 <td class="left">{$incapacidad.TipoIncapacidad}</td>
-                                <td class="left">{$incapacidad.ImporteMonetario|number}</td>
+                                <td class="left">{$incapacidad.ImporteMonetario|number:$xmlData.cfdi.Moneda}</td>
                             </tr>
                         {/foreach}
                         </tbody>

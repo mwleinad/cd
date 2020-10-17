@@ -50,9 +50,9 @@
                     <td class="right border-bottom" width="50%" valign="top">
                             <span class="underline">
                                 {if $xmlData.impuestosLocales|count > 0}
-                                    {$impuestosSubtotal|number}
+                                    {$impuestosSubtotal|number:$xmlData.cfdi.Moneda}
                                 {else}
-                                    {$xmlData.cfdi.SubTotal|number}
+                                    {$xmlData.cfdi.SubTotal|number:$xmlData.cfdi.Moneda}
                                 {/if}
                             </span>
                     </td>
@@ -63,7 +63,7 @@
                             <strong>Descuento:</strong>
                         </td>
                         <td class="right border-bottom" width="50%" valign="top">
-                            {$xmlData.cfdi.Descuento|number}
+                            {$xmlData.cfdi.Descuento|number:$xmlData.cfdi.Moneda}
                         </td>
                     </tr>
                 {/if}
@@ -82,7 +82,7 @@
                                 <strong>{$catalogos.impuestos[{$traslado.Impuesto}]}:</strong>
                             </td>
                             <td class="right border-bottom" width="50%" valign="top">
-                                {$traslado.Importe|number}
+                                {$traslado.Importe|number:$xmlData.cfdi.Moneda}
                             </td>
                         </tr>
                     {/foreach}
@@ -93,7 +93,7 @@
                             <strong>{$xmlData.impuestosLocales.ish.ImpLocTrasladado}:</strong>
                         </td>
                         <td class="right border-bottom" width="50%" valign="top">
-                            {$xmlData.impuestosLocales.ish.Importe|number}
+                            {$xmlData.impuestosLocales.ish.Importe|number:$xmlData.cfdi.Moneda}
                         </td>
                     </tr>
                 {/if}
@@ -112,7 +112,7 @@
                                 <strong>{$catalogos.impuestos[{$retencion.Impuesto}]}:</strong>
                             </td>
                             <td class="right border-bottom" width="50%" valign="top">
-                                {$retencion.Importe|number}
+                                {$retencion.Importe|number:$xmlData.cfdi.Moneda}
                             </td>
                         </tr>
                     {/foreach}
@@ -122,7 +122,7 @@
                         <strong>TOTAL:</strong>
                     </td>
                     <td class="right border-bottom" width="50%" valign="top">
-                        {$xmlData.cfdi.Total|number}
+                        {$xmlData.cfdi.Total|number:$xmlData.cfdi.Moneda}
                     </td>
                 </tr>
                 </tbody>

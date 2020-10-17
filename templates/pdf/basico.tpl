@@ -204,9 +204,9 @@
             <td class="left">{$concepto.concepto.NoIdentificacion}</td>
             <td class="left">{$concepto.concepto.Cantidad}</td>
             <td class="left">{$concepto.concepto.Unidad}</td>
-            <td class="right">{$concepto.concepto.ValorUnitario|number}</td>
-            <td class="right">{$concepto.concepto.Importe|number}</td>
-            <td class="right">{$concepto.concepto.Descuento|number}</td>
+            <td class="right">{$concepto.concepto.ValorUnitario|number:$xmlData.cfdi.Moneda}</td>
+            <td class="right">{$concepto.concepto.Importe|number:$xmlData.cfdi.Moneda}</td>
+            <td class="right">{$concepto.concepto.Descuento|number:$xmlData.cfdi.Moneda}</td>
         </tr>
         <tr class="border-right border-bottom">
             <td colspan="8" class="pad-left pre" style="font-family: monospace">
@@ -218,28 +218,28 @@
                             <tr class="no-border">
                                 <td class="no-border left" width="55%">{$xmlData.amortizacionData.amortizacionFiniquito|urldecode}</td>
                                 <td class="no-border right" width="15%">SUBTOTAL</td>
-                                <td class="no-border right" width="15%">{$xmlData.amortizacionData.amortizacionFiniquitoSubtotal|number}</td>
+                                <td class="no-border right" width="15%">{$xmlData.amortizacionData.amortizacionFiniquitoSubtotal|number:$xmlData.cfdi.Moneda}</td>
                                 <td class="no-border right" width="15%">&nbsp;</td>
                             </tr>
                             <tr class="no-border">
                                 <td class="no-border left" width="55%"></td>
                                 <td class="no-border right" width="15%">IVA</td>
-                                <td class="no-border right" width="15%">{$xmlData.amortizacionData.amortizacionFiniquitoIva|number}</td>
-                                <td class="no-border right" width="15%"><u>{$xmlData.amortizacionData.amortizacionFiniquitoIva+$xmlData.amortizacionData.amortizacionFiniquitoSubtotal|number}</u></td>
+                                <td class="no-border right" width="15%">{$xmlData.amortizacionData.amortizacionFiniquitoIva|number:$xmlData.cfdi.Moneda}</td>
+                                <td class="no-border right" width="15%"><u>{$xmlData.amortizacionData.amortizacionFiniquitoIva+$xmlData.amortizacionData.amortizacionFiniquitoSubtotal|number:$xmlData.cfdi.Moneda}</u></td>
                             </tr>
                         {/if}
                         {if $xmlData.amortizacionData.amortizacion > 0}
                             <tr class="no-border">
                                 <td class="no-border left">AMORTIZACION DEL ANTICIPO</td>
                                 <td class="no-border right">SUBTOTAL</td>
-                                <td class="no-border right">{$xmlData.amortizacionData.amortizacion|number}</td>
+                                <td class="no-border right">{$xmlData.amortizacionData.amortizacion|number:$xmlData.cfdi.Moneda}</td>
                                 <td class="no-border right">&nbsp;</td>
                             </tr>
                             <tr class="no-border">
                                 <td class="no-border left"></td>
                                 <td class="no-border right">IVA</td>
-                                <td class="no-border right">{$xmlData.amortizacionData.amortizacionIva|number}</td>
-                                <td class="no-border right"><u>{$xmlData.amortizacionData.amortizacionIva+$xmlData.amortizacionData.amortizacion|number}</u></td>
+                                <td class="no-border right">{$xmlData.amortizacionData.amortizacionIva|number:$xmlData.cfdi.Moneda}</td>
+                                <td class="no-border right"><u>{$xmlData.amortizacionData.amortizacionIva+$xmlData.amortizacionData.amortizacion|number:$xmlData.cfdi.Moneda}</u></td>
                             </tr>
                         {/if}
                         <tr>
@@ -251,7 +251,7 @@
                             <td class="no-border left"></td>
                             <td class="no-border right"></td>
                             <td class="no-border right">ALCANCE LIQUIDO</td>
-                            <td class="no-border right"><u>{$xmlData.cfdi.Total|number}</u></td>
+                            <td class="no-border right"><u>{$xmlData.cfdi.Total|number:$xmlData.cfdi.Moneda}</u></td>
                         </tr>
                     </table>
                 {/if}
@@ -277,11 +277,11 @@
                     </tr>
                     {foreach from=$concepto.traslados item=traslado}
                         <tr class="border-right font-smallest">
-                            <td class="center border-bottom border-left">{$traslado.Base|number}</td>
+                            <td class="center border-bottom border-left">{$traslado.Base|number:$xmlData.cfdi.Moneda}</td>
                             <td class="center border-bottom">{$catalogos.impuestos[{$traslado.Impuesto}]}</td>
                             <td class="center border-bottom">{$traslado.TipoFactor}</td>
                             <td class="center border-bottom">{$traslado.TasaOCuota}</td>
-                            <td class="center border-bottom">{$traslado.Importe|number}</td>
+                            <td class="center border-bottom">{$traslado.Importe|number:$xmlData.cfdi.Moneda}</td>
                         </tr>
                     {/foreach}
                     </tbody>
@@ -303,11 +303,11 @@
                     </tr>
                     {foreach from=$concepto.retenciones item=retencion}
                     <tr class="border-right font-smallest">
-                        <td class="center border-bottom border-left">{$retencion.Base|number}</td>
+                        <td class="center border-bottom border-left">{$retencion.Base|number:$xmlData.cfdi.Moneda}</td>
                         <td class="center border-bottom">{$catalogos.impuestos[{$retencion.Impuesto}]}</td>
                         <td class="center border-bottom">{$retencion.TipoFactor}</td>
                         <td class="center border-bottom">{$retencion.TasaOCuota}</td>
-                        <td class="center border-bottom">{$retencion.Importe|number}</td>
+                        <td class="center border-bottom">{$retencion.Importe|number:$xmlData.cfdi.Moneda}</td>
                     </tr>
                     {/foreach}
                     </tbody>
